@@ -1,1 +1,18 @@
-<mat-toolbar></mat-toolbar>
+<mat-toolbar class="main-header">
+  <div class="main-header__brand">
+    <span>GesProTic</span><span class="main-header__brand-dotcom">.com</span>
+  </div>
+
+  <div class="main-header__actions">
+    <a
+      class="main-header__actions__element"
+      mat-icon-button
+      [matMenuTriggerFor]="createActionMenu.ref"
+    >
+      <mat-icon>add</mat-icon>
+    </a>
+
+    <app-menu #createActionMenu [options]="menuOptions.create" title="Crear">
+    </app-menu>
+  </div>
+</mat-toolbar>
