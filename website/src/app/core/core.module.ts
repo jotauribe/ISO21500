@@ -16,6 +16,12 @@ import { MenuComponent } from './components/menu/menu.component';
     MenuComponent
   ],
   imports: [CommonModule, HttpClientModule, MaterialModule],
-  exports: [HeaderComponent, LayoutComponent, MenuComponent, MaterialModule]
+  exports: [
+    HeaderComponent,
+    SidebarComponent,
+    LayoutComponent,
+    MenuComponent,
+    MaterialModule
+  ]
 })
 export class CoreModule {}
