@@ -1,15 +1,8 @@
-const express = require('express');
-const app  = express();
-
-//app.set('port',3000);
-let port = 3000;
-
 //routes
-app.get('/',(req, res)=>{
-res.send('Prueba');
- 
-});
+const test = (req, res)=>{
+    const { id } = req.params;
+    const {active} = req.query;
+    res.send({message: id, active});
+};
 
-app.listen(port,()=>{
-console.log('server on port', port)
-});
+module.exports = {test}
