@@ -17,5 +17,30 @@ const createProject = (req, res) => {
 
 };
 
+const listProject = (req, res) => {
+    let projectId = req.params.id;
+    Project.findById(projectId, function (err, project) {
+        if (err) return next(err);
+        res.send(project);
+    })
 
-module.exports = { test, createProject }
+
+};
+const listProjects = (req, res) => {
+   
+
+
+};
+
+
+
+
+const deleteProject = (req, res) =>{
+
+
+
+};
+
+
+
+module.exports = { test, createProject , listProject ,listProjects, deleteProject }
