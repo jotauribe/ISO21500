@@ -5,7 +5,7 @@ Router.get('/projects', ctr.test);
 //rutas del proyecto
 
 Router.post('/', ctr.createProject);
-Router.get('/:id', ctr.listProject);
+Router.get('/:id', ctr.getProject);
 Router.delete('/:id', ctr.deleteProject);
 
 module.exports = Router;

@@ -1,3 +1,6 @@
+const Project = require('../model/projectModel');
+
+const { asyncHandler } = require('../utils');
 //routes
 const test = (req, res) => {
     const { id } = req.params;
@@ -17,16 +20,13 @@ const createProject = (req, res) => {
 
 };
 
-const listProject = (req, res) => {
-    let projectId = req.params.id;
-    Project.findById(projectId, function (err, project) {
-        if (err) return next(err);
-        res.send(project);
-    })
+const getProject = asyncHandler(async (req, res) => {
+    const projectId = req.params.id;
+    const project = await Project.findById(projectId);
+    res.send(project);
+});
 
-
-};
-const listProjects = (req, res) => {
+const getProjects = (req, res) => {
    
 
 
@@ -43,4 +43,4 @@ const deleteProject = (req, res) =>{
 
 
 
-module.exports = { test, createProject , listProject ,listProjects, deleteProject }
+module.exports = { test, createProject , getProjects ,getProject, deleteProject }
