@@ -30,4 +30,10 @@ export class MenuComponent implements OnInit {
   constructor() {}
 
   ngOnInit() {}
+
+  triggerAction(action) {
+    if (action) {
+      action();
+    }
+  }
 }

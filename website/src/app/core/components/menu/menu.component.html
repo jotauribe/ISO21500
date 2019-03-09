@@ -5,7 +5,12 @@
 >
   <div class="gpt-menu__header">{{ title }}</div>
   <mat-divider></mat-divider>
-  <a *ngFor="let opt of options" mat-menu-item class="gpt-menu__option">
+  <a
+    *ngFor="let opt of options"
+    mat-menu-item
+    class="gpt-menu__option"
+    (click)="triggerAction(opt.action)"
+  >
     <span class="gpt-menu__option__name">{{ opt.name }}</span>
     <p class="gpt-menu__option__description">
       {{ opt.description }}

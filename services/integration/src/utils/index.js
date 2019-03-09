@@ -1,4 +1,5 @@
-const { isPromise, isAsyncFunction } = require('util').types;
+const utils = require('util');
+const { isPromise, isAsyncFunction } = utils.types;
 
 const self = (module.exports = {
   asyncHandler: fn => async (req, res, next) => {
