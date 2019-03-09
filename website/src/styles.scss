@@ -1,6 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
-@import '~@angular/material/prebuilt-themes/indigo-pink.css';
-@import url('https://fonts.googleapis.com/css?family=Open+Sans:300i,400,700i');
+@import 'styles/theme';
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:300i,400,700i,800');
+@import 'styles/buttons';
 
 html,
 body {

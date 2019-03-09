@@ -1,0 +1,18 @@
+$small-size: 18px;
+
+.button,
+.mat-icon-button.button {
+  &--small {
+    width: $small-size;
+    height: $small-size;
+    line-height: $small-size;
+
+    & .mat-icon,
+    & .mat-icon-button .mat-icon {
+      font-size: $small-size;
+      width: $small-size;
+      height: $small-size;
+      line-height: $small-size;
+    }
+  }
+}
