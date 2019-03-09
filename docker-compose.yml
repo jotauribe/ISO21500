@@ -6,19 +6,19 @@ services:
     container_name: iso21500-website
     command: npm run start:docker
     ports:
-      - "4200:4200"
+      - '4200:4200'
     volumes:
-      - "./website/:/usr/src/website"
+      - './website/:/usr/src/website'
       - /usr/src/website/node_modules/
     # environment:
-      # - NODE_ENV=${NODE_ENV}
-    depends_on: 
+    # - NODE_ENV=${NODE_ENV}
+    depends_on:
       - api
   api:
     build: ./api
     container_name: iso21500-api
     ports:
-      - "8000:8000"
+      - '8000:8000'
     volumes:
       - ./api/src:/api
   integration:
@@ -26,8 +26,7 @@ services:
     container_name: iso21500-integration
     command: npm start
     ports:
-      - "5000:5000"
+      - '5000:5000'
     volumes:
-      - "./services/integration/:/usr/src/integration"
+      - './services/integration/:/usr/src/integration'
       - /usr/src/integration/node_modules/
-    
