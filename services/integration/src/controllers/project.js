@@ -10,8 +10,6 @@ const test = (req, res) => {
 
 const createProject = asyncHandler(async(req, res) => {
     let project = new Project(req.body);
-    let params = req.body;
-
    await project.save(function (err) {
         if (err) {
             return next(err);
