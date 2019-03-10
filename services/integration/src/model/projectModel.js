@@ -1,3 +1,6 @@
+const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
+
 let projectSchema = new Schema({
     nameProject: {
         type: String,
@@ -12,7 +15,6 @@ let projectSchema = new Schema({
         required: [true, 'obligatory field']
     }
 });
-
 let project = db.model('Project', projectSchema);
 
 let badProject = new project();
@@ -33,4 +35,6 @@ assert.equal(error.errors['nameDirector'].message, 'required field');
 
 error = badProject.validateSync();
 assert.equal(error.errors['department'].message, 'Path `department` is required.');
+
+module.exports = mongoose.model('Project' , projectSchema);
 

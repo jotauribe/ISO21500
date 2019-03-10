@@ -8,7 +8,7 @@ const test = (req, res) => {
     res.send({ message: id, active });
 };
 
-const createProject = (req, res) => {
+const createProject = asyncHandler(async(req, res) => {
     let params = req.body;
 
     params.save(function (err) {
@@ -18,7 +18,7 @@ const createProject = (req, res) => {
         res.send('Project Created successfully')
     })
 
-};
+});
 
 const getProject = asyncHandler(async (req, res) => {
     const projectId = req.params.id;
@@ -26,21 +26,36 @@ const getProject = asyncHandler(async (req, res) => {
     res.send(project);
 });
 
-const getProjects = (req, res) => {
-   
+const getProjects = asyncHandler(async (req, res) => {
+    const project = await Project.find({});
+
+    res.render(project);
+
+});
+
+const updateProject = asyncHandler(async (req, res) => {
+
+    const projectId = req.params.id;
+    const project = await Project.findByIdAndUpdate(projectId, { $set: req.body }) ;
+    //Project.findByIdAndUpdate(projectId, { $set: req.body }, function (err, project) {
+        //if (err) return next(err);
+        res.send('Project udpated.',project);
+    });
 
 
-};
+//});
+
+
+const deleteProject = asyncHandler(async (req, res) => {
+    const projectId = req.params.id;
+    const project = await  Project.findByIdAndRemove(projectId);
+    //Project.findByIdAndRemove(projectId, function (err) {
+        //if (err) return next(err);
+        res.send('Deleted successfully!');
+    });
+
+//});
 
 
 
-
-const deleteProject = (req, res) =>{
-
-
-
-};
-
-
-
-module.exports = { test, createProject , getProjects ,getProject, deleteProject }
+module.exports = { createProject, getProjects, getProject, deleteProject, updateProject }
