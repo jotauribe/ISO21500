@@ -32,5 +32,7 @@ app.get(
     return res.send(movies);
   })
 );
+const MainRouter = require('./src/routes')
+app.use('/api/v2', MainRouter);
 
 app.listen(port, () => console.log(`App listening on port ${port}!`));
