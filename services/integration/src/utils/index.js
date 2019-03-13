@@ -1,7 +1,7 @@
 const { isPromise, isAsyncFunction } = require('util').types;
 
 const self = (module.exports = {
-  asyncHandler: fn => (req, res, next) => {
+  asyncHandler: fn => async (req, res, next) => {
     const errorCatcher = err => self.errorHandler(err, req, res, next);
 
     if (isPromise(fn) || isAsyncFunction(fn))
@@ -11,7 +11,6 @@ const self = (module.exports = {
   },
 
   errorHandler: (error, req, res, next) => {
-    console.log("HOLA")
     const { response, request } = error;
 
     if (response) {
