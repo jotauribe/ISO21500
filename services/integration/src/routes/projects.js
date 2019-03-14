@@ -5,6 +5,6 @@ Router.post('/', project.create);
 Router.get('/:id', project.getOne);
 Router.get('/', project.getAll);
 Router.put('/:id', project.update);
-Router.delete('/:id', project.deleteOne);
+Router.delete('/:id', project.remove);
 
 module.exports = Router;

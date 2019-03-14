@@ -1,4 +1,4 @@
-const Project = require('../model/projectModel');
+const Project = require('../model/project.model');
 
 const { asyncHandler } = require('../utils');
 
@@ -31,25 +31,22 @@ const update = asyncHandler(async (req, res) => {
 
     const projectId = req.params.id;
     const project = await Project.findByIdAndUpdate(projectId, { $set: req.body }) ;
-    //Project.findByIdAndUpdate(projectId, { $set: req.body }, function (err, project) {
-        //if (err) return next(err);
+
         res.send('Project udpated.',project);
     });
 
 
-//});
 
 
-const deleteOne = asyncHandler(async (req, res) => {
+const remove= asyncHandler(async (req, res) => {
     const projectId = req.params.id;
     const project = await  Project.findByIdAndRemove(projectId);
-    //Project.findByIdAndRemove(projectId, function (err) {
-        //if (err) return next(err);
+
         res.send('Deleted successfully!');
     });
 
-//});
 
 
 
-module.exports = { create, getOne, getAll, deleteOne, update }
+
+module.exports = { create, getOne, getAll, remove, update }
