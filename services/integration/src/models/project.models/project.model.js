@@ -4,15 +4,11 @@ const Schema = mongoose.Schema;
 let projectSchema = new Schema({
     nameProject: {
         type: String,
-        required: [true, 'Why no a name project? obligatory field']
+        required: [true, 'Project obligatory field']
     },
     nameDirector: {
         type: String,
-        required: [true, 'obligatory field']
-    },
-    department: {
-        type: String,
-        required: [true, 'obligatory field']
+        required: [true, 'name  director obligatory field']
     }
 });
 

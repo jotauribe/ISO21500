@@ -1,24 +1,17 @@
-const ActOfConstitution = require('../model/ActOfConstiution.model');
-const phaseManagement = require('../models/model_specialties');
+const ActOfConstitution = require('../model/constiution.model');
+
 const { asyncHandler } = require('../utils');
 
 
 const create = asyncHandler(async(req, res) => {
-    let actConstitution = (req.body);
-    phaseManagement.findOne({
-        name: req.params.phaseManagement
-    },(err, phase_management) => {
-     actConstitution.phaseManagement = phase_management;
-    //let actOfConstitution = new ActOfConstitution(req.body);
+   
+    let actOfConstitution = new ActOfConstitution(req.body);
    await ActOfConstitution.save(function (err) {
         if (err) {
             return next(err);
         }
         res.send('actOfConstitution Created successfully')
     });
-})
-    
-
 });
 
 const get = asyncHandler(async (req, res) => {
@@ -51,9 +44,6 @@ const remove= asyncHandler(async (req, res) => {
 
         res.send('Deleted successfully!');
     });
-
-
-
 
 
 module.exports = { create, get, find, remove, update }
