@@ -1,7 +1,16 @@
-const Constitution = require('../models/constitution.model');
-const { asyncHandler } = require('../utils');
+const Constitution = require('../../models/constitution.model');
+const { asyncHandler } = require('../../utils');
 
 const create = asyncHandler(async (req, res) => {
+
+  const actOfConstitution = new Constitution(req.body);
+  await Constitution.save(function (err) {
+       if (err) {
+           return next(err);
+       }
+       res.send('Constitution Created successfully')
+   });
+
   res.send({ message: 'Operation not supported' });
 });
 
@@ -12,7 +21,10 @@ const get = asyncHandler(async (req, res) => {
 });
 
 const find = asyncHandler(async (req, res) => {
-  res.send({ message: 'Operation not supported' });
+  const actOfConstitution = await Constitution.find({});
+
+  res.render(actOfConstitution);
+  
 });
 
 const update = asyncHandler(async (req, res) => {
