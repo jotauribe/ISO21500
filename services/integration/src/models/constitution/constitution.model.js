@@ -4,7 +4,7 @@ const Schema = mongoose.Schema;
 const constitutionSchema = new Schema({
   sponsor: {
     type: String,
-    required: [true, 'sponsor obligatory field']
+    required: [true, 'Sponsor obligatory field']
   },
   customer: String,
 
@@ -18,19 +18,19 @@ const constitutionSchema = new Schema({
 
   strategicView: {
     type: String,
-    required: [true, 'strategic view obligatory field']
+    required: [true, 'StrategicView obligatory field']
   },
   descriptionProject: {
     type: String,
-    required: [true, 'description obligatory field']
+    required: [true, 'DescriptionObligatory field']
   },
   viabilityAnalysis: {
     type: String,
-    required: [true, 'viability analysis obligatory field']
+    required: [true, 'ViabilityAnalysis obligatory field']
   },
   generalRequirements: {
     type: String,
-    required: [true, 'general requirements obligatory field']
+    required: [true, 'GeneralRequirements obligatory field']
   },
   departmentsInvolved: String,
 
@@ -38,7 +38,7 @@ const constitutionSchema = new Schema({
 
   additionalRemarks: {
     type: String,
-    required: [true, 'additional remarks obligatory field']
+    required: [true, 'AdditionalRemarks obligatory field']
   },
   justification: {
     type: String,
