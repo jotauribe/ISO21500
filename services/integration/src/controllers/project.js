@@ -1,12 +1,12 @@
-const Project = require("../../models/project.models/project.model");
-const { asyncHandler } = require("../../utils");
+const Project = require('../../models/project.models/project.model');
+const { asyncHandler } = require('../utils');
 
 const create = asyncHandler(async (req, res) => {
   const project = new Project(req.body);
 
   await project.save();
 
-  res.send("Project Created successfully");
+  res.send('Project Created successfully');
 });
 
 const get = asyncHandler(async (req, res) => {
@@ -30,7 +30,7 @@ const update = asyncHandler(async (req, res) => {
     $set: req.body
   });
 
-  res.send("Project udpated.", project);
+  res.send('Project udpated.', project);
 });
 
 const remove = asyncHandler(async (req, res) => {
@@ -38,7 +38,7 @@ const remove = asyncHandler(async (req, res) => {
 
   await Project.findByIdAndRemove(projectId);
 
-  res.send("Deleted successfully!");
+  res.send('Deleted successfully!');
 });
 
 module.exports = { create, get, find, remove, update };

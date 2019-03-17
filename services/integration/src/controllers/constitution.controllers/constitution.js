@@ -2,29 +2,21 @@ const Constitution = require('../../models/constitution.model');
 const { asyncHandler } = require('../../utils');
 
 const create = asyncHandler(async (req, res) => {
-
-  const actOfConstitution = new Constitution(req.body);
-  await Constitution.save(function (err) {
-       if (err) {
-           return next(err);
-       }
-       res.send('Constitution Created successfully')
-   });
-
-  res.send({ message: 'Operation not supported' });
+  const constitution = new Constitution(req.body);
+  await constitution.save();
+  res.send('Constitution Created successfully');
 });
 
 const get = asyncHandler(async (req, res) => {
   const { id } = req.params;
-  const actOfConstitution = await Constitution.findById(id);
-  res.send(actOfConstitution);
+  const constitution = await Constitution.findById(id);
+  res.send(constitution);
 });
 
 const find = asyncHandler(async (req, res) => {
-  const actOfConstitution = await Constitution.find({});
+  const constitution = await Constitution.find({});
 
-  res.render(actOfConstitution);
-  
+  res.render(constitution);
 });
 
 const update = asyncHandler(async (req, res) => {
