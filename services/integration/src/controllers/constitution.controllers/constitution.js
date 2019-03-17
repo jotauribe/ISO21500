@@ -1,4 +1,4 @@
-const Constitution = require('../../models/constitution.model');
+const Constitution = require('../../models/constitution/constitution.models');
 const { asyncHandler } = require('../../utils');
 
 const create = asyncHandler(async (req, res) => {

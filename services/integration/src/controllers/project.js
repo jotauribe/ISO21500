@@ -1,4 +1,4 @@
-const Project = require('../../models/project.models/project.model');
+const Project = require('../models/project.model');
 const { asyncHandler } = require('../utils');
 
 const create = asyncHandler(async (req, res) => {
