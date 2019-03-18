@@ -1,8 +1,10 @@
+import { NewProjectEffects } from './new-project/new-project.effects';
 import { ActionReducerMap, Store } from '@ngrx/store';
 // import { RouterReducerState } from '@ngrx/router-store';
 
 // reducers
 import { HeaderActions, HeaderState, headerReducer } from './header';
+import { NewProjectActions } from './new-project';
 import { RouterState, routerReducer } from './router';
 
 // The top level Echoes Player application interface
@@ -17,4 +19,4 @@ export const CoreReducers: ActionReducerMap<CoreState> = {
   // router: routerReducer
 };
 
-export const CoreActionTypes = [HeaderActions.Types];
+export const CoreActionTypes = [HeaderActions.Types, NewProjectActions.Types];

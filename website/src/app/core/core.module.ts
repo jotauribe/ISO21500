@@ -11,6 +11,7 @@ import { LayoutComponent } from './components/layout/layout.component';
 import { MenuComponent } from './components/menu/menu.component';
 import { NewProjectDialogComponent } from './components/new-project-dialog';
 import { SharedModule } from '../shared/shared.module';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,14 @@ import { SharedModule } from '../shared/shared.module';
     MenuComponent,
     NewProjectDialogComponent
   ],
-  imports: [CommonModule, HttpClientModule, CoreStoreModule, SharedModule],
+  imports: [
+    CommonModule,
+    HttpClientModule,
+    CoreStoreModule,
+    SharedModule,
+    FormsModule,
+    ReactiveFormsModule
+  ],
   exports: [
     HeaderComponent,
     SidebarComponent,

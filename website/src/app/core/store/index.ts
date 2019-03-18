@@ -7,6 +7,8 @@ import { effects } from './effects';
 import { environment } from './../../../environments/environment';
 import { CoreReducers } from './reducers';
 
+export { CoreState } from './reducers';
+
 @NgModule({
   imports: [
     StoreModule.forRoot(CoreReducers),

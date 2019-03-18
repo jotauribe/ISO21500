@@ -31,13 +31,9 @@ export class HeaderComponent implements OnInit {
   @Output()
   createProjectEvent = new EventEmitter();
 
-  constructor(private store: Store<CoreState>) {
-    console.log('Hola: ', this.store);
-  }
+  constructor(private store: Store<CoreState>) {}
 
-  ngOnInit() {
-    this.dispatch();
-  }
+  ngOnInit() {}
 
   dispatch() {
     this.store.dispatch(new HeaderActions.CreateProject());

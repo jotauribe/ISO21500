@@ -1,9 +1,10 @@
 import * as NewProjectActions from './new-project.actions';
+import { NewProjectEffects } from './new-project.effects';
 
 export {
-  NewProjectActions
+  NewProjectActions,
   // NewProjectState,
-  // NewProjectEffects,
+  NewProjectEffects
   // NewProjectReducer,
   // initialState
 };

@@ -7,7 +7,6 @@ export function headerReducer(
 ) {
   switch (action.type) {
     case Types.NewProjectOptionClicked:
-      console.log(action);
       return { ...state, createdProjects: ++state.projects };
 
     default:
