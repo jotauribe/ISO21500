@@ -5,7 +5,7 @@ const create = asyncHandler(async (req, res) => {
   const project = new Project(req.body);
 
   await project.save();
-
+  
   res.send({message :'Project Created successfully'});
 });
 
