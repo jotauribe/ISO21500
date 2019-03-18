@@ -4,7 +4,7 @@ const { asyncHandler } = require('../../utils');
 const create = asyncHandler(async (req, res) => {
   const constitution = new Constitution(req.body);
   await constitution.save();
-  res.send('Constitution Created successfully');
+  res.send({message:'Constitution Created successfully'});
 });
 
 const get = asyncHandler(async (req, res) => {
@@ -16,7 +16,7 @@ const get = asyncHandler(async (req, res) => {
 const find = asyncHandler(async (req, res) => {
   const constitution = await Constitution.find({});
 
-  res.render(constitution);
+  res.render({message :constitution});
 });
 
 const update = asyncHandler(async (req, res) => {
@@ -32,7 +32,7 @@ const remove = asyncHandler(async (req, res) => {
   const { id } = req.params;
   await Constitution.findByIdAndRemove(id);
 
-  res.send('Deleted successfully!');
+  res.send({message :'Deleted successfully!'});
 });
 
 module.exports = { create, get, find, remove, update };

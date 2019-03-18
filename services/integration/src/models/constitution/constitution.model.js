@@ -20,7 +20,7 @@ const constitutionSchema = new Schema({
     type: String,
     required: [true, 'StrategicView obligatory field']
   },
-  descriptionProject: {
+  description: {
     type: String,
     required: [true, 'DescriptionObligatory field']
   },
