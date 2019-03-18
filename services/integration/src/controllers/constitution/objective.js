@@ -4,7 +4,7 @@ const { asyncHandler } = require('../../utils');
 const create = asyncHandler(async (req, res) => {
   const objective = new Objective(req.body);
   await objective.save();
-  res.send('objective Created successfully');
+  res.send({ message:'objective Created successfully'});
 });
 
 const get = asyncHandler(async (req, res) => {
