@@ -1,5 +1,5 @@
 const Provider = require('../models/provider');
-const { asyncHandler } = require('../../utils');
+const { asyncHandler } = require('../utils');
 
 const create = asyncHandler(async (req, res) => {
   const provider = new Provider(req.body);

@@ -24,11 +24,13 @@ const ProviderSchema = new Schema({
   },
   email: {
     type: String,
-    required: [true, 'Email by to obligatory field']
+    required: [true, 'Email by to obligatory field'],
+    unique: true
   },
   identification: {
     type: String,
-    required: [true, 'Identification by to obligatory field']
+    required: [true, 'Identification by to obligatory field'],
+    unique: true
   }
 });
 
