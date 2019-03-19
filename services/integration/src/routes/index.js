@@ -1,8 +1,8 @@
-const Router = require("express").Router();
-const ProjectRouter = require("./projects");
-const ConstitutionRouter = require("./constitution/constitution");
-const ObjectiveRouter = require("./constitution/objective");
+const Router = require('express').Router();
+const ProjectRouter = require('./projects');
+const ConstitutionRouter = require('./constitution/constitution');
 
+const ObjectiveRouter = require('./constitution/objective');
 
 Router.use('/projects', ProjectRouter);
 

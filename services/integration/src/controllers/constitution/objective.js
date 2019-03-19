@@ -1,4 +1,4 @@
-const Objective = require('../../models/constitution/objective');
+const Objective = require('../../models/constitution/objective.model');
 const { asyncHandler } = require('../../utils');
 
 const create = asyncHandler(async (req, res) => {

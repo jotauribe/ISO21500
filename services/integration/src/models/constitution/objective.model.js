@@ -2,9 +2,9 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const objetctiveSchema = new Schema({
-  type: {
+  description: {
     type: String,
-    required: [true, 'Type obligatory field']
+    required: [true, 'Description obligatory field']
   },
   objectives: {
     type: String,
