@@ -13,6 +13,22 @@ const LimitationsSchema = new Schema({
   valuation: {
     type: String,
     required: [true, 'Valuation to obligatory field']
+  },
+  risk: {
+    type: String,
+    required: [true, 'Risk to obligatory field']
+  },
+  probability: {
+    type: String,
+    required: [true, 'Probability to obligatory field']
+  },
+  impactOn: {
+    type: String,
+    required: [true, 'Impact on to obligatory field']
+  },
+  valuationRisk: {
+    type: String,
+    required: [true, 'Valuation of risk to obligatory field']
   }
 });
 
