@@ -6,6 +6,7 @@ const PhasesRouter = require("./constitution/phases");
 const HitoRouter = require("./constitution/hito");
 const OtherRequirementsRouter = require("./constitution/otherRequirements");
 const limitationsRouter = require("./constitution/limitations");
+const AuthorityLevelRouter = require("./constitution/authorityLevel");
 
 Router.use('/projects', ProjectRouter);
 Router.use('/constitutions' ,ConstitutionRouter);
@@ -14,5 +15,6 @@ Router.use('/phases' ,PhasesRouter);
 Router.use('/hitos' ,HitoRouter);
 Router.use('/otherRequirements' ,OtherRequirementsRouter);
 Router.use('/limitations' ,limitationsRouter);
+Router.use('/authorityLevel' ,AuthorityLevelRouter);
 
 module.exports = Router;
