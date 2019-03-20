@@ -1,0 +1,53 @@
+:host,
+:host * {
+  height: 4em;
+  box-sizing: border-box;
+}
+
+.gpt-input {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  color: gray;
+  background-color: transparent;
+  margin-bottom: 1em;
+
+  input,
+  label {
+    transition: all, 0.2s;
+    transform-origin: left bottom;
+  }
+
+  label {
+    width: 100%;
+    height: 0;
+    position: absolute;
+    color: rgba(0, 0, 0, 0.5);
+    top: 1em;
+  }
+
+  input {
+    margin-top: 1em;
+    border: none;
+    border-bottom: solid 1px rgba(0, 0, 0, 0.125);
+    padding: 0.5em;
+    padding-left: 0;
+    height: 2em;
+    font-size: 14px;
+    background-color: transparent;
+  }
+
+  input:focus {
+    outline: none;
+  }
+
+  input:valid + label,
+  input:focus + label {
+    transform: translate(0, -1em) scale(0.9);
+    font-size: 0.75em;
+  }
+
+  ::placeholder {
+    opacity: 0;
+  }
+}

@@ -1,27 +1,33 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { environment } from '../../environments/environment';
 
+import { CoreStoreModule } from './store/index';
 import { HeaderComponent } from './components/header/header.component';
-import { MaterialModule } from './modules/material.module';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { LayoutComponent } from './components/layout/layout.component';
 import { MenuComponent } from './components/menu/menu.component';
+import { NewProjectDialogComponent } from './components/new-project-dialog';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
   declarations: [
     HeaderComponent,
     SidebarComponent,
     LayoutComponent,
-    MenuComponent
+    MenuComponent,
+    NewProjectDialogComponent
   ],
-  imports: [CommonModule, HttpClientModule, MaterialModule],
+  imports: [CommonModule, HttpClientModule, CoreStoreModule, SharedModule],
   exports: [
     HeaderComponent,
     SidebarComponent,
     LayoutComponent,
     MenuComponent,
-    MaterialModule
-  ]
+    CoreStoreModule
+  ],
+  entryComponents: [NewProjectDialogComponent]
 })
 export class CoreModule {}
