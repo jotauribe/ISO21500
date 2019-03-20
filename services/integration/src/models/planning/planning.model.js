@@ -2,6 +2,14 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const PlanningSchema = new Schema({
+  reviewBy: {
+    type: String,
+    required: [true, 'Review by obligatory field']
+  },
+  approveBy: {
+    type: String,
+    required: [true, 'Aprrove by obligatory field']
+  },
     stakeholders: {
     type: String,
     required: [true, 'Stakeholders obligatory field']
