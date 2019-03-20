@@ -10,13 +10,13 @@ const create = asyncHandler(async (req, res) => {
 const get = asyncHandler(async (req, res) => {
   const { id } = req.params;
   const provider = await Provider.findById(id);
-  res.send({ message: provider });
+  res.send( provider);
 });
 
 const find = asyncHandler(async (req, res) => {
   const provider = await Provider.find({});
 
-  res.send({ message: provider });
+  res.send( provider);
 });
 
 const update = asyncHandler(async (req, res) => {
