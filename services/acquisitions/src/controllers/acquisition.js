@@ -10,13 +10,13 @@ const create = asyncHandler(async (req, res) => {
 const get = asyncHandler(async (req, res) => {
   const { id } = req.params;
   const acquisition = await Acquisition.findById(id);
-  res.send({ message: acquisition });
+  res.send(acquisition);
 });
 
 const find = asyncHandler(async (req, res) => {
   const acquisition = await Acquisition.find({});
 
-  res.send({ message: acquisition });
+  res.send(acquisition);
 });
 
 const update = asyncHandler(async (req, res) => {
