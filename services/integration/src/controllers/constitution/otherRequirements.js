@@ -10,13 +10,13 @@ const create = asyncHandler(async (req, res) => {
 const get = asyncHandler(async (req, res) => {
   const { id } = req.params;
   const otherRequirements = await OtherRequirements.findById(id);
-  res.send({ message: otherRequirements });
+  res.send(otherRequirements);
 });
 
 const find = asyncHandler(async (req, res) => {
   const otherRequirements = await OtherRequirements.find({});
 
-  res.send({ message: otherRequirements });
+  res.send(otherRequirements);
 });
 
 const update = asyncHandler(async (req, res) => {
