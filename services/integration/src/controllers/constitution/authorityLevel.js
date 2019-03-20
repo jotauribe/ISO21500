@@ -10,13 +10,13 @@ const create = asyncHandler(async (req, res) => {
 const get = asyncHandler(async (req, res) => {
   const { id } = req.params;
   const authorityLevel = await AuthorityLevel.findById(id);
-  res.send({ message: authorityLevel });
+  res.send( authorityLevel );
 });
 
 const find = asyncHandler(async (req, res) => {
   const authorityLevel = await AuthorityLevel.find({});
 
-  res.send({ message: authorityLevel });
+  res.send( authorityLevel );
 });
 
 const update = asyncHandler(async (req, res) => {
