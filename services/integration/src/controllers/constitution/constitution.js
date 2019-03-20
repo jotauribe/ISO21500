@@ -10,13 +10,13 @@ const create = asyncHandler(async (req, res) => {
 const get = asyncHandler(async (req, res) => {
   const { id } = req.params;
   const constitution = await Constitution.findById(id);
-  res.send({message :constitution});
+  res.send({constitution});
 });
 
 const find = asyncHandler(async (req, res) => {
   const constitution = await Constitution.find({});
 
-  res.send({message :constitution});
+  res.send({constitution});
 });
 
 const update = asyncHandler(async (req, res) => {
