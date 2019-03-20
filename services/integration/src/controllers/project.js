@@ -14,13 +14,13 @@ const get = asyncHandler(async (req, res) => {
 
   const project = await Project.findById(projectId);
 
-  res.send({project});
+  res.send(project);
 });
 
 const find = asyncHandler(async (req, res) => {
   const project = await Project.find({});
 
-  res.send({project});
+  res.send(project);
 });
 
 const update = asyncHandler(async (req, res) => {
