@@ -7,6 +7,11 @@ const ConfigurationPlan2Schema = new Schema({
     type: String,
     required: [true, 'Approve By obligatory field']
   },
+  objectives: {
+    type: String,
+    required: [true, 'Objectives  obligatory field'],
+ 
+  },
   system: {
     type: String,
     required: [true, 'System  obligatory field'],
