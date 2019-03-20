@@ -10,13 +10,13 @@ const create = asyncHandler(async (req, res) => {
 const get = asyncHandler(async (req, res) => {
   const { id } = req.params;
   const limitations = await Limitations.findById(id);
-  res.send({ message: limitations });
+  res.send( limitations);
 });
 
 const find = asyncHandler(async (req, res) => {
   const limitations = await Limitations.find({});
 
-  res.send({ message: limitations });
+  res.send( limitations);
 });
 
 const update = asyncHandler(async (req, res) => {
