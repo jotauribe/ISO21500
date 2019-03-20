@@ -15,6 +15,7 @@ const ConfigurationPlan1Router = require('./configurationPlan1/configurationPlan
 const RolesRouter = require('./configurationPlan1/roles');
 const DocumentationPlanRouter = require('./configurationPlan1/documentationPlan');
 const ItemRouter = require('./configurationPlan1/item');
+const ConfigurationPlan2Router = require('./configurationPlan2/configurationPlan2');
 
 Router.use('/projects', ProjectRouter);
 Router.use('/constitutions' ,ConstitutionRouter);
@@ -32,5 +33,6 @@ Router.use('/configuration1', ConfigurationPlan1Router);
 Router.use('/roles', RolesRouter);
 Router.use('/documentationPlan', DocumentationPlanRouter);
 Router.use('/items', ItemRouter);
+Router.use('/configuration2', ConfigurationPlan2Router);
 
 module.exports = Router;
