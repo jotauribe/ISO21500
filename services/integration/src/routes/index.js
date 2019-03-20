@@ -11,6 +11,7 @@ const LessonRouter = require('./lesson');
 const PlanningRouter = require('./planning/planning');
 const DocumentRouter = require('./planning/document');
 const LifeCycleRouter = require('./planning/lifeCycle');
+const ConfigurationPlan1Router = require('./configurationPlan1/configurationPlan1');
 
 Router.use('/projects', ProjectRouter);
 Router.use('/constitutions' ,ConstitutionRouter);
@@ -24,5 +25,6 @@ Router.use('/lessons' ,LessonRouter);
 Router.use('/planning' ,PlanningRouter);
 Router.use('/documents' ,DocumentRouter);
 Router.use('/lifeCycles' ,LifeCycleRouter);
+Router.use('/configuration1', ConfigurationPlan1Router);
 
 module.exports = Router;
