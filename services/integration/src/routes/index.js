@@ -7,6 +7,6 @@ const ObjectiveRouter = require('./constitution/objective');
 Router.use('/projects', ProjectRouter);
 
 Router.use('/constitutions' ,ConstitutionRouter);
-Router.use('/objectives' ,ObjectiveRouter);
+Router.use('/objectives/constitution' ,ObjectiveRouter);
 
 module.exports = Router;

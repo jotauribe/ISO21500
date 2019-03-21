@@ -2,6 +2,11 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const objetctiveSchema = new Schema({
+  constitutionId: {
+    type: String,
+    required: [true, 'Constitution Id obligatory field'],
+
+  },
   description: {
     type: String,
     required: [true, 'Description obligatory field']
