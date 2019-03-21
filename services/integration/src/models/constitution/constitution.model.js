@@ -2,6 +2,12 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const constitutionSchema = new Schema({
+  projectId: {
+    type: String,
+    required: [true, 'Project Id obligatory field'],
+    unique:true
+  },
+
   sponsor: {
     type: String,
     required: [true, 'Sponsor obligatory field']

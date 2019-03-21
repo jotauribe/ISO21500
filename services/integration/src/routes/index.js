@@ -3,6 +3,6 @@ const ProjectRouter = require('./projects');
 const ConstitutionRouter = require('./constitution/constitution');
 
 Router.use('/projects', ProjectRouter);
-Router.use('/constitutions' ,ConstitutionRouter);
+Router.use('/constitution/projects' ,ConstitutionRouter);
 
 module.exports = Router;

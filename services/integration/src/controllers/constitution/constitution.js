@@ -9,8 +9,8 @@ const create = asyncHandler(async (req, res) => {
 
 const get = asyncHandler(async (req, res) => {
   const { id } = req.params;
-  const constitution = await Constitution.findById(id);
-  res.send(constitution);
+  const constitution = await Constitution.findOne({projectId:id});
+  res.send({message :constitution});
 });
 
 const find = asyncHandler(async (req, res) => {
