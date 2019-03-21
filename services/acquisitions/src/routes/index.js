@@ -3,7 +3,7 @@ const ProviderRouter = require('./provider');
 
 
 
-Router.use('/providers', ProviderRouter);
+Router.use('/providers/projects', ProviderRouter);
 
 
 

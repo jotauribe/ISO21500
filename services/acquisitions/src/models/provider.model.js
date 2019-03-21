@@ -2,6 +2,11 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const ProviderSchema = new Schema({
+  projectId: {
+    type: String,
+    required: [true, 'Project Id obligatory field'],
+    
+  },
     name: {
     type: String,
     required: [true, 'Name obligatory field']
