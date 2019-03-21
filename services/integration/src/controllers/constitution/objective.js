@@ -9,7 +9,7 @@ const create = asyncHandler(async (req, res) => {
 
 const get = asyncHandler(async (req, res) => {
   const { id } = req.params;
-  const objective = await Constitution.findOne({constitutionId:id});
+  const objective = await Objective.findOne({constitutionId:id});
   res.send(objective);
 });
 
