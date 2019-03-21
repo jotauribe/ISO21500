@@ -9,7 +9,7 @@ const create = asyncHandler(async (req, res) => {
 
 const get = asyncHandler(async (req, res) => {
   const { id } = req.params;
-  const acquisition = await Acquisition.findById(id);
+  const acquisition = await Acquisition.findOne({projectId:id});
   res.send(acquisition);
 });
 

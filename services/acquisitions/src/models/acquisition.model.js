@@ -2,6 +2,11 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const AcquisitionSchema = new Schema({
+  projectId: {
+    type: String,
+    required: [true, 'Project Id obligatory field']
+  },
+
     date: {
     type: Date,
     required: [true, 'Date obligatory field']

@@ -4,7 +4,7 @@ const AcquisitionsRouter = require('./acquisition');
 
 
 Router.use('/providers', ProviderRouter);
-Router.use('/acquisitions' ,AcquisitionsRouter);
+Router.use('/acquisitions/projects' ,AcquisitionsRouter);
 
 
 module.exports = Router;
