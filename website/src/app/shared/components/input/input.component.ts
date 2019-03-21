@@ -13,7 +13,7 @@ let nextUniqueId = 0;
 @Component({
   selector: 'gpt-input',
   template: `
-    <div class="gpt-input">
+    <div class="gpt-input {{ noPlaceholder ? 'no-placeholder' : '' }}">
       <input
         [(ngModel)]="value"
         class="gpt-input-element"
@@ -21,7 +21,9 @@ let nextUniqueId = 0;
         placeholder="{{ placeholder }}"
         type="text"
       />
-      <label class="gpt-input__label" for="id10905"> {{ placeholder }}</label>
+      <label *ngIf="!noPlaceholder" class="gpt-input__label" for="{{ id }}">
+        {{ placeholder }}</label
+      >
     </div>
   `,
   styleUrls: ['./input.component.scss'],
@@ -37,6 +39,9 @@ export class InputComponent implements OnInit, ControlValueAccessor {
   @Input()
   @HostBinding('attr.placeholder')
   placeholder = '';
+
+  @Input()
+  noPlaceholder = false;
 
   @Input()
   @HostBinding('attr.id')
@@ -67,8 +72,7 @@ export class InputComponent implements OnInit, ControlValueAccessor {
   ngOnInit() {}
 
   writeValue(value: any): void {
-    if (!value) {
-      console.log('Hola bebe 222');
+    if (value) {
       this.val = value;
     }
   }
