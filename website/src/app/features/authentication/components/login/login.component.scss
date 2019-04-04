@@ -1,0 +1,23 @@
+.login-form {
+  margin-right: auto;
+  margin-left: auto;
+  padding: 24px;
+  width: 350px;
+  background: white;
+
+  &__title {
+    margin-bottom: 32px;
+    text-align: center;
+    color: gray;
+    font-weight: 300;
+  }
+
+  &__input {
+    margin-bottom: 32px;
+  }
+
+  &__actions {
+    padding-top: 24px;
+    text-align: right;
+  }
+}

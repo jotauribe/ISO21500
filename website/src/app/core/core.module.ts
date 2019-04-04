@@ -1,8 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
-import { StoreDevtoolsModule } from '@ngrx/store-devtools';
-import { environment } from '../../environments/environment';
 
 import { CoreStoreModule } from './store/index';
 import { HeaderComponent } from './components/header/header.component';
@@ -11,6 +9,10 @@ import { LayoutComponent } from './components/layout/layout.component';
 import { MenuComponent } from './components/menu/menu.component';
 import { NewProjectDialogComponent } from './components/new-project-dialog';
 import { SharedModule } from '../shared/shared.module';
+import { SidebarContainerComponent } from './components/sidebar-container/sidebar-container.component';
+import { ProjectDashboardComponent } from './components/project-dashboard/project-dashboard.component';
+import { MainPageComponent } from './components/main-page/main-page.component';
+import { CoreRoutingModule } from './core-routing.module';
 
 @NgModule({
   declarations: [
@@ -18,15 +20,25 @@ import { SharedModule } from '../shared/shared.module';
     SidebarComponent,
     LayoutComponent,
     MenuComponent,
-    NewProjectDialogComponent
+    NewProjectDialogComponent,
+    SidebarContainerComponent,
+    ProjectDashboardComponent,
+    MainPageComponent
   ],
-  imports: [CommonModule, HttpClientModule, CoreStoreModule, SharedModule],
+  imports: [
+    CommonModule,
+    HttpClientModule,
+    CoreStoreModule,
+    SharedModule,
+    
+  ],
   exports: [
     HeaderComponent,
     SidebarComponent,
     LayoutComponent,
     MenuComponent,
-    CoreStoreModule
+    CoreStoreModule,
+    
   ],
   entryComponents: [NewProjectDialogComponent]
 })

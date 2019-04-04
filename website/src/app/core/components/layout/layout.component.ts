@@ -2,14 +2,14 @@ import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-layout',
-  templateUrl: './layout.component.html',
+  template: `
+    <ng-content select="[header]"></ng-content>
+    
+  `,
   styleUrls: ['./layout.component.scss']
 })
 export class LayoutComponent implements OnInit {
+  constructor() {}
 
-  constructor() { }
-
-  ngOnInit() {
-  }
-
+  ngOnInit() {}
 }
