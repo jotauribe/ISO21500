@@ -4,7 +4,7 @@ const passport = require('passport');
 const BasicStrategy = require('passport-http').BasicStrategy;
 const BearerStrategy = require('passport-http-bearer').Strategy;
 
-const { Token, User } = require('../models');
+const { Token, UserModel } = require('../models');
 
 /**
  * LocalStrategy
@@ -16,7 +16,7 @@ const { Token, User } = require('../models');
 passport.use(
   new BasicStrategy(async (username, password, callback) => {
     try {
-      const user = await User.findOne({ username: username });
+      const user = await UserModel.findOne({ username: username });
 
       // No user found with that username
       if (!user) throw Error('Invalid username or password');
@@ -35,7 +35,7 @@ passport.use(
 passport.serializeUser((user, done) => done(null, user._id));
 
 passport.deserializeUser(async (id, done) => {
-  const user = await User.findById(id);
+  const user = await UserModel.findById(id);
   done(error, user);
 });
 
@@ -55,7 +55,7 @@ passport.use(
       // No token found
       if (!token) throw Error('Invalid Token');
 
-      const user = await User.findOne({ _id: token.userId });
+      const user = await UserModel.findOne({ _id: token.userId });
 
       // No user found
       if (!user) throw Error('Invalid Token');
@@ -68,10 +68,11 @@ passport.use(
   })
 );
 
-exports.isAuthenticated = passport.authenticate(['basic'], {
-  session: false
-});
-
-exports.isBearerAuthenticated = passport.authenticate('bearer', {
-  session: false
-});
+module.exports = {
+  isAuthenticated: passport.authenticate(['basic'], {
+    session: false
+  }),
+  isBearerAuthenticated: passport.authenticate('bearer', {
+    session: false
+  })
+};
