@@ -1,17 +1,11 @@
-const { User } = require('../models');
+const { UserModel } = require('../models');
 
 const create = async function createUser(req, res, next) {
   try {
-    const user = new User({
-      username: req.body.username,
-      password: req.body.password
-    });
+    const user = new UserModel(req.body);
 
-    user.save(function(err) {
-      if (err) return res.send(err);
-
-      res.json({ message: 'New user added' });
-    });
+    await user.save();
+    res.send(user);
   } catch (error) {
     next(error);
   }
@@ -20,7 +14,7 @@ const create = async function createUser(req, res, next) {
 // Create endpoint /api/users for GET
 const get = async function getUser(req, res, next) {
   try {
-    const user = await User.findById(req.user._id);
+    const user = await UserModel.findById(req.params.id);
 
     res.send(user);
   } catch (err) {
