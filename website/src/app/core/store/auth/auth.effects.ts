@@ -20,22 +20,31 @@ export class AuthEffects {
     )
   );
 
+  @Effect()
+  login = this.actions.pipe(
+    ofType(AuthActions.Types.AuthenticationRequested),
+    switchMap((action: AuthActions.AuthenticationRequested) =>
+      this.authService.login(action.payload).pipe(
+        map(data => {
+          return new AuthActions.AuthenticationSucceded(data);
+        }),
+        catchError(error => of(new AuthActions.AuthenticationFailed(error)))
+      )
+    )
+  );
+
   @Effect({ dispatch: false })
   afterSignup = this.actions.pipe(
     ofType(AuthActions.Types.SignupSucceded),
     tap((action: AuthActions.SignupSucceded) => {
-      const r = this.authService.signup(action.payload);
-
       this.router.navigate(['/projects']);
     })
   );
 
   @Effect({ dispatch: false })
   afterLogin = this.actions.pipe(
-    ofType(AuthActions.Types.AuthenticationRequested),
+    ofType(AuthActions.Types.AuthenticationSucceded),
     tap((action: AuthActions.SignupSucceded) => {
-      const r = this.authService.signup(action.payload);
-
       this.router.navigate(['/projects']);
     })
   );

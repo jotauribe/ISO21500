@@ -15,12 +15,12 @@ import { AuthenticationRequested } from 'src/app/core/store/auth/auth.actions';
       >
         <h2 class="login-form__title">Inicia Sesion</h2>
         <gpt-input
-          formControlname="username"
+          formControlName="username"
           class="login-form__input"
           placeholder="Usuario"
         ></gpt-input>
         <gpt-input
-          formControlname="password"
+          formControlName="password"
           class="login-form__input"
           placeholder="Contraseña"
           type="password"
@@ -46,9 +46,9 @@ export class LoginComponent implements OnInit {
     private formBuilder: FormBuilder,
     private store: Store<CoreState>
   ) {
-    this.loginForm = formBuilder.group({
-      username: [null],
-      password: [null]
+    this.loginForm = this.formBuilder.group({
+      username: [],
+      password: []
     });
   }
 

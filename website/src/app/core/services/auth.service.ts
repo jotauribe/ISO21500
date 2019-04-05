@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { User } from '../models/user.model';
 import { from, Observable } from 'rxjs';
 
@@ -21,5 +21,19 @@ export class AuthService {
 
   createUser(user: User): Observable<User> {
     return this.http.post<User>('http://localhost:5000/api/v2/users', user);
+  }
+
+  login({ password, username }): Observable<User> {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        Authorization: `Basic ${btoa(username + ':' + password)}`
+      })
+    };
+
+    return this.http.post<User>(
+      'http://localhost:5000/api/v2/auth',
+      { user: { password, username } },
+      httpOptions
+    );
   }
 }
