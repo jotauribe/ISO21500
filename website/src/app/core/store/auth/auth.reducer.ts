@@ -12,7 +12,9 @@ export function authReducer(
 ) {
   switch (action.type) {
     case Types.AuthenticationSucceded:
-      return { ...state, ...action.payload };
+    case Types.SignupSucceded:
+      return { ...state, user: action.payload, isAuthenticated: true };
+
     default:
       return state;
   }

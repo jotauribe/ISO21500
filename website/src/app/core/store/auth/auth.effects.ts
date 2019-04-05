@@ -11,11 +11,13 @@ export class AuthEffects {
   @Effect()
   createUser = this.actions.pipe(
     ofType(AuthActions.Types.SignupRequested),
-    switchMap((action: AuthActions.SignupRequested) => {
-      const r = this.authService.signup(action.payload);
-
-      return of(new AuthActions.SignupSucceded(r));
-    })
+    switchMap((action: AuthActions.SignupRequested) =>
+      this.authService.createUser(action.payload).pipe(
+        map(data => {
+          return new AuthActions.SignupSucceded(data);
+        })
+      )
+    )
   );
 
   @Effect({ dispatch: false })
