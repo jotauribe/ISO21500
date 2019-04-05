@@ -30,15 +30,14 @@ import { CoreRoutingModule } from './core-routing.module';
     HttpClientModule,
     CoreStoreModule,
     SharedModule,
-    
+    CoreRoutingModule
   ],
   exports: [
     HeaderComponent,
     SidebarComponent,
     LayoutComponent,
     MenuComponent,
-    CoreStoreModule,
-    
+    CoreStoreModule
   ],
   entryComponents: [NewProjectDialogComponent]
 })

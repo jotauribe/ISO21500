@@ -19,7 +19,8 @@ import { RouterModule } from '@angular/router';
     BrowserAnimationsModule,
     StoreRouterConnectingModule.forRoot(),
     AppRoutingModule,
-    AuthenticationModule
+    AuthenticationModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

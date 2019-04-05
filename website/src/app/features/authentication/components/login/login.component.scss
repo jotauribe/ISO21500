@@ -4,12 +4,13 @@
   padding: 24px;
   width: 350px;
   background: white;
+  border-radius: 4px;
 
   &__title {
     margin-bottom: 32px;
     text-align: center;
     color: gray;
-    font-weight: 300;
+    font-weight: 500;
   }
 
   &__input {
@@ -17,7 +18,17 @@
   }
 
   &__actions {
-    padding-top: 24px;
-    text-align: right;
+    padding-top: 12px;
+    text-align: center;
+
+    button {
+      width: 60%;
+    }
+  }
+
+  &__footer {
+    font-size: 0.9em;
+    text-align: center;
+    color: gray;
   }
 }
