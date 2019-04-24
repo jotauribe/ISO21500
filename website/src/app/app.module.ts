@@ -9,6 +9,7 @@ import { CoreModule } from './core/core.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { StoreRouterConnectingModule } from '@ngrx/router-store';
 import { RouterModule } from '@angular/router';
+import { ProjectsModule } from './features/projects/projects.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -20,6 +21,7 @@ import { RouterModule } from '@angular/router';
     StoreRouterConnectingModule.forRoot(),
     AppRoutingModule,
     AuthenticationModule,
+    ProjectsModule,
     HttpClientModule
   ],
   providers: [],
