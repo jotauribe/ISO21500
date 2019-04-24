@@ -26,6 +26,13 @@
     }
   }
 
+  &__submit-button {
+      .progress {
+        display: inline-block;
+        margin-left: 8px;
+      }
+  }
+
   &__footer {
     font-size: 0.9em;
     text-align: center;

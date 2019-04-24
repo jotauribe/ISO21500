@@ -2,6 +2,7 @@ import { Types, ActionsUnion } from './auth.actions';
 import { AuthState } from './auth.state';
 
 export const initialState: AuthState = {
+  isAuthInProgress: false,
   isUserAuthenticated: false,
   user: null
 };
@@ -11,10 +12,21 @@ export function authReducer(
   action: ActionsUnion
 ) {
   switch (action.type) {
-    case Types.AuthenticationSucceded:
+    case Types.AuthenticationRequested:
+      return { ...state, isAuthInProgress: true };
     case Types.SignupSucceded:
-      return { ...state, user: action.payload, isAuthenticated: true };
-
+    case Types.AuthenticationSucceded:
+      return {
+        ...state,
+        user: action.payload,
+        isAuthenticated: true,
+        isAuthInProgress: false
+      };
+    case Types.AuthenticationFailed:
+      return {
+        ...state,
+        isAuthInProgress: false
+      };
     default:
       return state;
   }

@@ -1,12 +1,11 @@
+import { Component, OnInit, Input, ViewChild, forwardRef } from '@angular/core';
 import {
-  Component,
-  OnInit,
-  Input,
-  HostBinding,
-  ViewChild,
-  forwardRef
-} from '@angular/core';
-import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+  AbstractControl,
+  ControlValueAccessor,
+  NG_VALUE_ACCESSOR,
+  ValidationErrors,
+  Validator
+} from '@angular/forms';
 
 let nextUniqueId = 0;
 
@@ -15,7 +14,9 @@ let nextUniqueId = 0;
   template: `
     <div class="gpt-input {{ noPlaceholder ? 'no-placeholder' : '' }}">
       <input
-        [(ngModel)]="value"
+        [value]="val"
+        (input)="pushChanges($event.target.value)"
+        (blur)="onTouched($event)"
         class="gpt-input-element"
         id="{{ id }}"
         placeholder="{{ placeholder }}"
@@ -27,6 +28,7 @@ let nextUniqueId = 0;
     </div>
   `,
   styleUrls: ['./input.component.scss'],
+  
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
@@ -51,7 +53,7 @@ export class InputComponent implements OnInit, ControlValueAccessor {
   @ViewChild('input')
   input;
 
-  val: any;
+  val: any = '';
 
   @Input('value')
   set value(val) {
@@ -71,6 +73,10 @@ export class InputComponent implements OnInit, ControlValueAccessor {
   constructor() {}
 
   ngOnInit() {}
+
+  pushChanges(value: any) {
+    this.onChange(value);
+  }
 
   writeValue(value: any): void {
     if (value) {

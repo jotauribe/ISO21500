@@ -11,7 +11,8 @@ export const Types = {
   AuthenticationRequested: withNamespace('Authentication requested'),
   AuthenticationSucceded: withNamespace('Authentication Succeeded'),
   AuthenticationFailed: withNamespace('Authentication Failed'),
-  SignupFormSubmitted: withNamespace('Signup Form Submitted')
+  SignupFormSubmitted: withNamespace('Signup Form Submitted'),
+  SignupFormValidationFailed: withNamespace('Signup Form Validation Failed')
 };
 
 export class LoginFormSubmitted implements Action {
@@ -54,8 +55,14 @@ export class SignupFailed implements Action {
   constructor(public payload: any) {}
 }
 
+export class SignupFormValidationFailed implements Action {
+  readonly type = Types.SignupFormValidationFailed;
+  constructor(public payload: any) {}
+}
+
 export type ActionsUnion =
   | LoginFormSubmitted
   | AuthenticationRequested
   | AuthenticationSucceded
-  | AuthenticationFailed;
+  | AuthenticationFailed
+  | SignupFormValidationFailed;

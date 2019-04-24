@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
-import { Store } from '@ngrx/store';
+import { Store, select } from '@ngrx/store';
 import { CoreState } from 'src/app/core/store/reducers';
 import { AuthenticationRequested } from 'src/app/core/store/auth/auth.actions';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'gpt-login-form',
@@ -26,8 +27,22 @@ import { AuthenticationRequested } from 'src/app/core/store/auth/auth.actions';
           type="password"
         ></gpt-input>
         <div class="login-form__actions">
-          <button type="submit" color="primary" mat-raised-button>
-            Ingresar
+          <button
+            class="login-form__submit-button"
+            type="submit"
+            color="primary"
+            mat-raised-button
+          >
+            <span *ngIf="!(isAuthInProgress | async)">Ingresar</span>
+            <mat-spinner
+              *ngIf="(isAuthInProgress | async)"
+              diameter="24"
+              class="progress"
+              color="accent"
+              mode="indeterminate"
+              value="75"
+            >
+            </mat-spinner>
           </button>
         </div>
         <p class="login-form__footer">
@@ -41,6 +56,7 @@ import { AuthenticationRequested } from 'src/app/core/store/auth/auth.actions';
 })
 export class LoginComponent implements OnInit {
   loginForm: FormGroup;
+  isAuthInProgress: Observable<boolean>;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -50,9 +66,17 @@ export class LoginComponent implements OnInit {
       username: [],
       password: []
     });
+
+    this.isAuthInProgress = this.store.pipe(
+      select(state => state.auth.isAuthInProgress)
+    );
+
+    this.isAuthInProgress.subscribe(data => console.log(data));
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    console.log(this.isAuthInProgress);
+  }
 
   login() {
     this.store.dispatch(new AuthenticationRequested(this.loginForm.value));

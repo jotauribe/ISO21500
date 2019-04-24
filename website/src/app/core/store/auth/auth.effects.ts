@@ -5,6 +5,7 @@ import { map, switchMap, catchError, tap } from 'rxjs/operators';
 import * as AuthActions from './auth.actions';
 import { AuthService } from '../../services/auth.service';
 import { of } from 'rxjs';
+import { MatSnackBar } from '@angular/material';
 
 @Injectable()
 export class AuthEffects {
@@ -34,24 +35,41 @@ export class AuthEffects {
   );
 
   @Effect({ dispatch: false })
-  afterSignup = this.actions.pipe(
-    ofType(AuthActions.Types.SignupSucceded),
+  redirection = this.actions.pipe(
+    ofType(
+      AuthActions.Types.SignupSucceded,
+      AuthActions.Types.AuthenticationSucceded
+    ),
     tap((action: AuthActions.SignupSucceded) => {
       this.router.navigate(['/projects']);
     })
   );
 
   @Effect({ dispatch: false })
-  afterLogin = this.actions.pipe(
-    ofType(AuthActions.Types.AuthenticationSucceded),
-    tap((action: AuthActions.SignupSucceded) => {
-      this.router.navigate(['/projects']);
+  onLoginError = this.actions.pipe(
+    ofType(
+      AuthActions.Types.SignupFailed,
+      AuthActions.Types.AuthenticationFailed
+    ),
+    tap((action: AuthActions.AuthenticationFailed) => {
+      this.snackbar.open('Error de Autenticacion');
+    })
+  );
+
+  @Effect({ dispatch: false })
+  onSignupFormValidationError = this.actions.pipe(
+    ofType(
+      AuthActions.Types.SignupFormValidationFailed
+    ),
+    tap((action: AuthActions.AuthenticationFailed) => {
+      this.snackbar.open('Los campos marcados con * son requeridos');
     })
   );
 
   constructor(
     private actions: Actions,
     private authService: AuthService,
-    private router: Router
+    private router: Router,
+    private snackbar: MatSnackBar
   ) {}
 }
