@@ -17,6 +17,14 @@
     "lib": [
       "es2018",
       "dom"
-    ]
+    ],
+    "paths": {
+      "@authentication/*": [
+        "./src/app/features/authentication/*"
+      ],
+      "@env/*": [
+        "./src/app/environments/*"
+      ]
+    }
   }
 }

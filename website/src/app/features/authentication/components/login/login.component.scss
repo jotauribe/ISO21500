@@ -1,0 +1,41 @@
+.login-form {
+  margin-right: auto;
+  margin-left: auto;
+  padding: 24px;
+  width: 350px;
+  background: white;
+  border-radius: 4px;
+
+  &__title {
+    margin-bottom: 32px;
+    text-align: center;
+    color: gray;
+    font-weight: 500;
+  }
+
+  &__input {
+    margin-bottom: 32px;
+  }
+
+  &__actions {
+    padding-top: 12px;
+    text-align: center;
+
+    button {
+      width: 60%;
+    }
+  }
+
+  &__submit-button {
+      .progress {
+        display: inline-block;
+        margin-left: 8px;
+      }
+  }
+
+  &__footer {
+    font-size: 0.9em;
+    text-align: center;
+    color: gray;
+  }
+}

@@ -1,26 +1,94 @@
-import { Component, OnInit, Input, HostBinding } from '@angular/core';
+import { Component, OnInit, Input, ViewChild, forwardRef } from '@angular/core';
+import {
+  AbstractControl,
+  ControlValueAccessor,
+  NG_VALUE_ACCESSOR,
+  ValidationErrors,
+  Validator
+} from '@angular/forms';
 
-let id = 0;
+let nextUniqueId = 0;
 
 @Component({
   selector: 'gpt-input',
-  templateUrl: './input.component.html',
-  styleUrls: ['./input.component.scss']
+  template: `
+    <div class="gpt-input {{ noPlaceholder ? 'no-placeholder' : '' }}">
+      <input
+        [value]="val"
+        (input)="pushChanges($event.target.value)"
+        (blur)="onTouched($event)"
+        class="gpt-input-element"
+        id="{{ id }}"
+        placeholder="{{ placeholder }}"
+        [type]="type"
+      />
+      <label *ngIf="!noPlaceholder" class="gpt-input__label" for="{{ id }}">
+        {{ placeholder }}</label
+      >
+    </div>
+  `,
+  styleUrls: ['./input.component.scss'],
+  
+  providers: [
+    {
+      provide: NG_VALUE_ACCESSOR,
+      useExisting: forwardRef(() => InputComponent),
+      multi: true
+    }
+  ]
 })
-export class InputComponent implements OnInit {
+export class InputComponent implements OnInit, ControlValueAccessor {
   @Input()
-  @HostBinding('attr.placeholder')
   placeholder = '';
 
   @Input()
-  @HostBinding('attr.id')
-  id = '';
+  noPlaceholder = false;
+
+  @Input()
+  type = 'text';
+
+  @Input()
+  id = `gpt-input_${nextUniqueId++}`;
+
+  @ViewChild('input')
+  input;
+
+  val: any = '';
+
+  @Input('value')
+  set value(val) {
+    this.val = val;
+    this.onChange(val);
+    this.onTouched();
+  }
+
+  get value() {
+    return this.val;
+  }
+
+  onChange: any = () => {};
+
+  onTouched: any = () => {};
 
   constructor() {}
 
   ngOnInit() {}
 
-  nextId() {
-    return id++;
+  pushChanges(value: any) {
+    this.onChange(value);
+  }
+
+  writeValue(value: any): void {
+    if (value) {
+      this.val = value;
+    }
+  }
+
+  registerOnChange(fn: any): void {
+    this.onChange = fn;
+  }
+
+  registerOnTouched(fn: any): void {
+    this.onTouched = fn;
   }
 }

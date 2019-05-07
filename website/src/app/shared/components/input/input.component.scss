@@ -1,7 +1,11 @@
+:host {
+  display: block;
+}
+
 :host,
 :host * {
-  height: 4em;
   box-sizing: border-box;
+  height: auto;
 }
 
 .gpt-input {
@@ -18,7 +22,7 @@
     transform-origin: left bottom;
   }
 
-  label {
+  &:not(.no-placeholder) label {
     width: 100%;
     height: 0;
     position: absolute;
@@ -41,13 +45,18 @@
     outline: none;
   }
 
-  input:valid + label,
-  input:focus + label {
+  &:not(.no-placeholder) input:valid + label,
+  &:not(.no-placeholder) input:focus + label {
     transform: translate(0, -1em) scale(0.9);
     font-size: 0.75em;
   }
 
-  ::placeholder {
+  &:not(.no-placeholder) ::placeholder {
     opacity: 0;
+  }
+
+  &.no-placeholder ::placeholder {
+    font-style: italic;
+    color: #999;
   }
 }
