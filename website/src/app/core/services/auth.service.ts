@@ -31,7 +31,7 @@ export class AuthService {
     };
 
     return this.http.post<User>(
-      'http://localhost:5000/api/v2/auth',
+      'http://localhost:5001/api/v1/auth',
       { user: { password, username } },
       httpOptions
     );
