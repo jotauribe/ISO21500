@@ -1,18 +1,22 @@
-const Constitution = require('../models/constitution.model');
-const { asyncHandler } = require('../utils');
+const Constitution = require('../../models/constitution/constitution.model');
+const { asyncHandler } = require('../../utils');
 
 const create = asyncHandler(async (req, res) => {
-  res.send({ message: 'Operation not supported' });
+  const constitution = new Constitution(req.body);
+  await constitution.save();
+  res.send({message:'Constitution Created successfully'});
 });
 
 const get = asyncHandler(async (req, res) => {
   const { id } = req.params;
-  const actOfConstitution = await Constitution.findById(id);
-  res.send(actOfConstitution);
+  const constitution = await Constitution.findOne({projectId:id});
+  res.send(constitution);
 });
 
 const find = asyncHandler(async (req, res) => {
-  res.send({ message: 'Operation not supported' });
+  const constitution = await Constitution.find({});
+
+  res.send(constitution);
 });
 
 const update = asyncHandler(async (req, res) => {
@@ -28,7 +32,7 @@ const remove = asyncHandler(async (req, res) => {
   const { id } = req.params;
   await Constitution.findByIdAndRemove(id);
 
-  res.send('Deleted successfully!');
+  res.send({message :'Deleted successfully!'});
 });
 
 module.exports = { create, get, find, remove, update };
