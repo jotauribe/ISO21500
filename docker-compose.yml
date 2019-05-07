@@ -30,3 +30,12 @@ services:
     volumes:
       - './services/integration/:/usr/src/integration'
       - /usr/src/integration/node_modules/
+  auth:
+    build: ./services/identity
+    container_name: iso21500-identity
+    command: npm start
+    ports:
+      - '5001:5001'
+    volumes:
+      - './services/identity/:/usr/src/identity'
+      - /usr/src/identity/node_modules/

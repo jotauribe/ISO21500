@@ -1,30 +1,34 @@
+import { Component, OnInit, Input, ViewChild, forwardRef } from '@angular/core';
 import {
-  Component,
-  OnInit,
-  Input,
-  HostBinding,
-  ViewChild,
-  forwardRef
-} from '@angular/core';
-import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+  AbstractControl,
+  ControlValueAccessor,
+  NG_VALUE_ACCESSOR,
+  ValidationErrors,
+  Validator
+} from '@angular/forms';
 
 let nextUniqueId = 0;
 
 @Component({
   selector: 'gpt-input',
   template: `
-    <div class="gpt-input">
+    <div class="gpt-input {{ noPlaceholder ? 'no-placeholder' : '' }}">
       <input
-        [(ngModel)]="value"
+        [value]="val"
+        (input)="pushChanges($event.target.value)"
+        (blur)="onTouched($event)"
         class="gpt-input-element"
         id="{{ id }}"
         placeholder="{{ placeholder }}"
-        type="text"
+        [type]="type"
       />
-      <label class="gpt-input__label" for="id10905"> {{ placeholder }}</label>
+      <label *ngIf="!noPlaceholder" class="gpt-input__label" for="{{ id }}">
+        {{ placeholder }}</label
+      >
     </div>
   `,
   styleUrls: ['./input.component.scss'],
+  
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
@@ -35,17 +39,21 @@ let nextUniqueId = 0;
 })
 export class InputComponent implements OnInit, ControlValueAccessor {
   @Input()
-  @HostBinding('attr.placeholder')
   placeholder = '';
 
   @Input()
-  @HostBinding('attr.id')
+  noPlaceholder = false;
+
+  @Input()
+  type = 'text';
+
+  @Input()
   id = `gpt-input_${nextUniqueId++}`;
 
   @ViewChild('input')
   input;
 
-  val: any;
+  val: any = '';
 
   @Input('value')
   set value(val) {
@@ -66,9 +74,12 @@ export class InputComponent implements OnInit, ControlValueAccessor {
 
   ngOnInit() {}
 
+  pushChanges(value: any) {
+    this.onChange(value);
+  }
+
   writeValue(value: any): void {
-    if (!value) {
-      console.log('Hola bebe 222');
+    if (value) {
       this.val = value;
     }
   }
