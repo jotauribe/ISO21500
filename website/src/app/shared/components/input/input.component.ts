@@ -1,11 +1,5 @@
-import { Component, OnInit, Input, ViewChild, forwardRef } from '@angular/core';
-import {
-  AbstractControl,
-  ControlValueAccessor,
-  NG_VALUE_ACCESSOR,
-  ValidationErrors,
-  Validator
-} from '@angular/forms';
+import { Component, OnInit, Input, forwardRef } from '@angular/core';
+import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 let nextUniqueId = 0;
 
@@ -28,7 +22,7 @@ let nextUniqueId = 0;
     </div>
   `,
   styleUrls: ['./input.component.scss'],
-  
+
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
@@ -49,9 +43,6 @@ export class InputComponent implements OnInit, ControlValueAccessor {
 
   @Input()
   id = `gpt-input_${nextUniqueId++}`;
-
-  @ViewChild('input')
-  input;
 
   val: any = '';
 
