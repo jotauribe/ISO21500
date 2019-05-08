@@ -5,12 +5,12 @@
   </a>
 </header>
 <div mat-dialog-content>
-  <form class="new-project-form">
-    <gpt-input placeholder="Title"></gpt-input>
+  <form (ngSubmit)="submit($event)" [formGroup]='form' class="new-project-form">
+    <gpt-input formControlName="title" placeholder="Title"></gpt-input>
     <gpt-input placeholder="Director"></gpt-input>
     <div class="new-project-form__actions">
       <button class="new-project-form__actions__cancel" mat-button mat-dialog-close>Cancel</button>
-      <button cdkFocusInitial class="new-project-form__actions__create" color="accent" mat-raised-button>
+      <button class="new-project-form__actions__create" color="accent" mat-raised-button type="submit">
         Create
       </button>
     </div>

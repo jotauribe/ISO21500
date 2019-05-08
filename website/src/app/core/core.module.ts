@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { CoreStoreModule } from './store/index';
 import { HeaderComponent } from './components/header/header.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
@@ -30,7 +31,9 @@ import { CoreRoutingModule } from './core-routing.module';
     HttpClientModule,
     CoreStoreModule,
     SharedModule,
-    CoreRoutingModule
+    CoreRoutingModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   exports: [
     HeaderComponent,
