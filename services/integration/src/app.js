@@ -1,9 +1,14 @@
 const express = require('express');
 const mongoose = require('mongoose');
+const bodyParser = require('body-parser');
+const cors = require('cors');
 
 const app = function appBuilder({ router, port, baseUrl }) {
   //Building Express server
   const server = express();
+  server.use(cors());
+  server.use(bodyParser.json());
+  server.use(bodyParser.urlencoded({ extended: true }));
   server.use(baseUrl, router);
 
   //Connecting to MongoDB database
