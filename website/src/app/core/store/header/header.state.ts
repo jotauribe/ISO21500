@@ -1,4 +1,3 @@
-import { HeaderState } from './header.state';
 export interface HeaderState {
   projects: number;
 }

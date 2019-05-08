@@ -1,0 +1,19 @@
+table {
+  width: 100%;
+}
+
+.container {
+  padding: 1em;
+}
+
+.header {
+  display: flex;
+
+  .rigth {
+    margin-left: auto;
+  }
+
+  .left {
+    margin-right: auto;
+  }
+}
