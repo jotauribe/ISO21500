@@ -1,0 +1,12 @@
+<div class="gpt-project" [routerLink]="[ '/projects', project.id ]">
+  <div class="gpt-project__header">
+    <div class="gpt-project__title">
+      {{project.title}}
+    </div>
+    <div class="gpt-project__status"> {{project.status || 'En Progreso'}}</div>
+  </div>
+  <div class="gpt-project__user-list">
+    <div class="gpt-project__user">RD</div>
+    <div class="gpt-project__user">LM</div>
+  </div>
+</div>

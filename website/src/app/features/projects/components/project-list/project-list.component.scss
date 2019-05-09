@@ -1,65 +1,16 @@
 .gpt-projects {
-    margin-right: 40px;
-    margin-left: 40px;
-    width: 100%;
-    display: flex;
-    flex-wrap: wrap;
-    padding: 40px;
+  margin-right: 40px;
+  margin-left: 40px;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 40px;
 
-    & > *:not(:last-child) {
-        margin-right: 24px;
-    }
-}
+  & > * {
+    margin-bottom: 24px;
+  }
 
-.gpt-project {
-    display: flex;
-    flex-direction: column;
-    padding: 16px;
-    border-radius: 4px;
-    width: 300px;
-    box-shadow: 0 1px 4px 0 gray;
-    transition: all 200ms;
-
-    &:hover{
-        transform: scale(1.05);
-    }
-
-    &__header {
-         margin-bottom: 24px;
-
-         & > *:not(:last-child) {
-             margin-bottom: 4px;
-         }
-    }
-
-    &__title {
-        font-size: 16px;
-    }
-
-    &__status {
-        font-size: 14px;
-        color: gray;
-    }
-
-    &__user-list {
-        display: flex;
-        flex-direction: row-reverse;
-        width: 100%;
-
-        & > *:not(:last-child) {
-            margin-left: 8px;
-        }
-    }
-
-    &__user {
-        width: 40px;
-        height: 40px;
-        text-align: center;
-        line-height: 20px;
-        color: white;
-        padding-top: 10px;
-        box-sizing: border-box;
-        border-radius: 50%;
-        background-color: #C1BEC1;
-    }
+  & > *:not(:last-child) {
+    margin-right: 24px;
+  }
 }
