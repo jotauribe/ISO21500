@@ -58,11 +58,11 @@ export class AuthEffects {
 
   @Effect({ dispatch: false })
   onSignupFormValidationError = this.actions.pipe(
-    ofType(
-      AuthActions.Types.SignupFormValidationFailed
-    ),
+    ofType(AuthActions.Types.SignupFormValidationFailed),
     tap((action: AuthActions.AuthenticationFailed) => {
-      this.snackbar.open('Los campos marcados con * son requeridos');
+      this.snackbar.open('Los campos marcados con * son requeridos', '', {
+        duration: 5000
+      });
     })
   );
 
