@@ -1,0 +1,5 @@
+<gpt-input></gpt-input>
+<div class="gpt-projects">
+  <gpt-project *ngFor="let p of projects | async; trackBy: trackProjectsBy" [project]="p">
+  </gpt-project>
+</div>

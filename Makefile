@@ -12,9 +12,12 @@ stop:
 state:
 	docker-compose ps
 
+restart:
+	docker-compose stop
+	docker-compose up -d
+
 rebuild:
 	docker-compose stop
-	docker-compose rm --force app
 	docker-compose build --no-cache
 	docker-compose up -d
 

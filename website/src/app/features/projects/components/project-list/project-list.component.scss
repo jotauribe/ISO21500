@@ -1,0 +1,16 @@
+.gpt-projects {
+  margin-right: 40px;
+  margin-left: 40px;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 40px;
+
+  & > * {
+    margin-bottom: 24px;
+  }
+
+  & > *:not(:last-child) {
+    margin-right: 24px;
+  }
+}

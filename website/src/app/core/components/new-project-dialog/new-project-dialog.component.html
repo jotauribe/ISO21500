@@ -1,0 +1,18 @@
+<header class="dialog-header">
+  <span class="dialog-header__title">Create Project</span>
+  <a class="dialog-header__close-button button--small" mat-icon-button>
+    <mat-icon>clear</mat-icon>
+  </a>
+</header>
+<div mat-dialog-content>
+  <form (ngSubmit)="submit($event)" [formGroup]='form' class="new-project-form">
+    <gpt-input formControlName="title" placeholder="Title"></gpt-input>
+    <gpt-input placeholder="Director"></gpt-input>
+    <div class="new-project-form__actions">
+      <button class="new-project-form__actions__cancel" mat-button mat-dialog-close>Cancel</button>
+      <button class="new-project-form__actions__create" color="accent" mat-raised-button type="submit">
+        Create
+      </button>
+    </div>
+  </form>
+</div>
