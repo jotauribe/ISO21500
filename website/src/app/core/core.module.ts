@@ -40,7 +40,8 @@ import { CoreRoutingModule } from './core-routing.module';
     SidebarComponent,
     LayoutComponent,
     MenuComponent,
-    CoreStoreModule
+    CoreStoreModule,
+    CoreRoutingModule
   ],
   entryComponents: [NewProjectDialogComponent]
 })

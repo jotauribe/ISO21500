@@ -1,11 +1,9 @@
-import { LoadInfo } from './../../../../core/store/constitution/constitution.actions';
 import { Store } from '@ngrx/store';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { ActivatedRoute, ParamMap } from '@angular/router';
 import { Component, OnInit, OnChanges } from '@angular/core';
 import { CoreState } from '~/app/core/store';
-import { tap, switchMap, map } from 'rxjs/operators';
-import { ActivatedRoute, ParamMap } from '@angular/router';
-import { OpenDialog } from '~/app/core/store/new-project/new-project.actions';
+import { LoadInfo } from '~/app/core/store/constitution/constitution.actions';
 
 export interface Objective {
   position: number;
@@ -105,6 +103,9 @@ export class ConstitutionComponent implements OnInit {
     this.store
       .select(state => state.constitution)
       .subscribe(data => this.constitutionForm.patchValue(data));
-    this.store.dispatch(new LoadInfo('5c900e87e24fa2200c0c790e8'));
+
+    this.route.params.subscribe(p =>
+      this.store.dispatch(new LoadInfo(p.projectId))
+    );
   }
 }

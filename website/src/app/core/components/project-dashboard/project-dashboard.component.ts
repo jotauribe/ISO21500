@@ -5,8 +5,9 @@ import { Component, OnInit } from '@angular/core';
   template: `
     <gpt-sidebar-container>
       <app-sidebar sidebar></app-sidebar>
-      <div class="content" content></div>
-      <router-outlet></router-outlet>
+      <div class="content" content>
+        <router-outlet></router-outlet>
+      </div>
     </gpt-sidebar-container>
   `,
   styleUrls: ['./project-dashboard.component.scss']
