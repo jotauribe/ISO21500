@@ -41,7 +41,6 @@ export class ProvidersComponent implements OnInit {
   openDialog() {
     const ref = this.dialog.open(NewProviderComponent);
     ref.afterClosed().subscribe(result => {
-      console.log(result, this.dataSource);
       PROVIDERS.push(result);
       this.dataSource = new MatTableDataSource<Objective>(PROVIDERS);
     });
