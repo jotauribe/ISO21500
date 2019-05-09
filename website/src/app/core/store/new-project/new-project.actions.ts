@@ -5,6 +5,7 @@ const withNamespace = action => `${NAMESPACE} - ${action}`;
 
 export const Types = {
   OpenDialog: withNamespace('Open Dialog'),
+  DialogOpened: withNamespace('Dialog Opened'),
   CloseDialog: withNamespace('Dialog Close'),
   CreateProject: withNamespace('Create Project Request'),
   CreateProjectDone: withNamespace('Create Project Done'),
@@ -13,10 +14,17 @@ export const Types = {
 
 export class OpenDialog implements Action {
   readonly type = Types.OpenDialog;
+  constructor(public payload?: any) {}
+}
+
+export class DialogOpened implements Action {
+  readonly type = Types.DialogOpened;
+  constructor(public payload?: any) {}
 }
 
 export class CloseDialog implements Action {
   readonly type = Types.CloseDialog;
+  constructor(public payload?: any) {}
 }
 
 export class CreateProject implements Action {
@@ -36,6 +44,7 @@ export class CreateProjectFail implements Action {
 
 export type ActionsUnion =
   | OpenDialog
+  | DialogOpened
   | CloseDialog
   | CreateProject
   | CreateProjectDone
