@@ -28,7 +28,7 @@ const remove = asyncHandler(async (req, res) => {
   const { id } = req.params;
   await Constitution.findByIdAndRemove(id);
 
-  res.send('Deleted successfully!');
+  res.send({ message: 'Deleted successfully!' });
 });
 
 module.exports = { create, get, find, remove, update };

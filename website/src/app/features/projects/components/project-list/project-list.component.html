@@ -1,38 +1,5 @@
-<gpt-input ></gpt-input>
+<gpt-input></gpt-input>
 <div class="gpt-projects">
-  <div class="gpt-project">
-    <div class="gpt-project__header">
-      <div class="gpt-project__title"> Avianca.com</div>
-      <div class="gpt-project__status"> In progress</div>
-    </div>
-    
-    <div class="gpt-project__user-list">
-      <div class="gpt-project__user">RD</div>
-      <div class="gpt-project__user">LM</div>
-    </div>
-  </div>
-
-  <div class="gpt-project">
-    <div class="gpt-project__header">
-      <div class="gpt-project__title"> Avianca - Inventario</div>
-      <div class="gpt-project__status"> In progress</div>
-    </div>
-  
-    <div class="gpt-project__user-list">
-      <div class="gpt-project__user">RD</div>
-    </div>
-  </div>
-
-  <div class="gpt-project">
-    <div class="gpt-project__header">
-      <div class="gpt-project__title"> Avianca - Inventario</div>
-      <div class="gpt-project__status"> In progress</div>
-    </div>
-  
-    <div class="gpt-project__user-list">
-      <div class="gpt-project__user">JL</div>
-      <div class="gpt-project__user">MA</div>
-      <div class="gpt-project__user">MJ</div>
-    </div>
-  </div>
+  <gpt-project *ngFor="let p of projects | async; trackBy: trackProjectsBy" [project]="p">
+  </gpt-project>
 </div>

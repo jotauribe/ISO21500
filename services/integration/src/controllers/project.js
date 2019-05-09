@@ -6,7 +6,7 @@ const create = asyncHandler(async (req, res) => {
 
   await project.save();
 
-  res.send('Project Created successfully');
+  res.send({ message: 'Project Created successfully' });
 });
 
 const get = asyncHandler(async (req, res) => {
@@ -38,7 +38,7 @@ const remove = asyncHandler(async (req, res) => {
 
   await Project.findByIdAndRemove(projectId);
 
-  res.send('Deleted successfully!');
+  res.send({ message: 'Deleted successfully!' });
 });
 
 module.exports = { create, get, find, remove, update };
