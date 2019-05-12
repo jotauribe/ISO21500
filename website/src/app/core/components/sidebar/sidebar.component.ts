@@ -10,19 +10,19 @@ import { MatIconRegistry } from '@angular/material';
 export class SidebarComponent implements OnInit {
   links = [
     {
-      href: '_blank',
+      href: 'constitution',
       title: 'Integration',
       icon: 'gpt_integration',
       isSvg: true
     },
     {
-      href: '_blank',
+      href: 'resources',
       title: 'Resources',
       icon: 'gpt_resources',
       isSvg: true
     },
     {
-      href: '_blank',
+      href: 'acquisitions',
       title: 'Acquisitions',
       icon: 'gpt_acquisitions',
       isSvg: true
