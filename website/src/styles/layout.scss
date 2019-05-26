@@ -1,0 +1,30 @@
+.row {
+  display: flex;
+  margin-bottom: 16px;
+
+  &--stretch {
+    & > * {
+      flex-grow: 1;
+    }
+  }
+
+  & > *:not(:last-child) {
+    margin-right: 24px;
+  }
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+
+  & > * {
+    &:not(:last-child) {
+      margin-bottom: 48px;
+    }
+  }
+}
+
+.no-grow {
+  flex-grow: 0;
+  flex-shrink: 1;
+}
