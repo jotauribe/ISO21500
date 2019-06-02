@@ -9,7 +9,6 @@ const create = asyncHandler(async (req, res) => {
 
 const get = asyncHandler(async (req, res) => {
   const { projectId } = req;
-  console.log(req.params, projectId);
   const previousInformation = await PreviousInformation.findOne({
     projectId
   });
@@ -19,7 +18,6 @@ const get = asyncHandler(async (req, res) => {
 
 const update = asyncHandler(async (req, res) => {
   const { projectId } = req;
-  console.log(projectId);
   const updatedDocument = await PreviousInformation.findOneAndUpdate(
     projectId,
     {
