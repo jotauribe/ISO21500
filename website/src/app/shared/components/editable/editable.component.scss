@@ -1,28 +1,28 @@
-.gpt-form-group {
+.gpt-editable {
   display: flex;
   align-items: flex-start;
   justify-items: left;
   flex-direction: column;
+  box-sizing: border-box;
+  border-radius: 4px;
+  border: 1px solid transparent;
 
-  &--inline {
-    flex-direction: row;
+  &--raised {
+    padding: 8px;
+    box-shadow: 0px 6px 6px 0px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(112, 112, 112, 0.2);
+    background-color: white;
   }
 
-  &__label {
-    height: 100%;
-    min-height: 18px;
-    font-size: 0.9em;
-    color: #707070;
-    padding: 0.5em;
-
-    &--inline {
-      flex: 0 0 150px;
-    }
+  &:hover {
+    border: 1px solid rgba(112, 112, 112, 0.4);
   }
 
-  &__input,
-  &__textarea {
-    flex: 0 0 auto;
+  &__header {
+    font-weight: 600;
+    font-size: 16px;
+    margin-bottom: 16px;
+    padding: 0 8px;
   }
 
   ::ng-deep {
@@ -30,54 +30,60 @@
       opacity: 0;
     }
   }
-}
 
-.gpt-editable {
-  display: flex;
-  flex-direction: column;
-  position: relative;
-  color: gray;
-  background-color: transparent;
-  box-sizing: border-box;
-
-  &__input,
   &__textarea {
-    border: none;
-    padding: 0.5em;
-    min-height: 18px;
+    border: 1px solid transparent;
+    padding: 8px;
     font-size: 14px;
     background-color: transparent;
-    border: 1px solid transparent;
-
-    &:hover {
-      border: 1px solid gray;
-      border-radius: 4px;
-    }
+    border: none;
+    width: 100%;
+    box-sizing: border-box;
+    color: #919090;
 
     &::placeholder {
       font-style: italic;
       color: #999;
     }
 
-    &:hover {
-      border: 1px solid gray;
-    }
-
     &:focus {
       outline: none;
+      border-right: 1px solid rgba(112, 112, 112, 0.2);
     }
   }
 
-  &__textarea {
-    width: 80%;
-    min-height: 50px;
-    background-color: rgba(9, 45, 66, 0.08);
-    padding-left: 10px;
-    margin-left: 20px;
+  &__textarea-container {
+    display: flex;
+    position: relative;
+    width: 100%;
+    background-color: inherit;
+    border-radius: 4px;
 
-    &:hover {
-      box-shadow: rgba(9, 45, 66, 0.25) 0px 4px 8px -2px,
-        rgba(9, 45, 66, 0.08) 0px 0px 0px 1px;
+    &--in-edit-mode {
+      border: 1px solid rgba(112, 112, 112, 0.2);
     }
+  }
+
+  &__empty-content {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    background-color: inherit;
+    height: 100%;
+    border: 1px dashed rgba(112, 112, 112, 0.2);
+    padding: 8px;
+    box-sizing: border-box;
+    border-radius: 4px;
+    color: #919090;
+    background-color: #fafafa;
+  }
+
+  &-actions {
+    opacity: 0;
+    z-index: 10;
+  }
+
+  &:hover .gpt-editable-actions {
+    opacity: 1;
   }
 }

@@ -4,42 +4,20 @@ import {
   OnInit,
   forwardRef,
   Input,
-  HostBinding
+  HostBinding,
+  ViewChild,
+  ElementRef,
+  OnDestroy
 } from '@angular/core';
+import { Subject, fromEvent } from 'rxjs';
+import { filter, take, switchMapTo, skip } from 'rxjs/operators';
+import { untilDestroyed } from 'ngx-take-until-destroy';
 
 let nextUniqueId = 0;
 
 @Component({
   selector: 'gpt-editable',
-  template: `
-    <div
-      [ngClass]="{
-        'gpt-form-group': true,
-        'gpt-form-group--inline': type === 'input'
-      }"
-      class="gpt-form-group"
-    >
-      <label
-        *ngIf="label"
-        [ngClass]="{
-          'gpt-form-group__label': true,
-          'gpt-form-group__label--inline': type === 'input'
-        }"
-        >{{ label }}</label
-      >
-      <textarea
-        [(ngModel)]="value"
-        cdkTextareaAutosize
-        [ngClass]="{
-          'gpt-editable__input': type === 'input',
-          'gpt-editable__textarea': type === 'textarea'
-        }"
-        id="{{ id }}"
-        placeholder="{{ !val?.lenght > 0 ? 'Sin Definir' : '' }}"
-        type="text"
-      ></textarea>
-    </div>
-  `,
+  templateUrl: './editable.component.html',
   styleUrls: ['./editable.component.scss'],
   providers: [
     {
@@ -49,7 +27,11 @@ let nextUniqueId = 0;
     }
   ]
 })
-export class EditableComponent implements ControlValueAccessor, OnInit {
+export class EditableComponent
+  implements ControlValueAccessor, OnInit, OnDestroy {
+  ngOnDestroy(): void {
+    throw new Error('Method not implemented.');
+  }
   @Input()
   @HostBinding('attr.id')
   id = `gpt-input_${nextUniqueId++}`;
@@ -58,9 +40,29 @@ export class EditableComponent implements ControlValueAccessor, OnInit {
   label: string;
 
   @Input()
-  type: 'input' | 'textarea' = 'input';
+  emptyMessage: string = 'Agrega una definición';
 
-  val: any;
+  @Input()
+  raised: boolean = true;
+
+  @Input()
+  minLines: number = 12;
+
+  @Input()
+  maxLines: number = 20;
+
+  @Input()
+  showActions: boolean = true;
+
+  inEditMode: boolean = false;
+
+  @Input()
+  showEmptyMessage: boolean = true;
+
+  @ViewChild('textarea')
+  textarea: ElementRef;
+
+  val: any = '';
 
   @Input('value')
   set value(val) {
@@ -73,13 +75,25 @@ export class EditableComponent implements ControlValueAccessor, OnInit {
     return this.val;
   }
 
+  editorValue: string = this.val;
+  previousValue: string = this.val;
+
+  editMode = new Subject();
+  editMode$ = this.editMode.asObservable();
+
   onChange: any = () => {};
 
   onTouched: any = () => {};
 
-  constructor() {}
+  constructor(private host: ElementRef) {}
 
-  ngOnInit() {}
+  private get element() {
+    return this.host.nativeElement;
+  }
+
+  ngOnInit() {
+    this.editModeHandler();
+  }
 
   writeValue(value: any): void {
     if (value) {
@@ -93,5 +107,45 @@ export class EditableComponent implements ControlValueAccessor, OnInit {
 
   registerOnTouched(fn: any): void {
     this.onTouched = fn;
+  }
+
+  toEditMode(event): void {
+    this.showEmptyMessage = false;
+    this.inEditMode = true;
+    this.textarea.nativeElement.focus();
+    this.previousValue = this.val;
+    this.editMode.next(true);
+  }
+
+  save(event): void {
+    this.value = this.textarea.nativeElement.value;
+    this.inEditMode = false;
+  }
+
+  cancel(event): void {
+    this.inEditMode = false;
+    this.editorValue = this.val;
+  }
+
+  toViewMode() {
+    this.showEmptyMessage = true;
+    this.inEditMode = false;
+  }
+
+  private editModeHandler() {
+    const clickOutside$ = fromEvent(document, 'click').pipe(
+      skip(1),
+      filter(({ target }) => this.element.contains(target) === false),
+      take(1)
+    );
+
+    this.editMode$
+      .pipe(
+        switchMapTo(clickOutside$),
+        untilDestroyed(this)
+      )
+      .subscribe(event => {
+        this.toViewMode();
+      });
   }
 }

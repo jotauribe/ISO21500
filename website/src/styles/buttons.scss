@@ -1,6 +1,8 @@
 $small-size: 18px;
+$extra-small-size: 10px;
 
 .button,
+.mat-mini-fab.button,
 .mat-icon-button.button {
   &--small {
     width: $small-size;
@@ -15,4 +17,27 @@ $small-size: 18px;
       line-height: $small-size;
     }
   }
+
+  &--xsmall {
+    width: 24px;
+    height: 24px;
+    line-height: 24px;
+    box-shadow: none !important;
+
+    .mat-button-wrapper {
+      padding: 0;
+    }
+
+    & .mat-icon,
+    & .mat-icon-button .mat-icon {
+      font-size: $extra-small-size;
+      width: $extra-small-size;
+      height: $extra-small-size;
+      line-height: $extra-small-size;
+    }
+  }
+}
+
+.mat-mini-fab.mat-action {
+  background-color: rgba(239, 239, 239, 1);
 }

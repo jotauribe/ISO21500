@@ -7,6 +7,8 @@ import { from, Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class AuthService {
+  url = 'http://localhost:5000/api/v1';
+
   constructor(private http: HttpClient) {}
 
   signup(user: User) {
@@ -20,7 +22,7 @@ export class AuthService {
   }
 
   createUser(user: User): Observable<User> {
-    return this.http.post<User>('http://localhost:5000/api/v2/users', user);
+    return this.http.post<User>(`${this.url}/users`, user);
   }
 
   login({ password, username }): Observable<User> {
@@ -31,7 +33,7 @@ export class AuthService {
     };
 
     return this.http.post<User>(
-      'http://localhost:5001/api/v1/auth',
+      `${this.url}/auth`,
       { user: { password, username } },
       httpOptions
     );

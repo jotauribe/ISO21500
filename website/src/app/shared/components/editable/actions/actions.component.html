@@ -1,0 +1,38 @@
+<div
+  [ngClass]="{
+    'gpt-editable__actions no-grow': true,
+    'gpt-editable__actions--always-on-screen': showEditionActions
+  }"
+>
+  <button
+    (click)="handleEdit($event)"
+    *ngIf="!showEditionActions"
+    [color]="'action'"
+    class="button--xsmall"
+    mat-mini-fab
+  >
+    <mat-icon
+      class="gpt-editable__action-button__icon"
+      svgIcon="edit"
+    ></mat-icon>
+  </button>
+
+  <button
+    (click)="handleSave($event)"
+    *ngIf="showEditionActions"
+    [color]="'action'"
+    class="button--xsmall"
+    mat-mini-fab
+  >
+    <mat-icon class="gpt-title__icon" svgIcon="save"></mat-icon>
+  </button>
+  <button
+    (click)="handleCancel($event)"
+    *ngIf="showEditionActions"
+    [color]="'action'"
+    class="button--xsmall"
+    mat-mini-fab
+  >
+    <mat-icon class="gpt-title__icon" svgIcon="cancel"></mat-icon>
+  </button>
+</div>

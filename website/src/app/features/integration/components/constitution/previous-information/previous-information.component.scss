@@ -1,0 +1,22 @@
+.project-details {
+  .description-section {
+    flex-grow: 1;
+  }
+
+  .previous-info-section {
+    width: 100%;
+
+    &__content {
+      display: flex;
+      width: 100%;
+
+      & > * {
+        flex-grow: 1;
+
+        &:not(:last-child) {
+          margin-right: 24px;
+        }
+      }
+    }
+  }
+}

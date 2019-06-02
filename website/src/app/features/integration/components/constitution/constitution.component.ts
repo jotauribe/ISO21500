@@ -4,6 +4,8 @@ import { ActivatedRoute, ParamMap } from '@angular/router';
 import { Component, OnInit, OnChanges } from '@angular/core';
 import { CoreState } from '~/app/core/store';
 import { LoadInfo } from '~/app/core/store/constitution/constitution.actions';
+import { MatIconRegistry } from '@angular/material';
+import { DomSanitizer } from '@angular/platform-browser';
 
 export interface Objective {
   position: number;
@@ -88,7 +90,9 @@ export class ConstitutionComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private store: Store<CoreState>,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private matIconRegistry: MatIconRegistry,
+    private sanitizer: DomSanitizer
   ) {
     this.constitutionForm = formBuilder.group({
       strategicView: [null],
@@ -97,6 +101,10 @@ export class ConstitutionComponent implements OnInit {
       generalRequirements: [null],
       justification: [null]
     });
+
+    this.matIconRegistry.addSvgIconSet(
+      this.sanitizer.bypassSecurityTrustResourceUrl('assets/icons/sections.svg')
+    );
   }
 
   ngOnInit() {

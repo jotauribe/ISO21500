@@ -1,18 +1,14 @@
 <mat-nav-list class="gpt-sidebar">
-  <mat-list-item class="gpt-sidebar__link" *ngFor="let link of links">
-    <mat-icon
-      *ngIf="link.isSvg"
-      matListIcon
-      class="gpt-sidebar__link__icon"
-      svgIcon="{{ link.icon }}"
-    ></mat-icon>
+  <a mat-list-item class="gpt-sidebar__link" *ngFor="let link of links" routerLink="{{ link.href }}"
+    routerLinkActive="active">
+    <mat-icon *ngIf="link.isSvg" matListIcon class="gpt-sidebar__link__icon" svgIcon="{{ link.icon }}"></mat-icon>
 
-    <mat-icon *ngIf="!link.isSvg" matListIcon class="gpt-sidebar__link__icon">{{
-      link.icon
-    }}</mat-icon>
+    <mat-icon *ngIf="!link.isSvg" matListIcon class="gpt-sidebar__link__icon" routerLinkActive="active">
+      {{link.icon}}
+    </mat-icon>
 
-    <a class="gpt-sidebar__link__title" matLine href="{{ link.href }}">{{
-      link.title
-    }}</a>
-  </mat-list-item>
+    <span class="gpt-sidebar__link__title" matLine>
+      {{link.title}}
+    </span>
+  </a>
 </mat-nav-list>
