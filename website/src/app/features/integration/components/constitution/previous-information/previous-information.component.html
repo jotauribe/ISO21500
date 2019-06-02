@@ -1,0 +1,42 @@
+<form [formGroup]="form">
+  <div class="project-details column">
+    <div class="row row--stretch">
+      <gpt-section class="description-section">
+        <gpt-title icon="description" section-header title="Descripcion">
+        </gpt-title>
+        <gpt-editable
+          formControlName="description"
+          [raised]="false"
+          minLines="8"
+        >
+        </gpt-editable>
+      </gpt-section>
+
+      <gpt-section class="client-section">
+        <gpt-title icon="client" section-header title="Cliente/Peticionario">
+        </gpt-title>
+        <gpt-editable formControlName="client" [raised]="false" minLines="8">
+        </gpt-editable>
+      </gpt-section>
+    </div>
+
+    <gpt-section class="previous-info-section">
+      <gpt-title icon="previous-info" section-header title="Informacion Previa">
+      </gpt-title>
+
+      <div class="previous-info-section__content">
+        <gpt-editable formControlName="vision" label="Vision"> </gpt-editable>
+        <gpt-editable
+          formControlName="viability"
+          label="Analisis de Viabilidad"
+        >
+        </gpt-editable>
+        <gpt-editable
+          formControlName="requirements"
+          label="Requisitos Generales"
+        >
+        </gpt-editable>
+      </div>
+    </gpt-section>
+  </div>
+</form>
