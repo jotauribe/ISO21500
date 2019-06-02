@@ -1,7 +1,7 @@
 const Router = require('express').Router();
 const ProjectRouter = require('./projects');
 const ConstitutionRouter = require('./constitution');
-const PrevInfoRouter = require('./previousInformation/PreviousInformation');
+const PrevInfoRouter = require('./constitution/PreviousInformation');
 
 Router.use('/projects', ProjectRouter);
 Router.use('/projects', ConstitutionRouter);
