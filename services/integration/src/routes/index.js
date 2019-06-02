@@ -5,6 +5,13 @@ const PrevInfoRouter = require('./constitution/PreviousInformation');
 
 Router.use('/projects', ProjectRouter);
 Router.use('/projects', ConstitutionRouter);
-Router.use('/projects/:id/integration/constitution/prev-info', PrevInfoRouter);
+Router.use(
+  '/projects/:projectId/integration/constitution/prev-info',
+  (req, res, next) => {
+    req.projectId = req.params.projectId;
+    next();
+  },
+  PrevInfoRouter
+);
 
 module.exports = Router;

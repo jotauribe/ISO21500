@@ -2,7 +2,8 @@ const Router = require('express').Router();
 const previousInformation = require('../../controllers/constitution/previousInformation');
 
 Router.post('/', previousInformation.create);
-Router.get('/', previousInformation.find);
-Router.patch('/:id', previousInformation.update);
+Router.get('/', previousInformation.get);
+
+Router.patch('/', previousInformation.update);
 
 module.exports = Router;

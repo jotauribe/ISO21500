@@ -7,19 +7,26 @@ const create = asyncHandler(async (req, res) => {
   res.send({ message: 'PreviousInformation Created successfully' });
 });
 
-const find = asyncHandler(async (req, res) => {
-  const previousInformation = await PreviousInformation.find({});
+const get = asyncHandler(async (req, res) => {
+  const { projectId } = req;
+  console.log(req.params, projectId);
+  const previousInformation = await PreviousInformation.findOne({
+    projectId
+  });
 
   res.send(previousInformation);
 });
 
 const update = asyncHandler(async (req, res) => {
-  const { id } = req.params;
-  const updatedDocument = await PreviousInformation.findByIdAndUpdate(id, {
-    $set: req.body
-  });
-
+  const { projectId } = req;
+  console.log(projectId);
+  const updatedDocument = await PreviousInformation.findOneAndUpdate(
+    projectId,
+    {
+      $set: req.body
+    }
+  );
   res.send({ message: 'udpated.', updatedDocument });
 });
 
-module.exports = { create, find, update };
+module.exports = { create, get, update };
