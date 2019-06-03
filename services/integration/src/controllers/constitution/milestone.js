@@ -12,7 +12,7 @@ const create = asyncHandler(async (req, res) => {
 
 const find = asyncHandler(async (req, res) => {
   const milestone = await Milstone.find({});
-  console.log(milestone);
+
 
   res.send(milestone);
 });

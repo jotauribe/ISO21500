@@ -23,7 +23,6 @@ Router.use(
   },
   ObjectivesRouter
 );
-
 Router.use(
   '/projects/:projectId/integration/constitution/milestones',
   (req, res, next) => {
