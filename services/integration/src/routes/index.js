@@ -2,6 +2,7 @@ const Router = require('express').Router();
 const ProjectRouter = require('./projects');
 const ConstitutionRouter = require('./constitution');
 const PrevInfoRouter = require('./constitution/previousInfo');
+const ObjectivesRouter = require('./constitution/objectives');
 
 Router.use('/projects', ProjectRouter);
 Router.use('/projects', ConstitutionRouter);
@@ -12,6 +13,14 @@ Router.use(
     next();
   },
   PrevInfoRouter
+);
+Router.use(
+  '/projects/:projectId/integration/constitution/objectives',
+  (req, res, next) => {
+    req.projectId = req.params.projectId;
+    next();
+  },
+  ObjectivesRouter
 );
 
 module.exports = Router;
