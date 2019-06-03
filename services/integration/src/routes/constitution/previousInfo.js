@@ -1,5 +1,5 @@
 const Router = require('express').Router();
-const previousInformation = require('../../controllers/constitution/previousInformation');
+const previousInformation = require('../../controllers/constitution/previousInfo');
 
 Router.post('/', previousInformation.create);
 Router.get('/', previousInformation.get);
