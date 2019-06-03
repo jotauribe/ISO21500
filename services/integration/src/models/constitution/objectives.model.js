@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const objectivesSchema = new Schema({
+const objectiveSchema = new Schema({
   projectId: {
     type: String,
     required: [true, 'ProjectId is a required field']
@@ -13,4 +13,4 @@ const objectivesSchema = new Schema({
   id: { type: String, unique: true }
 });
 
-module.exports = mongoose.model('objectives', objectivesSchema);
+module.exports = mongoose.model('objectives', objectiveSchema);

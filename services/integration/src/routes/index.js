@@ -18,7 +18,6 @@ Router.use(
   '/projects/:projectId/integration/constitution/objectives',
   (req, res, next) => {
     req.projectId = req.params.projectId;
-    console.log(req.projectId);
     next();
   },
   ObjectivesRouter
