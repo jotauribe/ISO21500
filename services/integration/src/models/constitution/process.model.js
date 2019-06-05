@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const processesSchema = new Schema({
+const ProcessSchema = new Schema({
   projectId: {
     type: String,
     required: [true, 'ProjectId is a required field']
@@ -14,4 +14,4 @@ const processesSchema = new Schema({
   status: ['open', 'closed']
 });
 
-module.exports = mongoose.model('processes', processesSchema);
+module.exports = mongoose.model('processes', ProcessSchema);
