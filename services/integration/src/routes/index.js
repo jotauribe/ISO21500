@@ -5,7 +5,7 @@ const PrevInfoRouter = require('./constitution/previousInfo');
 const ObjectivesRouter = require('./constitution/objectives');
 const MilestoneRouter = require('./constitution/milestone');
 const PhasesRouter = require('./constitution/phases');
-const ProcessesRouter = require('./constitution/processes');
+const ProcessesRouter = require('./constitution/process');
 
 Router.use('/projects', ProjectRouter);
 Router.use('/projects', ConstitutionRouter);
