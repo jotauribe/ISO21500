@@ -1,5 +1,5 @@
-const Constitution = require('../models/constitution.model');
-const { asyncHandler } = require('../utils');
+const Constitution = require('../../models/constitution.model');
+const { asyncHandler } = require('../../utils');
 
 const create = asyncHandler(async (req, res) => {
   res.send({ message: 'Operation not supported' });

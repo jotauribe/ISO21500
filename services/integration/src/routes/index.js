@@ -1,3 +1,5 @@
+const controllers = require('../controllers');
+console.log('controller 444: ', controllers);
 const Router = require('express').Router();
 const ProjectRouter = require('./projects');
 const ConstitutionRouter = require('./constitution');
