@@ -1,8 +1,8 @@
 const Router = require('express').Router();
-const processes = require('../../controllers/constitution/process');
+const process = require('../../controllers/constitution/process');
 
-Router.post('/', processes.create);
-Router.get('/', processes.find);
-Router.patch('/:id', processes.update);
+Router.post('/', process.create);
+Router.get('/', process.find);
+Router.patch('/:id', process.update);
 
 module.exports = Router;
