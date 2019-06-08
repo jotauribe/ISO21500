@@ -18,7 +18,6 @@ const find = asyncHandler(async (req, res) => {
 const update = asyncHandler(async (req, res) => {
   const { projectId } = req;
   const { id } = req.params;
-  console.log(req.params);
   const updatedDocument = await Document.findOneAndUpdate(
     { projectId, _id: id },
     {
