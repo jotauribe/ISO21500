@@ -6,6 +6,7 @@ const ObjectivesRouter = require('./constitution/objectives');
 const MilestoneRouter = require('./constitution/milestone');
 const PhasesRouter = require('./constitution/phases');
 const ProcessesRouter = require('./constitution/process');
+const DocumentRouter = require('./constitution/document');
 
 Router.use('/projects', ProjectRouter);
 Router.use('/projects', ConstitutionRouter);
@@ -48,6 +49,14 @@ Router.use(
     next();
   },
   ProcessesRouter
+);
+Router.use(
+  '/projects/:projectId/integration/constitution/docs',
+  (req, res, next) => {
+    req.projectId = req.params.projectId;
+    next();
+  },
+  DocumentRouter
 );
 
 module.exports = Router;
