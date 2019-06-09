@@ -1,4 +1,5 @@
 const Milstone = require('../../models/constitution/milestone.model');
+const Controller = require('../controller');
 const { asyncHandler } = require('../../utils');
 
 const create = asyncHandler(async (req, res) => {
@@ -12,7 +13,6 @@ const create = asyncHandler(async (req, res) => {
 
 const find = asyncHandler(async (req, res) => {
   const milestone = await Milstone.find({});
-
 
   res.send(milestone);
 });
@@ -30,4 +30,4 @@ const update = asyncHandler(async (req, res) => {
   res.send({ message: 'udpated.', updatedDocument });
 });
 
-module.exports = { create, find, update };
+module.exports = new Controller({ create, find, update });
