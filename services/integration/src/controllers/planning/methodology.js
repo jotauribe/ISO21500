@@ -1,25 +1,25 @@
-const Phases = require('../../models/constitution/phases.model');
+const Methodology = require('../../models/planning/methodology.model');
 const Controller = require('../controller');
 const { asyncHandler } = require('../../utils');
 
 const create = asyncHandler(async (req, res) => {
-  const phases = req.body;
+  const methodology = req.body;
   const { projectId } = req;
 
-  Phases.insertMany(phases.map(p => ({ ...p, projectId })));
+  Methodology.insertMany(methodology.map(m => ({ ...m, projectId })));
 
-  res.send({ message: 'Phases Created successfully' });
+  res.send({ message: 'Methodology Created successfully' });
 });
 
 const find = asyncHandler(async (req, res) => {
-  const phases = await Phases.find({});
-  res.send(phases);
+  const methodology = await Methodology.find({});
+  res.send(methodology);
 });
 
 const update = asyncHandler(async (req, res) => {
   const { projectId } = req;
   const { id } = req.params;
-  const updatedDocument = await Phases.findOneAndUpdate(
+  const updatedDocument = await Methodology.findOneAndUpdate(
     { projectId, _id: id },
     {
       $set: req.body

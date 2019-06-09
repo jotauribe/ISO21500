@@ -1,4 +1,5 @@
 const Baselines = require('../../models/planning/baselines.model');
+const Controller = require('../controller');
 const { asyncHandler } = require('../../utils');
 
 const create = asyncHandler(async (req, res) => {
@@ -28,4 +29,4 @@ const update = asyncHandler(async (req, res) => {
   res.send({ message: 'udpated.', updatedDocument });
 });
 
-module.exports = { create, find, update };
+module.exports = new Controller({ create, find, update });
