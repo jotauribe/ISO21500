@@ -12,52 +12,58 @@ export const Types = {
   AuthenticationSucceded: withNamespace('Authentication Succeeded'),
   AuthenticationFailed: withNamespace('Authentication Failed'),
   SignupFormSubmitted: withNamespace('Signup Form Submitted'),
-  SignupFormValidationFailed: withNamespace('Signup Form Validation Failed')
+  SignupFormValidationFailed: withNamespace('Signup Form Validation Failed'),
+  ValidateAuthState: withNamespace('Validate Auth Local State')
 };
 
 export class LoginFormSubmitted implements Action {
   readonly type = Types.LoginFormSubmitted;
-  constructor(public payload: any) {}
+  constructor(public payload: any) { }
 }
 
 export class AuthenticationRequested implements Action {
   readonly type = Types.AuthenticationRequested;
-  constructor(public payload: any) {}
+  constructor(public payload: any) { }
 }
 
 export class AuthenticationSucceded implements Action {
   readonly type = Types.AuthenticationSucceded;
-  constructor(public payload: any) {}
+  constructor(public payload: any) { }
 }
 
 export class AuthenticationFailed implements Action {
   readonly type = Types.AuthenticationFailed;
-  constructor(public payload: any) {}
+  constructor(public payload: any) { }
 }
 
 export class SignupFormSubmitted implements Action {
   readonly type = Types.SignupFormSubmitted;
-  constructor(public payload?: any) {}
+  constructor(public payload?: any) { }
 }
 
 export class SignupRequested implements Action {
   readonly type = Types.SignupRequested;
-  constructor(public payload: any) {}
+  constructor(public payload: any) { }
 }
 
 export class SignupSucceded implements Action {
   readonly type = Types.SignupSucceded;
-  constructor(public payload: any) {}
+  constructor(public payload: any) { }
 }
 
 export class SignupFailed implements Action {
   readonly type = Types.SignupFailed;
-  constructor(public payload: any) {}
+  constructor(public payload: any) { }
 }
 
 export class SignupFormValidationFailed implements Action {
   readonly type = Types.SignupFormValidationFailed;
-  constructor(public payload: any) {}
+  constructor(public payload: any) { }
+}
+
+export class ValidateAuthState implements Action {
+  readonly type = Types.ValidateAuthState;
+  constructor(public payload?: any) { }
 }
 
 export type ActionsUnion =
@@ -65,4 +71,5 @@ export type ActionsUnion =
   | AuthenticationRequested
   | AuthenticationSucceded
   | AuthenticationFailed
-  | SignupFormValidationFailed;
+  | SignupFormValidationFailed
+  | ValidateAuthState;

@@ -1,11 +1,13 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { ProjectListComponent } from './components/project-list/project-list.component';
+import { GuardsService } from '~/app/core/guards.service';
 
 const routes: Routes = [
   {
     path: 'projects',
-    component: ProjectListComponent
+    component: ProjectListComponent,
+    canActivate: [GuardsService],
   }
 ];
 

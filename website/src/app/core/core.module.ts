@@ -1,8 +1,9 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
-
+import { CookieService } from 'ngx-cookie-service';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+
 import { CoreStoreModule } from './store/index';
 import { HeaderComponent } from './components/header/header.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
@@ -43,6 +44,7 @@ import { CoreRoutingModule } from './core-routing.module';
     CoreStoreModule,
     CoreRoutingModule
   ],
-  entryComponents: [NewProjectDialogComponent]
+  entryComponents: [NewProjectDialogComponent], 
+  providers: [CookieService]
 })
 export class CoreModule {}
