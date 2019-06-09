@@ -1,4 +1,5 @@
 const Project = require('../models/project.model');
+const Controller = require('./controller');
 const { asyncHandler } = require('../utils');
 
 const create = asyncHandler(async (req, res) => {
@@ -41,4 +42,7 @@ const remove = asyncHandler(async (req, res) => {
   res.send({ message: 'Deleted successfully!' });
 });
 
-module.exports = { create, get, find, remove, update };
+module.exports = new Controller(
+  { create, get, find, remove, update },
+  '/projects'
+);
