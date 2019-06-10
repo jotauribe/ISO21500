@@ -1,12 +1,12 @@
-import { Types, ActionsUnion } from './constitution.actions';
-import { ConstitutionState } from './constitution.state';
+import { Types, ActionsUnion } from "./constitution.actions";
+import { ConstitutionState } from "./constitution.state";
 
 export const initialState: ConstitutionState = {
-  strategicView: 'Without Definition',
-  description: 'Without Definition',
-  viabilityAnalysis: 'Without Definition',
-  generalRequirements: 'Without Definition',
-  justification: 'Without Definition'
+  previousInformation: {
+    isLoaded: false,
+    isLoading: false,
+    data: null
+  }
 };
 
 export function constitutionReducer(
@@ -14,10 +14,18 @@ export function constitutionReducer(
   action: ActionsUnion
 ) {
   switch (action.type) {
-    case Types.SaveInfoDone:
-      return { ...state, ...action.payload };
-    case Types.LoadInfoDone:
-      return { ...state, ...action.payload };
+    case Types.SavePrevInfoDone:
+      return { ...state, previousInformation: action.payload };
+    case Types.LoadPrevInfoDone:
+      return {
+        ...state,
+        previousInformation: {
+          ...state.previousInformation,
+          isLoaded: true,
+          isLoading: false,
+          data: action.payload
+        }
+      };
     default:
       return state;
   }

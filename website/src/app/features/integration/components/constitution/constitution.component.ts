@@ -1,9 +1,9 @@
 import { Store } from '@ngrx/store';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute, ParamMap } from '@angular/router';
-import { Component, OnInit, OnChanges } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CoreState } from '~/app/core/store';
-import { LoadInfo } from '~/app/core/store/constitution/constitution.actions';
+import { LoadPrevInfo } from '~/app/core/store/constitution/constitution.actions';
 import { MatIconRegistry } from '@angular/material';
 import { DomSanitizer } from '@angular/platform-browser';
 
@@ -113,7 +113,7 @@ export class ConstitutionComponent implements OnInit {
       .subscribe(data => this.constitutionForm.patchValue(data));
 
     this.route.params.subscribe(p =>
-      this.store.dispatch(new LoadInfo(p.projectId))
+      this.store.dispatch(new LoadPrevInfo(p.projectId))
     );
   }
 }

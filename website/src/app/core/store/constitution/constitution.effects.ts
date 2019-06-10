@@ -8,31 +8,31 @@ import { of } from 'rxjs';
 @Injectable()
 export class ConstitutionEffects {
   @Effect()
-  saveInfo = this.actions.pipe(
-    ofType(ConstitutionActions.Types.SaveInfoDone),
-    switchMap((action: ConstitutionActions.SaveInfo) =>
+  savePrevInfo = this.actions.pipe(
+    ofType(ConstitutionActions.Types.SavePrevInfoDone),
+    switchMap((action: ConstitutionActions.SavePrevInfo) =>
       this.constitutionService.save(action.payload).pipe(
         // If successful, dispatch success action with result
         map(data => {
-          return new ConstitutionActions.SaveInfoDone(data);
+          return new ConstitutionActions.SavePrevInfoDone(data);
         }),
         // If request fails, dispatch failed action
-        catchError(error => of(new ConstitutionActions.SaveInfoFail(error)))
+        catchError(error => of(new ConstitutionActions.SavePrevInfoFail(error)))
       )
     )
   );
 
   @Effect()
-  fetchInfo = this.actions.pipe(
-    ofType(ConstitutionActions.Types.LoadInfo),
-    switchMap((action: ConstitutionActions.LoadInfo) =>
-      this.constitutionService.fetch(action.payload).pipe(
+  fetchPrevInfo = this.actions.pipe(
+    ofType(ConstitutionActions.Types.LoadPrevInfo),
+    switchMap((action: ConstitutionActions.LoadPrevInfo) =>
+      this.constitutionService.fetchPrevInfo(action.payload).pipe(
         // If successful, dispatch success action with result
         map(data => {
-          return new ConstitutionActions.LoadInfoDone(data);
+          return new ConstitutionActions.LoadPrevInfoDone(data);
         }),
         // If request fails, dispatch failed action
-        catchError(error => of(new ConstitutionActions.LoadInfoFail(error)))
+        catchError(error => of(new ConstitutionActions.LoadPrevInfoFail(error)))
       )
     )
   );

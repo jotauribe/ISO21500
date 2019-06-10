@@ -1,59 +1,53 @@
 import { Action } from '@ngrx/store';
+import { applyActionNamespace } from '~/app/utils';
 
-const NAMESPACE = '[CONSTITUTION FORM]';
-const withNamespace = action => `${NAMESPACE} - ${action}`;
+const NAMESPACE = 'CONSTITUTION FORM';
 
 // Action Types
-export const Types = {
-  LoadInfo: withNamespace('Load Info'),
-  LoadInfoDone: withNamespace('Load Info Done'),
-  LoadInfoFail: withNamespace('Load Info Failure'),
-  SaveInfo: withNamespace('Save Info'),
-  SaveInfoDone: withNamespace('Save Info Done'),
-  SaveInfoFail: withNamespace('Save Info Failure')
-};
+export const Types = applyActionNamespace({
+  LoadPrevInfo: 'Load PrevInfo',
+  LoadPrevInfoDone: 'Load PrevInfo Done',
+  LoadPrevInfoFail: 'Load PrevInfo Failure',
+  SavePrevInfo: 'Save PrevInfo',
+  SavePrevInfoDone: 'Save PrevInfo Done',
+  SavePrevInfoFail: 'Save PrevInfo Failure'
+}, NAMESPACE);
 
 // Action Creators
-export class LoadInfo implements Action {
-  readonly type = Types.LoadInfo;
-
+export class LoadPrevInfo implements Action {
+  readonly type = Types.LoadPrevInfo;
   constructor(public payload?: any) {}
 }
 
-export class LoadInfoDone implements Action {
-  readonly type = Types.LoadInfoDone;
-
+export class LoadPrevInfoDone implements Action {
+  readonly type = Types.LoadPrevInfoDone;
   constructor(public payload?: any) {}
 }
 
-export class LoadInfoFail implements Action {
-  readonly type = Types.LoadInfoFail;
-
+export class LoadPrevInfoFail implements Action {
+  readonly type = Types.LoadPrevInfoFail;
   constructor(public payload?: any) {}
 }
 
-export class SaveInfo implements Action {
-  readonly type = Types.SaveInfo;
-
+export class SavePrevInfo implements Action {
+  readonly type = Types.SavePrevInfo;
   constructor(public payload?: any) {}
 }
 
-export class SaveInfoDone implements Action {
-  readonly type = Types.SaveInfoDone;
-
+export class SavePrevInfoDone implements Action {
+  readonly type = Types.SavePrevInfoDone;
   constructor(public payload?: any) {}
 }
 
-export class SaveInfoFail implements Action {
-  readonly type = Types.SaveInfoFail;
-
+export class SavePrevInfoFail implements Action {
+  readonly type = Types.SavePrevInfoFail;
   constructor(public payload?: any) {}
 }
 
 export type ActionsUnion =
-  | LoadInfo
-  | LoadInfoDone
-  | LoadInfoFail
-  | SaveInfo
-  | SaveInfoDone
-  | SaveInfoFail;
+  | LoadPrevInfo
+  | LoadPrevInfoDone
+  | LoadPrevInfoFail
+  | SavePrevInfo
+  | SavePrevInfoDone
+  | SavePrevInfoFail;
