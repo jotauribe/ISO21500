@@ -1,11 +1,14 @@
 const Project = require('../models/project.model');
+const PreviousInfo = require('../models/constitution/previousInfo.model');
+
 const Controller = require('./controller');
 const { asyncHandler } = require('../utils');
 
 const create = asyncHandler(async (req, res) => {
   const project = new Project(req.body);
-
   await project.save();
+  const previousInfo = new PreviousInfo({ projectId: project._id });
+  await previousInfo.save();
 
   res.send({ message: 'Project Created successfully' });
 });

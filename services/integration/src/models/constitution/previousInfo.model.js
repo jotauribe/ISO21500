@@ -8,25 +8,21 @@ const previousInformationSchema = new Schema({
     unique: true
   },
   description: {
-    type: String,
-    required: [true, ' Description is a required field']
+    type: String
   },
   vision: {
-    type: String,
-    required: [true, 'Vision is a required field']
+    type: String
   },
   viability: {
-    type: String,
-    required: [true, 'Viability is a required field']
+    type: String
   },
   requirements: {
-    type: String,
-    required: [true, 'Requirements is a required field']
+    type: String
   },
   client: {
-    name: { type: String, required: [true, 'Name Client is a required field'] },
-    sponsor: { type: String, required: [true, 'sponsor is a required field'] },
-    director: { type: String, required: [true, 'director is a required field'] }
+    name: { type: String },
+    sponsor: { type: String },
+    director: { type: String }
   }
 });
 
