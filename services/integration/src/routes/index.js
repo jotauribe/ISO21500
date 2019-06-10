@@ -1,62 +1,36 @@
 const Router = require('express').Router();
-const ProjectRouter = require('./projects');
-const ConstitutionRouter = require('./constitution');
-const PrevInfoRouter = require('./constitution/previousInfo');
-const ObjectivesRouter = require('./constitution/objectives');
-const MilestoneRouter = require('./constitution/milestone');
-const PhasesRouter = require('./constitution/phases');
-const ProcessesRouter = require('./constitution/process');
-const DocumentRouter = require('./constitution/document');
+const _ = require('lodash');
+const { buildRoutes } = require('../utils');
+const Controller = require('../controllers/controller');
+const controllers = require('../controllers');
 
-Router.use('/projects', ProjectRouter);
-Router.use('/projects', ConstitutionRouter);
-Router.use(
-  '/projects/:projectId/integration/constitution/prev-info',
-  (req, res, next) => {
-    req.projectId = req.params.projectId;
-    next();
-  },
-  PrevInfoRouter
-);
-Router.use(
-  '/projects/:projectId/integration/constitution/objectives',
-  (req, res, next) => {
-    req.projectId = req.params.projectId;
-    next();
-  },
-  ObjectivesRouter
-);
-Router.use(
-  '/projects/:projectId/integration/constitution/milestones',
-  (req, res, next) => {
-    req.projectId = req.params.projectId;
-    next();
-  },
-  MilestoneRouter
-);
-Router.use(
-  '/projects/:projectId/integration/constitution/phases',
-  (req, res, next) => {
-    req.projectId = req.params.projectId;
-    next();
-  },
-  PhasesRouter
-);
-Router.use(
-  '/projects/:projectId/integration/constitution/processes',
-  (req, res, next) => {
-    req.projectId = req.params.projectId;
-    next();
-  },
-  ProcessesRouter
-);
-Router.use(
-  '/projects/:projectId/integration/constitution/docs',
-  (req, res, next) => {
-    req.projectId = req.params.projectId;
-    next();
-  },
-  DocumentRouter
-);
+const baseUrl = '/projects/:projectId/integration';
+const endpoints = _.keys(controllers);
+
+const paramsMiddleware = function parentRouteParamsMiddleware(req, res, next) {
+  req.projectId = req.params.projectId;
+  next();
+};
+
+const createRouteHandlers = function routeHandlerBuilder(
+  handlerOrBundle,
+  endpoint,
+  parentEndpoint
+) {
+  if (handlerOrBundle instanceof Controller) {
+    const url =
+      handlerOrBundle.url ||
+      `${baseUrl}/${[parentEndpoint, endpoint].join('/')}`;
+
+    Router.use(url, paramsMiddleware, buildRoutes(handlerOrBundle));
+  } else if (_.isObject(handlerOrBundle))
+    _.mapKeys(handlerOrBundle, (value, key) =>
+      routeHandlerBuilder(value, key, endpoint)
+    );
+};
+
+endpoints.forEach(e => {
+  createRouteHandlers(controllers[e], e);
+});
 
 module.exports = Router;
