@@ -4,14 +4,17 @@ import { applyActionNamespace } from '~/app/utils';
 const NAMESPACE = 'CONSTITUTION FORM';
 
 // Action Types
-export const Types = applyActionNamespace({
-  LoadPrevInfo: 'Load PrevInfo',
-  LoadPrevInfoDone: 'Load PrevInfo Done',
-  LoadPrevInfoFail: 'Load PrevInfo Failure',
-  SavePrevInfo: 'Save PrevInfo',
-  SavePrevInfoDone: 'Save PrevInfo Done',
-  SavePrevInfoFail: 'Save PrevInfo Failure'
-}, NAMESPACE);
+export const Types: any = applyActionNamespace(
+  {
+    LoadPrevInfo: 'Load PrevInfo',
+    LoadPrevInfoDone: 'Load PrevInfo Done',
+    LoadPrevInfoFail: 'Load PrevInfo Failure',
+    SavePrevInfo: 'Save PrevInfo',
+    SavePrevInfoDone: 'Save PrevInfo Done',
+    SavePrevInfoFail: 'Save PrevInfo Failure'
+  },
+  NAMESPACE
+);
 
 // Action Creators
 export class LoadPrevInfo implements Action {

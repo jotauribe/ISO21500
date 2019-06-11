@@ -3,6 +3,7 @@
     <div class="column">
       <gpt-previous-information
         (onChanges)="updatePrevInfo($event)"
+        [values]="prevInfoValues || {}"
       ></gpt-previous-information>
     </div>
 
