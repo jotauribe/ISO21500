@@ -3,17 +3,17 @@ const Controller = require('../controller');
 const { asyncHandler } = require('../../utils');
 
 const create = asyncHandler(async (req, res) => {
-  const document = req.body;
+  const documents = req.body;
   const { projectId } = req;
 
-  Document.insertMany(document.map(d => ({ ...d, projectId })));
+  Document.insertMany(documents.map(d => ({ ...d, projectId })));
 
   res.send({ message: 'Document Created successfully' });
 });
 
 const find = asyncHandler(async (req, res) => {
-  const document = await Document.find({});
-  res.send(document);
+  const documents = await Document.find({});
+  res.send(documents);
 });
 
 const update = asyncHandler(async (req, res) => {
