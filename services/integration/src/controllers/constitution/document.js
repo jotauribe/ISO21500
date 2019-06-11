@@ -1,26 +1,25 @@
-const PreviousInfo = require('../../models/constitution/previousInfo.model');
+const Document = require('../../models/constitution/document.model');
 const Controller = require('../controller');
 const { asyncHandler } = require('../../utils');
 
 const create = asyncHandler(async (req, res) => {
-  const previousInfo = new PreviousInfo(req.body);
-  await previousInfo.save();
-  res.send({ message: 'PreviousInfo Created successfully' });
+  const documents = req.body;
+  const { projectId } = req;
+
+  Document.insertMany(documents.map(d => ({ ...d, projectId })));
+
+  res.send({ message: 'Document Created successfully' });
 });
 
 const find = asyncHandler(async (req, res) => {
-  const { projectId } = req;
-  const previousInfo = await PreviousInfo.findOne({
-    projectId
-  });
-
-  res.send(previousInfo);
+  const documents = await Document.find({});
+  res.send(documents);
 });
 
 const update = asyncHandler(async (req, res) => {
   const { projectId } = req;
   const { id } = req.params;
-  const updatedDocument = await PreviousInfo.findOneAndUpdate(
+  const updatedDocument = await Document.findOneAndUpdate(
     { projectId, _id: id },
     {
       $set: req.body
