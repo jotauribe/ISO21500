@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -14,9 +15,7 @@ export class ConstitutionService {
   }
 
   fetch(id) {
-    return this.http.get(
-      `${this.url}/${id}/integration/constitution`
-    );
+    return this.http.get(`${this.url}/${id}/integration/constitution`);
   }
 
   fetchPrevInfo(projectId) {
@@ -25,10 +24,15 @@ export class ConstitutionService {
     );
   }
 
-  updatePrevInfo(projectId, prevInfo) {
-    return this.http.patch(
-      `${this.url}/${projectId}/integration/constitution/prev-info`, prevInfo
-    );
+  updatePrevInfo(projectId, prevInfoId, prevInfo) {
+    return this.http
+      .patch(
+        `${
+          this.url
+        }/${projectId}/integration/constitution/prev-info/${prevInfoId}`,
+        prevInfo
+      )
+      .pipe(map((response: any) => response.updatedDocument));
   }
 
   fetchObjectives(projectId) {
@@ -39,7 +43,8 @@ export class ConstitutionService {
 
   updateObjective(projectId, objective) {
     return this.http.patch(
-      `${this.url}/${projectId}/integration/constitution/objective`, objective
+      `${this.url}/${projectId}/integration/constitution/objective`,
+      objective
     );
   }
 }

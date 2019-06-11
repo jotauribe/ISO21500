@@ -1,24 +1,33 @@
 import { ConstitutionService } from './../../services/constitution.service';
 import { Injectable } from '@angular/core';
 import { Effect, Actions, ofType } from '@ngrx/effects';
-import { map, switchMap, catchError } from 'rxjs/operators';
+import { map, switchMap, catchError, withLatestFrom } from 'rxjs/operators';
 import * as ConstitutionActions from './constitution.actions';
 import { of } from 'rxjs';
+import { Store, select } from '@ngrx/store';
+import { CoreState } from '../reducers';
 
 @Injectable()
 export class ConstitutionEffects {
   @Effect()
   savePrevInfo = this.actions.pipe(
-    ofType(ConstitutionActions.Types.SavePrevInfoDone),
-    switchMap((action: ConstitutionActions.SavePrevInfo) =>
-      this.constitutionService.save(action.payload).pipe(
-        // If successful, dispatch success action with result
-        map(data => {
-          return new ConstitutionActions.SavePrevInfoDone(data);
-        }),
-        // If request fails, dispatch failed action
-        catchError(error => of(new ConstitutionActions.SavePrevInfoFail(error)))
-      )
+    ofType(ConstitutionActions.Types.SavePrevInfo),
+    withLatestFrom(
+      this.store.pipe(select(s => s.constitution.previousInformation))
+    ),
+    switchMap(([action, { data }]: [ConstitutionActions.SavePrevInfo, any]) =>
+      this.constitutionService
+        .updatePrevInfo(action.payload.projectId, data._id, action.payload.data)
+        .pipe(
+          // If successful, dispatch success action with result
+          map(data => {
+            return new ConstitutionActions.SavePrevInfoDone(data);
+          }),
+          // If request fails, dispatch failed action
+          catchError(error =>
+            of(new ConstitutionActions.SavePrevInfoFail(error))
+          )
+        )
     )
   );
 
@@ -39,6 +48,7 @@ export class ConstitutionEffects {
 
   constructor(
     private actions: Actions,
-    private constitutionService: ConstitutionService
+    private constitutionService: ConstitutionService,
+    private store: Store<CoreState>
   ) {}
 }

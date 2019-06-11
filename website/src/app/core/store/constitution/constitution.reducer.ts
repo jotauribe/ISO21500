@@ -1,5 +1,5 @@
-import { Types, ActionsUnion } from "./constitution.actions";
-import { ConstitutionState } from "./constitution.state";
+import { Types, ActionsUnion } from './constitution.actions';
+import { ConstitutionState } from './constitution.state';
 
 export const initialState: ConstitutionState = {
   previousInformation: {
@@ -15,7 +15,15 @@ export function constitutionReducer(
 ) {
   switch (action.type) {
     case Types.SavePrevInfoDone:
-      return { ...state, previousInformation: action.payload };
+      return {
+        ...state,
+        previousInformation: {
+          ...state.previousInformation,
+          isLoaded: true,
+          isLoading: false,
+          data: action.payload
+        }
+      };
     case Types.LoadPrevInfoDone:
       return {
         ...state,

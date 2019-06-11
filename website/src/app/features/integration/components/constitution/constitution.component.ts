@@ -3,7 +3,10 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { CoreState } from '~/app/core/store';
-import { LoadPrevInfo } from '~/app/core/store/constitution/constitution.actions';
+import {
+  LoadPrevInfo,
+  SavePrevInfo
+} from '~/app/core/store/constitution/constitution.actions';
 import { MatIconRegistry } from '@angular/material';
 import { DomSanitizer } from '@angular/platform-browser';
 
@@ -115,5 +118,10 @@ export class ConstitutionComponent implements OnInit {
     this.route.params.subscribe(p =>
       this.store.dispatch(new LoadPrevInfo(p.projectId))
     );
+  }
+
+  updatePrevInfo(data) {
+    const projectId = this.route.snapshot.paramMap.get('projectId');
+    this.store.dispatch(new SavePrevInfo({ projectId, data }));
   }
 }

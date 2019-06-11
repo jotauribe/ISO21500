@@ -1,7 +1,9 @@
 <div class="gpt-constitution">
   <div class="row row--stretch">
     <div class="column">
-      <gpt-previous-information></gpt-previous-information>
+      <gpt-previous-information
+        (onChanges)="updatePrevInfo($event)"
+      ></gpt-previous-information>
     </div>
 
     <div class="column">
