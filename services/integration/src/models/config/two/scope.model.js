@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const ScopeeSchema = new Schema({
+const ScopeSchema = new Schema({
   projectId: {
     type: String,
     required: [true, 'ProjectId is a required field']
@@ -9,4 +9,4 @@ const ScopeeSchema = new Schema({
   description: String
 });
 
-module.exports = mongoose.model('scopes', ScopeeSchema);
+module.exports = mongoose.model('scopes', ScopeSchema);
