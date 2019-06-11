@@ -17,16 +17,18 @@ const createRouteHandlers = function routeHandlerBuilder(
   endpoint,
   parentEndpoint
 ) {
-  if (handlerOrBundle instanceof Controller) {
-    const url =
-      handlerOrBundle.url ||
-      `${baseUrl}/${[parentEndpoint, endpoint].join('/')}`;
+  const urlChunks = [];
+  if (parentEndpoint) urlChunks.push(parentEndpoint);
+  if (endpoint) urlChunks.push(endpoint);
 
+  if (handlerOrBundle instanceof Controller) {
+    const url = handlerOrBundle.url || `${baseUrl}/${urlChunks.join('/')}`;
     Router.use(url, paramsMiddleware, buildRoutes(handlerOrBundle));
   } else if (_.isObject(handlerOrBundle))
-    _.mapKeys(handlerOrBundle, (value, key) =>
-      routeHandlerBuilder(value, key, endpoint)
-    );
+    _.mapKeys(handlerOrBundle, (value, key) => {
+      const newParentEndpoint = urlChunks.join('/');
+      return routeHandlerBuilder(value, key, newParentEndpoint);
+    });
 };
 
 endpoints.forEach(e => {
