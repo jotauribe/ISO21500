@@ -13,18 +13,20 @@ const create = asyncHandler(async (req, res) => {
 
 const find = asyncHandler(async (req, res) => {
   const { projectId } = req;
-  const roles = await Roles.findOne({
-    projectId
-  });
+  const roles = await Roles.find({});
 
   res.send(roles);
 });
 
 const update = asyncHandler(async (req, res) => {
   const { projectId } = req;
-  const updatedDocument = await Roles.findOneAndUpdate(projectId, {
-    $set: req.body
-  });
+  const { id } = req.params;
+  const updatedDocument = await Roles.findOneAndUpdate(
+    { projectId, _id: id },
+    {
+      $set: req.body
+    }
+  );
 
   res.send({ message: 'udpated.', updatedDocument });
 });
