@@ -30,7 +30,7 @@ const createRouteHandlers = function routeHandlerBuilder(
       return routeHandlerBuilder(value, key, newParentEndpoint);
     });
 };
-console.log(controllers);
+
 endpoints.forEach(e => {
   createRouteHandlers(controllers[e], e);
 });

@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const RolSchema = new Schema({
+const RoleSchema = new Schema({
   projectId: {
     type: String,
     required: [true, 'ProjectId is a required field']
@@ -12,4 +12,4 @@ const RolSchema = new Schema({
   authority: String
 });
 
-module.exports = mongoose.model('roles', RolSchema);
+module.exports = mongoose.model('roles', RoleSchema);
