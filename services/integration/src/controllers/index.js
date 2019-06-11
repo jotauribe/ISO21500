@@ -2,6 +2,7 @@ const requireDirectory = require('require-directory');
 
 const renamer = function controllerRenamer(originalName) {
   if (originalName === 'previousInfo') return 'prev-info';
+  if (originalName === 'document') return 'docs';
   return originalName;
 };
 
