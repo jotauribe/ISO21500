@@ -13,7 +13,7 @@ const create = asyncHandler(async (req, res) => {
 
 const find = asyncHandler(async (req, res) => {
   const { projectId } = req;
-  const roles = await Roles.find({});
+  const roles = await Roles.find({ projectId });
 
   res.send(roles);
 });
