@@ -12,7 +12,8 @@ const create = asyncHandler(async (req, res) => {
 });
 
 const find = asyncHandler(async (req, res) => {
-  const methodology = await Methodology.find({});
+  const { projectId } = req;
+  const methodology = await Methodology.find({ projectId });
   res.send(methodology);
 });
 

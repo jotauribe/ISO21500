@@ -12,7 +12,8 @@ const create = asyncHandler(async (req, res) => {
 });
 
 const find = asyncHandler(async (req, res) => {
-  const procesess = await Process.find({});
+  const { projectId } = req;
+  const procesess = await Process.find({ projectId });
   res.send(procesess);
 });
 
