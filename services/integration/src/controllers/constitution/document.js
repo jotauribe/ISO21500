@@ -12,7 +12,8 @@ const create = asyncHandler(async (req, res) => {
 });
 
 const find = asyncHandler(async (req, res) => {
-  const documents = await Document.find({});
+  const { projectId } = req;
+  const documents = await Document.find({ projectId });
   res.send(documents);
 });
 
