@@ -12,7 +12,8 @@ const create = asyncHandler(async (req, res) => {
 });
 
 const find = asyncHandler(async (req, res) => {
-  const milestone = await Milstone.find({});
+  const { projectId } = req;
+  const milestone = await Milstone.find({ projectId });
 
   res.send(milestone);
 });
