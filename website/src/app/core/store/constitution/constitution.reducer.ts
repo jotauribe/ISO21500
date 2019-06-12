@@ -6,6 +6,11 @@ export const initialState: ConstitutionState = {
     isLoaded: false,
     isLoading: false,
     data: null
+  },
+  objectives: {
+    isLoaded: false,
+    isLoading: false,
+    data: []
   }
 };
 
@@ -29,6 +34,17 @@ export function constitutionReducer(
         ...state,
         previousInformation: {
           ...state.previousInformation,
+          isLoaded: true,
+          isLoading: false,
+          data: action.payload
+        }
+      };
+    case Types.LoadObjectivesDone:
+      console.log(action);
+      return {
+        ...state,
+        objectives: {
+          ...state.objectives,
           isLoaded: true,
           isLoading: false,
           data: action.payload

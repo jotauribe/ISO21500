@@ -5,7 +5,8 @@ import { Component, OnInit } from '@angular/core';
 import { CoreState } from '~/app/core/store';
 import {
   LoadPrevInfo,
-  SavePrevInfo
+  SavePrevInfo,
+  LoadObjectives
 } from '~/app/core/store/constitution/constitution.actions';
 import { MatIconRegistry } from '@angular/material';
 import { DomSanitizer } from '@angular/platform-browser';
@@ -29,6 +30,7 @@ export class ConstitutionComponent implements OnInit {
   constitutionState: any;
   prevInfoState;
   prevInfoValues = {};
+  objectives;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -39,6 +41,10 @@ export class ConstitutionComponent implements OnInit {
   ) {
     this.matIconRegistry.addSvgIconSet(
       this.sanitizer.bypassSecurityTrustResourceUrl('assets/icons/sections.svg')
+    );
+
+    this.objectives = this.store.pipe(
+      select(s => s.constitution.objectives.data)
     );
 
     this.prevInfoState = this.store
@@ -64,9 +70,10 @@ export class ConstitutionComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.route.params.subscribe(p =>
-      this.store.dispatch(new LoadPrevInfo(p.projectId))
-    );
+    this.route.params.subscribe(p => {
+      this.store.dispatch(new LoadPrevInfo(p.projectId));
+      this.store.dispatch(new LoadObjectives(p.projectId));
+    });
   }
 
   updatePrevInfo(data) {

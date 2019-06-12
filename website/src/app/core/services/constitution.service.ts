@@ -37,7 +37,7 @@ export class ConstitutionService {
 
   fetchObjectives(projectId) {
     return this.http.get(
-      `${this.url}/${projectId}/integration/constitution/prev-info`
+      `${this.url}/${projectId}/integration/constitution/objectives`
     );
   }
 

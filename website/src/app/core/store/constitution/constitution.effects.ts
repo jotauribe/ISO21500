@@ -46,6 +46,23 @@ export class ConstitutionEffects {
     )
   );
 
+  @Effect()
+  fetchObjectives = this.actions.pipe(
+    ofType(ConstitutionActions.Types.LoadObjectives),
+    switchMap((action: ConstitutionActions.LoadObjectives) =>
+      this.constitutionService.fetchObjectives(action.payload).pipe(
+        // If successful, dispatch success action with result
+        map(data => {
+          return new ConstitutionActions.LoadObjectivesDone(data);
+        }),
+        // If request fails, dispatch failed action
+        catchError(error =>
+          of(new ConstitutionActions.LoadObjectivesFail(error))
+        )
+      )
+    )
+  );
+
   constructor(
     private actions: Actions,
     private constitutionService: ConstitutionService,

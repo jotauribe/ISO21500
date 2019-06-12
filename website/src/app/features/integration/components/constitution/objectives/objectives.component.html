@@ -1,0 +1,23 @@
+<div *ngFor="let o of objectives" class="gpt-objective">
+  <div class="gpt-objective__main-info">
+    <div class="gpt-objective__identity">
+      <span class="gpt-objective__identity__code">{{ o.id }}</span
+      >{{ o.name }}
+    </div>
+    <mat-card-subtitle>
+      <p>
+        {{ o.description }}
+      </p>
+    </mat-card-subtitle>
+  </div>
+  <div class="gpt-objective__secondary-info">
+    <div class="gpt-objective__secondary-info__criteria">
+      Metrica / Criterio de aceptacion
+    </div>
+    <mat-card-subtitle>
+      <p>
+        {{ o.acceptanceCriteria }}
+      </p>
+    </mat-card-subtitle>
+  </div>
+</div>
