@@ -12,7 +12,9 @@ const create = asyncHandler(async (req, res) => {
 });
 
 const find = asyncHandler(async (req, res) => {
-  const configItems = await ConfigItems.find({});
+  const { projectId } = req;
+
+  const configItems = await ConfigItems.find({ projectId });
 
   res.send(configItems);
 });
