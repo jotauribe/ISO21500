@@ -41,9 +41,11 @@ export class ConstitutionService {
     );
   }
 
-  updateObjective(projectId, objective) {
+  updateObjective({ projectId, objectiveId, objective }) {
     return this.http.patch(
-      `${this.url}/${projectId}/integration/constitution/objective`,
+      `${
+        this.url
+      }/${projectId}/integration/constitution/objectives/${objectiveId}`,
       objective
     );
   }

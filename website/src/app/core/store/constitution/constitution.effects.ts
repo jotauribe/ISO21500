@@ -63,6 +63,23 @@ export class ConstitutionEffects {
     )
   );
 
+  @Effect()
+  saveObjectives = this.actions.pipe(
+    ofType(ConstitutionActions.Types.SaveObjectives),
+    switchMap((action: ConstitutionActions.SaveObjectives) =>
+      this.constitutionService.updateObjective(action.payload).pipe(
+        // If successful, dispatch success action with result
+        map(data => {
+          return new ConstitutionActions.SaveObjectivesDone(data);
+        }),
+        // If request fails, dispatch failed action
+        catchError(error =>
+          of(new ConstitutionActions.SaveObjectivesFail(error))
+        )
+      )
+    )
+  );
+
   constructor(
     private actions: Actions,
     private constitutionService: ConstitutionService,

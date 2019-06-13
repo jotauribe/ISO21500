@@ -1,4 +1,4 @@
-<div *ngFor="let o of objectives" class="gpt-objective">
+<div *ngFor="let o of objectives; index as i" class="gpt-objective">
   <button
     mat-icon-button
     class="gpt-objective__menu button--small"
@@ -7,7 +7,7 @@
     <mat-icon svgIcon="more-menu" class="button--small"></mat-icon>
   </button>
   <mat-menu #oMenu="matMenu">
-    <button mat-menu-item (click)="edit(o)">Editar</button>
+    <button mat-menu-item (click)="edit(o, i)">Editar</button>
     <button mat-menu-item>Remover</button>
   </mat-menu>
 

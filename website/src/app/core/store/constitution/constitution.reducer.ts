@@ -1,5 +1,6 @@
 import { Types, ActionsUnion } from './constitution.actions';
 import { ConstitutionState } from './constitution.state';
+import * as _ from 'lodash';
 
 export const initialState: ConstitutionState = {
   previousInformation: {
@@ -40,14 +41,13 @@ export function constitutionReducer(
         }
       };
     case Types.LoadObjectivesDone:
-      console.log(action);
       return {
         ...state,
         objectives: {
           ...state.objectives,
           isLoaded: true,
           isLoading: false,
-          data: action.payload
+          data: _.orderBy(action.payload, ['_id'])
         }
       };
     default:
