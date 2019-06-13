@@ -1,9 +1,16 @@
 .gpt-objective {
   border: 1px solid rgba(112, 112, 112, 0.2);
   border-radius: 4px;
+  position: relative;
 
   &:not(:last-child) {
     margin-bottom: 16px;
+  }
+
+  &__menu {
+    position: absolute;
+    right: 16px;
+    top: 8px;
   }
 
   &__main-info {

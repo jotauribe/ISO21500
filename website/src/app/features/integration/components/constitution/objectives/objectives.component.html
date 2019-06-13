@@ -1,4 +1,16 @@
 <div *ngFor="let o of objectives" class="gpt-objective">
+  <button
+    mat-icon-button
+    class="gpt-objective__menu button--small"
+    [matMenuTriggerFor]="oMenu"
+  >
+    <mat-icon svgIcon="more-menu" class="button--small"></mat-icon>
+  </button>
+  <mat-menu #oMenu="matMenu">
+    <button mat-menu-item>Editar</button>
+    <button mat-menu-item>Remover</button>
+  </mat-menu>
+
   <div class="gpt-objective__main-info">
     <div class="gpt-objective__identity">
       <span class="gpt-objective__identity__code">{{ o.id }}</span
