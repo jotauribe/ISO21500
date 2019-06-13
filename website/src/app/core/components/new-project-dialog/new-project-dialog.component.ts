@@ -16,7 +16,6 @@ export class NewProjectDialogComponent implements OnInit {
   form: FormGroup;
 
   constructor(
-    private dialog: MatDialog,
     private store: Store<CoreState>,
     private formBuilder: FormBuilder
   ) {

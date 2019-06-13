@@ -7,7 +7,7 @@
     <mat-icon svgIcon="more-menu" class="button--small"></mat-icon>
   </button>
   <mat-menu #oMenu="matMenu">
-    <button mat-menu-item>Editar</button>
+    <button mat-menu-item (click)="edit(o)">Editar</button>
     <button mat-menu-item>Remover</button>
   </mat-menu>
 

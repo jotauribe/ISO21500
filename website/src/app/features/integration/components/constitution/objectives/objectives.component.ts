@@ -1,4 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { MatDialog } from '@angular/material';
+import { FormComponent } from '~/app/shared/components/form/form.component';
 
 @Component({
   selector: 'gpt-objectives',
@@ -28,7 +30,25 @@ export class ObjectivesComponent implements OnInit {
     }
   ];
 
-  constructor() {}
+  constructor(private dialog: MatDialog) {}
 
   ngOnInit() {}
+
+  edit(objective) {
+    const dialogRef = this.dialog.open(FormComponent, {
+      data: {
+        fields: [
+          { name: 'code', value: '', placeholder: 'Codigo' },
+          { name: 'description', value: '', placeholder: 'Descripcion' },
+          {
+            name: 'acceptanceCriteria',
+            value: '',
+            placeholder: 'Metrica / Criterio de aceptacion'
+          }
+        ]
+      }
+    });
+
+    dialogRef.afterClosed().subscribe(result => console.log(result));
+  }
 }
