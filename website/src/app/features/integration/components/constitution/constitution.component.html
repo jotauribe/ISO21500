@@ -6,13 +6,29 @@
         [values]="prevInfoValues || {}"
       ></gpt-previous-information>
       <!--TABS SECTION::START-->
-      <mat-tab-group>
-        <mat-tab label="Objetivos">
-          <gpt-objectives [objectives]="objectives | async"></gpt-objectives
-        ></mat-tab>
-        <mat-tab label="Hitos"> Content 2 </mat-tab>
-        <mat-tab label="Fases"> Content 3 </mat-tab>
-      </mat-tab-group>
+      <div class="gpt-constitution__aside">
+        <mat-tab-group>
+          <mat-tab label="Objetivos">
+            <gpt-objectives [objectives]="objectives | async"></gpt-objectives
+          ></mat-tab>
+          <mat-tab label="Hitos"> Content 2 </mat-tab>
+          <mat-tab label="Fases"> Content 3 </mat-tab>
+        </mat-tab-group>
+        <button
+          mat-icon-button
+          class="gpt-constitution__aside-menu button--small button--solid"
+          [matMenuTriggerFor]="asideMenu"
+        >
+          <mat-icon svgIcon="add"></mat-icon>
+        </button>
+        <mat-menu #asideMenu="matMenu">
+          <button mat-menu-item>
+            Agregar nuevo Objetivo
+          </button>
+          <button mat-menu-item>Agregar Nueva Fase</button>
+          <button mat-menu-item>Agregar Nuevo Hito</button>
+        </mat-menu>
+      </div>
       <!--TABS SECTION::END-->
     </div>
     <div class="column">
