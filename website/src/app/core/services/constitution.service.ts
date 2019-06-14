@@ -62,4 +62,30 @@ export class ConstitutionService {
         }))
       );
   }
+
+  fetchPhases(projectId) {
+    return this.http.get(
+      `${this.url}/${projectId}/integration/constitution/phases`
+    );
+  }
+
+  updatePhases({ projectId, phasesId, phase }) {
+    return this.http.patch(
+      `${this.url}/${projectId}/integration/constitution/phases/${phasesId}`,
+      phase
+    );
+  }
+
+  createPhases({ projectId, phase }) {
+    return this.http
+      .post(`${this.url}/${projectId}/integration/constitution/phases/`, [
+        phase
+      ])
+      .pipe(
+        map(() => ({
+          projectId,
+          ...phase
+        }))
+      );
+  }
 }

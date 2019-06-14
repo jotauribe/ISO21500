@@ -20,7 +20,10 @@ export const Types: any = applyActionNamespace(
     SaveObjectivesFail: 'Save Objectives Failure',
     CreateObjectives: 'Create Objectives',
     CreateObjectivesDone: 'Create Objectives Done',
-    CreateObjectivesFail: 'Create Objectives Failure'
+    CreateObjectivesFail: 'Create Objectives Failure',
+    CreatePhases: 'Create Objectives',
+    CreatePhasesDone: 'Create Objectives Done',
+    CreatePhasesFail: 'Create Objectives Failure'
   },
   NAMESPACE
 );
@@ -101,6 +104,21 @@ export class CreateObjectivesFail implements Action {
   constructor(public payload?: any) {}
 }
 
+export class CreatePhases implements Action {
+  readonly type = Types.CreatePhases;
+  constructor(public payload?: any) {}
+}
+
+export class CreatePhasesDone implements Action {
+  readonly type = Types.CreatePhasesDone;
+  constructor(public payload?: any) {}
+}
+
+export class CreatePhasesFail implements Action {
+  readonly type = Types.CreatePhasesFail;
+  constructor(public payload?: any) {}
+}
+
 export type ActionsUnion =
   | LoadPrevInfo
   | LoadPrevInfoDone
@@ -116,4 +134,7 @@ export type ActionsUnion =
   | SaveObjectivesFail
   | CreateObjectives
   | CreateObjectivesDone
+  | CreateObjectivesFail
+  | CreatePhases
+  | CreatePhasesDone
   | CreateObjectivesFail;
