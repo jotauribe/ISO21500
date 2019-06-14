@@ -12,6 +12,11 @@ export const initialState: ConstitutionState = {
     isLoaded: false,
     isLoading: false,
     data: []
+  },
+  milestones: {
+    isLoaded: false,
+    isLoading: false,
+    data: []
   }
 };
 
@@ -58,6 +63,16 @@ export function constitutionReducer(
           isLoaded: true,
           isLoading: false,
           data: [action.payload, ...state.objectives.data]
+        }
+      };
+    case Types.LoadMilestonesDone:
+      return {
+        ...state,
+        milestones: {
+          ...state.objectives,
+          isLoaded: true,
+          isLoading: false,
+          data: _.orderBy(action.payload, ['_id'])
         }
       };
     default:
