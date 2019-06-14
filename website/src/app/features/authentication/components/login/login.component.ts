@@ -70,12 +70,9 @@ export class LoginComponent implements OnInit {
     this.isAuthInProgress = this.store.pipe(
       select(state => state.auth.isAuthInProgress)
     );
-
-    this.isAuthInProgress.subscribe(data => console.log(data));
   }
 
   ngOnInit() {
-    console.log(this.isAuthInProgress);
   }
 
   login() {

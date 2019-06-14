@@ -14,7 +14,7 @@
     <textarea
       #textarea
       matInput
-      [value]="editorValue"
+      [(ngModel)]="val"
       cdkTextareaAutosize
       [cdkAutosizeMinRows]="minLines"
       [cdkAutosizeMaxRows]="maxLines"

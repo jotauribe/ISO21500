@@ -18,6 +18,14 @@ $extra-small-size: 10px;
     }
   }
 
+  &--solid {
+    box-sizing: content-box;
+    padding: 4px;
+    background-color: #efefef;
+    color: #b1aeae;
+    border-radius: 4px;
+  }
+
   &--xsmall {
     width: 24px;
     height: 24px;

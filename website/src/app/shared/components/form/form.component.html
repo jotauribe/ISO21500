@@ -1,0 +1,26 @@
+<header class="gpt-form__header">
+  <span class="gpt-form__header__title">Create Project</span>
+</header>
+<div mat-dialog-content>
+  <form (ngSubmit)="submit($event)" [formGroup]="form" class="gpt-form">
+    <gpt-input
+      *ngFor="let field of data.fields"
+      formControlName="{{ field.name }}"
+      [placeholder]="field.placeholder"
+    ></gpt-input>
+
+    <div class="gpt-form__actions">
+      <button class="gpt-form__actions__cancel" mat-button mat-dialog-close>
+        Cancelar
+      </button>
+      <button
+        class="gpt-form__actions__create"
+        color="accent"
+        mat-raised-button
+        type="submit"
+      >
+        Aceptar
+      </button>
+    </div>
+  </form>
+</div>

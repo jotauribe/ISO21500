@@ -3,11 +3,13 @@ import { Routes, RouterModule } from '@angular/router';
 import { ProjectDashboardComponent } from './components/project-dashboard/project-dashboard.component';
 import { ConstitutionComponent } from '../features/integration/components/constitution/constitution.component';
 import { ProvidersComponent } from '../features/acquisitions/components/providers/providers.component';
+import { GuardsService } from './guards.service';
 
 const routes: Routes = [
   {
     path: 'projects/:projectId',
     component: ProjectDashboardComponent,
+    canActivate: [GuardsService],
     children: [
       {
         path: '',

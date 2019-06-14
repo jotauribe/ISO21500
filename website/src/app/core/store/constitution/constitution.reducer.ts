@@ -1,12 +1,18 @@
 import { Types, ActionsUnion } from './constitution.actions';
 import { ConstitutionState } from './constitution.state';
+import * as _ from 'lodash';
 
 export const initialState: ConstitutionState = {
-  strategicView: 'Without Definition',
-  description: 'Without Definition',
-  viabilityAnalysis: 'Without Definition',
-  generalRequirements: 'Without Definition',
-  justification: 'Without Definition'
+  previousInformation: {
+    isLoaded: false,
+    isLoading: false,
+    data: null
+  },
+  objectives: {
+    isLoaded: false,
+    isLoading: false,
+    data: []
+  }
 };
 
 export function constitutionReducer(
@@ -14,10 +20,46 @@ export function constitutionReducer(
   action: ActionsUnion
 ) {
   switch (action.type) {
-    case Types.SaveInfoDone:
-      return { ...state, ...action.payload };
-    case Types.LoadInfoDone:
-      return { ...state, ...action.payload };
+    case Types.SavePrevInfoDone:
+      return {
+        ...state,
+        previousInformation: {
+          ...state.previousInformation,
+          isLoaded: true,
+          isLoading: false,
+          data: action.payload
+        }
+      };
+    case Types.LoadPrevInfoDone:
+      return {
+        ...state,
+        previousInformation: {
+          ...state.previousInformation,
+          isLoaded: true,
+          isLoading: false,
+          data: action.payload
+        }
+      };
+    case Types.LoadObjectivesDone:
+      return {
+        ...state,
+        objectives: {
+          ...state.objectives,
+          isLoaded: true,
+          isLoading: false,
+          data: _.orderBy(action.payload, ['_id'])
+        }
+      };
+    case Types.CreateObjectivesDone:
+      return {
+        ...state,
+        objectives: {
+          ...state.objectives,
+          isLoaded: true,
+          isLoading: false,
+          data: [action.payload, ...state.objectives.data]
+        }
+      };
     default:
       return state;
   }

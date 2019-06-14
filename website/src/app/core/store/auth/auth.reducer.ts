@@ -12,6 +12,8 @@ export function authReducer(
   action: ActionsUnion
 ) {
   switch (action.type) {
+    case Types.ValidateAuthState:
+      return {...state, isUserAuthenticated: true};
     case Types.AuthenticationRequested:
       return { ...state, isAuthInProgress: true };
     case Types.SignupSucceded:
@@ -19,7 +21,7 @@ export function authReducer(
       return {
         ...state,
         user: action.payload,
-        isAuthenticated: true,
+        isUserAuthenticated: true,
         isAuthInProgress: false
       };
     case Types.AuthenticationFailed:

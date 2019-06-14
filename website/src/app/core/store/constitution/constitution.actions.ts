@@ -1,59 +1,119 @@
 import { Action } from '@ngrx/store';
+import { applyActionNamespace } from '~/app/utils';
 
-const NAMESPACE = '[CONSTITUTION FORM]';
-const withNamespace = action => `${NAMESPACE} - ${action}`;
+const NAMESPACE = 'CONSTITUTION FORM';
 
 // Action Types
-export const Types = {
-  LoadInfo: withNamespace('Load Info'),
-  LoadInfoDone: withNamespace('Load Info Done'),
-  LoadInfoFail: withNamespace('Load Info Failure'),
-  SaveInfo: withNamespace('Save Info'),
-  SaveInfoDone: withNamespace('Save Info Done'),
-  SaveInfoFail: withNamespace('Save Info Failure')
-};
+export const Types: any = applyActionNamespace(
+  {
+    LoadPrevInfo: 'Load PrevInfo',
+    LoadPrevInfoDone: 'Load PrevInfo Done',
+    LoadPrevInfoFail: 'Load PrevInfo Failure',
+    SavePrevInfo: 'Save PrevInfo',
+    SavePrevInfoDone: 'Save PrevInfo Done',
+    SavePrevInfoFail: 'Save PrevInfo Failure',
+    LoadObjectives: 'Load Objectives',
+    LoadObjectivesDone: 'Load Objectives Done',
+    LoadObjectivesFail: 'Load Objectives Failure',
+    SaveObjectives: 'Save Objectives',
+    SaveObjectivesDone: 'Save Objectives Done',
+    SaveObjectivesFail: 'Save Objectives Failure',
+    CreateObjectives: 'Create Objectives',
+    CreateObjectivesDone: 'Create Objectives Done',
+    CreateObjectivesFail: 'Create Objectives Failure'
+  },
+  NAMESPACE
+);
 
 // Action Creators
-export class LoadInfo implements Action {
-  readonly type = Types.LoadInfo;
-
+export class LoadPrevInfo implements Action {
+  readonly type = Types.LoadPrevInfo;
   constructor(public payload?: any) {}
 }
 
-export class LoadInfoDone implements Action {
-  readonly type = Types.LoadInfoDone;
-
+export class LoadPrevInfoDone implements Action {
+  readonly type = Types.LoadPrevInfoDone;
   constructor(public payload?: any) {}
 }
 
-export class LoadInfoFail implements Action {
-  readonly type = Types.LoadInfoFail;
-
+export class LoadPrevInfoFail implements Action {
+  readonly type = Types.LoadPrevInfoFail;
   constructor(public payload?: any) {}
 }
 
-export class SaveInfo implements Action {
-  readonly type = Types.SaveInfo;
-
+export class SavePrevInfo implements Action {
+  readonly type = Types.SavePrevInfo;
   constructor(public payload?: any) {}
 }
 
-export class SaveInfoDone implements Action {
-  readonly type = Types.SaveInfoDone;
-
+export class SavePrevInfoDone implements Action {
+  readonly type = Types.SavePrevInfoDone;
   constructor(public payload?: any) {}
 }
 
-export class SaveInfoFail implements Action {
-  readonly type = Types.SaveInfoFail;
+export class SavePrevInfoFail implements Action {
+  readonly type = Types.SavePrevInfoFail;
+  constructor(public payload?: any) {}
+}
 
+export class LoadObjectives implements Action {
+  readonly type = Types.LoadObjectives;
+  constructor(public payload?: any) {}
+}
+
+export class LoadObjectivesDone implements Action {
+  readonly type = Types.LoadObjectivesDone;
+  constructor(public payload?: any) {}
+}
+
+export class LoadObjectivesFail implements Action {
+  readonly type = Types.LoadObjectivesFail;
+  constructor(public payload?: any) {}
+}
+
+export class SaveObjectives implements Action {
+  readonly type = Types.SaveObjectives;
+  constructor(public payload?: any) {}
+}
+
+export class SaveObjectivesDone implements Action {
+  readonly type = Types.SaveObjectivesDone;
+  constructor(public payload?: any) {}
+}
+
+export class SaveObjectivesFail implements Action {
+  readonly type = Types.SaveObjectivesFail;
+  constructor(public payload?: any) {}
+}
+
+export class CreateObjectives implements Action {
+  readonly type = Types.CreateObjectives;
+  constructor(public payload?: any) {}
+}
+
+export class CreateObjectivesDone implements Action {
+  readonly type = Types.CreateObjectivesDone;
+  constructor(public payload?: any) {}
+}
+
+export class CreateObjectivesFail implements Action {
+  readonly type = Types.CreateObjectivesFail;
   constructor(public payload?: any) {}
 }
 
 export type ActionsUnion =
-  | LoadInfo
-  | LoadInfoDone
-  | LoadInfoFail
-  | SaveInfo
-  | SaveInfoDone
-  | SaveInfoFail;
+  | LoadPrevInfo
+  | LoadPrevInfoDone
+  | LoadPrevInfoFail
+  | SavePrevInfo
+  | SavePrevInfoDone
+  | SavePrevInfoFail
+  | LoadObjectives
+  | LoadObjectivesDone
+  | LoadObjectivesFail
+  | SaveObjectives
+  | SaveObjectivesDone
+  | SaveObjectivesFail
+  | CreateObjectives
+  | CreateObjectivesDone
+  | CreateObjectivesFail;
