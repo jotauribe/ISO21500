@@ -49,4 +49,17 @@ export class ConstitutionService {
       objective
     );
   }
+
+  createObjective({ projectId, objective }) {
+    return this.http
+      .post(`${this.url}/${projectId}/integration/constitution/objectives/`, [
+        objective
+      ])
+      .pipe(
+        map(() => ({
+          projectId,
+          ...objective
+        }))
+      );
+  }
 }

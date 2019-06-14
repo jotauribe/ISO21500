@@ -50,6 +50,16 @@ export function constitutionReducer(
           data: _.orderBy(action.payload, ['_id'])
         }
       };
+    case Types.CreateObjectivesDone:
+      return {
+        ...state,
+        objectives: {
+          ...state.objectives,
+          isLoaded: true,
+          isLoading: false,
+          data: [action.payload, ...state.objectives.data]
+        }
+      };
     default:
       return state;
   }

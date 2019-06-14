@@ -1,17 +1,19 @@
 import { Store, select } from '@ngrx/store';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute, ParamMap } from '@angular/router';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { CoreState } from '~/app/core/store';
 import {
   LoadPrevInfo,
   SavePrevInfo,
-  LoadObjectives
+  LoadObjectives,
+  CreateObjectives
 } from '~/app/core/store/constitution/constitution.actions';
 import { MatIconRegistry } from '@angular/material';
 import { DomSanitizer } from '@angular/platform-browser';
 import * as _ from 'lodash';
 import { map } from 'rxjs/operators';
+import { FormDialogsService } from '~/app/shared/services/form-dialogs.service';
 
 export interface Objective {
   position: number;
@@ -30,6 +32,7 @@ export class ConstitutionComponent implements OnInit {
   constitutionState: any;
   prevInfoState;
   prevInfoValues = {};
+  @Input()
   objectives;
 
   constructor(
@@ -37,7 +40,8 @@ export class ConstitutionComponent implements OnInit {
     private store: Store<CoreState>,
     private route: ActivatedRoute,
     private matIconRegistry: MatIconRegistry,
-    private sanitizer: DomSanitizer
+    private sanitizer: DomSanitizer,
+    private forms: FormDialogsService
   ) {
     this.matIconRegistry.addSvgIconSet(
       this.sanitizer.bypassSecurityTrustResourceUrl('assets/icons/sections.svg')
@@ -76,10 +80,45 @@ export class ConstitutionComponent implements OnInit {
     });
   }
 
+  getProjectId() {
+    return this.route.snapshot.paramMap.get('projectId');
+  }
+
   updatePrevInfo(data) {
     if (!_.isEqual(data, this.prevInfoValues)) {
       const projectId = this.route.snapshot.paramMap.get('projectId');
       this.store.dispatch(new SavePrevInfo({ projectId, data }));
     }
+  }
+
+  openMilestonesForm() {
+    const projectId = this.getProjectId();
+
+    this.forms
+      .openMilestonesForm()
+      .afterClosed()
+      .subscribe(result => {
+        this.store.dispatch(
+          new CreateObjectives({ projectId, objective: result })
+        );
+      });
+  }
+
+  openObjectivesForm() {
+    this.forms
+      .openObjectivesForm()
+      .afterClosed()
+      .subscribe(result => {
+        const projectId = this.getProjectId();
+        const objective = { projectId, objective: result };
+
+        this.store.dispatch(
+          new CreateObjectives({ projectId, objective: result })
+        );
+      });
+  }
+
+  openPhasesForm() {
+    this.forms.openPhasesForm();
   }
 }

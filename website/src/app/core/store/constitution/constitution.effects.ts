@@ -80,6 +80,23 @@ export class ConstitutionEffects {
     )
   );
 
+  @Effect()
+  createObjectives = this.actions.pipe(
+    ofType(ConstitutionActions.Types.CreateObjectives),
+    switchMap((action: ConstitutionActions.CreateObjectives) =>
+      this.constitutionService.createObjective(action.payload).pipe(
+        // If successful, dispatch success action with result
+        map(data => {
+          return new ConstitutionActions.CreateObjectivesDone(data);
+        }),
+        // If request fails, dispatch failed action
+        catchError(error =>
+          of(new ConstitutionActions.CreateObjectivesFail(error))
+        )
+      )
+    )
+  );
+
   constructor(
     private actions: Actions,
     private constitutionService: ConstitutionService,

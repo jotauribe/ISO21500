@@ -22,11 +22,15 @@
           <mat-icon svgIcon="add"></mat-icon>
         </button>
         <mat-menu #asideMenu="matMenu">
-          <button mat-menu-item>
+          <button mat-menu-item (click)="openObjectivesForm()">
             Agregar nuevo Objetivo
           </button>
-          <button mat-menu-item>Agregar Nueva Fase</button>
-          <button mat-menu-item>Agregar Nuevo Hito</button>
+          <button mat-menu-item (click)="openMilestonesForm()">
+            Agregar Nuevo Hito
+          </button>
+          <button mat-menu-item (click)="openPhasesForm()">
+            Agregar Nueva Fase
+          </button>
         </mat-menu>
       </div>
       <!--TABS SECTION::END-->
