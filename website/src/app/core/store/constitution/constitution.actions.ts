@@ -104,6 +104,36 @@ export class CreateObjectivesFail implements Action {
   constructor(public payload?: any) {}
 }
 
+export class LoadPhases implements Action {
+  readonly type = Types.LoadPhases;
+  constructor(public payload?: any) {}
+}
+
+export class LoadPhasesDone implements Action {
+  readonly type = Types.LoadPhasesDone;
+  constructor(public payload?: any) {}
+}
+
+export class LoadPhasesFail implements Action {
+  readonly type = Types.LoadPhasesFail;
+  constructor(public payload?: any) {}
+}
+
+export class SavePhases implements Action {
+  readonly type = Types.SavePhases;
+  constructor(public payload?: any) {}
+}
+
+export class SavePhasesDone implements Action {
+  readonly type = Types.SavePhasesDone;
+  constructor(public payload?: any) {}
+}
+
+export class SavePhasesFail implements Action {
+  readonly type = Types.SavePhasesFail;
+  constructor(public payload?: any) {}
+}
+
 export class CreatePhases implements Action {
   readonly type = Types.CreatePhases;
   constructor(public payload?: any) {}
@@ -135,6 +165,12 @@ export type ActionsUnion =
   | CreateObjectives
   | CreateObjectivesDone
   | CreateObjectivesFail
+  | LoadPhases
+  | LoadPhasesDone
+  | LoadPhasesFail
+  | SavePhases
+  | SavePhasesDone
+  | SavePhasesFail
   | CreatePhases
   | CreatePhasesDone
   | CreateObjectivesFail;
