@@ -21,9 +21,16 @@ export const Types: any = applyActionNamespace(
     CreateObjectives: 'Create Objectives',
     CreateObjectivesDone: 'Create Objectives Done',
     CreateObjectivesFail: 'Create Objectives Failure',
-    CreatePhases: 'Create Objectives',
-    CreatePhasesDone: 'Create Objectives Done',
-    CreatePhasesFail: 'Create Objectives Failure'
+
+    LoadPhases: 'Load Phases',
+    LoadPhasesDone: 'Load Phases Done',
+    LoadPhasesFail: 'Load Phases Failure',
+    SavePhases: 'Save Phases',
+    SavePhasesDone: 'Save Phases Done',
+    SavePhasesFail: 'Save Phases Failure',
+    CreatePhases: 'Create Phases',
+    CreatePhasesDone: 'Create Phases Done',
+    CreatePhasesFail: 'Create Phases Failure'
   },
   NAMESPACE
 );
