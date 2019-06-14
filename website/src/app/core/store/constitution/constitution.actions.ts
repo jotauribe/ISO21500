@@ -21,7 +21,6 @@ export const Types: any = applyActionNamespace(
     CreateObjectives: 'Create Objectives',
     CreateObjectivesDone: 'Create Objectives Done',
     CreateObjectivesFail: 'Create Objectives Failure',
-
     LoadPhases: 'Load Phases',
     LoadPhasesDone: 'Load Phases Done',
     LoadPhasesFail: 'Load Phases Failure',
@@ -180,4 +179,4 @@ export type ActionsUnion =
   | SavePhasesFail
   | CreatePhases
   | CreatePhasesDone
-  | CreateObjectivesFail;
+  | CreatePhasesFail;
