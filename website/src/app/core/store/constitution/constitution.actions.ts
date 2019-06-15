@@ -29,7 +29,16 @@ export const Types: any = applyActionNamespace(
     SaveMilestoneFail: 'Save Milestone Failure',
     CreateMilestone: 'Create Milestone',
     CreateMilestoneDone: 'Create Milestone Done',
-    CreateMilestoneFail: 'Create Milestone Failure'
+    CreateMilestoneFail: 'Create Milestone Failure',
+    LoadPhases: 'Load Phases',
+    LoadPhasesDone: 'Load Phases Done',
+    LoadPhasesFail: 'Load Phases Failure',
+    SavePhases: 'Save Phases',
+    SavePhasesDone: 'Save Phases Done',
+    SavePhasesFail: 'Save Phases Failure',
+    CreatePhases: 'Create Phases',
+    CreatePhasesDone: 'Create Phases Done',
+    CreatePhasesFail: 'Create Phases Failure'
   },
   NAMESPACE
 );
@@ -155,6 +164,51 @@ export class SaveMilestoneFail implements Action {
   constructor(public payload?: any) {}
 }
 
+export class LoadPhases implements Action {
+  readonly type = Types.LoadPhases;
+  constructor(public payload?: any) {}
+}
+
+export class LoadPhasesDone implements Action {
+  readonly type = Types.LoadPhasesDone;
+  constructor(public payload?: any) {}
+}
+
+export class LoadPhasesFail implements Action {
+  readonly type = Types.LoadPhasesFail;
+  constructor(public payload?: any) {}
+}
+
+export class SavePhases implements Action {
+  readonly type = Types.SavePhases;
+  constructor(public payload?: any) {}
+}
+
+export class SavePhasesDone implements Action {
+  readonly type = Types.SavePhasesDone;
+  constructor(public payload?: any) {}
+}
+
+export class SavePhasesFail implements Action {
+  readonly type = Types.SavePhasesFail;
+  constructor(public payload?: any) {}
+}
+
+export class CreatePhases implements Action {
+  readonly type = Types.CreatePhases;
+  constructor(public payload?: any) {}
+}
+
+export class CreatePhasesDone implements Action {
+  readonly type = Types.CreatePhasesDone;
+  constructor(public payload?: any) {}
+}
+
+export class CreatePhasesFail implements Action {
+  readonly type = Types.CreatePhasesFail;
+  constructor(public payload?: any) {}
+}
+
 export type ActionsUnion =
   | LoadPrevInfo
   | LoadPrevInfoDone
@@ -179,4 +233,13 @@ export type ActionsUnion =
   | SaveMilestoneFail
   | CreateMilestone
   | CreateMilestoneDone
-  | CreateMilestoneFail;
+  | CreateMilestoneFail
+  | LoadPhases
+  | LoadPhasesDone
+  | LoadPhasesFail
+  | SavePhases
+  | SavePhasesDone
+  | SavePhasesFail
+  | CreatePhases
+  | CreatePhasesDone
+  | CreatePhasesFail;

@@ -17,6 +17,11 @@ export const initialState: ConstitutionState = {
     isLoaded: false,
     isLoading: false,
     data: []
+  },
+  phases: {
+    isLoaded: false,
+    isLoading: false,
+    data: []
   }
 };
 
@@ -83,6 +88,26 @@ export function constitutionReducer(
           isLoaded: true,
           isLoading: false,
           data: [action.payload, ...state.milestones.data]
+        }
+      };
+    case Types.LoadPhasesDone:
+      return {
+        ...state,
+        phases: {
+          ...state.phases,
+          isLoaded: true,
+          isLoading: false,
+          data: _.orderBy(action.payload, ['_id'])
+        }
+      };
+    case Types.CreatePhasesDone:
+      return {
+        ...state,
+        phases: {
+          ...state.phases,
+          isLoaded: true,
+          isLoading: false,
+          data: [action.payload, ...state.phases.data]
         }
       };
     default:

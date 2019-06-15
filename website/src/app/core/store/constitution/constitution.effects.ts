@@ -148,6 +148,51 @@ export class ConstitutionEffects {
     )
   );
 
+  @Effect()
+  fetchPhases = this.actions.pipe(
+    ofType(ConstitutionActions.Types.LoadPhases),
+    switchMap((action: ConstitutionActions.LoadPhases) =>
+      this.constitutionService.fetchPhases(action.payload).pipe(
+        // If successful, dispatch success action with result
+        map(data => {
+          return new ConstitutionActions.LoadPhasesDone(data);
+        }),
+        // If request fails, dispatch failed action
+        catchError(error => of(new ConstitutionActions.LoadPhasesFail(error)))
+      )
+    )
+  );
+
+  @Effect()
+  savePhases = this.actions.pipe(
+    ofType(ConstitutionActions.Types.SavePhases),
+    switchMap((action: ConstitutionActions.SavePhases) =>
+      this.constitutionService.updatePhases(action.payload).pipe(
+        // If successful, dispatch success action with result
+        map(data => {
+          return new ConstitutionActions.SavePhasesDone(data);
+        }),
+        // If request fails, dispatch failed action
+        catchError(error => of(new ConstitutionActions.SavePhasesFail(error)))
+      )
+    )
+  );
+
+  @Effect()
+  createPhases = this.actions.pipe(
+    ofType(ConstitutionActions.Types.CreatePhases),
+    switchMap((action: ConstitutionActions.CreatePhases) =>
+      this.constitutionService.createPhases(action.payload).pipe(
+        // If successful, dispatch success action with result
+        map(data => {
+          return new ConstitutionActions.CreatePhasesDone(data);
+        }),
+        // If request fails, dispatch failed action
+        catchError(error => of(new ConstitutionActions.CreatePhasesFail(error)))
+      )
+    )
+  );
+
   constructor(
     private actions: Actions,
     private constitutionService: ConstitutionService,
