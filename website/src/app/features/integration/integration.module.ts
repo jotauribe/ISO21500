@@ -8,6 +8,9 @@ import { PreviousInformationComponent } from './components/constitution/previous
 import { ObjectivesComponent } from './components/constitution/objectives/objectives.component';
 import { MilestonesComponent } from './components/constitution/milestones/milestones.component';
 import { PhasesComponent } from './components/constitution/phases/phases.component';
+import { IntegrationComponent } from './integration.component';
+import { RouterModule } from '@angular/router';
+import { PlanningComponent } from './components/planning/planning.component';
 
 @NgModule({
   declarations: [
@@ -15,9 +18,17 @@ import { PhasesComponent } from './components/constitution/phases/phases.compone
     PreviousInformationComponent,
     ObjectivesComponent,
     MilestonesComponent,
-    PhasesComponent
+    PhasesComponent,
+    IntegrationComponent,
+    PlanningComponent
   ],
-  imports: [CommonModule, SharedModule, FormsModule, ReactiveFormsModule],
-  exports: [ConstitutionComponent]
+  imports: [
+    CommonModule,
+    SharedModule,
+    FormsModule,
+    ReactiveFormsModule,
+    RouterModule.forChild([])
+  ],
+  exports: [ConstitutionComponent, IntegrationComponent]
 })
 export class IntegrationModule {}
