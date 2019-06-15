@@ -9,7 +9,8 @@ import {
   LoadObjectives,
   CreateObjectives,
   LoadMilestones,
-  SaveMilestone
+  SaveMilestone,
+  CreateMilestone
 } from '~/app/core/store/constitution/constitution.actions';
 import { MatIconRegistry } from '@angular/material';
 import { DomSanitizer } from '@angular/platform-browser';
@@ -106,7 +107,7 @@ export class ConstitutionComponent implements OnInit {
       .afterClosed()
       .subscribe(result => {
         this.store.dispatch(
-          new CreateObjectives({ projectId, objective: result })
+          new CreateMilestone({ projectId, milestone: result })
         );
       });
   }

@@ -69,10 +69,20 @@ export function constitutionReducer(
       return {
         ...state,
         milestones: {
-          ...state.objectives,
+          ...state.milestones,
           isLoaded: true,
           isLoading: false,
           data: _.orderBy(action.payload, ['_id'])
+        }
+      };
+    case Types.CreateMilestoneDone:
+      return {
+        ...state,
+        milestones: {
+          ...state.milestones,
+          isLoaded: true,
+          isLoading: false,
+          data: [action.payload, ...state.milestones.data]
         }
       };
     default:
