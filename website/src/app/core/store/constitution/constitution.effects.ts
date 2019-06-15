@@ -97,6 +97,57 @@ export class ConstitutionEffects {
     )
   );
 
+  @Effect()
+  fetchMilestones = this.actions.pipe(
+    ofType(ConstitutionActions.Types.LoadMilestones),
+    switchMap((action: ConstitutionActions.LoadMilestones) =>
+      this.constitutionService.fetchMilestones(action.payload).pipe(
+        // If successful, dispatch success action with result
+        map(data => {
+          return new ConstitutionActions.LoadMilestonesDone(data);
+        }),
+        // If request fails, dispatch failed action
+        catchError(error =>
+          of(new ConstitutionActions.LoadMilestonesFail(error))
+        )
+      )
+    )
+  );
+
+  @Effect()
+  saveMilestones = this.actions.pipe(
+    ofType(ConstitutionActions.Types.SaveMilestone),
+    switchMap((action: ConstitutionActions.SaveMilestone) =>
+      this.constitutionService.updateMilestone(action.payload).pipe(
+        // If successful, dispatch success action with result
+        map(data => {
+          return new ConstitutionActions.SaveMilestoneDone(data);
+        }),
+        // If request fails, dispatch failed action
+        catchError(error =>
+          of(new ConstitutionActions.SaveMilestoneFail(error))
+        )
+      )
+    )
+  );
+
+  @Effect()
+  createMilestone = this.actions.pipe(
+    ofType(ConstitutionActions.Types.CreateMilestone),
+    switchMap((action: ConstitutionActions.CreateMilestone) =>
+      this.constitutionService.createMilestone(action.payload).pipe(
+        // If successful, dispatch success action with result
+        map(data => {
+          return new ConstitutionActions.CreateMilestoneDone(data);
+        }),
+        // If request fails, dispatch failed action
+        catchError(error =>
+          of(new ConstitutionActions.CreateMilestoneFail(error))
+        )
+      )
+    )
+  );
+
   constructor(
     private actions: Actions,
     private constitutionService: ConstitutionService,

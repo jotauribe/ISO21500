@@ -21,6 +21,15 @@ export const Types: any = applyActionNamespace(
     CreateObjectives: 'Create Objectives',
     CreateObjectivesDone: 'Create Objectives Done',
     CreateObjectivesFail: 'Create Objectives Failure',
+    LoadMilestones: 'Load Milestones',
+    LoadMilestonesDone: 'Load Milestones Done',
+    LoadMilestonesFail: 'Load Milestones Failure',
+    SaveMilestone: 'Save Milestone',
+    SaveMilestoneDone: 'Save Milestone Done',
+    SaveMilestoneFail: 'Save Milestone Failure',
+    CreateMilestone: 'Create Milestone',
+    CreateMilestoneDone: 'Create Milestone Done',
+    CreateMilestoneFail: 'Create Milestone Failure',
     LoadPhases: 'Load Phases',
     LoadPhasesDone: 'Load Phases Done',
     LoadPhasesFail: 'Load Phases Failure',
@@ -110,6 +119,51 @@ export class CreateObjectivesFail implements Action {
   constructor(public payload?: any) {}
 }
 
+export class CreateMilestone implements Action {
+  readonly type = Types.CreateMilestone;
+  constructor(public payload?: any) {}
+}
+
+export class CreateMilestoneDone implements Action {
+  readonly type = Types.CreateMilestoneDone;
+  constructor(public payload?: any) {}
+}
+
+export class CreateMilestoneFail implements Action {
+  readonly type = Types.CreateMilestoneFail;
+  constructor(public payload?: any) {}
+}
+
+export class LoadMilestones implements Action {
+  readonly type = Types.LoadMilestones;
+  constructor(public payload?: any) {}
+}
+
+export class LoadMilestonesDone implements Action {
+  readonly type = Types.LoadMilestonesDone;
+  constructor(public payload?: any) {}
+}
+
+export class LoadMilestonesFail implements Action {
+  readonly type = Types.LoadMilestonesFail;
+  constructor(public payload?: any) {}
+}
+
+export class SaveMilestone implements Action {
+  readonly type = Types.SaveMilestone;
+  constructor(public payload?: any) {}
+}
+
+export class SaveMilestoneDone implements Action {
+  readonly type = Types.SaveMilestoneDone;
+  constructor(public payload?: any) {}
+}
+
+export class SaveMilestoneFail implements Action {
+  readonly type = Types.SaveMilestoneFail;
+  constructor(public payload?: any) {}
+}
+
 export class LoadPhases implements Action {
   readonly type = Types.LoadPhases;
   constructor(public payload?: any) {}
@@ -171,6 +225,15 @@ export type ActionsUnion =
   | CreateObjectives
   | CreateObjectivesDone
   | CreateObjectivesFail
+  | LoadMilestones
+  | LoadMilestonesDone
+  | LoadMilestonesFail
+  | SaveMilestone
+  | SaveMilestoneDone
+  | SaveMilestoneFail
+  | CreateMilestone
+  | CreateMilestoneDone
+  | CreateMilestoneFail
   | LoadPhases
   | LoadPhasesDone
   | LoadPhasesFail

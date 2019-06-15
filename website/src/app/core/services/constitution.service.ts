@@ -63,6 +63,34 @@ export class ConstitutionService {
       );
   }
 
+  fetchMilestones(projectId) {
+    return this.http.get(
+      `${this.url}/${projectId}/integration/constitution/milestones`
+    );
+  }
+
+  updateMilestone({ projectId, milestoneId, milestone }) {
+    return this.http.patch(
+      `${
+        this.url
+      }/${projectId}/integration/constitution/milestones/${milestoneId}`,
+      milestone
+    );
+  }
+
+  createMilestone({ projectId, milestone }) {
+    return this.http
+      .post(`${this.url}/${projectId}/integration/constitution/milestones/`, [
+        milestone
+      ])
+      .pipe(
+        map(() => ({
+          projectId,
+          ...milestone
+        }))
+      );
+  }
+
   fetchPhases(projectId) {
     return this.http.get(
       `${this.url}/${projectId}/integration/constitution/phases`

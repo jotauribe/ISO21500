@@ -20,6 +20,14 @@ interface Objective {
   approvableBy?: string;
 }
 
+interface Milestone {
+  name: string;
+  id?: Client;
+  description?: string;
+  deliverable?: string;
+  date?: string;
+}
+
 export interface ConstitutionState {
   previousInformation: {
     isLoaded: boolean;
@@ -31,4 +39,5 @@ export interface ConstitutionState {
     isLoading: boolean;
     data: Objective[];
   };
+  milestones: { isLoaded: boolean; isLoading: boolean; data: Milestone[] };
 }
