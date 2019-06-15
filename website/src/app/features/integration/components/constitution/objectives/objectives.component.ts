@@ -13,26 +13,7 @@ import { SaveObjectives } from '~/app/core/store/constitution/constitution.actio
 })
 export class ObjectivesComponent implements OnInit {
   @Input()
-  objectives = [
-    {
-      id: 'OBJ-02',
-      name: 'Crear portal empresarial',
-      description:
-        'The Shiba Inu is the smallest of the six original and distinct spitzbreeds of dog from Japan.',
-      acceptanceCriteria:
-        'The Shiba Inu is the smallest of the six original and distinct spitzbreeds of dog from Japan.',
-      approvableBy: ''
-    },
-    {
-      id: 'OBJ-02',
-      name: 'Crear portal empresarial',
-      description:
-        'The Shiba Inu is the smallest of the six original and distinct spitzbreeds of dog from Japan.',
-      acceptanceCriteria:
-        'The Shiba Inu is the smallest of the six original and distinct spitzbreeds of dog from Japan.',
-      approvableBy: ''
-    }
-  ];
+  objectives = [];
 
   constructor(
     private dialog: MatDialog,

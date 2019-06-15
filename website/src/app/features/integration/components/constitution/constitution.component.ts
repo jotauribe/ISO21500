@@ -7,7 +7,10 @@ import {
   LoadPrevInfo,
   SavePrevInfo,
   LoadObjectives,
-  CreateObjectives
+  CreateObjectives,
+  LoadMilestones,
+  SaveMilestone,
+  CreateMilestone
 } from '~/app/core/store/constitution/constitution.actions';
 import { MatIconRegistry } from '@angular/material';
 import { DomSanitizer } from '@angular/platform-browser';
@@ -32,8 +35,8 @@ export class ConstitutionComponent implements OnInit {
   constitutionState: any;
   prevInfoState;
   prevInfoValues = {};
-  @Input()
   objectives;
+  milestones;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -49,6 +52,10 @@ export class ConstitutionComponent implements OnInit {
 
     this.objectives = this.store.pipe(
       select(s => s.constitution.objectives.data)
+    );
+
+    this.milestones = this.store.pipe(
+      select(s => s.constitution.milestones.data)
     );
 
     this.prevInfoState = this.store
@@ -77,6 +84,7 @@ export class ConstitutionComponent implements OnInit {
     this.route.params.subscribe(p => {
       this.store.dispatch(new LoadPrevInfo(p.projectId));
       this.store.dispatch(new LoadObjectives(p.projectId));
+      this.store.dispatch(new LoadMilestones(p.projectId));
     });
   }
 
@@ -99,7 +107,7 @@ export class ConstitutionComponent implements OnInit {
       .afterClosed()
       .subscribe(result => {
         this.store.dispatch(
-          new CreateObjectives({ projectId, objective: result })
+          new CreateMilestone({ projectId, milestone: result })
         );
       });
   }
@@ -120,5 +128,12 @@ export class ConstitutionComponent implements OnInit {
 
   openPhasesForm() {
     this.forms.openPhasesForm();
+  }
+
+  editMilestone({ milestone, index }) {
+    const projectId = this.getProjectId();
+    this.store.dispatch(
+      new SaveMilestone({ projectId, milestoneId: milestone._id, milestone })
+    );
   }
 }
