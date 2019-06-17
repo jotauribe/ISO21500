@@ -7,38 +7,43 @@ const riskSchema = new Schema({
     required: [true, 'ProjectId is a required field']
   },
   description: {
-    management: String,
-    estimation: String,
-    roles: [{ task: String, assignedTo: String }]
+    management: { type: String, default: '' },
+    estimation: { type: String, default: '' },
+    roles: [
+      {
+        task: { type: String, default: '' },
+        assignedTo: { type: String, default: '' }
+      }
+    ]
   },
   riskAreas: [
     {
-      area: String,
-      time: String,
-      quality: String,
-      cost: String,
-      others: String
+      area: { type: String, default: '' },
+      time: { type: String, default: '' },
+      quality: { type: String, default: '' },
+      cost: { type: String, default: '' },
+      others: { type: String, default: '' }
     }
   ],
   riskCategories: [
     {
-      kind: String,
-      description: String
+      kind: { type: String, default: '' },
+      description: { type: String, default: '' }
     }
   ],
   probabilityLevels: {
-    almostTrue: String,
-    probable: String,
-    posible: String,
-    unlikely: String,
-    rare: String
+    almostTrue: { type: String, default: '' },
+    probable: { type: String, default: '' },
+    posible: { type: String, default: '' },
+    unlikely: { type: String, default: '' },
+    rare: { type: String, default: '' }
   },
-  budget: String,
+  budget: { type: String, default: '' },
   protocols: {
-    contingency: String,
-    riskControls: String,
-    riskComunication: String,
-    riskPlanAuditory: String
+    contingency: { type: String, default: '' },
+    riskControls: { type: String, default: '' },
+    riskComunication: { type: String, default: '' },
+    riskPlanAuditory: { type: String, default: '' }
   }
 });
 
