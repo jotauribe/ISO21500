@@ -22,7 +22,7 @@ const riskSchema = new Schema({
   ],
   riskCategories: [
     {
-      type: String,
+      kind: String,
       description: String
     }
   ],
