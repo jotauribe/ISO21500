@@ -75,7 +75,6 @@ const update = asyncHandler(async (req, res) => {
 
   const riskDocument = await Risk.findById(id);
   _.forOwn(updates, (array, key) => {
-    console.log(key);
     const docArray = _.get(riskDocument, key);
 
     array.forEach(item => {
@@ -100,4 +99,4 @@ const update = asyncHandler(async (req, res) => {
   });
 });
 
-module.exports = new Controller({ create, find, update });
+module.exports = Controller.fromModel(Risk);
