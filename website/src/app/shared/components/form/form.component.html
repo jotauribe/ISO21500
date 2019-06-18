@@ -1,0 +1,35 @@
+<div>
+  <form [formGroup]="form" class="gpt-form">
+    <gpt-section *ngFor="let s of schema.sections">
+      <gpt-title icon="description" section-header title="{{ s.title }}">
+      </gpt-title>
+      <ng-container *ngIf="!s.isList">
+        <gpt-editable
+          *ngFor="let field of s.fields"
+          formControlName="{{ field }}"
+          [label]="getPlaceholderFor(s, field)"
+        ></gpt-editable>
+      </ng-container>
+      <ng-container *ngIf="s.isList">
+        <gpt-list
+          [items]="sections[s.name]"
+          [itemSchema]="s.schema"
+          [itemFields]="s.fields"
+        ></gpt-list>
+      </ng-container>
+    </gpt-section>
+
+    <div class="gpt-form__actions">
+      <button class="gpt-form__actions__cancel" mat-button mat-dialog-close>
+        Cancelar
+      </button>
+      <button
+        class="gpt-form__actions__create"
+        color="accent"
+        mat-raised-button
+      >
+        Aceptar
+      </button>
+    </div>
+  </form>
+</div>
