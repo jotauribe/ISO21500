@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Store } from '@ngrx/store';
+import { CoreState } from '~/app/core/store';
+import { LoadPlanning } from '~/app/core/store/planning/planning.actions';
 
 @Component({
   selector: 'gpt-planning',
@@ -92,7 +95,9 @@ export class PlanningComponent implements OnInit {
     }
   };
 
-  constructor() {}
+  constructor(private store: Store<CoreState>) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.store.dispatch(new LoadPlanning());
+  }
 }
