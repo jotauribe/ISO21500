@@ -30,26 +30,22 @@ const planningSchema = new Schema({
   ],
   baselines: {
     schedule: {
-      name: { type: String, default: '' },
-      schedule: { type: String, default: '' },
+      description: { type: String, default: '' },
       variationTreshold: { type: String, default: '' },
       controlTracing: { type: String, default: '' }
     },
     costs: {
-      name: { type: String, default: '' },
-      schedule: { type: String, default: '' },
+      description: { type: String, default: '' },
       variationTreshold: { type: String, default: '' },
       controlTracing: { type: String, default: '' }
     },
     scope: {
-      name: { type: String, default: '' },
-      schedule: { type: String, default: '' },
+      description: { type: String, default: '' },
       variationTreshold: { type: String, default: '' },
       controlTracing: { type: String, default: '' }
     },
     quality: {
-      name: { type: String, default: '' },
-      schedule: { type: String, default: '' },
+      description: { type: String, default: '' },
       variationTreshold: { type: String, default: '' },
       controlTracing: { type: String, default: '' }
     }
