@@ -46,7 +46,7 @@ const self = (module.exports = {
     self.asyncHandler(async (req, res) => {
       const document = new Model(req.body);
       await document.save();
-      res.send({ message: 'Document Created successfully' });
+      res.send({ message: 'Document Created successfully', document });
     }),
 
   buildUpdateHandler: Model =>
