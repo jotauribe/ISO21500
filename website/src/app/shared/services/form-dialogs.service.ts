@@ -1,7 +1,7 @@
 import { Injectable, TemplateRef } from '@angular/core';
 import { MatDialog } from '@angular/material';
 import { ComponentType } from '@angular/core/src/render3';
-import { FormComponent } from '../components/form/form.component';
+import { FormComponent } from '../components/form-dialog/form-dialog.component';
 
 @Injectable({
   providedIn: 'root'

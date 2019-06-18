@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { MatDialog } from '@angular/material';
-import { FormComponent } from '~/app/shared/components/form/form.component';
+import { FormComponent } from '~/app/shared/components/form-dialog/form-dialog.component';
 import { ActivatedRoute } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { CoreState } from '~/app/core/store';

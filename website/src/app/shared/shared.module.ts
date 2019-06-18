@@ -7,7 +7,7 @@ import { InputComponent } from './components/input/input.component';
 import { SectionModule } from './components/section/section.module';
 import { TitleComponent } from './components/title/title.component';
 import { EditableModule } from './components/editable/editable.module';
-import { FormComponent } from './components/form/form.component';
+import { FormComponent } from './components/form-dialog/form-dialog.component';
 
 @NgModule({
   declarations: [InputComponent, TitleComponent, FormComponent],
