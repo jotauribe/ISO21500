@@ -6,18 +6,20 @@ const planningSchema = new Schema({
     type: String,
     required: [true, 'ProjectId is a required field']
   },
-  process: {
-    phase: { type: String, default: '' },
-    process: { type: String, default: '' },
-    entries: { type: String, default: '' },
-    outputs: { type: String, default: '' },
-    dependencies: { type: String, default: '' },
-    status: {
-      type: String,
-      enum: ['open', 'closed'],
-      default: 'open'
+  processes: [
+    {
+      phase: { type: String, default: '' },
+      process: { type: String, default: '' },
+      entries: { type: String, default: '' },
+      outputs: { type: String, default: '' },
+      dependencies: { type: String, default: '' },
+      status: {
+        type: String,
+        enum: ['open', 'closed'],
+        default: 'open'
+      }
     }
-  },
+  ],
   methodology: [
     {
       communication: { type: String, default: '' },
@@ -26,14 +28,32 @@ const planningSchema = new Schema({
       planRevision: { type: String, default: '' }
     }
   ],
-  baselines: [
-    {
+  baselines: {
+    schedule: {
+      name: { type: String, default: '' },
+      schedule: { type: String, default: '' },
+      variationTreshold: { type: String, default: '' },
+      controlTracing: { type: String, default: '' }
+    },
+    costs: {
+      name: { type: String, default: '' },
+      schedule: { type: String, default: '' },
+      variationTreshold: { type: String, default: '' },
+      controlTracing: { type: String, default: '' }
+    },
+    scope: {
+      name: { type: String, default: '' },
+      schedule: { type: String, default: '' },
+      variationTreshold: { type: String, default: '' },
+      controlTracing: { type: String, default: '' }
+    },
+    quality: {
       name: { type: String, default: '' },
       schedule: { type: String, default: '' },
       variationTreshold: { type: String, default: '' },
       controlTracing: { type: String, default: '' }
     }
-  ]
+  }
 });
 
 module.exports = mongoose.model('planning', planningSchema);
