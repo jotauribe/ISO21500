@@ -28,6 +28,14 @@ interface Milestone {
   date?: string;
 }
 
+interface Phase {
+  name: string;
+  id?: Client;
+  description?: string;
+  milestone?: String;
+  date?: string;
+}
+
 export interface ConstitutionState {
   previousInformation: {
     isLoaded: boolean;
@@ -40,4 +48,5 @@ export interface ConstitutionState {
     data: Objective[];
   };
   milestones: { isLoaded: boolean; isLoading: boolean; data: Milestone[] };
+  phases: { isLoaded: boolean; isLoading: boolean; data: Phase[] };
 }

@@ -17,7 +17,12 @@
               (onEdit)="editMilestone($event)"
             ></gpt-milestones>
           </mat-tab>
-          <mat-tab label="Fases"> Content 3 </mat-tab>
+          <mat-tab label="Fases">
+            <gpt-phases
+              [phases]="phases | async"
+              (onEdit)="editPhases($event)"
+            ></gpt-phases>
+          </mat-tab>
         </mat-tab-group>
         <button
           mat-icon-button

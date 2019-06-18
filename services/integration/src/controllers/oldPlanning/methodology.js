@@ -1,26 +1,26 @@
-const Baselines = require('../../models/planning/baselines.model');
+const Methodology = require('../../models/oldPlanning/methodology.model');
 const Controller = require('../controller');
 const { asyncHandler } = require('../../utils');
 
 const create = asyncHandler(async (req, res) => {
-  const baselines = req.body;
+  const methodology = req.body;
   const { projectId } = req;
 
-  Baselines.insertMany(baselines.map(b => ({ ...b, projectId })));
+  Methodology.insertMany(methodology.map(m => ({ ...m, projectId })));
 
-  res.send({ message: 'Baselines Created successfully' });
+  res.send({ message: 'Methodology Created successfully' });
 });
 
 const find = asyncHandler(async (req, res) => {
   const { projectId } = req;
-  const baselines = await Baselines.find({ projectId });
-  res.send(baselines);
+  const methodology = await Methodology.find({ projectId });
+  res.send(methodology);
 });
 
 const update = asyncHandler(async (req, res) => {
   const { projectId } = req;
   const { id } = req.params;
-  const updatedDocument = await Baselines.findOneAndUpdate(
+  const updatedDocument = await Methodology.findOneAndUpdate(
     { projectId, _id: id },
     {
       $set: req.body
