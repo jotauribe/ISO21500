@@ -39,17 +39,10 @@ export class ConstitutionComponent implements OnInit {
   milestones;
 
   constructor(
-    private formBuilder: FormBuilder,
     private store: Store<CoreState>,
     private route: ActivatedRoute,
-    private matIconRegistry: MatIconRegistry,
-    private sanitizer: DomSanitizer,
     private forms: FormDialogsService
   ) {
-    this.matIconRegistry.addSvgIconSet(
-      this.sanitizer.bypassSecurityTrustResourceUrl('assets/icons/sections.svg')
-    );
-
     this.objectives = this.store.pipe(
       select(s => s.constitution.objectives.data)
     );

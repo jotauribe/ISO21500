@@ -1,7 +1,7 @@
 import { Injectable, TemplateRef } from '@angular/core';
 import { MatDialog } from '@angular/material';
 import { ComponentType } from '@angular/core/src/render3';
-import { FormComponent } from '../components/form-dialog/form-dialog.component';
+import { FormDialogComponent } from '../components/form-dialog/form-dialog.component';
 
 @Injectable({
   providedIn: 'root'
@@ -16,7 +16,7 @@ export class FormDialogsService {
   }
 
   openObjectivesForm() {
-    const dialogRef = this.dialog.open(FormComponent, {
+    const dialogRef = this.dialog.open(FormDialogComponent, {
       data: {
         fields: [
           { name: 'id', value: '', placeholder: 'Codigo' },
@@ -35,7 +35,7 @@ export class FormDialogsService {
   }
 
   openPhasesForm() {
-    const dialogRef = this.dialog.open(FormComponent, {
+    const dialogRef = this.dialog.open(FormDialogComponent, {
       data: {
         fields: [
           { name: 'name', value: '', placeholder: 'Nombre' },
@@ -50,7 +50,7 @@ export class FormDialogsService {
   }
 
   openMilestonesForm() {
-    const dialogRef = this.dialog.open(FormComponent, {
+    const dialogRef = this.dialog.open(FormDialogComponent, {
       data: {
         fields: [
           { name: 'name', value: '', placeholder: 'Nombre' },
@@ -59,6 +59,14 @@ export class FormDialogsService {
           { name: 'date', value: '', placeholder: 'Fecha' }
         ]
       }
+    });
+
+    return dialogRef;
+  }
+
+  openFromJson(fields) {
+    const dialogRef = this.dialog.open(FormDialogComponent, {
+      data: { fields }
     });
 
     return dialogRef;

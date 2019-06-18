@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { MatDialog } from '@angular/material';
-import { FormComponent } from '~/app/shared/components/form-dialog/form-dialog.component';
+import { FormDialogComponent } from '~/app/shared/components/form-dialog/form-dialog.component';
 import { ActivatedRoute } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { CoreState } from '~/app/core/store';
@@ -24,7 +24,7 @@ export class ObjectivesComponent implements OnInit {
   ngOnInit() {}
 
   edit(objective, index) {
-    const dialogRef = this.dialog.open(FormComponent, {
+    const dialogRef = this.dialog.open(FormDialogComponent, {
       data: {
         fields: [
           { name: 'id', value: '', placeholder: 'Codigo' },
