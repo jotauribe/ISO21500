@@ -6,7 +6,7 @@ const learnedLessonsSchema = new Schema({
     type: String,
     required: [true, 'ProjectId is a required field']
   },
-  lessonsLearned: [
+  learnedLessons: [
     {
       name: { type: String, default: '' },
       objective: { type: String, default: '' },
