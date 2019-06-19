@@ -99,11 +99,13 @@ export class FormComponent implements OnInit, OnChanges {
   //PUSH CHANGES
   subscribeToFormChanges() {
     this.form.valueChanges.subscribe(values => {
-      this.onChanges.emit(this.rebuildData());
+      const newData = this.rebuildData(values);
+
+      this.onChanges.emit(newData);
     });
   }
 
-  rebuildData() {
+  rebuildData(newValues) {
     const { sections } = this.schema;
     const fields = {};
 
@@ -121,7 +123,8 @@ export class FormComponent implements OnInit, OnChanges {
           });
           fields[section.name] = fieldGroup;
         } else {
-          fields[section.name] = this.sections[section.name];
+          fields[section.name] =
+            newValues[section.name] || this.sections[section.name];
         }
       } else {
         const fieldGroup = {};

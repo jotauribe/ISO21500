@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, forwardRef } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+import * as _ from 'lodash';
 import { FormDialogsService } from '../../services/form-dialogs.service';
 import { ActivatedRoute } from '@angular/router';
 
@@ -26,9 +27,12 @@ export class ListComponent implements OnInit, ControlValueAccessor {
 
   @Input()
   set items(val) {
-    this.itemsValue = val;
-    this.onChange(val);
-    this.onTouched();
+    if (!this.isArrayEqual(val, this.itemsValue)) {
+      this.itemsValue = val;
+
+      this.onChange(val);
+      this.onTouched();
+    }
   }
 
   get items() {
@@ -70,7 +74,23 @@ export class ListComponent implements OnInit, ControlValueAccessor {
       });
   }
 
+  addNewItem(item, index) {
+    this.forms
+      .openFromJson(this.itemFields)
+      .afterClosed()
+      .subscribe(result => {
+        const newItems = [result, ...this.items];
+        this.items = newItems;
+      });
+  }
+
   getProjectId() {
     return this.route.snapshot.paramMap.get('projectId');
   }
+
+  isArrayEqual = function(x, y) {
+    return _(x)
+      .xorWith(y, _.isEqual)
+      .isEmpty();
+  };
 }

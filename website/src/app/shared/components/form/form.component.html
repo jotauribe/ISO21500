@@ -3,25 +3,28 @@
     <gpt-section *ngFor="let s of schema.sections">
       <gpt-title icon="description" section-header title="{{ s.title }}">
       </gpt-title>
+
       <ng-container *ngIf="!s.isList">
         <div class="gpt-form__section">
           <gpt-editable
             *ngFor="let field of s.fields"
             formControlName="{{ field }}"
             [label]="getPlaceholderFor(s, field)"
-            class="gpt-form__section__item"
+            class="gpt-form__section__item gpt-form__section__item--inline"
           ></gpt-editable>
         </div>
       </ng-container>
 
-      <gpt-list
-        *ngIf="s.isList"
-        formControlName="{{ s.name }}"
-        [items]="sections[s.name]"
-        [itemSchema]="s.schema"
-        [itemFields]="s.fields"
-        class="gpt-form__section__item"
-      ></gpt-list>
+      <div class="gpt-form__section__item gpt-form__section__item--list">
+        <gpt-list
+          #itemList
+          *ngIf="s.isList"
+          formControlName="{{ s.name }}"
+          [items]="sections[s.name]"
+          [itemSchema]="s.schema"
+          [itemFields]="s.fields"
+        ></gpt-list>
+      </div>
     </gpt-section>
 
     <div class="gpt-form__actions">

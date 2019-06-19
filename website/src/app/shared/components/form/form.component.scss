@@ -9,7 +9,14 @@
 
     &__item {
       flex-basis: 22%;
-      margin-left: 24px;
+
+      &--inline {
+        margin-right: 24px;
+      }
+
+      &--list {
+        margin-bottom: 24px;
+      }
     }
   }
 
