@@ -26,6 +26,9 @@ export class ListComponent implements OnInit, ControlValueAccessor {
   @Input()
   isFixedLength = false;
 
+  @Input()
+  itemEntityName = '';
+
   itemsValue = [];
 
   @Input()
@@ -69,7 +72,7 @@ export class ListComponent implements OnInit, ControlValueAccessor {
 
   onEdit(item, index) {
     this.forms
-      .openFromJson(this.itemFields)
+      .openFromJson(this.itemFields, `Editar ${this.itemEntityName}`)
       .afterClosed()
       .subscribe(result => {
         this.items.splice(index, 1, { ...item, ...result });
@@ -79,7 +82,7 @@ export class ListComponent implements OnInit, ControlValueAccessor {
 
   addNewItem(item, index) {
     this.forms
-      .openFromJson(this.itemFields)
+      .openFromJson(this.itemFields, `Crear Nuevo ${this.itemEntityName}`)
       .afterClosed()
       .subscribe(result => {
         const newItems = [result, ...this.items];

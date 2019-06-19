@@ -15,7 +15,7 @@ export class FormDialogsService {
     });
   }
 
-  openObjectivesForm() {
+  openObjectivesForm(title = 'Editar Objetivo') {
     const dialogRef = this.dialog.open(FormDialogComponent, {
       data: {
         fields: [
@@ -27,14 +27,15 @@ export class FormDialogsService {
             value: '',
             placeholder: 'Metrica / Criterio de aceptacion'
           }
-        ]
+        ],
+        title
       }
     });
 
     return dialogRef;
   }
 
-  openPhasesForm() {
+  openPhasesForm(title = 'Editar Fase') {
     const dialogRef = this.dialog.open(FormDialogComponent, {
       data: {
         fields: [
@@ -42,14 +43,15 @@ export class FormDialogsService {
           { name: 'description', value: '', placeholder: 'Descripcion' },
           { name: 'milestone', value: '', placeholder: 'Hito' },
           { name: 'date', value: '', placeholder: 'Fecha' }
-        ]
+        ],
+        title
       }
     });
 
     return dialogRef;
   }
 
-  openMilestonesForm() {
+  openMilestonesForm(title = 'Editar Hito') {
     const dialogRef = this.dialog.open(FormDialogComponent, {
       data: {
         fields: [
@@ -57,16 +59,17 @@ export class FormDialogsService {
           { name: 'description', value: '', placeholder: 'Descripcion' },
           { name: 'deliverable', value: '', placeholder: 'Entregable' },
           { name: 'date', value: '', placeholder: 'Fecha' }
-        ]
+        ],
+        title
       }
     });
 
     return dialogRef;
   }
 
-  openFromJson(fields) {
+  openFromJson(fields, title = 'Formulario') {
     const dialogRef = this.dialog.open(FormDialogComponent, {
-      data: { fields }
+      data: { fields, title }
     });
 
     return dialogRef;

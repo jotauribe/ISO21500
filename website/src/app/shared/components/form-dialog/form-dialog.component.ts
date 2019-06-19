@@ -11,14 +11,18 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 export class FormDialogComponent implements OnInit {
   form: FormGroup;
 
+  title: string = 'Formulario';
+
   constructor(
     private fb: FormBuilder,
     private dialogRef: MatDialogRef<FormDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) private data: { fields: any; actions?: any }
+    @Inject(MAT_DIALOG_DATA)
+    private data: { fields: any; title: string; actions?: any }
   ) {
-    const { fields } = this.data;
+    const { fields, title } = this.data;
     const formControls = this.createControlsSchema(fields);
     this.form = this.fb.group(formControls);
+    this.title = title;
   }
 
   ngOnInit() {}

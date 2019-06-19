@@ -15,8 +15,6 @@ import {
   SavePhases,
   CreatePhases
 } from '~/app/core/store/constitution/constitution.actions';
-import { MatIconRegistry } from '@angular/material';
-import { DomSanitizer } from '@angular/platform-browser';
 import * as _ from 'lodash';
 import { map } from 'rxjs/operators';
 import { FormDialogsService } from '~/app/shared/services/form-dialogs.service';
@@ -103,7 +101,7 @@ export class ConstitutionComponent implements OnInit {
     const projectId = this.getProjectId();
 
     this.forms
-      .openMilestonesForm()
+      .openMilestonesForm('Crear Nuevo Hito')
       .afterClosed()
       .subscribe(result => {
         this.store.dispatch(
@@ -114,7 +112,7 @@ export class ConstitutionComponent implements OnInit {
 
   openObjectivesForm() {
     this.forms
-      .openObjectivesForm()
+      .openObjectivesForm('Crear Nuevo Objetivo')
       .afterClosed()
       .subscribe(result => {
         const projectId = this.getProjectId();
@@ -130,7 +128,7 @@ export class ConstitutionComponent implements OnInit {
     const projectId = this.getProjectId();
 
     this.forms
-      .openPhasesForm()
+      .openPhasesForm('Crear Nueva Fase')
       .afterClosed()
       .subscribe(result => {
         this.store.dispatch(new CreatePhases({ projectId, phase: result }));

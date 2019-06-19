@@ -24,7 +24,7 @@
     </a>
     <mat-menu #itemMenu>
       <button mat-menu-item (click)="onEdit(i, j)">Editar</button>
-      <button mat-menu-item>Remover</button>
+      <button *ngIf="!isFixedLength" mat-menu-item>Remover</button>
     </mat-menu>
 
     <div class="gpt-list-item__main-info">
