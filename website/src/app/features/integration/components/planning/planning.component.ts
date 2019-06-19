@@ -21,9 +21,50 @@ export class PlanningComponent implements OnInit {
         fields: ['communication', 'adaptation', 'keyAspects', 'planRevision']
       },
       {
+        name: 'processes',
+        title: 'Procesos',
+        isList: true,
+        dataPath: 'processes',
+        schema: {
+          title: 'process',
+          prefix: 'phase',
+          mainInfo: 'status',
+          secondaryInfo: [
+            { title: 'Entradas', info: 'entries' },
+            { title: 'Salidas', info: 'outputs' },
+            { title: 'Dependencias', info: 'dependencies' }
+          ]
+        },
+        fields: [
+          { name: 'phase', value: '', placeholder: 'Fase' },
+          {
+            name: 'process',
+            value: '',
+            placeholder: 'Proceso'
+          },
+          {
+            name: 'entries',
+            value: '',
+            placeholder: 'Entradas'
+          },
+          {
+            name: 'outputs',
+            value: '',
+            placeholder: 'Salidas'
+          },
+          {
+            name: 'dependencies',
+            value: '',
+            placeholder: 'Dependencias'
+          }
+        ]
+      },
+      {
         name: 'baselines',
         title: 'Lineas Base',
         isList: true,
+        isFixedLength: true,
+        isObject: true,
         dataPath: 'baselines',
         schema: {
           titles: {
@@ -94,5 +135,9 @@ export class PlanningComponent implements OnInit {
 
   getProjectId() {
     return this.route.snapshot.paramMap.get('projectId');
+  }
+
+  pushChanges(data) {
+    console.log(data);
   }
 }

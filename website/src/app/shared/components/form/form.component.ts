@@ -56,10 +56,23 @@ export class FormComponent implements OnInit, OnChanges {
   buildFormFromSchema(schema) {
     const { fields } = schema;
     const formStructure = this.createFormStructure(fields);
+
     this.form = this.fb.group(formStructure);
   }
 
   createFormStructure(fieldSchemas) {
+    const formControls = {};
+    this.schema.sections.forEach(s => {
+      if (s.isList) {
+        if (!s.isObject) {
+          const fieldValue = _.get(this.data, s.dataPath);
+          formControls[s.name] = [fieldValue];
+        } else {
+          formControls[s.name] = [this.sections[s.name]];
+        }
+      }
+    });
+
     const { controls, fields } = _.reduce(
       fieldSchemas,
       (result, field) => {
@@ -73,7 +86,8 @@ export class FormComponent implements OnInit, OnChanges {
       { controls: {}, fields: {} }
     );
     this.formFields = fields;
-    return controls;
+
+    return { ...controls, ...formControls };
   }
 
   getFieldValue(field, data) {
@@ -82,10 +96,42 @@ export class FormComponent implements OnInit, OnChanges {
     return field.value;
   }
 
+  //PUSH CHANGES
   subscribeToFormChanges() {
     this.form.valueChanges.subscribe(values => {
-      this.onChanges.emit(values);
+      this.onChanges.emit(this.rebuildData());
     });
+  }
+
+  rebuildData() {
+    const { sections } = this.schema;
+    const fields = {};
+
+    _.forEach(sections, (section, sectionKey) => {
+      if (section.isList) {
+        if (section.isObject) {
+          const fieldGroup = {};
+          const sectionData = _.get(this.data, section.dataPath);
+          _.forOwn(sectionData, (sectionDataField, fieldName) => {
+            const sectionItems = this.sections[section.name];
+            const index = _.findIndex(this.sections[section.name], {
+              $name: fieldName
+            });
+            _.set(fieldGroup, fieldName, sectionItems[index]);
+          });
+          fields[section.name] = fieldGroup;
+        } else {
+          fields[section.name] = this.sections[section.name];
+        }
+      } else {
+        const fieldGroup = {};
+        _.forEach(section.fields, (fieldName, index) => {
+          fieldGroup[fieldName] = this.form.controls[fieldName].value;
+        });
+        fields[section.name] = fieldGroup;
+      }
+    });
+    return { ...fields };
   }
 
   getPlaceholderFor(section, fieldName) {
@@ -116,7 +162,7 @@ export class FormComponent implements OnInit, OnChanges {
     return _.reduce(
       data,
       (itemList, item, itemName) => {
-        itemList.push({ ...item, title: titles[itemName] });
+        itemList.push({ ...item, title: titles[itemName], $name: itemName });
         return itemList;
       },
       []

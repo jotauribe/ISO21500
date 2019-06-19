@@ -10,13 +10,14 @@
           [label]="getPlaceholderFor(s, field)"
         ></gpt-editable>
       </ng-container>
-      <ng-container *ngIf="s.isList">
-        <gpt-list
-          [items]="sections[s.name]"
-          [itemSchema]="s.schema"
-          [itemFields]="s.fields"
-        ></gpt-list>
-      </ng-container>
+
+      <gpt-list
+        *ngIf="s.isList"
+        formControlName="{{ s.name }}"
+        [items]="sections[s.name]"
+        [itemSchema]="s.schema"
+        [itemFields]="s.fields"
+      ></gpt-list>
     </gpt-section>
 
     <div class="gpt-form__actions">

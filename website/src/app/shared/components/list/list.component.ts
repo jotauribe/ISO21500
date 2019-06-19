@@ -1,12 +1,19 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { ControlValueAccessor } from '@angular/forms';
+import { Component, OnInit, Input, forwardRef } from '@angular/core';
+import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { FormDialogsService } from '../../services/form-dialogs.service';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'gpt-list',
   templateUrl: './list.component.html',
-  styleUrls: ['./list.component.scss']
+  styleUrls: ['./list.component.scss'],
+  providers: [
+    {
+      provide: NG_VALUE_ACCESSOR,
+      useExisting: forwardRef(() => ListComponent),
+      multi: true
+    }
+  ]
 })
 export class ListComponent implements OnInit, ControlValueAccessor {
   @Input()
@@ -59,6 +66,7 @@ export class ListComponent implements OnInit, ControlValueAccessor {
       .afterClosed()
       .subscribe(result => {
         this.items.splice(index, 1, { ...item, ...result });
+        this.items = [...this.items];
       });
   }
 
