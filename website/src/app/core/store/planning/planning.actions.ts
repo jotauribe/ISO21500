@@ -1,7 +1,7 @@
 import { Action } from '@ngrx/store';
 import { applyActionNamespace } from '~/app/utils';
 
-const NAMESPACE = 'CONSTITUTION FORM';
+const NAMESPACE = 'PLANNING FORM';
 
 // Action Types
 export const Types: any = applyActionNamespace(

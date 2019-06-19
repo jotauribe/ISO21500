@@ -1,5 +1,11 @@
-<div class="gpt-list">
+<div
+  [ngClass]="{
+    'gpt-list': true,
+    'gpt-list--fixed-length': isFixedLength
+  }"
+>
   <button
+    *ngIf="!isFixedLength"
     mat-icon-button
     class="gpt-list__add-button button--small button--solid"
     (click)="addNewItem()"

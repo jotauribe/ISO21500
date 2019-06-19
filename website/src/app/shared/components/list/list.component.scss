@@ -2,6 +2,10 @@
   position: relative;
   padding-top: 32px;
 
+  &--fixed-length {
+    padding-top: 0;
+  }
+
   &__add-button {
     position: absolute;
     left: 8px;

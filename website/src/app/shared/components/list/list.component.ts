@@ -23,6 +23,9 @@ export class ListComponent implements OnInit, ControlValueAccessor {
   @Input()
   itemFields = {};
 
+  @Input()
+  isFixedLength = false;
+
   itemsValue = [];
 
   @Input()

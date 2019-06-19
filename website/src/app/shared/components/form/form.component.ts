@@ -6,7 +6,7 @@ import {
   EventEmitter,
   OnChanges,
   SimpleChanges,
-  DoCheck
+  ChangeDetectionStrategy
 } from '@angular/core';
 import * as _ from 'lodash';
 import { FormBuilder, FormGroup } from '@angular/forms';
@@ -14,7 +14,8 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 @Component({
   selector: 'gpt-form',
   templateUrl: './form.component.html',
-  styleUrls: ['./form.component.scss']
+  styleUrls: ['./form.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class FormComponent implements OnInit, OnChanges {
   @Input()

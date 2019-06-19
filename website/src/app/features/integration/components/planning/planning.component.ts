@@ -6,8 +6,8 @@ import {
   UpdatePlanning
 } from '~/app/core/store/planning/planning.actions';
 import { ActivatedRoute } from '@angular/router';
-import { pipe } from '@angular/core/src/render3';
 import { Observable } from 'rxjs';
+import { isArrayEqual } from '~/app/utils';
 
 @Component({
   selector: 'gpt-planning',
@@ -143,6 +143,7 @@ export class PlanningComponent implements OnInit {
   pushChanges(data) {
     console.log(data);
     const projectId = this.getProjectId();
-    this.store.dispatch(new UpdatePlanning({ planning: data, projectId }));
+    if (!isArrayEqual(data, this.data))
+      this.store.dispatch(new UpdatePlanning({ planning: data, projectId }));
   }
 }
