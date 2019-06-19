@@ -17,5 +17,9 @@ export class AppComponent {
     this.matIconRegistry.addSvgIconSet(
       this.sanitizer.bypassSecurityTrustResourceUrl('assets/icons/actions.svg')
     );
+
+    this.matIconRegistry.addSvgIconSet(
+      this.sanitizer.bypassSecurityTrustResourceUrl('assets/icons/sections.svg')
+    );
   }
 }

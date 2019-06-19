@@ -3,11 +3,13 @@ import { HeaderMenuEffects } from './header';
 import { NewProjectEffects } from './new-project';
 import { ConstitutionEffects } from './constitution';
 import { ProjectsEffects } from './projects';
+import { PlanningEffects } from './planning';
 
 export const effects: any[] = [
   HeaderMenuEffects,
   NewProjectEffects,
   ConstitutionEffects,
   AuthEffects,
-  ProjectsEffects
+  ProjectsEffects,
+  PlanningEffects
 ];

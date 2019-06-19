@@ -1,25 +1,6 @@
-.gpt-form {
+.gpt-form-dialog {
   display: flex;
   flex-direction: column;
-  padding: 24px;
-  max-width: 1400px;
-
-  &__section {
-    display: flex;
-    margin-bottom: 32px;
-
-    &__item {
-      flex-basis: 22%;
-
-      &--inline {
-        margin-right: 24px;
-      }
-
-      &--list {
-        margin-bottom: 24px;
-      }
-    }
-  }
 
   &__header {
     display: flex;

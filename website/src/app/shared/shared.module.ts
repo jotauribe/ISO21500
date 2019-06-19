@@ -7,17 +7,25 @@ import { InputComponent } from './components/input/input.component';
 import { SectionModule } from './components/section/section.module';
 import { TitleComponent } from './components/title/title.component';
 import { EditableModule } from './components/editable/editable.module';
+import { FormDialogComponent } from './components/form-dialog/form-dialog.component';
 import { FormComponent } from './components/form/form.component';
+import { ListComponent } from './components/list/list.component';
 
 @NgModule({
-  declarations: [InputComponent, TitleComponent, FormComponent],
+  declarations: [
+    InputComponent,
+    TitleComponent,
+    FormDialogComponent,
+    FormComponent,
+    ListComponent
+  ],
   imports: [
     CommonModule,
-    MaterialModule,
     FormsModule,
     ReactiveFormsModule,
     SectionModule,
-    EditableModule
+    EditableModule,
+    MaterialModule
   ],
   exports: [
     InputComponent,
@@ -25,8 +33,9 @@ import { FormComponent } from './components/form/form.component';
     MaterialModule,
     SectionModule,
     TitleComponent,
+    FormDialogComponent,
     FormComponent
   ],
-  entryComponents: [FormComponent]
+  entryComponents: [FormDialogComponent]
 })
 export class SharedModule {}

@@ -22,9 +22,9 @@ import { AuthenticationModule } from './features/authentication/authentication.m
     StoreRouterConnectingModule.forRoot(),
     AppRoutingModule,
     CoreModule,
+    IntegrationModule,
     AuthenticationModule,
     ProjectsModule,
-    IntegrationModule,
     AcquisitionsModule,
     FormsModule,
     ReactiveFormsModule

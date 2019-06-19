@@ -1,13 +1,32 @@
-<header class="gpt-form__header">
-  <span class="gpt-form__header__title">Create Project</span>
-</header>
-<div mat-dialog-content>
-  <form (ngSubmit)="submit($event)" [formGroup]="form" class="gpt-form">
-    <gpt-input
-      *ngFor="let field of data.fields"
-      formControlName="{{ field.name }}"
-      [placeholder]="field.placeholder"
-    ></gpt-input>
+<div>
+  <form [formGroup]="form" class="gpt-form">
+    <gpt-section *ngFor="let s of schema.sections">
+      <gpt-title icon="description" section-header title="{{ s.title }}">
+      </gpt-title>
+
+      <ng-container *ngIf="!s.isList">
+        <div class="gpt-form__section">
+          <gpt-editable
+            *ngFor="let field of s.fields"
+            formControlName="{{ field }}"
+            [label]="getPlaceholderFor(s, field)"
+            class="gpt-form__section__item gpt-form__section__item--inline"
+          ></gpt-editable>
+        </div>
+      </ng-container>
+
+      <div class="gpt-form__section__item gpt-form__section__item--list">
+        <gpt-list
+          #itemList
+          *ngIf="s.isList"
+          formControlName="{{ s.name }}"
+          [items]="sections[s.name]"
+          [itemSchema]="s.schema"
+          [itemFields]="s.fields"
+          [isFixedLength]="s.isFixedLength"
+        ></gpt-list>
+      </div>
+    </gpt-section>
 
     <div class="gpt-form__actions">
       <button class="gpt-form__actions__cancel" mat-button mat-dialog-close>
@@ -17,7 +36,6 @@
         class="gpt-form__actions__create"
         color="accent"
         mat-raised-button
-        type="submit"
       >
         Aceptar
       </button>
