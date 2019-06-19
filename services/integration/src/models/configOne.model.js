@@ -6,7 +6,7 @@ const configOneSchema = new Schema({
     type: String,
     required: [true, 'ProjectId is a required field']
   },
-  role: [
+  roles: [
     {
       name: { type: String, default: '' },
       assignedTo: { type: String, default: '' },
