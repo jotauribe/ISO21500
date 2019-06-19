@@ -3,6 +3,16 @@
   flex-direction: column;
   padding: 24px;
 
+  &__section {
+    display: flex;
+    margin-bottom: 32px;
+
+    &__item {
+      flex-basis: 22%;
+      margin-left: 24px;
+    }
+  }
+
   &__header {
     display: flex;
     align-items: center;

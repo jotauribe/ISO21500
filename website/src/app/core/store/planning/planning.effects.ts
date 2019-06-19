@@ -13,16 +13,18 @@ export class PlanningEffects {
   @Effect()
   updatePlanning = this.actions.pipe(
     ofType(PlanningActions.Types.UpdatePlanning),
-
-    switchMap((action: PlanningActions.UpdatePlanning) =>
-      this.planningService.updatePlanning(action.payload).pipe(
-        // If successful, dispatch success action with result
-        map(data => {
-          return new PlanningActions.UpdatePlanningDone(data);
-        }),
-        // If request fails, dispatch failed action
-        catchError(error => of(new PlanningActions.UpdatePlanningFail(error)))
-      )
+    withLatestFrom(this.store.pipe(select(s => s.planning))),
+    switchMap(([action, { data }]: [PlanningActions.UpdatePlanning, any]) =>
+      this.planningService
+        .updatePlanning({ ...action.payload, planningId: data._id })
+        .pipe(
+          // If successful, dispatch success action with result
+          map(data => {
+            return new PlanningActions.UpdatePlanningDone(data);
+          }),
+          // If request fails, dispatch failed action
+          catchError(error => of(new PlanningActions.UpdatePlanningFail(error)))
+        )
     )
   );
 

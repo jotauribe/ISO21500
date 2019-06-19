@@ -4,11 +4,14 @@
       <gpt-title icon="description" section-header title="{{ s.title }}">
       </gpt-title>
       <ng-container *ngIf="!s.isList">
-        <gpt-editable
-          *ngFor="let field of s.fields"
-          formControlName="{{ field }}"
-          [label]="getPlaceholderFor(s, field)"
-        ></gpt-editable>
+        <div class="gpt-form__section">
+          <gpt-editable
+            *ngFor="let field of s.fields"
+            formControlName="{{ field }}"
+            [label]="getPlaceholderFor(s, field)"
+            class="gpt-form__section__item"
+          ></gpt-editable>
+        </div>
       </ng-container>
 
       <gpt-list
@@ -17,6 +20,7 @@
         [items]="sections[s.name]"
         [itemSchema]="s.schema"
         [itemFields]="s.fields"
+        class="gpt-form__section__item"
       ></gpt-list>
     </gpt-section>
 

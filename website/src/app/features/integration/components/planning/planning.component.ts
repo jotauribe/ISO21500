@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Store, select } from '@ngrx/store';
 import { CoreState } from '~/app/core/store';
-import { LoadPlanning } from '~/app/core/store/planning/planning.actions';
+import {
+  LoadPlanning,
+  UpdatePlanning
+} from '~/app/core/store/planning/planning.actions';
 import { ActivatedRoute } from '@angular/router';
 import { pipe } from '@angular/core/src/render3';
 import { Observable } from 'rxjs';
@@ -139,5 +142,7 @@ export class PlanningComponent implements OnInit {
 
   pushChanges(data) {
     console.log(data);
+    const projectId = this.getProjectId();
+    this.store.dispatch(new UpdatePlanning({ planning: data, projectId }));
   }
 }
