@@ -20,14 +20,12 @@ const planningSchema = new Schema({
       }
     }
   ],
-  methodology: [
-    {
-      communication: { type: String, default: '' },
-      adaptation: { type: String, default: '' },
-      keyAspects: { type: String, default: '' },
-      planRevision: { type: String, default: '' }
-    }
-  ],
+  methodology: {
+    communication: { type: String, default: '' },
+    adaptation: { type: String, default: '' },
+    keyAspects: { type: String, default: '' },
+    planRevision: { type: String, default: '' }
+  },
   baselines: {
     schedule: {
       description: { type: String, default: '' },
