@@ -11,7 +11,9 @@ export class PlanningService {
   constructor(private http: HttpClient) {}
 
   fetchPlanning(projectId) {
-    return this.http.get(`${this.url}/${projectId}/integration/planning`);
+    return this.http
+      .get(`${this.url}/${projectId}/integration/planning`)
+      .pipe(map((response: any) => response[0]));
   }
 
   updatePlanning({ projectId, planningId, planning }) {

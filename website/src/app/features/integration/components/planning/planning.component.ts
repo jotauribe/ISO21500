@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { Store } from '@ngrx/store';
+import { Store, select } from '@ngrx/store';
 import { CoreState } from '~/app/core/store';
 import { LoadPlanning } from '~/app/core/store/planning/planning.actions';
+import { ActivatedRoute } from '@angular/router';
+import { pipe } from '@angular/core/src/render3';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'gpt-planning',
@@ -80,24 +83,16 @@ export class PlanningComponent implements OnInit {
     ]
   };
 
-  data = {
-    baselines: {
-      schedule: {
-        description: 'description',
-        variationTreshold: 'Umbral de confianza',
-        controlTracing: 'Esto es un control'
-      },
-      costs: {
-        description: 'description',
-        variationTreshold: 'Umbral de confianza',
-        controlTracing: 'Esto es un control'
-      }
-    }
-  };
+  data: Observable<any>;
 
-  constructor(private store: Store<CoreState>) {}
+  constructor(private store: Store<CoreState>, private route: ActivatedRoute) {}
 
   ngOnInit() {
-    this.store.dispatch(new LoadPlanning());
+    this.store.dispatch(new LoadPlanning(this.getProjectId()));
+    this.data = this.store.pipe(select(s => s.planning.data));
+  }
+
+  getProjectId() {
+    return this.route.snapshot.paramMap.get('projectId');
   }
 }

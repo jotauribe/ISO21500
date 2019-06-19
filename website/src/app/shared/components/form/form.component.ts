@@ -34,11 +34,23 @@ export class FormComponent implements OnInit, OnChanges {
 
   ngOnChanges(changes: SimpleChanges): void {
     this.sections = this.extractItems();
+
+    if (this.form) this.initForm(changes.data.currentValue);
   }
 
   ngOnInit() {
     this.buildFormFromSchema(this.schema);
     this.subscribeToFormChanges();
+  }
+
+  initForm(data) {
+    const vals = {};
+
+    _.forOwn(this.formFields, (value: any, key) => {
+      _.set(vals, value.name, _.get(data, value.dataPath));
+    });
+
+    this.form.patchValue(vals);
   }
 
   buildFormFromSchema(schema) {
@@ -52,7 +64,8 @@ export class FormComponent implements OnInit, OnChanges {
       fieldSchemas,
       (result, field) => {
         const { name, value = '' } = field;
-        result.controls[name] = [value];
+        const fieldValue = this.getFieldValue(field, this.data);
+        result.controls[name] = [fieldValue];
         result.fields[name] = field;
 
         return result;
@@ -61,6 +74,12 @@ export class FormComponent implements OnInit, OnChanges {
     );
     this.formFields = fields;
     return controls;
+  }
+
+  getFieldValue(field, data) {
+    const valueFromData = _.get(data, field.dataPath);
+    if (valueFromData) return valueFromData;
+    return field.value;
   }
 
   subscribeToFormChanges() {

@@ -16,21 +16,16 @@ export function planningReducer(
     case Types.LoadPlanningDone:
       return {
         ...state,
-        planning: {
-          ...state,
-          isLoaded: true,
-          isLoading: false,
-          data: action.payload
-        }
+        isLoaded: true,
+        isLoading: false,
+        data: action.payload
       };
     case Types.CreatePlanning:
       return {
         ...state,
-        planning: {
-          isLoaded: true,
-          isLoading: false,
-          data: [action.payload, ...state.data]
-        }
+        isLoaded: true,
+        isLoading: false,
+        data: [action.payload, ...state.data]
       };
     default:
       return state;
