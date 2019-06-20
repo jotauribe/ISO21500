@@ -5,8 +5,7 @@ import {
   Output,
   EventEmitter,
   OnChanges,
-  SimpleChanges,
-  ChangeDetectionStrategy
+  SimpleChanges
 } from '@angular/core';
 import * as _ from 'lodash';
 import { FormBuilder, FormGroup } from '@angular/forms';
@@ -14,8 +13,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 @Component({
   selector: 'gpt-form',
   templateUrl: './form.component.html',
-  styleUrls: ['./form.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  styleUrls: ['./form.component.scss']
 })
 export class FormComponent implements OnInit, OnChanges {
   @Input()
@@ -116,7 +114,7 @@ export class FormComponent implements OnInit, OnChanges {
           const fieldGroup = {};
           const sectionData = _.get(this.data, section.dataPath);
           _.forOwn(sectionData, (sectionDataField, fieldName) => {
-            const sectionItems = this.sections[section.name];
+            const sectionItems = newValues[section.name];
             const index = _.findIndex(this.sections[section.name], {
               $name: fieldName
             });
