@@ -29,9 +29,6 @@ let nextUniqueId = 0;
 })
 export class EditableComponent
   implements ControlValueAccessor, OnInit, OnDestroy {
-  ngOnDestroy(): void {
-    throw new Error('Method not implemented.');
-  }
   @Input()
   @HostBinding('attr.id')
   id = `gpt-input_${nextUniqueId++}`;
@@ -94,6 +91,8 @@ export class EditableComponent
   ngOnInit() {
     this.editModeHandler();
   }
+
+  ngOnDestroy(): void {}
 
   writeValue(value: any): void {
     if (value) {

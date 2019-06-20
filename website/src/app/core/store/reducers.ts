@@ -17,6 +17,7 @@ import {
   constitutionReducer
 } from './constitution';
 import { ProjectsActions, ProjectsState, projectsReducer } from './projects';
+import { PlanningActions, PlanningState, planningReducer } from './planning';
 
 // each reducer is reponsible for manipulating a certain state
 export interface CoreState {
@@ -25,6 +26,7 @@ export interface CoreState {
   constitution: ConstitutionState;
   projects: ProjectsState;
   newProjectDialog: NewProjectState;
+  planning: PlanningState;
   // router: RouterReducerState;
 }
 
@@ -33,7 +35,8 @@ export const CoreReducers: ActionReducerMap<CoreState> = {
   auth: authReducer,
   constitution: constitutionReducer,
   projects: projectsReducer,
-  newProjectDialog: newProjectReducer
+  newProjectDialog: newProjectReducer,
+  planning: planningReducer
   // router: routerReducer
 };
 

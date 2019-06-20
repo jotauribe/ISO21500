@@ -4,6 +4,8 @@ import { ProjectDashboardComponent } from './components/project-dashboard/projec
 import { ConstitutionComponent } from '../features/integration/components/constitution/constitution.component';
 import { ProvidersComponent } from '../features/acquisitions/components/providers/providers.component';
 import { GuardsService } from './guards.service';
+import { IntegrationComponent } from '../features/integration/integration.component';
+import { PlanningComponent } from '../features/integration/components/planning/planning.component';
 
 const routes: Routes = [
   {
@@ -12,18 +14,29 @@ const routes: Routes = [
     canActivate: [GuardsService],
     children: [
       {
-        path: '',
-        redirectTo: 'constitution',
-        pathMatch: 'full'
-      },
-      {
-        path: 'constitution',
-        component: ConstitutionComponent,
-        pathMatch: 'full'
+        path: 'integration',
+        component: IntegrationComponent,
+        children: [
+          {
+            path: 'constitution',
+            component: ConstitutionComponent,
+            pathMatch: 'full'
+          },
+          {
+            path: 'planning',
+            component: PlanningComponent,
+            pathMatch: 'full'
+          }
+        ]
       },
       {
         path: 'providers',
         component: ProvidersComponent,
+        pathMatch: 'full'
+      },
+      {
+        path: '',
+        redirectTo: 'integration/constitution',
         pathMatch: 'full'
       }
     ]

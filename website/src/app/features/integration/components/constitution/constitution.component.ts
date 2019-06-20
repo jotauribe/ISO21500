@@ -10,10 +10,11 @@ import {
   CreateObjectives,
   LoadMilestones,
   SaveMilestone,
-  CreateMilestone
+  CreateMilestone,
+  LoadPhases,
+  SavePhases,
+  CreatePhases
 } from '~/app/core/store/constitution/constitution.actions';
-import { MatIconRegistry } from '@angular/material';
-import { DomSanitizer } from '@angular/platform-browser';
 import * as _ from 'lodash';
 import { map } from 'rxjs/operators';
 import { FormDialogsService } from '~/app/shared/services/form-dialogs.service';
@@ -37,19 +38,13 @@ export class ConstitutionComponent implements OnInit {
   prevInfoValues = {};
   objectives;
   milestones;
+  phases;
 
   constructor(
-    private formBuilder: FormBuilder,
     private store: Store<CoreState>,
     private route: ActivatedRoute,
-    private matIconRegistry: MatIconRegistry,
-    private sanitizer: DomSanitizer,
     private forms: FormDialogsService
   ) {
-    this.matIconRegistry.addSvgIconSet(
-      this.sanitizer.bypassSecurityTrustResourceUrl('assets/icons/sections.svg')
-    );
-
     this.objectives = this.store.pipe(
       select(s => s.constitution.objectives.data)
     );
@@ -57,6 +52,8 @@ export class ConstitutionComponent implements OnInit {
     this.milestones = this.store.pipe(
       select(s => s.constitution.milestones.data)
     );
+
+    this.phases = this.store.pipe(select(s => s.constitution.phases.data));
 
     this.prevInfoState = this.store
       .pipe(
@@ -85,6 +82,7 @@ export class ConstitutionComponent implements OnInit {
       this.store.dispatch(new LoadPrevInfo(p.projectId));
       this.store.dispatch(new LoadObjectives(p.projectId));
       this.store.dispatch(new LoadMilestones(p.projectId));
+      this.store.dispatch(new LoadPhases(p.projectId));
     });
   }
 
@@ -103,7 +101,7 @@ export class ConstitutionComponent implements OnInit {
     const projectId = this.getProjectId();
 
     this.forms
-      .openMilestonesForm()
+      .openMilestonesForm('Crear Nuevo Hito')
       .afterClosed()
       .subscribe(result => {
         this.store.dispatch(
@@ -114,7 +112,7 @@ export class ConstitutionComponent implements OnInit {
 
   openObjectivesForm() {
     this.forms
-      .openObjectivesForm()
+      .openObjectivesForm('Crear Nuevo Objetivo')
       .afterClosed()
       .subscribe(result => {
         const projectId = this.getProjectId();
@@ -127,13 +125,27 @@ export class ConstitutionComponent implements OnInit {
   }
 
   openPhasesForm() {
-    this.forms.openPhasesForm();
+    const projectId = this.getProjectId();
+
+    this.forms
+      .openPhasesForm('Crear Nueva Fase')
+      .afterClosed()
+      .subscribe(result => {
+        this.store.dispatch(new CreatePhases({ projectId, phase: result }));
+      });
   }
 
   editMilestone({ milestone, index }) {
     const projectId = this.getProjectId();
     this.store.dispatch(
       new SaveMilestone({ projectId, milestoneId: milestone._id, milestone })
+    );
+  }
+
+  editPhase({ phase, index }) {
+    const projectId = this.getProjectId();
+    this.store.dispatch(
+      new SavePhases({ projectId, phaseId: phase._id, phase })
     );
   }
 }
