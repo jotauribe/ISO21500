@@ -9,7 +9,7 @@ const milestoneSchema = new Schema({
   name: String,
   description: String,
   deliverable: String,
-  date: Date
+  date: String
 });
 
 module.exports = mongoose.model('milestone', milestoneSchema);
