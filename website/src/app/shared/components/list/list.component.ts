@@ -33,12 +33,9 @@ export class ListComponent implements OnInit, ControlValueAccessor {
 
   @Input()
   set items(val) {
-    if (!this.isArrayEqual(val, this.itemsValue)) {
-      this.itemsValue = val;
-
-      this.onChange(val);
-      this.onTouched();
-    }
+    this.itemsValue = val;
+    this.onChange(val);
+    this.onTouched();
   }
 
   get items() {
@@ -75,7 +72,7 @@ export class ListComponent implements OnInit, ControlValueAccessor {
       .openFromJson(this.itemFields, `Editar ${this.itemEntityName}`)
       .afterClosed()
       .subscribe(result => {
-        this.items.splice(index, 1, { ...item, ...result });
+        this.items[index] = { ...this.items[index], ...result };
         this.items = [...this.items];
       });
   }
@@ -93,10 +90,4 @@ export class ListComponent implements OnInit, ControlValueAccessor {
   getProjectId() {
     return this.route.snapshot.paramMap.get('projectId');
   }
-
-  isArrayEqual = function(x, y) {
-    return _(x)
-      .xorWith(y, _.isEqual)
-      .isEmpty();
-  };
 }
