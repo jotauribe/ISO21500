@@ -97,9 +97,9 @@ export class ConstitutionService {
     );
   }
 
-  updatePhases({ projectId, phasesId, phase }) {
+  updatePhases({ projectId, phaseId, phase }) {
     return this.http.patch(
-      `${this.url}/${projectId}/integration/constitution/phases/${phasesId}`,
+      `${this.url}/${projectId}/integration/constitution/phases/${phaseId}`,
       phase
     );
   }

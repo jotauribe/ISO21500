@@ -9,7 +9,7 @@ const phaseSchema = new Schema({
   name: String,
   description: String,
   milestone: String,
-  date: Date
+  date: String
 });
 
 module.exports = mongoose.model('phases', phaseSchema);
