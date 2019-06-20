@@ -23,7 +23,7 @@ export class PhasesComponent implements OnInit {
       .afterClosed()
       .subscribe(result => {
         const editedPhase = { ...phase, ...result };
-        this.onEdit.emit({ phase: editedPhase, index });
+        this.onEdit.emit({ phase: editedPhase, phaseId: phase._id, index });
         this.phases.splice(index, 1, { ...editedPhase, ...result });
       });
   }

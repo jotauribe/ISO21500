@@ -1,6 +1,6 @@
-const PreviousInfo = require('../../models/constitution/previousInfo.model');
-const Controller = require('../controller');
-const { asyncHandler } = require('../../utils');
+const PreviousInfo = require('../../../models/integration/constitution/previousInfo.model');
+const Controller = require('../../controller');
+const { asyncHandler } = require('../../../utils');
 
 const create = asyncHandler(async (req, res) => {
   const previousInfo = new PreviousInfo(req.body);

@@ -1,27 +1,26 @@
-const Roles = require('../../../models/config/one/roles.model');
+const Methodology = require('../../../models/integration/oldPlanning/methodology.model');
 const Controller = require('../../controller');
 const { asyncHandler } = require('../../../utils');
 
 const create = asyncHandler(async (req, res) => {
-  const roles = req.body;
+  const methodology = req.body;
   const { projectId } = req;
 
-  Roles.insertMany(roles.map(r => ({ ...r, projectId })));
+  Methodology.insertMany(methodology.map(m => ({ ...m, projectId })));
 
-  res.send({ message: 'Roles Created successfully' });
+  res.send({ message: 'Methodology Created successfully' });
 });
 
 const find = asyncHandler(async (req, res) => {
   const { projectId } = req;
-  const roles = await Roles.find({ projectId });
-
-  res.send(roles);
+  const methodology = await Methodology.find({ projectId });
+  res.send(methodology);
 });
 
 const update = asyncHandler(async (req, res) => {
   const { projectId } = req;
   const { id } = req.params;
-  const updatedDocument = await Roles.findOneAndUpdate(
+  const updatedDocument = await Methodology.findOneAndUpdate(
     { projectId, _id: id },
     {
       $set: req.body

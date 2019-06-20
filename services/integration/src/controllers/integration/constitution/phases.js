@@ -1,27 +1,26 @@
-const Milstone = require('../../models/constitution/milestone.model');
-const Controller = require('../controller');
-const { asyncHandler } = require('../../utils');
+const Phases = require('../../../models/integration/constitution/phases.model');
+const Controller = require('../../controller');
+const { asyncHandler } = require('../../../utils');
 
 const create = asyncHandler(async (req, res) => {
-  const milestone = req.body;
+  const phases = req.body;
   const { projectId } = req;
 
-  Milstone.insertMany(milestone.map(m => ({ ...m, projectId })));
+  Phases.insertMany(phases.map(p => ({ ...p, projectId })));
 
-  res.send({ message: 'Milestones Created successfully' });
+  res.send({ message: 'Phases Created successfully' });
 });
 
 const find = asyncHandler(async (req, res) => {
   const { projectId } = req;
-  const milestone = await Milstone.find({ projectId });
-
-  res.send(milestone);
+  const phases = await Phases.find({ projectId });
+  res.send(phases);
 });
 
 const update = asyncHandler(async (req, res) => {
   const { projectId } = req;
   const { id } = req.params;
-  const updatedDocument = await Milstone.findOneAndUpdate(
+  const updatedDocument = await Phases.findOneAndUpdate(
     { projectId, _id: id },
     {
       $set: req.body

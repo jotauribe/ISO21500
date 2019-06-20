@@ -1,6 +1,6 @@
-const Objective = require('../../models/constitution/objectives.model');
-const Controller = require('../controller');
-const { asyncHandler } = require('../../utils');
+const Objective = require('../../../models/integration/constitution/objectives.model');
+const Controller = require('../../controller');
+const { asyncHandler } = require('../../../utils');
 
 const create = asyncHandler(async (req, res) => {
   const objectives = req.body;

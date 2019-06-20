@@ -4,7 +4,7 @@ const { buildRoutes } = require('../utils');
 const Controller = require('../controllers/controller');
 const controllers = require('../controllers');
 
-const baseUrl = '/projects/:projectId/integration';
+const baseUrl = '/projects/:projectId';
 const endpoints = _.keys(controllers);
 
 const paramsMiddleware = function parentRouteParamsMiddleware(req, res, next) {
