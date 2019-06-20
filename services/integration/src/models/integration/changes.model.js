@@ -6,21 +6,23 @@ const changeSchema = new Schema({
     type: String,
     required: [true, 'ProjectId is a required field']
   },
-  impacts: {
-    scope: { type: String, default: '' },
-    costs: { type: String, default: '' },
-    time: { type: String, default: '' },
-    other: { type: String, default: '' }
-  },
-  attachedDocumentation: { type: String, default: '' },
-
-  customer: { type: String, default: '' },
-
-  communication: [
+  changes: [
     {
-      rol: { type: String, default: '' },
-      name: { type: String, default: '' },
-      date: { type: String, default: '' }
+      impacts: {
+        scope: { type: String, default: '' },
+        costs: { type: String, default: '' },
+        time: { type: String, default: '' },
+        other: { type: String, default: '' }
+      },
+      attachedDocumentation: { type: String, default: '' },
+
+      customer: { type: String, default: '' },
+
+      communication: {
+        rol: { type: String, default: '' },
+        name: { type: String, default: '' },
+        date: { type: String, default: '' }
+      }
     }
   ]
 });
