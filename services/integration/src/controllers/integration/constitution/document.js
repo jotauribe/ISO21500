@@ -1,6 +1,6 @@
-const Document = require('../../models/constitution/document.model');
-const Controller = require('../controller');
-const { asyncHandler } = require('../../utils');
+const Document = require('../../../models/integration/constitution/document.model');
+const Controller = require('../../controller');
+const { asyncHandler } = require('../../../utils');
 
 const create = asyncHandler(async (req, res) => {
   const documents = req.body;

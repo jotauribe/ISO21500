@@ -1,5 +1,5 @@
 const Project = require('../models/project.model');
-const PreviousInfo = require('../models/constitution/previousInfo.model');
+const PreviousInfo = require('../models/integration/constitution/previousInfo.model');
 
 const Controller = require('./controller');
 const { asyncHandler } = require('../utils');

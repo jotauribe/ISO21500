@@ -1,6 +1,6 @@
-const Baselines = require('../../models/oldPlanning/baselines.model');
-const Controller = require('../controller');
-const { asyncHandler } = require('../../utils');
+const Baselines = require('../../../models/integration/oldPlanning/baselines.model');
+const Controller = require('../../controller');
+const { asyncHandler } = require('../../../utils');
 
 const create = asyncHandler(async (req, res) => {
   const baselines = req.body;

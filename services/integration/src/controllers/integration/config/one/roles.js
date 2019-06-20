@@ -1,26 +1,27 @@
-const Process = require('../../models/constitution/process.model');
-const Controller = require('../controller');
-const { asyncHandler } = require('../../utils');
+const Roles = require('../../../../models/integration/config/one/roles.model');
+const Controller = require('../../../controller');
+const { asyncHandler } = require('../../../../utils');
 
 const create = asyncHandler(async (req, res) => {
-  const procesess = req.body;
+  const roles = req.body;
   const { projectId } = req;
 
-  Process.insertMany(procesess.map(p => ({ ...p, projectId })));
+  Roles.insertMany(roles.map(r => ({ ...r, projectId })));
 
-  res.send({ message: 'Process Created successfully' });
+  res.send({ message: 'Roles Created successfully' });
 });
 
 const find = asyncHandler(async (req, res) => {
   const { projectId } = req;
-  const procesess = await Process.find({ projectId });
-  res.send(procesess);
+  const roles = await Roles.find({ projectId });
+
+  res.send(roles);
 });
 
 const update = asyncHandler(async (req, res) => {
   const { projectId } = req;
   const { id } = req.params;
-  const updatedDocument = await Process.findOneAndUpdate(
+  const updatedDocument = await Roles.findOneAndUpdate(
     { projectId, _id: id },
     {
       $set: req.body
