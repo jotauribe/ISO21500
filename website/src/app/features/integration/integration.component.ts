@@ -8,7 +8,8 @@ import { Component, OnInit } from '@angular/core';
 export class IntegrationComponent implements OnInit {
   navLinks = [
     { path: ['constitution'], label: 'Constitucion' },
-    { path: ['planning'], label: 'Planeacion' }
+    { path: ['planning'], label: 'Planeacion' },
+    { path: ['configone'], label: 'Configuracion 1' }
   ];
 
   constructor() {}

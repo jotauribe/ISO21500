@@ -6,6 +6,7 @@ import { ProvidersComponent } from '../features/acquisitions/components/provider
 import { GuardsService } from './guards.service';
 import { IntegrationComponent } from '../features/integration/integration.component';
 import { PlanningComponent } from '../features/integration/components/planning/planning.component';
+import { ConfigOneComponent } from '../features/integration/components/config-one/config-one.component';
 
 const routes: Routes = [
   {
@@ -25,6 +26,11 @@ const routes: Routes = [
           {
             path: 'planning',
             component: PlanningComponent,
+            pathMatch: 'full'
+          },
+          {
+            path: 'configone',
+            component: ConfigOneComponent,
             pathMatch: 'full'
           }
         ]
