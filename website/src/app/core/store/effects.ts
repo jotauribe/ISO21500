@@ -5,6 +5,7 @@ import { ConstitutionEffects } from './constitution';
 import { ProjectsEffects } from './projects';
 import { PlanningEffects } from './planning';
 import { ConfigOneEffects } from './config-one';
+import { ConfigTwoEffects } from './config-two';
 
 export const effects: any[] = [
   HeaderMenuEffects,
@@ -13,5 +14,6 @@ export const effects: any[] = [
   AuthEffects,
   ProjectsEffects,
   PlanningEffects,
-  ConfigOneEffects
+  ConfigOneEffects,
+  ConfigTwoEffects
 ];

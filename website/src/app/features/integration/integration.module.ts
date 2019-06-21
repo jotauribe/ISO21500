@@ -12,6 +12,7 @@ import { IntegrationComponent } from './integration.component';
 import { RouterModule } from '@angular/router';
 import { PlanningComponent } from './components/planning/planning.component';
 import { ConfigOneComponent } from './components/config-one/config-one.component';
+import { ConfigTwoComponent } from './components/config-two/config-two.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { ConfigOneComponent } from './components/config-one/config-one.component
     PhasesComponent,
     IntegrationComponent,
     PlanningComponent,
-    ConfigOneComponent
+    ConfigOneComponent,
+    ConfigTwoComponent
   ],
   imports: [
     CommonModule,

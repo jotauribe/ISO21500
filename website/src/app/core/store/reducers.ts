@@ -23,6 +23,11 @@ import {
   ConfigOneState,
   configOneReducer
 } from './config-one';
+import {
+  ConfigTwoActions,
+  ConfigTwoState,
+  configTwoReducer
+} from './config-two';
 
 // each reducer is reponsible for manipulating a certain state
 export interface CoreState {
@@ -33,6 +38,7 @@ export interface CoreState {
   newProjectDialog: NewProjectState;
   planning: PlanningState;
   configOne: ConfigOneState;
+  configTwo: ConfigTwoState;
   // router: RouterReducerState;
 }
 
@@ -43,7 +49,8 @@ export const CoreReducers: ActionReducerMap<CoreState> = {
   projects: projectsReducer,
   newProjectDialog: newProjectReducer,
   planning: planningReducer,
-  configOne: configOneReducer
+  configOne: configOneReducer,
+  configTwo: configTwoReducer
   // router: routerReducer
 };
 
@@ -55,5 +62,6 @@ export const CoreActionTypes = [
   ConstitutionActions.Types,
   ProjectsActions.Types,
   PlanningActions.Types,
-  ConfigOneActions.Types
+  ConfigOneActions.Types,
+  ConfigTwoActions.Types
 ];
