@@ -10,7 +10,12 @@
             *ngFor="let field of s.fields"
             formControlName="{{ field }}"
             [label]="getPlaceholderFor(s, field)"
-            class="gpt-form__section__item gpt-form__section__item--inline"
+            [raised]="!isPlainField(field)"
+            [ngClass]="{
+              'gpt-form__section__item': true,
+              'gpt-form__section__item--inline': !isWideField(field),
+              'gpt-form__section__item--wide': isWideField(field)
+            }"
           ></gpt-editable>
         </div>
       </ng-container>
@@ -27,18 +32,5 @@
         ></gpt-list>
       </div>
     </gpt-section>
-
-    <div class="gpt-form__actions">
-      <button class="gpt-form__actions__cancel" mat-button mat-dialog-close>
-        Cancelar
-      </button>
-      <button
-        class="gpt-form__actions__create"
-        color="accent"
-        mat-raised-button
-      >
-        Aceptar
-      </button>
-    </div>
   </form>
 </div>

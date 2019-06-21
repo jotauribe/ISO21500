@@ -6,9 +6,7 @@ const configTwoSchema = new Schema({
     type: String,
     required: [true, 'ProjectId is a required field']
   },
-  scope: {
-    description: { type: String, default: '' }
-  },
+  scope: { type: String, default: '' },
   deliverables: [
     {
       name: { type: String, default: '' },
@@ -16,7 +14,7 @@ const configTwoSchema = new Schema({
       owner: { type: String, default: '' }
     }
   ],
-  responsabilities: [
+  responsibilities: [
     {
       role: { type: String, default: '' },
       functions: { type: String, default: '' }

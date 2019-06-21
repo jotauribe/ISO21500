@@ -7,6 +7,7 @@ import { GuardsService } from './guards.service';
 import { IntegrationComponent } from '../features/integration/integration.component';
 import { PlanningComponent } from '../features/integration/components/planning/planning.component';
 import { ConfigOneComponent } from '../features/integration/components/config-one/config-one.component';
+import { ConfigTwoComponent } from '../features/integration/components/config-two/config-two.component';
 
 const routes: Routes = [
   {
@@ -31,6 +32,11 @@ const routes: Routes = [
           {
             path: 'configone',
             component: ConfigOneComponent,
+            pathMatch: 'full'
+          },
+          {
+            path: 'configtwo',
+            component: ConfigTwoComponent,
             pathMatch: 'full'
           }
         ]

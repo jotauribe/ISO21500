@@ -9,7 +9,8 @@ export class IntegrationComponent implements OnInit {
   navLinks = [
     { path: ['constitution'], label: 'Constitucion' },
     { path: ['planning'], label: 'Planeacion' },
-    { path: ['configone'], label: 'Configuracion 1' }
+    { path: ['configone'], label: 'Configuracion 1' },
+    { path: ['configtwo'], label: 'Configuracion 2' }
   ];
 
   constructor() {}

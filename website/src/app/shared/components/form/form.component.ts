@@ -109,7 +109,9 @@ export class FormComponent implements OnInit, OnChanges {
     const fields = {};
 
     _.forEach(sections, (section, sectionKey) => {
-      if (section.isList) {
+      if (section.isSingleField) {
+        fields[section.name] = this.form.controls[section.name].value;
+      } else if (section.isList) {
         if (section.isObject) {
           const fieldGroup = {};
           const sectionData = _.get(this.data, section.dataPath);
@@ -137,9 +139,24 @@ export class FormComponent implements OnInit, OnChanges {
   }
 
   getPlaceholderFor(section, fieldName) {
-    const { placeholder } = this.formFields[fieldName];
-
+    const { placeholder, isUnlabeled } = this.formFields[fieldName];
+    if (isUnlabeled) return undefined;
     return placeholder;
+  }
+
+  isPlainField(fieldName) {
+    const { isPlain } = this.formFields[fieldName];
+    return isPlain;
+  }
+
+  isWideField(fieldName) {
+    const { isWide } = this.formFields[fieldName];
+    return isWide;
+  }
+
+  isUnlabeledField(fieldName) {
+    const { isUnlabeled } = this.formFields[fieldName];
+    return isUnlabeled;
   }
 
   extractItems() {
