@@ -13,6 +13,7 @@ import { RouterModule } from '@angular/router';
 import { PlanningComponent } from './components/planning/planning.component';
 import { ConfigOneComponent } from './components/config-one/config-one.component';
 import { ConfigTwoComponent } from './components/config-two/config-two.component';
+import { ChangesComponent } from './components/changes/changes.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { ConfigTwoComponent } from './components/config-two/config-two.component
     IntegrationComponent,
     PlanningComponent,
     ConfigOneComponent,
-    ConfigTwoComponent
+    ConfigTwoComponent,
+    ChangesComponent
   ],
   imports: [
     CommonModule,

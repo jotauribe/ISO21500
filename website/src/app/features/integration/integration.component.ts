@@ -10,7 +10,8 @@ export class IntegrationComponent implements OnInit {
     { path: ['constitution'], label: 'Constitucion' },
     { path: ['planning'], label: 'Planeacion' },
     { path: ['configone'], label: 'Configuracion 1' },
-    { path: ['configtwo'], label: 'Configuracion 2' }
+    { path: ['configtwo'], label: 'Configuracion 2' },
+    { path: ['changes'], label: 'Cambios' }
   ];
 
   constructor() {}
