@@ -1,0 +1,172 @@
+import { Component, OnInit } from '@angular/core';
+import { Store, select } from '@ngrx/store';
+import { CoreState } from '~/app/core/store';
+import { ActivatedRoute } from '@angular/router';
+import {
+  UpdateChanges,
+  LoadChanges
+} from '~/app/core/store/changes/changes.actions';
+import { Observable } from 'rxjs';
+
+@Component({
+  selector: 'gpt-lessons',
+  templateUrl: './lessons.component.html',
+  styleUrls: ['./lessons.component.scss']
+})
+export class LessonsComponent implements OnInit {
+  schema = {
+    sections: [
+      {
+        name: 'changes',
+        title: 'Cambios Propuestos',
+        dataPath: 'changes',
+        isList: true,
+        schema: {
+          title: 'name',
+          mainInfo: 'description',
+          secondaryInfo: [
+            {
+              title: 'Estado',
+              info: 'status'
+            },
+            {
+              title: 'Documentacion Adjunta',
+              info: 'attachedDocumentation'
+            },
+            {
+              title: 'Cliente',
+              info: 'customer'
+            }
+          ],
+          sections: [
+            {
+              label: 'Impacto del Cambio',
+              data: [
+                {
+                  title: 'Alcance',
+                  info: 'impacts.scope'
+                },
+                {
+                  title: 'Costo',
+                  info: 'impacts.costs'
+                },
+                {
+                  title: 'Plazo',
+                  info: 'impacts.time'
+                },
+                {
+                  title: 'Otro',
+                  info: 'impacts.other'
+                }
+              ]
+            },
+            {
+              label: 'Comunicacion del Estado del Cambio',
+              data: [
+                {
+                  title: 'Nombre de la Persona Notificada',
+                  info: 'communication.name'
+                },
+                {
+                  title: 'Rol',
+                  info: 'communication.rol'
+                },
+                {
+                  title: 'Fecha',
+                  info: 'communication.date'
+                }
+              ]
+            }
+          ]
+        },
+        fields: [
+          {
+            name: 'name',
+            value: '',
+            placeholder: 'Nombre de Identificacion del Cambio',
+            dataPath: 'name'
+          },
+          {
+            name: 'description',
+            value: '',
+            placeholder: 'Descripcion Corta del Cambio',
+            dataPath: 'description'
+          },
+          {
+            name: 'status',
+            value: '',
+            placeholder: 'Estado',
+            dataPath: 'status'
+          },
+          {
+            name: 'scope',
+            value: '',
+            placeholder: 'Impacto en Alcance',
+            dataPath: 'impacts.scope'
+          },
+          {
+            name: 'costs',
+            value: '',
+            placeholder: 'Impacto en Costos',
+            dataPath: 'impacts.costs'
+          },
+          {
+            name: 'time',
+            value: '',
+            placeholder: 'Inpacto en Plazo',
+            dataPath: 'impacts.time'
+          },
+          {
+            name: 'time',
+            value: '',
+            placeholder: 'Otros Inpactos',
+            dataPath: 'impacts.other'
+          },
+          {
+            name: 'attachedDocumentation',
+            value: '',
+            placeholder: 'Documentacion Adjunta',
+            dataPath: 'attachedDocumentation'
+          },
+          {
+            name: 'customer',
+            value: '',
+            placeholder: 'Cliente',
+            dataPath: 'customer'
+          },
+          {
+            name: 'communication.name',
+            value: '',
+            placeholder: 'Nombre de la Persona a Notificar',
+            dataPath: 'communication.name'
+          },
+          {
+            name: 'rol',
+            value: '',
+            placeholder: 'Rol de la Persona a Notificar',
+            dataPath: 'communication.rol'
+          },
+          {
+            name: 'date',
+            value: '',
+            placeholder: 'Fecha de la Notificacion',
+            dataPath: 'communication.date'
+          }
+        ]
+      }
+    ]
+  };
+
+  data: Observable<any>;
+
+  constructor(private store: Store<CoreState>, private route: ActivatedRoute) {}
+
+  ngOnInit() {
+    this.store.dispatch(new LoadChanges(this.getProjectId()));
+    this.data = this.store.pipe(select(s => s.changes.data));
+  }
+
+  getProjectId() {
+    return this.route.snapshot.paramMap.get('projectId');
+  }
+}

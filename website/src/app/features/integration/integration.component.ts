@@ -11,7 +11,8 @@ export class IntegrationComponent implements OnInit {
     { path: ['planning'], label: 'Planeacion' },
     { path: ['configone'], label: 'Configuracion 1' },
     { path: ['configtwo'], label: 'Configuracion 2' },
-    { path: ['changes'], label: 'Cambios' }
+    { path: ['changes'], label: 'Cambios' },
+    { path: ['lessons'], label: 'Lecciones Aprendidas' }
   ];
 
   constructor() {}

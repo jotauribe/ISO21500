@@ -9,6 +9,7 @@ import { PlanningComponent } from '../features/integration/components/planning/p
 import { ConfigOneComponent } from '../features/integration/components/config-one/config-one.component';
 import { ConfigTwoComponent } from '../features/integration/components/config-two/config-two.component';
 import { ChangesComponent } from '../features/integration/components/changes/changes.component';
+import { LessonsComponent } from '../features/integration/components/lessons/lessons.component';
 
 const routes: Routes = [
   {
@@ -43,6 +44,11 @@ const routes: Routes = [
           {
             path: 'changes',
             component: ChangesComponent,
+            pathMatch: 'full'
+          },
+          {
+            path: 'lessons',
+            component: LessonsComponent,
             pathMatch: 'full'
           }
         ]

@@ -14,6 +14,7 @@ import { PlanningComponent } from './components/planning/planning.component';
 import { ConfigOneComponent } from './components/config-one/config-one.component';
 import { ConfigTwoComponent } from './components/config-two/config-two.component';
 import { ChangesComponent } from './components/changes/changes.component';
+import { LessonsComponent } from './components/lessons/lessons.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { ChangesComponent } from './components/changes/changes.component';
     PlanningComponent,
     ConfigOneComponent,
     ConfigTwoComponent,
-    ChangesComponent
+    ChangesComponent,
+    LessonsComponent
   ],
   imports: [
     CommonModule,
