@@ -121,7 +121,6 @@ export class ConfigTwoComponent implements OnInit {
   ngOnInit() {
     this.store.dispatch(new LoadConfigTwo(this.getProjectId()));
     this.data = this.store.pipe(select(s => s.configTwo.data));
-    console.log(this.data);
   }
 
   getProjectId() {
