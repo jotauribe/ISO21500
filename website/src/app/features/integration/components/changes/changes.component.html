@@ -1,3 +1,5 @@
-<p>
-  changes works!
-</p>
+<gpt-form
+  [schema]="schema"
+  [data]="data | async"
+  (onChanges)="pushChanges($event)"
+></gpt-form>

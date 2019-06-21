@@ -8,6 +8,9 @@ const changeSchema = new Schema({
   },
   changes: [
     {
+      name: { type: String, default: '' },
+      description: { type: String, default: '' },
+      status: { type: String, default: '' },
       impacts: {
         scope: { type: String, default: '' },
         costs: { type: String, default: '' },

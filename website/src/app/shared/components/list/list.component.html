@@ -40,6 +40,31 @@
         </p>
       </mat-card-subtitle>
     </div>
+    <div *ngIf="itemSchema.sections" class="gpt-list-item__sections">
+      <div
+        *ngFor="let section of itemSchema.sections"
+        class="gpt-list-item__section"
+      >
+        <div class="gpt-list-item__section__label">
+          {{ section.label }}
+        </div>
+        <div class="gpt-list-item__section__content">
+          <div
+            *ngFor="let data of section.data"
+            class="gpt-list-item__section__content__item"
+          >
+            <div class="gpt-list-item__section__item__title">
+              {{ data.title }}
+            </div>
+            <mat-card-subtitle>
+              <p>
+                {{ getFromItem(i, data.info) }}
+              </p>
+            </mat-card-subtitle>
+          </div>
+        </div>
+      </div>
+    </div>
     <div class="gpt-list-item__secondary-info">
       <div
         *ngFor="let secondaryInfo of itemSchema.secondaryInfo"

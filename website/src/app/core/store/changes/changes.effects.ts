@@ -13,10 +13,10 @@ export class ChangesEffects {
   @Effect()
   updateChanges = this.actions.pipe(
     ofType(ChangesActions.Types.UpdateChanges),
-    withLatestFrom(this.store.pipe(select(s => s.planning))),
+    withLatestFrom(this.store.pipe(select(s => s.changes))),
     switchMap(([action, { data }]: [ChangesActions.UpdateChanges, any]) =>
-      this.planningService
-        .updateChanges({ ...action.payload, planningId: data._id })
+      this.changesService
+        .updateChanges({ ...action.payload, changesId: data._id })
         .pipe(
           // If successful, dispatch success action with result
           map(data => {
@@ -32,7 +32,7 @@ export class ChangesEffects {
   fetchChanges = this.actions.pipe(
     ofType(ChangesActions.Types.LoadChanges),
     switchMap((action: ChangesActions.LoadChanges) =>
-      this.planningService.fetchChanges(action.payload).pipe(
+      this.changesService.fetchChanges(action.payload).pipe(
         // If successful, dispatch success action with result
         map(data => {
           return new ChangesActions.LoadChangesDone(data);
@@ -45,7 +45,7 @@ export class ChangesEffects {
 
   constructor(
     private actions: Actions,
-    private planningService: ChangesService,
+    private changesService: ChangesService,
     private store: Store<CoreState>
   ) {}
 }

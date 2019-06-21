@@ -90,4 +90,8 @@ export class ListComponent implements OnInit, ControlValueAccessor {
   getProjectId() {
     return this.route.snapshot.paramMap.get('projectId');
   }
+
+  getFromItem(item, prop) {
+    return _.get(item, prop);
+  }
 }

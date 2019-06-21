@@ -28,7 +28,18 @@ export class FormDialogComponent implements OnInit {
   ngOnInit() {}
 
   submit() {
-    this.dialogRef.close(this.form.value);
+    const { fields } = this.data;
+    const formValues = _.reduce(
+      fields,
+      (result, field, key) => {
+        const value = this.form.controls[field.name].value;
+        _.set(result, field.dataPath || field.name, value);
+        return result;
+      },
+      {}
+    );
+
+    this.dialogRef.close(formValues);
   }
 
   createControlsSchema(fields) {
