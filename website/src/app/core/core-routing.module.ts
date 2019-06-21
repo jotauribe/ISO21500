@@ -8,6 +8,7 @@ import { IntegrationComponent } from '../features/integration/integration.compon
 import { PlanningComponent } from '../features/integration/components/planning/planning.component';
 import { ConfigOneComponent } from '../features/integration/components/config-one/config-one.component';
 import { ConfigTwoComponent } from '../features/integration/components/config-two/config-two.component';
+import { ChangesComponent } from '../features/integration/components/changes/changes.component';
 
 const routes: Routes = [
   {
@@ -37,6 +38,11 @@ const routes: Routes = [
           {
             path: 'configtwo',
             component: ConfigTwoComponent,
+            pathMatch: 'full'
+          },
+          {
+            path: 'changes',
+            component: ChangesComponent,
             pathMatch: 'full'
           }
         ]
