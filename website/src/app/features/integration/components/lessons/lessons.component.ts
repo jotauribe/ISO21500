@@ -2,11 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { Store, select } from '@ngrx/store';
 import { CoreState } from '~/app/core/store';
 import { ActivatedRoute } from '@angular/router';
-import {
-  UpdateChanges,
-  LoadChanges
-} from '~/app/core/store/changes/changes.actions';
 import { Observable } from 'rxjs';
+import {
+  LoadLessons,
+  UpdateLessons
+} from '~/app/core/store/lessons/lessons.actions';
 
 @Component({
   selector: 'gpt-lessons',
@@ -17,65 +17,21 @@ export class LessonsComponent implements OnInit {
   schema = {
     sections: [
       {
-        name: 'changes',
-        title: 'Cambios Propuestos',
-        dataPath: 'changes',
+        name: 'learnedLessons',
+        title: 'Lecciones Aprendidas',
+        dataPath: 'learnedLessons',
         isList: true,
         schema: {
           title: 'name',
           mainInfo: 'description',
           secondaryInfo: [
             {
-              title: 'Estado',
-              info: 'status'
+              title: 'Objetivo',
+              info: 'objective'
             },
             {
-              title: 'Documentacion Adjunta',
-              info: 'attachedDocumentation'
-            },
-            {
-              title: 'Cliente',
-              info: 'customer'
-            }
-          ],
-          sections: [
-            {
-              label: 'Impacto del Cambio',
-              data: [
-                {
-                  title: 'Alcance',
-                  info: 'impacts.scope'
-                },
-                {
-                  title: 'Costo',
-                  info: 'impacts.costs'
-                },
-                {
-                  title: 'Plazo',
-                  info: 'impacts.time'
-                },
-                {
-                  title: 'Otro',
-                  info: 'impacts.other'
-                }
-              ]
-            },
-            {
-              label: 'Comunicacion del Estado del Cambio',
-              data: [
-                {
-                  title: 'Nombre de la Persona Notificada',
-                  info: 'communication.name'
-                },
-                {
-                  title: 'Rol',
-                  info: 'communication.rol'
-                },
-                {
-                  title: 'Fecha',
-                  info: 'communication.date'
-                }
-              ]
+              title: 'Reporte',
+              info: 'report'
             }
           ]
         },
@@ -83,74 +39,26 @@ export class LessonsComponent implements OnInit {
           {
             name: 'name',
             value: '',
-            placeholder: 'Nombre de Identificacion del Cambio',
+            placeholder: 'Nombre de Identificacion de la Leccion',
             dataPath: 'name'
           },
           {
             name: 'description',
             value: '',
-            placeholder: 'Descripcion Corta del Cambio',
+            placeholder: 'Descripcion',
             dataPath: 'description'
           },
           {
-            name: 'status',
+            name: 'objective',
             value: '',
-            placeholder: 'Estado',
-            dataPath: 'status'
+            placeholder: 'Objetivo',
+            dataPath: 'objective'
           },
           {
-            name: 'scope',
+            name: 'report',
             value: '',
-            placeholder: 'Impacto en Alcance',
-            dataPath: 'impacts.scope'
-          },
-          {
-            name: 'costs',
-            value: '',
-            placeholder: 'Impacto en Costos',
-            dataPath: 'impacts.costs'
-          },
-          {
-            name: 'time',
-            value: '',
-            placeholder: 'Inpacto en Plazo',
-            dataPath: 'impacts.time'
-          },
-          {
-            name: 'time',
-            value: '',
-            placeholder: 'Otros Inpactos',
-            dataPath: 'impacts.other'
-          },
-          {
-            name: 'attachedDocumentation',
-            value: '',
-            placeholder: 'Documentacion Adjunta',
-            dataPath: 'attachedDocumentation'
-          },
-          {
-            name: 'customer',
-            value: '',
-            placeholder: 'Cliente',
-            dataPath: 'customer'
-          },
-          {
-            name: 'communication.name',
-            value: '',
-            placeholder: 'Nombre de la Persona a Notificar',
-            dataPath: 'communication.name'
-          },
-          {
-            name: 'rol',
-            value: '',
-            placeholder: 'Rol de la Persona a Notificar',
-            dataPath: 'communication.rol'
-          },
-          {
-            name: 'date',
-            value: '',
-            placeholder: 'Fecha de la Notificacion',
-            dataPath: 'communication.date'
+            placeholder: 'Reporte',
+            dataPath: 'report'
           }
         ]
       }
@@ -162,11 +70,16 @@ export class LessonsComponent implements OnInit {
   constructor(private store: Store<CoreState>, private route: ActivatedRoute) {}
 
   ngOnInit() {
-    this.store.dispatch(new LoadChanges(this.getProjectId()));
-    this.data = this.store.pipe(select(s => s.changes.data));
+    this.store.dispatch(new LoadLessons(this.getProjectId()));
+    this.data = this.store.pipe(select(s => s.lessons.data));
   }
 
   getProjectId() {
     return this.route.snapshot.paramMap.get('projectId');
+  }
+
+  pushChanges(data) {
+    const projectId = this.getProjectId();
+    this.store.dispatch(new UpdateLessons({ lessons: data, projectId }));
   }
 }
