@@ -10,6 +10,8 @@ import { ConfigOneComponent } from '../features/integration/components/config-on
 import { ConfigTwoComponent } from '../features/integration/components/config-two/config-two.component';
 import { ChangesComponent } from '../features/integration/components/changes/changes.component';
 import { LessonsComponent } from '../features/integration/components/lessons/lessons.component';
+import { ResourcesComponent } from '../features/resources/resources.component';
+import { TeamsComponent } from '../features/resources/components/teams/teams.component';
 
 const routes: Routes = [
   {
@@ -50,13 +52,24 @@ const routes: Routes = [
             path: 'lessons',
             component: LessonsComponent,
             pathMatch: 'full'
+          },
+          {
+            path: '',
+            redirectTo: 'constitution',
+            pathMatch: 'full'
           }
         ]
       },
       {
-        path: 'providers',
-        component: ProvidersComponent,
-        pathMatch: 'full'
+        path: 'resources',
+        component: ResourcesComponent,
+        children: [
+          {
+            path: 'teams',
+            component: TeamsComponent,
+            pathMatch: 'full'
+          }
+        ]
       },
       {
         path: '',

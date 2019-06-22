@@ -8,6 +8,7 @@ import { ConfigOneEffects } from './config-one';
 import { ConfigTwoEffects } from './config-two';
 import { ChangesEffects } from './changes';
 import { LessonsEffects } from './lessons';
+import { TeamsEffects } from './teams';
 
 export const effects: any[] = [
   HeaderMenuEffects,
@@ -19,5 +20,6 @@ export const effects: any[] = [
   ConfigOneEffects,
   ConfigTwoEffects,
   ChangesEffects,
-  LessonsEffects
+  LessonsEffects,
+  TeamsEffects
 ];
