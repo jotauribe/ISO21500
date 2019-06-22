@@ -10,34 +10,34 @@ const teamMembersSchema = new Schema({
   goals: {
     scopeGoals: {
       goals: { type: String, default: '' },
-      commets: { type: String, default: '' }
+      comments: { type: String, default: '' }
     },
     qualityGoals: {
       goals: { type: String, default: '' },
-      commets: { type: String, default: '' }
+      comments: { type: String, default: '' }
     },
     planningGoals: {
       goals: { type: String, default: '' },
-      commets: { type: String, default: '' }
+      comments: { type: String, default: '' }
     },
     budgetGoals: {
       goals: { type: String, default: '' },
-      commets: { type: String, default: '' }
+      comments: { type: String, default: '' }
     }
   },
 
   interpersonalSkills: {
     leadership: {
       indicators: { type: String, default: '' },
-      commets: { type: String, default: '' }
+      comments: { type: String, default: '' }
     },
     communication: {
       indicators: { type: String, default: '' },
-      commets: { type: String, default: '' }
+      comments: { type: String, default: '' }
     },
     teamWork: {
       indicators: { type: String, default: '' },
-      commets: { type: String, default: '' }
+      comments: { type: String, default: '' }
     },
     decisions: {
       indicators: { type: String, default: '' },
@@ -45,16 +45,16 @@ const teamMembersSchema = new Schema({
     },
     conflictManagement: {
       indicators: { type: String, default: '' },
-      commets: { type: String, default: '' }
+      comments: { type: String, default: '' }
     },
     assertiveness: {
       indicators: { type: String, default: '' },
-      commets: { type: String, default: '' }
+      comments: { type: String, default: '' }
     }
   },
   personalPlan: {
     justification: { type: String, default: '' },
-    strongholds: { type: String, default: '' },
+    strengths: { type: String, default: '' },
     improvementArea: { type: String, default: '' }
   }
 });

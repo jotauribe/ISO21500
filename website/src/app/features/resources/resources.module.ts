@@ -6,9 +6,15 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { TeamsComponent } from './components/teams/teams.component';
 import { MembersComponent } from './components/members/members.component';
+import { TeamManagementComponent } from './components/team-management/team-management.component';
 
 @NgModule({
-  declarations: [ResourcesComponent, TeamsComponent, MembersComponent],
+  declarations: [
+    ResourcesComponent,
+    TeamsComponent,
+    MembersComponent,
+    TeamManagementComponent
+  ],
   imports: [
     CommonModule,
     SharedModule,

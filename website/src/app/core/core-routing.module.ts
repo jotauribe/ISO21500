@@ -12,6 +12,7 @@ import { LessonsComponent } from '../features/integration/components/lessons/les
 import { ResourcesComponent } from '../features/resources/resources.component';
 import { TeamsComponent } from '../features/resources/components/teams/teams.component';
 import { MembersComponent } from '../features/resources/components/members/members.component';
+import { TeamManagementComponent } from '../features/resources/components/team-management/team-management.component';
 
 const routes: Routes = [
   {
@@ -72,6 +73,11 @@ const routes: Routes = [
           {
             path: 'members',
             component: MembersComponent,
+            pathMatch: 'full'
+          },
+          {
+            path: 'team_management',
+            component: TeamManagementComponent,
             pathMatch: 'full'
           }
         ]
