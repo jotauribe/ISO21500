@@ -11,7 +11,7 @@ const teamMembersSchema = new Schema({
       name: { type: String, default: '' },
       lastName: { type: String, default: '' },
       rol: { type: String, default: '' },
-      departament: { type: String, default: '' },
+      department: { type: String, default: '' },
       email: { type: String, default: '', unique: true }
     }
   ]

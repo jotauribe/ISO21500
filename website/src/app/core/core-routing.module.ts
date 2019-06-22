@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { ProjectDashboardComponent } from './components/project-dashboard/project-dashboard.component';
 import { ConstitutionComponent } from '../features/integration/components/constitution/constitution.component';
-import { ProvidersComponent } from '../features/acquisitions/components/providers/providers.component';
 import { GuardsService } from './guards.service';
 import { IntegrationComponent } from '../features/integration/integration.component';
 import { PlanningComponent } from '../features/integration/components/planning/planning.component';
@@ -12,6 +11,7 @@ import { ChangesComponent } from '../features/integration/components/changes/cha
 import { LessonsComponent } from '../features/integration/components/lessons/lessons.component';
 import { ResourcesComponent } from '../features/resources/resources.component';
 import { TeamsComponent } from '../features/resources/components/teams/teams.component';
+import { MembersComponent } from '../features/resources/components/members/members.component';
 
 const routes: Routes = [
   {
@@ -67,6 +67,11 @@ const routes: Routes = [
           {
             path: 'teams',
             component: TeamsComponent,
+            pathMatch: 'full'
+          },
+          {
+            path: 'members',
+            component: MembersComponent,
             pathMatch: 'full'
           }
         ]

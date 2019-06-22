@@ -33,6 +33,9 @@
           {{ i[itemSchema.prefix] }}
         </span>
         {{ i[itemSchema.title] }}
+        <span *ngIf="i[itemSchema.sufix]" class="gpt-list-item__title__sufix">{{
+          i[itemSchema.sufix]
+        }}</span>
       </div>
       <mat-card-subtitle>
         <p>
