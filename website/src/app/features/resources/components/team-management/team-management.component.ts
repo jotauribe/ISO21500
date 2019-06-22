@@ -22,7 +22,6 @@ export class TeamManagementComponent implements OnInit {
         title: 'Plan de Desarrollo Personal',
         dataPath: 'personalPlan',
         isList: false,
-
         fields: ['justification', 'strengths', 'improvementArea']
       },
       {
@@ -88,17 +87,20 @@ export class TeamManagementComponent implements OnInit {
       {
         name: 'justification',
         value: '',
-        placeholder: 'Vision/Justificacion del Proyecto'
+        placeholder: 'Vision/Justificacion del Proyecto',
+        dataPath: 'personalPlan.justification'
       },
       {
         name: 'strengths',
         value: '',
-        placeholder: 'Fortalezas Personales'
+        placeholder: 'Fortalezas Personales',
+        dataPath: 'personalPlan.strengths'
       },
       {
         name: 'improvementArea',
         value: '',
-        placeholder: 'Areas de Mejora'
+        placeholder: 'Areas de Mejora',
+        dataPath: 'personalPlan.improvementArea'
       }
     ]
   };
