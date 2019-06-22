@@ -24,6 +24,7 @@ export class MembersComponent implements OnInit {
         isList: true,
         schema: {
           title: 'name',
+          sufix: 'lastName',
           prefix: 'rol',
           secondaryInfo: [
             { title: 'Departamento', info: 'department' },
