@@ -10,6 +10,7 @@ import { ConfigOneComponent } from '../features/integration/components/config-on
 import { ConfigTwoComponent } from '../features/integration/components/config-two/config-two.component';
 import { ChangesComponent } from '../features/integration/components/changes/changes.component';
 import { LessonsComponent } from '../features/integration/components/lessons/lessons.component';
+import { ResourcesComponent } from '../features/resources/resources.component';
 
 const routes: Routes = [
   {
@@ -54,8 +55,8 @@ const routes: Routes = [
         ]
       },
       {
-        path: 'providers',
-        component: ProvidersComponent,
+        path: 'resources',
+        component: ResourcesComponent,
         pathMatch: 'full'
       },
       {
