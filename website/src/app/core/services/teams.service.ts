@@ -12,13 +12,13 @@ export class TeamsService {
 
   fetchTeams(projectId) {
     return this.http
-      .get(`${this.url}/${projectId}/integration/teams`)
+      .get(`${this.url}/${projectId}/resources/teams`)
       .pipe(map((response: any) => response[0]));
   }
 
   updateTeams({ projectId, teamsId, teams }) {
     return this.http
-      .patch(`${this.url}/${projectId}/integration/teams/${teamsId}`, teams)
+      .patch(`${this.url}/${projectId}/resources/teams/${teamsId}`, teams)
       .pipe(map((response: any) => response.updatedDocument));
   }
 }

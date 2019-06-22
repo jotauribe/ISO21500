@@ -15,7 +15,6 @@ import { ConfigOneComponent } from './components/config-one/config-one.component
 import { ConfigTwoComponent } from './components/config-two/config-two.component';
 import { ChangesComponent } from './components/changes/changes.component';
 import { LessonsComponent } from './components/lessons/lessons.component';
-import { TeamsComponent } from './components/teams/teams.component';
 
 @NgModule({
   declarations: [
@@ -29,8 +28,7 @@ import { TeamsComponent } from './components/teams/teams.component';
     ConfigOneComponent,
     ConfigTwoComponent,
     ChangesComponent,
-    LessonsComponent,
-    TeamsComponent
+    LessonsComponent
   ],
   imports: [
     CommonModule,

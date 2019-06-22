@@ -11,6 +11,7 @@ import { ConfigTwoComponent } from '../features/integration/components/config-tw
 import { ChangesComponent } from '../features/integration/components/changes/changes.component';
 import { LessonsComponent } from '../features/integration/components/lessons/lessons.component';
 import { ResourcesComponent } from '../features/resources/resources.component';
+import { TeamsComponent } from '../features/resources/components/teams/teams.component';
 
 const routes: Routes = [
   {
@@ -51,13 +52,24 @@ const routes: Routes = [
             path: 'lessons',
             component: LessonsComponent,
             pathMatch: 'full'
+          },
+          {
+            path: '',
+            redirectTo: 'constitution',
+            pathMatch: 'full'
           }
         ]
       },
       {
         path: 'resources',
         component: ResourcesComponent,
-        pathMatch: 'full'
+        children: [
+          {
+            path: 'teams',
+            component: TeamsComponent,
+            pathMatch: 'full'
+          }
+        ]
       },
       {
         path: '',

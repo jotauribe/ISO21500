@@ -4,9 +4,10 @@ import { ResourcesComponent } from './resources.component';
 import { SharedModule } from '~/app/shared/shared.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
+import { TeamsComponent } from './components/teams/teams.component';
 
 @NgModule({
-  declarations: [ResourcesComponent],
+  declarations: [ResourcesComponent, TeamsComponent],
   imports: [
     CommonModule,
     SharedModule,
