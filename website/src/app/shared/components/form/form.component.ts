@@ -34,7 +34,8 @@ export class FormComponent implements OnInit, OnChanges {
   ngOnChanges(changes: SimpleChanges): void {
     this.sections = this.extractItems();
 
-    if (this.form) this.initForm(changes.data.currentValue);
+    if (this.form && !changes.data.firstChange)
+      this.initForm(changes.data.currentValue);
   }
 
   ngOnInit() {

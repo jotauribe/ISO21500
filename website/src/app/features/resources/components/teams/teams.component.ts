@@ -4,6 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Store, select } from '@ngrx/store';
 import { CoreState } from '~/app/core/store';
 import { UpdateTeams, LoadTeams } from '~/app/core/store/teams/teams.actions';
+import { startWith } from 'rxjs/operators';
 
 @Component({
   selector: 'gpt-teams',
@@ -42,9 +43,15 @@ export class TeamsComponent implements OnInit {
 
   data: Observable<any>;
 
+  isDataLoaded: Observable<boolean>;
+
   constructor(private store: Store<CoreState>, private route: ActivatedRoute) {
     this.store.dispatch(new LoadTeams(this.getProjectId()));
     this.data = this.store.pipe(select(s => s.teams.data));
+    this.isDataLoaded = this.store.pipe(
+      select(s => s.teams.isLoaded),
+      startWith(false)
+    );
   }
 
   ngOnInit() {}
