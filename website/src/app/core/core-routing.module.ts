@@ -14,6 +14,7 @@ import { TeamsComponent } from '../features/resources/components/teams/teams.com
 import { MembersComponent } from '../features/resources/components/members/members.component';
 import { TeamManagementComponent } from '../features/resources/components/team-management/team-management.component';
 import { ActivitiesComponent } from '../features/resources/components/activities/activities.component';
+import { ResourcesListComponent } from '../features/resources/components/resources-list/resources-list.component';
 
 const routes: Routes = [
   {
@@ -84,6 +85,11 @@ const routes: Routes = [
           {
             path: 'activities',
             component: ActivitiesComponent,
+            pathMatch: 'full'
+          },
+          {
+            path: 'resources',
+            component: ResourcesListComponent,
             pathMatch: 'full'
           }
         ]

@@ -8,6 +8,7 @@ import { TeamsComponent } from './components/teams/teams.component';
 import { MembersComponent } from './components/members/members.component';
 import { TeamManagementComponent } from './components/team-management/team-management.component';
 import { ActivitiesComponent } from './components/activities/activities.component';
+import { ResourcesListComponent } from './components/resources-list/resources-list.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { ActivitiesComponent } from './components/activities/activities.componen
     TeamsComponent,
     MembersComponent,
     TeamManagementComponent,
-    ActivitiesComponent
+    ActivitiesComponent,
+    ResourcesListComponent
   ],
   imports: [
     CommonModule,
