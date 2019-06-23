@@ -32,6 +32,11 @@ import { ChangesActions, ChangesState, changesReducer } from './changes';
 import { LessonsActions, LessonsState, lessonsReducer } from './lessons';
 import { TeamsActions, TeamsState, teamsReducer } from './teams';
 import { MembersActions, MembersState, membersReducer } from './members';
+import {
+  TeamManagementActions,
+  TeamManagementState,
+  teamManagementReducer
+} from './team-management';
 
 // each reducer is reponsible for manipulating a certain state
 export interface CoreState {
@@ -47,6 +52,7 @@ export interface CoreState {
   lessons: LessonsState;
   teams: TeamsState;
   members: MembersState;
+  teamManagement: TeamManagementState;
   // router: RouterReducerState;
 }
 
@@ -62,7 +68,8 @@ export const CoreReducers: ActionReducerMap<CoreState> = {
   changes: changesReducer,
   lessons: lessonsReducer,
   teams: teamsReducer,
-  members: membersReducer
+  members: membersReducer,
+  teamManagement: teamManagementReducer
   // router: routerReducer
 };
 
@@ -79,5 +86,6 @@ export const CoreActionTypes = [
   ChangesActions.Types,
   LessonsActions.Types,
   TeamsActions.Types,
-  MembersActions.Types
+  MembersActions.Types,
+  TeamManagementActions.Types
 ];
