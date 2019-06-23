@@ -16,7 +16,8 @@ const activitySchema = new Schema({
   problemsForNextPeriod: { type: String, default: '' },
   identifiedRisk: [
     {
-      risk: { type: String, default: '' }
+      name: { type: String, default: '' },
+      description: { type: String, default: '' }
     }
   ]
 });

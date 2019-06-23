@@ -11,6 +11,7 @@ import { LessonsEffects } from './lessons';
 import { TeamsEffects } from './teams';
 import { MembersEffects } from './members';
 import { TeamManagementEffects } from './team-management';
+import { ActivitiesEffects } from './activities';
 
 export const effects: any[] = [
   HeaderMenuEffects,
@@ -25,5 +26,6 @@ export const effects: any[] = [
   LessonsEffects,
   TeamsEffects,
   MembersEffects,
-  TeamManagementEffects
+  TeamManagementEffects,
+  ActivitiesEffects
 ];

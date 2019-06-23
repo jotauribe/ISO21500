@@ -7,13 +7,15 @@ import { RouterModule } from '@angular/router';
 import { TeamsComponent } from './components/teams/teams.component';
 import { MembersComponent } from './components/members/members.component';
 import { TeamManagementComponent } from './components/team-management/team-management.component';
+import { ActivitiesComponent } from './components/activities/activities.component';
 
 @NgModule({
   declarations: [
     ResourcesComponent,
     TeamsComponent,
     MembersComponent,
-    TeamManagementComponent
+    TeamManagementComponent,
+    ActivitiesComponent
   ],
   imports: [
     CommonModule,
