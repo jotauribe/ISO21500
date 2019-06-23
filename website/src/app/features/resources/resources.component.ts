@@ -10,7 +10,7 @@ export class ResourcesComponent implements OnInit {
     { path: ['teams'], label: 'Equipo' },
     { path: ['members'], label: 'Miembros' },
     { path: ['team_management'], label: 'Administracion de Equipos' },
-    { path: ['team_activities'], label: 'Actividades' },
+    { path: ['activities'], label: 'Actividades' },
     { path: ['resources'], label: 'Recursos' }
   ];
 

@@ -13,6 +13,7 @@ import { ResourcesComponent } from '../features/resources/resources.component';
 import { TeamsComponent } from '../features/resources/components/teams/teams.component';
 import { MembersComponent } from '../features/resources/components/members/members.component';
 import { TeamManagementComponent } from '../features/resources/components/team-management/team-management.component';
+import { ActivitiesComponent } from '../features/resources/components/activities/activities.component';
 
 const routes: Routes = [
   {
@@ -78,6 +79,11 @@ const routes: Routes = [
           {
             path: 'team_management',
             component: TeamManagementComponent,
+            pathMatch: 'full'
+          },
+          {
+            path: 'activities',
+            component: ActivitiesComponent,
             pathMatch: 'full'
           }
         ]

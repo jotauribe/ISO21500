@@ -62,7 +62,6 @@ export class TeamsComponent implements OnInit {
 
   pushChanges(data) {
     const projectId = this.getProjectId();
-
     this.store.dispatch(new UpdateTeams({ teams: data, projectId }));
   }
 }
