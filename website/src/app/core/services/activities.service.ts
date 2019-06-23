@@ -12,14 +12,14 @@ export class ActivitiesService {
 
   fetchActivities(projectId) {
     return this.http
-      .get(`${this.url}/${projectId}/integration/activities`)
+      .get(`${this.url}/${projectId}/resources/activities`)
       .pipe(map((response: any) => response[0]));
   }
 
   updateActivities({ projectId, activitiesId, activities }) {
     return this.http
       .patch(
-        `${this.url}/${projectId}/integration/activities/${activitiesId}`,
+        `${this.url}/${projectId}/resources/activities/${activitiesId}`,
         activities
       )
       .pipe(map((response: any) => response.updatedDocument));
