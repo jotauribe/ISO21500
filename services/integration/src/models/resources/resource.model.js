@@ -11,7 +11,7 @@ const resourceSchema = new Schema({
       kind: { type: String, default: '' },
       name: { type: String, default: '' },
       quantity: { type: String, default: '' },
-      commets: { type: String, default: '' }
+      comments: { type: String, default: '' }
     }
   ]
 });
