@@ -1,31 +1,7 @@
-<div class="container">
-  <div class="header">
-    <h2 class="left">Proveedores</h2>
-    <button (click)="openDialog()" class="rigth" mat-icon-button>
-      <mat-icon>add</mat-icon>
-    </button>
-  </div>
-  <table
-    [dataSource]="dataSource" class="objectives" mat-table>
-    <!-- Position Column -->
-    <ng-container matColumnDef="id">
-      <th *matHeaderCellDef mat-header-cell>
-        NIT/CC
-      </th>
-      <td *matCellDef="let element" mat-cell>
-        {{element.id}}
-      </td>
-    </ng-container>
-    <!-- Name Column -->
-    <ng-container matColumnDef="name">
-      <th *matHeaderCellDef mat-header-cell>
-        Nombre
-      </th>
-      <td *matCellDef="let element" mat-cell>
-        {{element.name}}
-      </td>
-    </ng-container>
-    <tr *matHeaderRowDef="displayedColumns" mat-header-row></tr>
-    <tr *matRowDef="let row; columns: displayedColumns;" mat-row></tr>
-  </table>
-</div>
+<ng-container *ngIf="isDataLoaded | async">
+  <gpt-form
+    [schema]="schema"
+    [data]="data | async"
+    (onChanges)="pushChanges($event)"
+  ></gpt-form>
+</ng-container>

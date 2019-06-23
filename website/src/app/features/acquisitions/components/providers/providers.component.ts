@@ -1,27 +1,13 @@
-import { MatDialog, MatTableDataSource } from '@angular/material';
-import { FormBuilder, FormGroup } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
-import { NewProviderComponent } from '../new-provider/new-provider.component';
-
-export interface Objective {
-  id: number;
-  name: string;
-}
-
-const PROVIDERS: Objective[] = [
-  {
-    id: 123890,
-    name: 'CocaCola'
-  },
-  {
-    id: 2189022,
-    name: 'Postobon'
-  },
-  {
-    id: 48920078,
-    name: 'Pepsi'
-  }
-];
+import { Observable } from 'rxjs';
+import { ActivatedRoute } from '@angular/router';
+import { Store, select } from '@ngrx/store';
+import { CoreState } from '~/app/core/store';
+import { startWith } from 'rxjs/operators';
+import {
+  UpdateProviders,
+  LoadProviders
+} from '~/app/core/store/providers/providers.actions';
 
 @Component({
   selector: 'gpt-providers',
@@ -29,20 +15,67 @@ const PROVIDERS: Objective[] = [
   styleUrls: ['./providers.component.scss']
 })
 export class ProvidersComponent implements OnInit {
-  displayedColumns: string[] = ['id', 'name'];
-  dataSource = new MatTableDataSource(PROVIDERS);
+  schema = {
+    sections: [
+      {
+        name: 'teamMembers',
+        title: 'Miembros del Equipo del Proyecto',
+        dataPath: 'teamMembers',
+        isList: true,
+        schema: {
+          title: 'name',
+          sufix: 'lastName',
+          prefix: 'rol',
+          secondaryInfo: [
+            { title: 'Departamento', info: 'department' },
+            { title: 'Email', info: 'email' }
+          ]
+        },
+        fields: [
+          { name: 'name', value: '', placeholder: 'Nombre' },
+          { name: 'lastName', value: '', placeholder: 'Apellido' },
+          {
+            name: 'rol',
+            value: '',
+            placeholder: 'Funcion/Rol en el Proyecto'
+          },
+          {
+            name: 'department',
+            value: '',
+            placeholder: 'Departament'
+          },
+          {
+            name: 'email',
+            value: '',
+            placeholder: 'email'
+          }
+        ]
+      }
+    ]
+  };
 
-  form: FormGroup;
+  data: Observable<any>;
 
-  constructor(private formBuilder: FormBuilder, private dialog: MatDialog) {}
+  isDataLoaded: Observable<boolean>;
+
+  constructor(private store: Store<CoreState>, private route: ActivatedRoute) {
+    this.store.dispatch(new LoadProviders(this.getProjectId()));
+    this.data = this.store.pipe(select(s => s.members.data));
+    this.isDataLoaded = this.store.pipe(
+      select(s => s.members.isLoaded),
+      startWith(false)
+    );
+  }
 
   ngOnInit() {}
 
-  openDialog() {
-    const ref = this.dialog.open(NewProviderComponent);
-    ref.afterClosed().subscribe(result => {
-      PROVIDERS.push(result);
-      this.dataSource = new MatTableDataSource<Objective>(PROVIDERS);
-    });
+  getProjectId() {
+    return this.route.snapshot.paramMap.get('projectId');
+  }
+
+  pushChanges(data) {
+    const projectId = this.getProjectId();
+
+    this.store.dispatch(new UpdateProviders({ members: data, projectId }));
   }
 }
