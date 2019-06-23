@@ -1,6 +1,5 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
-const uniqueValidator = require('mongoose-unique-validator');
 
 const providerSchema = new Schema({
   projectId: {
@@ -21,7 +20,5 @@ const providerSchema = new Schema({
     }
   ]
 });
-
-providerSchema.plugin(uniqueValidator);
 
 module.exports = mongoose.model('providers', providerSchema);

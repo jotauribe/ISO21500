@@ -18,36 +18,42 @@ export class ProvidersComponent implements OnInit {
   schema = {
     sections: [
       {
-        name: 'teamMembers',
-        title: 'Miembros del Equipo del Proyecto',
-        dataPath: 'teamMembers',
+        name: 'providers',
+        title: 'Lista de Proveedores',
+        dataPath: 'providers',
         isList: true,
         schema: {
           title: 'name',
-          sufix: 'lastName',
-          prefix: 'rol',
+          prefix: 'nitOrCc',
           secondaryInfo: [
-            { title: 'Departamento', info: 'department' },
-            { title: 'Email', info: 'email' }
+            { title: 'Tipo de Servicio', info: 'serviceType' },
+            { title: 'Telefono', info: 'phone' },
+            { title: 'Email', info: 'email' },
+            { title: 'Direccion', info: 'address' }
           ]
         },
         fields: [
           { name: 'name', value: '', placeholder: 'Nombre' },
-          { name: 'lastName', value: '', placeholder: 'Apellido' },
+          { name: 'nitOrCc', value: '', placeholder: 'NIT o CC' },
           {
-            name: 'rol',
+            name: 'serviceType',
             value: '',
-            placeholder: 'Funcion/Rol en el Proyecto'
+            placeholder: 'Tipo de Servicio'
           },
           {
-            name: 'department',
+            name: 'phone',
             value: '',
-            placeholder: 'Departament'
+            placeholder: 'Telefono'
           },
           {
             name: 'email',
             value: '',
-            placeholder: 'email'
+            placeholder: 'Email'
+          },
+          {
+            name: 'address',
+            value: '',
+            placeholder: 'Direccion'
           }
         ]
       }
@@ -60,9 +66,9 @@ export class ProvidersComponent implements OnInit {
 
   constructor(private store: Store<CoreState>, private route: ActivatedRoute) {
     this.store.dispatch(new LoadProviders(this.getProjectId()));
-    this.data = this.store.pipe(select(s => s.members.data));
+    this.data = this.store.pipe(select(s => s.providers.data));
     this.isDataLoaded = this.store.pipe(
-      select(s => s.members.isLoaded),
+      select(s => s.providers.isLoaded),
       startWith(false)
     );
   }
@@ -76,6 +82,6 @@ export class ProvidersComponent implements OnInit {
   pushChanges(data) {
     const projectId = this.getProjectId();
 
-    this.store.dispatch(new UpdateProviders({ members: data, projectId }));
+    this.store.dispatch(new UpdateProviders({ providers: data, projectId }));
   }
 }
