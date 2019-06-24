@@ -1,0 +1,7 @@
+<ng-container *ngIf="isDataLoaded | async">
+  <gpt-form
+    [schema]="schema"
+    [data]="data | async"
+    (onChanges)="pushChanges($event)"
+  ></gpt-form>
+</ng-container>

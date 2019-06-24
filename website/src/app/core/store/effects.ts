@@ -15,6 +15,7 @@ import { ActivitiesEffects } from './activities';
 import { ResourcesEffects } from './resources';
 import { ProvidersEffects } from './providers';
 import { AcquisitionsEffects } from './acquisitions';
+import { RisksEffects } from './risks';
 
 export const effects: any[] = [
   HeaderMenuEffects,
@@ -33,5 +34,6 @@ export const effects: any[] = [
   ActivitiesEffects,
   ResourcesEffects,
   ProvidersEffects,
-  AcquisitionsEffects
+  AcquisitionsEffects,
+  RisksEffects
 ];
