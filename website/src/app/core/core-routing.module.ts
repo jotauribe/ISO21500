@@ -18,6 +18,7 @@ import { ResourcesListComponent } from '../features/resources/components/resourc
 import { AcquisitionsComponent } from '../features/acquisitions/acquisitions.component';
 import { ProvidersComponent } from '../features/acquisitions/components/providers/providers.component';
 import { AcquisitionListComponent } from '../features/acquisitions/components/acquisition-list/acquisition-list.component';
+import { RisksComponent } from '../features/integration/components/risks/risks.component';
 
 const routes: Routes = [
   {
@@ -57,6 +58,11 @@ const routes: Routes = [
           {
             path: 'lessons',
             component: LessonsComponent,
+            pathMatch: 'full'
+          },
+          {
+            path: 'risks',
+            component: RisksComponent,
             pathMatch: 'full'
           },
           {

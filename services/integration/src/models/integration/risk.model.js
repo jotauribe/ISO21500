@@ -8,14 +8,14 @@ const riskSchema = new Schema({
   },
   description: {
     management: { type: String, default: '' },
-    estimation: { type: String, default: '' },
-    roles: [
-      {
-        task: { type: String, default: '' },
-        assignedTo: { type: String, default: '' }
-      }
-    ]
+    estimation: { type: String, default: '' }
   },
+  roles: [
+    {
+      task: { type: String, default: '' },
+      assignedTo: { type: String, default: '' }
+    }
+  ],
   riskAreas: [
     {
       area: { type: String, default: '' },
