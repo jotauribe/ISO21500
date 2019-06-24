@@ -12,76 +12,81 @@
   >
     <mat-icon svgIcon="add"></mat-icon>
   </button>
-  <div *ngFor="let i of itemsValue; index as j" class="gpt-list-item">
-    <a
-      type="button"
-      mat-icon-button
-      class="gpt-list-item__menu button--small"
-      [matMenuTriggerFor]="itemMenu"
-    >
-      <mat-icon svgIcon="more-menu" class="button--solid button--small">
-      </mat-icon>
-    </a>
-    <mat-menu #itemMenu>
-      <button mat-menu-item (click)="onEdit(i, j)">Editar</button>
-      <button *ngIf="!isFixedLength" mat-menu-item>Remover</button>
-    </mat-menu>
+  <ng-container *ngFor="let i of itemsValue; index as j">
+    <div *ngIf="i" class="gpt-list-item">
+      <button
+        type="button"
+        mat-icon-button
+        class="gpt-list-item__menu button--small"
+        [matMenuTriggerFor]="itemMenu"
+      >
+        <mat-icon svgIcon="more-menu" class="button--solid button--small">
+        </mat-icon>
+      </button>
+      <mat-menu #itemMenu>
+        <button mat-menu-item (click)="onEdit(i, j)">Editar</button>
+        <button *ngIf="!isFixedLength" mat-menu-item>Remover</button>
+      </mat-menu>
 
-    <div class="gpt-list-item__main-info">
-      <div class="gpt-list-item__title">
-        <span *ngIf="i[itemSchema.prefix]" class="gpt-list-item__title__prefix">
-          {{ i[itemSchema.prefix] }}
-        </span>
-        {{ i[itemSchema.title] }}
-        <span *ngIf="i[itemSchema.sufix]" class="gpt-list-item__title__sufix">{{
-          i[itemSchema.sufix]
-        }}</span>
-      </div>
-      <mat-card-subtitle>
-        <p>
-          {{ i[itemSchema.mainInfo] }}
-        </p>
-      </mat-card-subtitle>
-    </div>
-    <div *ngIf="itemSchema.sections" class="gpt-list-item__sections">
-      <div
-        *ngFor="let section of itemSchema.sections"
-        class="gpt-list-item__section"
-      >
-        <div class="gpt-list-item__section__label">
-          {{ section.label }}
-        </div>
-        <div class="gpt-list-item__section__content">
-          <div
-            *ngFor="let data of section.data"
-            class="gpt-list-item__section__content__item"
+      <div class="gpt-list-item__main-info">
+        <div class="gpt-list-item__title">
+          <span
+            *ngIf="i[itemSchema.prefix]"
+            class="gpt-list-item__title__prefix"
           >
-            <div class="gpt-list-item__section__item__title">
-              {{ data.title }}
-            </div>
-            <mat-card-subtitle>
-              <p>
-                {{ getFromItem(i, data.info) }}
-              </p>
-            </mat-card-subtitle>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="gpt-list-item__secondary-info">
-      <div
-        *ngFor="let secondaryInfo of itemSchema.secondaryInfo"
-        class="gpt-list-item__secondary-info-item"
-      >
-        <div class="gpt-list-item__secondary-info-item__title">
-          {{ secondaryInfo.title }}
+            {{ i[itemSchema.prefix] }}
+          </span>
+          {{ i[itemSchema.title] }}
+          <span *ngIf="i[itemSchema.sufix]" class="gpt-list-item__title__sufix">
+            {{ i[itemSchema.sufix] }}</span
+          >
         </div>
         <mat-card-subtitle>
           <p>
-            {{ i[secondaryInfo.info] }}
+            {{ i[itemSchema.mainInfo] }}
           </p>
         </mat-card-subtitle>
       </div>
+      <div *ngIf="itemSchema.sections" class="gpt-list-item__sections">
+        <div
+          *ngFor="let section of itemSchema.sections"
+          class="gpt-list-item__section"
+        >
+          <div class="gpt-list-item__section__label">
+            {{ section.label }}
+          </div>
+          <div class="gpt-list-item__section__content">
+            <div
+              *ngFor="let data of section.data"
+              class="gpt-list-item__section__content__item"
+            >
+              <div class="gpt-list-item__section__item__title">
+                {{ data.title }}
+              </div>
+              <mat-card-subtitle>
+                <p>
+                  {{ getFromItem(i, data.info) }}
+                </p>
+              </mat-card-subtitle>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="gpt-list-item__secondary-info">
+        <div
+          *ngFor="let secondaryInfo of itemSchema.secondaryInfo"
+          class="gpt-list-item__secondary-info-item"
+        >
+          <div class="gpt-list-item__secondary-info-item__title">
+            {{ secondaryInfo.title }}
+          </div>
+          <mat-card-subtitle>
+            <p>
+              {{ i[secondaryInfo.info] }}
+            </p>
+          </mat-card-subtitle>
+        </div>
+      </div>
     </div>
-  </div>
+  </ng-container>
 </div>
