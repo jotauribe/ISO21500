@@ -12,13 +12,13 @@ export class RisksService {
 
   fetchRisks(projectId) {
     return this.http
-      .get(`${this.url}/${projectId}/resources/risks`)
+      .get(`${this.url}/${projectId}/integration/risks`)
       .pipe(map((response: any) => response[0]));
   }
 
   updateRisks({ projectId, risksId, risks }) {
     return this.http
-      .patch(`${this.url}/${projectId}/resources/risks/${risksId}`, risks)
+      .patch(`${this.url}/${projectId}/integration/risks/${risksId}`, risks)
       .pipe(map((response: any) => response.updatedDocument));
   }
 }

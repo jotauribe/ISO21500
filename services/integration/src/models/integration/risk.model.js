@@ -13,6 +13,7 @@ const riskSchema = new Schema({
   roles: [
     {
       task: { type: String, default: '' },
+      description: { type: String, default: '' },
       assignedTo: { type: String, default: '' }
     }
   ],

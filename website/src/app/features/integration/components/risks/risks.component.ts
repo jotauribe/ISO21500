@@ -4,6 +4,7 @@ import { CoreState } from '~/app/core/store';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 import { UpdateRisks, LoadRisks } from '~/app/core/store/risks/risks.actions';
+import { startWith } from 'rxjs/operators';
 
 @Component({
   selector: 'gpt-risks',
@@ -14,122 +15,215 @@ export class RisksComponent implements OnInit {
   schema = {
     sections: [
       {
-        name: 'methodology',
+        name: 'description',
         title: 'Metodologia',
+        dataPath: 'description',
         isList: false,
-        fields: ['communication', 'adaptation', 'keyAspects', 'planRevision']
+        fields: ['management', 'estimation']
       },
       {
-        name: 'processes',
-        title: 'Procesos',
+        name: 'probabilityLevels',
+        title: 'Niveles de Probabilidad',
+        dataPath: 'probabilityLevels',
+        isList: false,
+        fields: ['almostTrue', 'probable', 'posible', 'unlikely', 'rare']
+      },
+      {
+        name: 'budget',
+        title: 'Presupuesto Para la Gestion del Riesgo',
+        dataPath: 'budget',
+        isList: false,
+        isSingleField: true,
+        fields: ['budget']
+      },
+      {
+        name: 'protocols',
+        title: 'Protocolos',
+        dataPath: 'protocols',
+        isList: false,
+        fields: [
+          'contingency',
+          'riskControls',
+          'riskComunication',
+          'riskPlanAuditory'
+        ]
+      },
+      {
+        name: 'roles',
+        title: 'Distribucion de Roles y Responsabilidades',
         isList: true,
-        dataPath: 'processes',
+        dataPath: 'roles',
         schema: {
-          title: 'process',
-          prefix: 'phase',
-          mainInfo: 'status',
-          secondaryInfo: [
-            { title: 'Entradas', info: 'entries' },
-            { title: 'Salidas', info: 'outputs' },
-            { title: 'Dependencias', info: 'dependencies' }
-          ]
+          title: 'task',
+          mainInfo: 'description',
+          secondaryInfo: [{ title: 'Responsable', info: 'assignedTo' }]
         },
         fields: [
-          { name: 'phase', value: '', placeholder: 'Fase' },
+          { name: 'task', value: '', placeholder: 'Tarea' },
           {
-            name: 'process',
+            name: 'description',
             value: '',
-            placeholder: 'Proceso'
+            placeholder: 'Descripcion'
           },
           {
-            name: 'entries',
+            name: 'assignedTo',
             value: '',
-            placeholder: 'Entradas'
-          },
-          {
-            name: 'outputs',
-            value: '',
-            placeholder: 'Salidas'
-          },
-          {
-            name: 'dependencies',
-            value: '',
-            placeholder: 'Dependencias'
+            placeholder: 'Responsable'
           }
         ]
       },
       {
-        name: 'baselines',
-        title: 'Lineas Base',
+        name: 'riskAreas',
+        title: 'Categorias y Tipos de Riesgos',
         isList: true,
-        isFixedLength: true,
-        isObject: true,
-        dataPath: 'baselines',
+        dataPath: 'riskAreas',
         schema: {
-          titles: {
-            schedule: 'Linea base de tiempo / cronograma',
-            costs: 'Linea base de coste',
-            scope: 'Linea base de alcance',
-            quality: 'Linea base de calidad'
-          },
-          title: 'title',
-          prefix: undefined,
-          mainInfo: 'description',
+          title: 'area',
           secondaryInfo: [
-            { title: 'Umbral de variacion', info: 'variationTreshold' },
-            { title: 'Seguimiento y Control', info: 'controlTracing' }
+            { title: 'Tiempo', info: 'time' },
+            { title: 'Calidad', info: 'quality' },
+            { title: 'Costo', info: 'cost' },
+            { title: 'Otros', info: 'others' }
           ]
         },
         fields: [
-          { name: 'description', value: '', placeholder: 'Descripcion' },
+          { name: 'area', value: '', placeholder: 'Area' },
           {
-            name: 'variationTreshold',
+            name: 'time',
             value: '',
-            placeholder: 'Umbral de variacion'
+            placeholder: 'Tiempo'
           },
           {
-            name: 'controlTracing',
+            name: 'quality',
             value: '',
-            placeholder: 'Seguimiento y Control'
+            placeholder: 'Calidad'
+          },
+          {
+            name: 'cost',
+            value: '',
+            placeholder: 'Costo'
+          },
+          {
+            name: 'others',
+            value: '',
+            placeholder: 'Otros'
+          }
+        ]
+      },
+      {
+        name: 'riskCategories',
+        title: 'Areas de Tolerancia al Riesgo',
+        isList: true,
+        dataPath: 'riskCategories',
+        schema: {
+          title: 'kind',
+          secondaryInfo: [{ title: 'Description', info: 'description' }]
+        },
+        fields: [
+          { name: 'kind', value: '', placeholder: 'Tipo de Riesgo' },
+          {
+            name: 'description',
+            value: '',
+            placeholder: 'Description'
           }
         ]
       }
     ],
     fields: [
       {
-        name: 'communication',
+        name: 'management',
         value: '',
-        placeholder: 'Procesos de comunicacion entre Stakeholders',
-        dataPath: 'methodology.communication'
+        placeholder: 'Descripcion del Proceso de Gestion',
+        dataPath: 'description.management'
       },
       {
-        name: 'adaptation',
+        name: 'estimation',
         value: '',
-        placeholder: 'Medidas de adaptacion necesarias en los procesos',
-        dataPath: 'methodology.adaptation'
+        placeholder: 'Identificacion y Estimacion',
+        dataPath: 'description.estimation'
       },
       {
-        name: 'keyAspects',
+        name: 'almostTrue',
         value: '',
-        placeholder: 'Aspectos claves y Decisiones pendientes',
-        dataPath: 'methodology.keyAspects'
+        placeholder: 'Casi Cierto',
+        dataPath: 'probabilityLevels.almostTrue'
       },
       {
-        name: 'planRevision',
+        name: 'probable',
         value: '',
-        placeholder: 'Proceso de Revision del Plan Director del Proyecto',
-        dataPath: 'methodology.planRevision'
+        placeholder: 'Probable',
+        dataPath: 'probabilityLevels.probable'
+      },
+      {
+        name: 'posible',
+        value: '',
+        placeholder: 'Posible',
+        dataPath: 'probabilityLevels.posible'
+      },
+      {
+        name: 'unlikely',
+        value: '',
+        placeholder: 'Poco Probable',
+        dataPath: 'probabilityLevels.unlikely'
+      },
+      {
+        name: 'rare',
+        value: '',
+        placeholder: 'Raro',
+        dataPath: 'probabilityLevels.rare'
+      },
+      {
+        name: 'budget',
+        value: '',
+        dataPath: 'budget',
+        isWide: true
+      },
+      {
+        name: 'rare',
+        value: '',
+        placeholder: 'Raro',
+        dataPath: 'probabilityLevels.rare'
+      },
+      {
+        name: 'contingency',
+        value: '',
+        placeholder: 'Protocolo de Contingencia',
+        dataPath: 'protocols.contingency'
+      },
+      {
+        name: 'riskControls',
+        value: '',
+        placeholder: 'Protocolo de Control de Riesgos',
+        dataPath: 'protocols.riskControls'
+      },
+      {
+        name: 'riskComunication',
+        value: '',
+        placeholder: 'Comunicacion de Riesgos',
+        dataPath: 'protocols.riskComunication'
+      },
+      {
+        name: 'riskPlanAuditory',
+        value: '',
+        placeholder: 'Protocolo de Auditoria de Plan de Riesgos',
+        dataPath: 'protocols.riskPlanAuditory'
       }
     ]
   };
 
   data: Observable<any>;
 
+  isDataLoaded: Observable<boolean>;
+
   constructor(private store: Store<CoreState>, private route: ActivatedRoute) {}
 
   ngOnInit() {
     this.store.dispatch(new LoadRisks(this.getProjectId()));
     this.data = this.store.pipe(select(s => s.risks.data));
+    this.isDataLoaded = this.store.pipe(
+      select(s => s.risks.isLoaded),
+      startWith(false)
+    );
   }
 
   getProjectId() {
