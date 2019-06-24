@@ -11,19 +11,19 @@ export class SidebarComponent implements OnInit {
   links = [
     {
       href: 'integration',
-      title: 'Integration',
+      title: 'Integracion',
       icon: 'gpt_integration',
       isSvg: true
     },
     {
       href: 'resources',
-      title: 'Resources',
+      title: 'Recursos',
       icon: 'gpt_resources',
       isSvg: true
     },
     {
       href: 'acquisitions',
-      title: 'Acquisitions',
+      title: 'Adquisiciones',
       icon: 'gpt_acquisitions',
       isSvg: true
     }

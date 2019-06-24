@@ -17,6 +17,7 @@ import { ActivitiesComponent } from '../features/resources/components/activities
 import { ResourcesListComponent } from '../features/resources/components/resources-list/resources-list.component';
 import { AcquisitionsComponent } from '../features/acquisitions/acquisitions.component';
 import { ProvidersComponent } from '../features/acquisitions/components/providers/providers.component';
+import { AcquisitionListComponent } from '../features/acquisitions/components/acquisition-list/acquisition-list.component';
 
 const routes: Routes = [
   {
@@ -103,6 +104,11 @@ const routes: Routes = [
           {
             path: 'providers',
             component: ProvidersComponent,
+            pathMatch: 'full'
+          },
+          {
+            path: 'acquisitions',
+            component: AcquisitionListComponent,
             pathMatch: 'full'
           }
         ]

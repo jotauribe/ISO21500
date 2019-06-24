@@ -6,12 +6,14 @@ import { SharedModule } from '~/app/shared/shared.module';
 import { NewProviderComponent } from './components/new-provider/new-provider.component';
 import { AcquisitionsComponent } from './acquisitions.component';
 import { RouterModule } from '@angular/router';
+import { AcquisitionListComponent } from './components/acquisition-list/acquisition-list.component';
 
 @NgModule({
   declarations: [
     ProvidersComponent,
     NewProviderComponent,
-    AcquisitionsComponent
+    AcquisitionsComponent,
+    AcquisitionListComponent
   ],
   imports: [
     CommonModule,
