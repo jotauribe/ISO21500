@@ -1,6 +1,5 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
-const uniqueValidator = require('mongoose-unique-validator');
 
 const providerSchema = new Schema({
   projectId: {
@@ -16,12 +15,10 @@ const providerSchema = new Schema({
       address: { type: String, default: '' },
       serviceType: { type: String, default: '' },
       phone: { type: String, default: '' },
-      email: { type: String, default: '', unique: true },
-      nitOrCc: { type: String, default: '', unique: true }
+      email: { type: String, default: '' },
+      nitOrCc: { type: String, default: '' }
     }
   ]
 });
-
-providerSchema.plugin(uniqueValidator);
 
 module.exports = mongoose.model('providers', providerSchema);

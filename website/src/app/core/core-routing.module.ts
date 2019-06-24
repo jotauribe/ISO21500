@@ -15,6 +15,9 @@ import { MembersComponent } from '../features/resources/components/members/membe
 import { TeamManagementComponent } from '../features/resources/components/team-management/team-management.component';
 import { ActivitiesComponent } from '../features/resources/components/activities/activities.component';
 import { ResourcesListComponent } from '../features/resources/components/resources-list/resources-list.component';
+import { AcquisitionsComponent } from '../features/acquisitions/acquisitions.component';
+import { ProvidersComponent } from '../features/acquisitions/components/providers/providers.component';
+import { AcquisitionListComponent } from '../features/acquisitions/components/acquisition-list/acquisition-list.component';
 
 const routes: Routes = [
   {
@@ -90,6 +93,22 @@ const routes: Routes = [
           {
             path: 'resources',
             component: ResourcesListComponent,
+            pathMatch: 'full'
+          }
+        ]
+      },
+      {
+        path: 'acquisitions',
+        component: AcquisitionsComponent,
+        children: [
+          {
+            path: 'providers',
+            component: ProvidersComponent,
+            pathMatch: 'full'
+          },
+          {
+            path: 'acquisitions',
+            component: AcquisitionListComponent,
             pathMatch: 'full'
           }
         ]

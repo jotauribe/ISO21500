@@ -1,6 +1,5 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
-const uniqueValidator = require('mongoose-unique-validator');
 
 const acquisitionSchema = new Schema({
   projectId: {
@@ -20,7 +19,5 @@ const acquisitionSchema = new Schema({
     }
   ]
 });
-
-acquisitionSchema.plugin(uniqueValidator);
 
 module.exports = mongoose.model('acquisition', acquisitionSchema);
