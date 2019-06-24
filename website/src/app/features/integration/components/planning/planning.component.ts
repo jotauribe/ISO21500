@@ -120,7 +120,7 @@ export class PlanningComponent implements OnInit {
       {
         name: 'planRevision',
         value: '',
-        placeholder: 'Aspectos claves y Decisiones pendientes',
+        placeholder: 'Proceso de Revision del Plan Director del Proyecto',
         dataPath: 'methodology.planRevision'
       }
     ]
