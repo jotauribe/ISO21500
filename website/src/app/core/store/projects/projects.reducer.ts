@@ -3,7 +3,8 @@ import { ProjectsState } from './projects.state';
 
 export const initialState: ProjectsState = {
   isLoading: false,
-  projects: []
+  projects: [],
+  activeProject: {}
 };
 
 export function projectsReducer(
@@ -17,6 +18,8 @@ export function projectsReducer(
       return { ...state, isLoading: false, projects: action.payload };
     case Types.FetchProjectsFailure:
       return { ...state, isLoading: false };
+    case Types.FetchActiveProjectDone:
+      return { ...state, activeProject: action.payload };
     default:
       return state;
   }

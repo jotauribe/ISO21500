@@ -12,7 +12,7 @@ const teamMembersSchema = new Schema({
       lastName: { type: String, default: '' },
       rol: { type: String, default: '' },
       department: { type: String, default: '' },
-      email: { type: String, default: '', unique: true }
+      email: { type: String, default: '' }
     }
   ]
 });
