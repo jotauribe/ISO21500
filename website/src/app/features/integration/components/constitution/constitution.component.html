@@ -1,108 +1,52 @@
-<form [formGroup]="constitutionForm">
-  <div class="col-container">
-    <div class="breadcrumbs">
-      <div class="cont_breadcrumbs_3">
-        <ul>
-          <li><a href="#">Projecto de Prueba</a></li>
-          <li><a href="#">Acta de constitucion</a></li>
-        </ul>
+<div class="gpt-constitution">
+  <div class="row row--stretch">
+    <div class="column">
+      <gpt-previous-information
+        (onChanges)="updatePrevInfo($event)"
+        [values]="prevInfoValues || {}"
+      ></gpt-previous-information>
+      <!--TABS SECTION::START-->
+      <div class="gpt-constitution__aside">
+        <mat-tab-group>
+          <mat-tab label="Objetivos">
+            <gpt-objectives [objectives]="objectives | async"></gpt-objectives>
+          </mat-tab>
+          <mat-tab label="Hitos">
+            <gpt-milestones
+              [milestones]="milestones | async"
+              (onEdit)="editMilestone($event)"
+            ></gpt-milestones>
+          </mat-tab>
+          <mat-tab label="Fases">
+            <gpt-phases
+              [phases]="phases | async"
+              (onEdit)="editPhase($event)"
+            ></gpt-phases>
+          </mat-tab>
+        </mat-tab-group>
+        <button
+          mat-icon-button
+          class="gpt-constitution__aside-menu button--small button--solid"
+          [matMenuTriggerFor]="asideMenu"
+        >
+          <mat-icon svgIcon="add"></mat-icon>
+        </button>
+        <mat-menu #asideMenu="matMenu">
+          <button mat-menu-item (click)="openObjectivesForm()">
+            Agregar nuevo Objetivo
+          </button>
+          <button mat-menu-item (click)="openMilestonesForm()">
+            Agregar Nuevo Hito
+          </button>
+          <button mat-menu-item (click)="openPhasesForm()">
+            Agregar Nueva Fase
+          </button>
+        </mat-menu>
       </div>
+      <!--TABS SECTION::END-->
     </div>
-    <div class="row-container">
-      <div class="col-container grow">
-        <div class="row-container grow">
-          <div class="form-section big">
-            <div class="form-section__header">
-              <h4 class="gpt-const__title">Descripcion</h4>
-              <span class="form-section__header__divider"></span>
-            </div>
-            <gpt-editable formControlName="description" type="textarea"></gpt-editable>
-          </div>
-          <div class="form-section big">
-            <div class="form-section__header">
-              <h4 class="gpt-const__title">Vision Estrategica</h4>
-              <span class="form-section__header__divider"></span>
-            </div>
-            <gpt-editable formControlName="strategicView" type="textarea"></gpt-editable>
-          </div>
-        </div>
-        <div class="row-container grow">
-          <div class="form-section big">
-            <div class="form-section__header">
-              <h4 class="gpt-const__title">Justificacion</h4>
-              <span class="form-section__header__divider"></span>
-            </div>
-            <gpt-editable formControlName="justification" type="textarea"></gpt-editable>
-          </div>
-          <div class="form-section big">
-            <div class="form-section__header">
-              <h4 class="gpt-const__title">Analisis Previo</h4>
-              <span class="form-section__header__divider"></span>
-            </div>
-            <gpt-editable formControlName="viabilityAnalysis" type="textarea"></gpt-editable>
-          </div>
-        </div>
-        <div class="row-container grow">
-          <div class="form-section big">
-            <div class="form-section__header">
-              <h4 class="gpt-const__title">Objetivos</h4>
-              <span class="form-section__header__divider"></span>
-            </div>
-            <table
-              [dataSource]="dataSource" class="objectives" mat-table>
-              <!-- Position Column -->
-              <ng-container matColumnDef="position">
-                <th *matHeaderCellDef mat-header-cell>
-                  No.
-                </th>
-                <td *matCellDef="let element" mat-cell>
-                  {{element.position}}
-                </td>
-              </ng-container>
-              <!-- Name Column -->
-              <ng-container matColumnDef="name">
-                <th *matHeaderCellDef mat-header-cell>
-                  Descripcion
-                </th>
-                <td *matCellDef="let element" mat-cell>
-                  {{element.description}}
-                </td>
-              </ng-container>
-              <!-- Weight Column -->
-              <ng-container matColumnDef="weight">
-                <th *matHeaderCellDef mat-header-cell>
-                  Metrica
-                </th>
-                <td *matCellDef="let element" mat-cell>
-                  {{element.metrics}}
-                </td>
-              </ng-container>
-              <!-- Symbol Column -->
-              <ng-container matColumnDef="symbol">
-                <th *matHeaderCellDef mat-header-cell>
-                  Aprobable por
-                </th>
-                <td *matCellDef="let element" mat-cell>
-                  {{element.aprobableBy}}
-                </td>
-              </ng-container>
-              <tr *matHeaderRowDef="displayedColumns" mat-header-row></tr>
-              <tr *matRowDef="let row; columns: displayedColumns;" mat-row></tr>
-            </table>
-          </div>
-        </div>
-      </div>
-      <div class="col-container shrink">
-        <div class="form-section">
-          <div class="form-section__header">
-            <h4 class="gpt-const__title">Cliente / Peticionario</h4>
-            <span class="form-section__header__divider"></span>
-          </div>
-          <gpt-editable label="Cliente:"></gpt-editable>
-          <gpt-editable label="Patrocinador:"></gpt-editable>
-          <gpt-editable label="Director:"></gpt-editable>
-        </div>
-      </div>
+    <div class="column">
+      Documentacion
     </div>
   </div>
-</form>
+</div>

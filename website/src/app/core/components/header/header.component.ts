@@ -44,11 +44,6 @@ export class HeaderComponent implements OnInit {
         description:
           'Crear un Proyeco es tu primer paso. Empieza llenando los datos iniciales: mision, vision, etc.',
         action: this.createProject.bind(this)
-      },
-      {
-        name: 'Crear Objetivo',
-        description: 'Un Objetivo define una meta a alcanzar en el proyecto.',
-        action: this.createProject.bind(this)
       }
     ]
   };

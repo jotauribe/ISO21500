@@ -1,0 +1,35 @@
+<div *ngFor="let p of phases; index as i" class="gpt-phase">
+  <button
+    mat-icon-button
+    class="gpt-phase__menu button--small"
+    [matMenuTriggerFor]="oMenu"
+  >
+    <mat-icon svgIcon="more-menu" class="button--small"></mat-icon>
+  </button>
+  <mat-menu #oMenu="matMenu">
+    <button mat-menu-item (click)="edit(p, i)">Editar</button>
+    <button mat-menu-item>Remover</button>
+  </mat-menu>
+
+  <div class="gpt-phase__main-info">
+    <div class="gpt-phase__identity">
+      <span *ngIf="p.id" class="gpt-phase__identity__code">{{ p.id }}</span
+      >{{ p.name }}
+    </div>
+    <mat-card-subtitle>
+      <p>
+        {{ p.description }}
+      </p>
+    </mat-card-subtitle>
+  </div>
+  <div class="gpt-phase__secondary-info">
+    <div class="gpt-phase__secondary-info__criteria">
+      Entregable
+    </div>
+    <mat-card-subtitle>
+      <p>
+        {{ p.milestone }}
+      </p>
+    </mat-card-subtitle>
+  </div>
+</div>

@@ -12,6 +12,7 @@ import { ProjectsModule } from './features/projects/projects.module';
 import { IntegrationModule } from './features/integration/integration.module';
 import { AcquisitionsModule } from './features/acquisitions/acquisitions.module';
 import { AuthenticationModule } from './features/authentication/authentication.module';
+import { ResourcesModule } from './features/resources/resources.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -22,10 +23,11 @@ import { AuthenticationModule } from './features/authentication/authentication.m
     StoreRouterConnectingModule.forRoot(),
     AppRoutingModule,
     CoreModule,
+    IntegrationModule,
     AuthenticationModule,
     ProjectsModule,
-    IntegrationModule,
     AcquisitionsModule,
+    ResourcesModule,
     FormsModule,
     ReactiveFormsModule
   ],

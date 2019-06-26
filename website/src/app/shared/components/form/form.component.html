@@ -1,0 +1,36 @@
+<div>
+  <form [formGroup]="form" class="gpt-form">
+    <gpt-section *ngFor="let s of schema.sections">
+      <gpt-title icon="description" section-header title="{{ s.title }}">
+      </gpt-title>
+
+      <ng-container *ngIf="!s.isList">
+        <div class="gpt-form__section">
+          <gpt-editable
+            *ngFor="let field of s.fields"
+            formControlName="{{ field }}"
+            [label]="getPlaceholderFor(s, field)"
+            [raised]="!isPlainField(field)"
+            [ngClass]="{
+              'gpt-form__section__item': true,
+              'gpt-form__section__item--inline': !isWideField(field),
+              'gpt-form__section__item--wide': isWideField(field)
+            }"
+          ></gpt-editable>
+        </div>
+      </ng-container>
+
+      <div class="gpt-form__section__item gpt-form__section__item--list">
+        <gpt-list
+          #itemList
+          *ngIf="s.isList"
+          formControlName="{{ s.name }}"
+          [items]="sections[s.name]"
+          [itemSchema]="s.schema"
+          [itemFields]="s.fields"
+          [isFixedLength]="s.isFixedLength"
+        ></gpt-list>
+      </div>
+    </gpt-section>
+  </form>
+</div>

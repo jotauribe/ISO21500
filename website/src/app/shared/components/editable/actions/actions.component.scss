@@ -1,0 +1,27 @@
+.gpt-editable {
+  &__actions {
+    display: flex;
+    flex-direction: column;
+    padding: 2px;
+    box-sizing: border-box;
+    transition-property: opacity;
+    transition-duration: 0.2s;
+    z-index: 20;
+    color: #b1aeae;
+    border-radius: 4px;
+
+    &--always-on-screen {
+      opacity: 1;
+    }
+
+    & > * {
+      &:not(:last-child) {
+        margin-bottom: 4px;
+      }
+    }
+  }
+
+  &__action-button {
+    border-radius: 50%;
+  }
+}

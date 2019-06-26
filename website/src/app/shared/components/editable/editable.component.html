@@ -1,0 +1,41 @@
+<div
+  [ngClass]="{
+    'gpt-editable': true,
+    'gpt-editable--raised': raised
+  }"
+>
+  <span *ngIf="label" class="gpt-editable__header">{{ label }}</span>
+  <div
+    [ngClass]="{
+      'gpt-editable__textarea-container': true,
+      'gpt-editable__textarea-container--in-edit-mode': inEditMode
+    }"
+  >
+    <textarea
+      #textarea
+      matInput
+      [(ngModel)]="val"
+      cdkTextareaAutosize
+      [cdkAutosizeMinRows]="minLines"
+      [cdkAutosizeMaxRows]="maxLines"
+      [ngClass]="{
+        'gpt-editable__textarea': true,
+        'gpt-editable__textarea--in-edit-mode': inEditMode
+      }"
+      id="{{ id }}"
+      placeholder="{{ !val?.lenght > 0 ? 'Sin Definir' : '' }}"
+      type="text"
+    >
+    </textarea>
+    <gpt-actions
+      (onSave)="save()"
+      (onCancel)="cancel()"
+      (onEdit)="toEditMode()"
+      class="gpt-editable-actions"
+      [showEditionActions]="inEditMode"
+    ></gpt-actions>
+    <div *ngIf="!value && showEmptyMessage" class="gpt-editable__empty-content">
+      {{ emptyMessage }}
+    </div>
+  </div>
+</div>

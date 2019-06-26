@@ -10,20 +10,20 @@ import { MatIconRegistry } from '@angular/material';
 export class SidebarComponent implements OnInit {
   links = [
     {
-      href: '_blank',
-      title: 'Integration',
+      href: 'integration',
+      title: 'Integracion',
       icon: 'gpt_integration',
       isSvg: true
     },
     {
-      href: '_blank',
-      title: 'Resources',
+      href: 'resources',
+      title: 'Recursos',
       icon: 'gpt_resources',
       isSvg: true
     },
     {
-      href: '_blank',
-      title: 'Acquisitions',
+      href: 'acquisitions',
+      title: 'Adquisiciones',
       icon: 'gpt_acquisitions',
       isSvg: true
     }
@@ -33,24 +33,8 @@ export class SidebarComponent implements OnInit {
     private matIconRegistry: MatIconRegistry,
     private sanitizer: DomSanitizer
   ) {
-    this.matIconRegistry.addSvgIcon(
-      'gpt_integration',
-      this.sanitizer.bypassSecurityTrustResourceUrl(
-        'assets/icons/integration.svg'
-      )
-    );
-
-    this.matIconRegistry.addSvgIcon(
-      'gpt_resources',
-      this.sanitizer.bypassSecurityTrustResourceUrl(
-        'assets/icons/resources.svg'
-      )
-    );
-    this.matIconRegistry.addSvgIcon(
-      'gpt_acquisitions',
-      this.sanitizer.bypassSecurityTrustResourceUrl(
-        'assets/icons/acquisitions.svg'
-      )
+    this.matIconRegistry.addSvgIconSet(
+      this.sanitizer.bypassSecurityTrustResourceUrl('assets/icons/features.svg')
     );
   }
 

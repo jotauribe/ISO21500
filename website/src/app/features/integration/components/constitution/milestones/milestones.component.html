@@ -1,0 +1,35 @@
+<div *ngFor="let m of milestones; index as i" class="gpt-milestone">
+  <button
+    mat-icon-button
+    class="gpt-milestone__menu button--small"
+    [matMenuTriggerFor]="oMenu"
+  >
+    <mat-icon svgIcon="more-menu" class="button--small"></mat-icon>
+  </button>
+  <mat-menu #oMenu="matMenu">
+    <button mat-menu-item (click)="edit(m, i)">Editar</button>
+    <button mat-menu-item>Remover</button>
+  </mat-menu>
+
+  <div class="gpt-milestone__main-info">
+    <div class="gpt-milestone__identity">
+      <span *ngIf="m.id" class="gpt-milestone__identity__code">{{ m.id }}</span>
+      {{ m.name }}
+    </div>
+    <mat-card-subtitle>
+      <p>
+        {{ m.description }}
+      </p>
+    </mat-card-subtitle>
+  </div>
+  <div class="gpt-milestone__secondary-info">
+    <div class="gpt-milestone__secondary-info__criteria">
+      Entregable
+    </div>
+    <mat-card-subtitle>
+      <p>
+        {{ m.deliverable }}
+      </p>
+    </mat-card-subtitle>
+  </div>
+</div>

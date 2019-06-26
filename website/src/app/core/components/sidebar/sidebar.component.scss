@@ -1,9 +1,10 @@
 :host {
   .gpt-sidebar {
-    min-width: 56px;
+    min-width: 150px;
     height: 100%;
     background-color: #f5f5f5;
     box-sizing: border-box;
+    padding: 24px 0;
 
     &--expanded {
       height: 56px;
@@ -14,10 +15,22 @@
       font-weight: normal;
       font-size: 14px;
       font-style: normal;
+      box-sizing: border-box;
+      padding: 0 16px;
+
+      &.active {
+        background-color: white;
+        border-left: 4px solid #205081;
+        color: #205081;
+        box-shadow: 0px 3px 6px 0px rgba(0, 0, 0, 0.1);
+
+        & .gpt-sidebar__link__icon {
+          fill: #205081;
+        }
+      }
 
       &__icon {
-        color: #707070;
-        font-size: 12px;
+        color: #b1aeae;
       }
     }
   }

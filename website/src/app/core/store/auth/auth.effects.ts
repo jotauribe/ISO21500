@@ -1,11 +1,12 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { Effect, Actions, ofType } from '@ngrx/effects';
-import { map, switchMap, catchError, tap } from 'rxjs/operators';
+import { Effect, Actions, ofType, ROOT_EFFECTS_INIT } from '@ngrx/effects';
+import { map, switchMap, catchError, tap, filter } from 'rxjs/operators';
 import * as AuthActions from './auth.actions';
 import { AuthService } from '../../services/auth.service';
 import { of } from 'rxjs';
 import { MatSnackBar } from '@angular/material';
+import { CookieService } from 'ngx-cookie-service';
 
 @Injectable()
 export class AuthEffects {
@@ -15,6 +16,7 @@ export class AuthEffects {
     switchMap((action: AuthActions.SignupRequested) =>
       this.authService.createUser(action.payload).pipe(
         map(data => {
+          this.cookieService.set('user-authenticated-cookie', 'true');
           return new AuthActions.SignupSucceded(data);
         })
       )
@@ -27,6 +29,7 @@ export class AuthEffects {
     switchMap((action: AuthActions.AuthenticationRequested) =>
       this.authService.login(action.payload).pipe(
         map(data => {
+          this.cookieService.set('user-authenticated-cookie', 'true');
           return new AuthActions.AuthenticationSucceded(data);
         }),
         catchError(error => of(new AuthActions.AuthenticationFailed(error)))
@@ -66,10 +69,20 @@ export class AuthEffects {
     })
   );
 
+  @Effect()
+  init = this.actions.pipe(
+    ofType(ROOT_EFFECTS_INIT), 
+    filter(() => !!this.cookieService.get('user-authenticated-cookie')),
+    map(() => {
+      return new AuthActions.ValidateAuthState();
+    })
+  );
+
   constructor(
     private actions: Actions,
     private authService: AuthService,
     private router: Router,
-    private snackbar: MatSnackBar
+    private snackbar: MatSnackBar,
+    private cookieService: CookieService
   ) {}
 }

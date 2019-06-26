@@ -6,13 +6,19 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class ProjectService {
+  url = 'http://localhost:5001/api/v1/projects';
+
   constructor(private http: HttpClient) {}
 
   create(project) {
-    return this.http.post('http://localhost:5000/api/v2/projects', project);
+    return this.http.post(this.url, project);
   }
 
   find() {
-    return this.http.get('http://localhost:5000/api/v2/projects');
+    return this.http.get(this.url);
+  }
+
+  findOne(projectId) {
+    return this.http.get(`${this.url}/${projectId}`);
   }
 }
