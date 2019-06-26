@@ -73,8 +73,13 @@ export class ListComponent implements OnInit, ControlValueAccessor {
       .afterClosed()
       .subscribe(result => {
         this.items[index] = { ...this.items[index], ...result };
-        this.items = [...this.items];
+        this.items = [...this.items.filter(i => i)];
       });
+  }
+
+  onRemove(item, index) {
+    this.items[index].$wasDeleted = true;
+    this.items = [...this.items.filter(i => i)];
   }
 
   addNewItem(item, index) {
