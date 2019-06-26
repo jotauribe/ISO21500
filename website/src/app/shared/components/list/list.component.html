@@ -13,7 +13,7 @@
     <mat-icon svgIcon="add"></mat-icon>
   </button>
   <ng-container *ngFor="let i of itemsValue; index as j">
-    <div *ngIf="i" class="gpt-list-item">
+    <div *ngIf="i && !i.$wasDeleted" class="gpt-list-item">
       <button
         type="button"
         mat-icon-button
@@ -25,7 +25,9 @@
       </button>
       <mat-menu #itemMenu>
         <button mat-menu-item (click)="onEdit(i, j)">Editar</button>
-        <button *ngIf="!isFixedLength" mat-menu-item>Remover</button>
+        <button *ngIf="!isFixedLength" (click)="onRemove(i, j)" mat-menu-item>
+          Remover
+        </button>
       </mat-menu>
 
       <div class="gpt-list-item__main-info">

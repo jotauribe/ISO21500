@@ -76,6 +76,10 @@ const self = (module.exports = {
         _.filter(arr, a => _.has(a, '_id'))
       );
 
+      const deletes = _.mapValues(arrayAttributesData, arr =>
+        _.filter(arr, item => _.has(item, '$wasDeleted'))
+      );
+
       const newItems = _(arrayAttributesData)
         .mapValues((value, key) => {
           return _.difference(value, _.get(updates, key));
@@ -100,8 +104,14 @@ const self = (module.exports = {
         { omitUndefined: true }
       );
 
-      //Updating array items
+      //Deleting items
+      await Model.findOneAndUpdate(
+        { projectId, _id: id },
+        { $pullAll: deletes },
+        { omitUndefined: true }
+      );
 
+      //Updating array items
       const foundDocument = await Model.findById(id);
       _.forOwn(updates, (array, key) => {
         const docArray = _.get(foundDocument, key);
