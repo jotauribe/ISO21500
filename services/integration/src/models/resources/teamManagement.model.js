@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const teamMembersSchema = new Schema({
+const teamManagementSchema = new Schema({
   projectId: {
     type: String,
     required: [true, 'ProjectId is a required field']
@@ -25,7 +25,6 @@ const teamMembersSchema = new Schema({
       comments: { type: String, default: '' }
     }
   },
-
   interpersonalSkills: {
     leadership: {
       indicators: { type: String, default: '' },
@@ -59,4 +58,4 @@ const teamMembersSchema = new Schema({
   }
 });
 
-module.exports = mongoose.model('teamManagement', teamMembersSchema);
+module.exports = mongoose.model('teamManagement', teamManagementSchema);
