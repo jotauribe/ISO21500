@@ -6,7 +6,7 @@ const teamMembersSchema = new Schema({
     type: String,
     required: [true, 'ProjectId is a required field']
   },
-  teamOrganizationFile: String,
+  teamOrganization: String,
   goals: {
     scopeGoals: {
       goals: { type: String, default: '' },
