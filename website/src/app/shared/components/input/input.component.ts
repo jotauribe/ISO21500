@@ -1,4 +1,11 @@
-import { Component, OnInit, Input, forwardRef } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  Input,
+  forwardRef,
+  ViewChild,
+  ElementRef
+} from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 let nextUniqueId = 0;
@@ -8,6 +15,7 @@ let nextUniqueId = 0;
   template: `
     <div class="gpt-input {{ noPlaceholder ? 'no-placeholder' : '' }}">
       <input
+        #input
         [value]="val"
         (input)="pushChanges($event.target.value)"
         (blur)="onTouched($event)"
@@ -33,6 +41,9 @@ let nextUniqueId = 0;
   ]
 })
 export class InputComponent implements OnInit, ControlValueAccessor {
+  @ViewChild('input')
+  input: ElementRef;
+
   @Input()
   placeholder = '';
 
@@ -53,7 +64,7 @@ export class InputComponent implements OnInit, ControlValueAccessor {
       this.val = val;
       this.onChange(val);
     } else {
-      this.val = this.fileToUpload;
+      this.val = val.file;
       this.onChange(this.fileToUpload);
     }
     this.onTouched();
@@ -96,11 +107,19 @@ export class InputComponent implements OnInit, ControlValueAccessor {
       const fileReader = new FileReader();
 
       fileReader.onloadend = event => {
-        this.fileToUpload = new File([fileReader.result], 'profile.jpg');
-        this.onChange({ file: fileReader.result, name: files[0].name });
+        this.fileToUpload = new File([fileReader.result], files[0].name);
+        this.onChange({
+          file: fileReader.result,
+          name: files[0].name,
+          notLoaded: true
+        });
       };
 
       fileReader.readAsDataURL(files[0]);
     }
+  }
+
+  openFileChooser() {
+    this.input.nativeElement.click();
   }
 }

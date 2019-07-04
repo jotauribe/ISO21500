@@ -19,7 +19,7 @@ const uploadFile = multer({
 const create = asyncHandler(async (req, res) => {
   const { projectId } = req;
 
-  const a = uploadFile(req, res, async function(err) {
+  uploadFile(req, res, async function(err) {
     const { originalname, path, filename } = req.file;
     const { entityId, type } = req.body || {};
 

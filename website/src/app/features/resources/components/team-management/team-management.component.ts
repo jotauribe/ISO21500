@@ -8,6 +8,7 @@ import {
   UpdateTeamManagement,
   LoadTeamManagement
 } from '~/app/core/store/team-management/team-management.actions';
+import { UploadProviderContract } from '~/app/core/store/providers/providers.actions';
 
 @Component({
   selector: 'gpt-team-management',
@@ -17,6 +18,17 @@ import {
 export class TeamManagementComponent implements OnInit {
   schema = {
     sections: [
+      {
+        name: 'teamOrganization',
+        title: 'Documento de Organizacion del Equipo',
+        dataPath: 'teamOrganization',
+        isList: false,
+        isFile: true,
+        fields: ['teamOrganization'],
+        url: function(data) {
+          return `http://localhost:5001/api/v1/files/${data._id}`;
+        }
+      },
       {
         name: 'personalPlan',
         title: 'Plan de Desarrollo Personal',
@@ -101,6 +113,14 @@ export class TeamManagementComponent implements OnInit {
         value: '',
         placeholder: 'Areas de Mejora',
         dataPath: 'personalPlan.improvementArea'
+      },
+      {
+        name: 'teamOrganization',
+        value: '',
+        placeholder: 'Documento de Organizacion del Equipo',
+        dataPath: 'teamOrganization',
+        isFile: true,
+        type: 'file'
       }
     ]
   };
@@ -126,6 +146,19 @@ export class TeamManagementComponent implements OnInit {
 
   pushChanges(data) {
     const projectId = this.getProjectId();
+    const a = data.teamOrganization;
+
+    if (data.teamOrganization && data.teamOrganization.notLoaded) {
+      this.store.dispatch(
+        new UploadProviderContract({
+          projectId,
+          entityId: data._docId,
+          fileToUpload: data.teamOrganization.file,
+          fileName: data.teamOrganization.name
+        })
+      );
+      data.teamOrganization = data.teamOrganization.name;
+    }
 
     this.store.dispatch(
       new UpdateTeamManagement({ teamManagement: data, projectId })
