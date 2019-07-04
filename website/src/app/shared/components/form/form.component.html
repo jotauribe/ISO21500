@@ -36,7 +36,12 @@
               }"
             >
             </gpt-input>
-            <a [href]="getDataBasedURL(s.url)"> Descargar </a>
+            <a
+              (click)="downloadFile($event, getDataBasedURL(s.url), s)"
+              [href]="getDataBasedURL(s.url)"
+            >
+              Descargar
+            </a>
             <button href="" (click)="file.openFileChooser()">
               Cambiar
             </button>

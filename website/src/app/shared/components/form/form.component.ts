@@ -11,6 +11,7 @@ import {
 } from '@angular/core';
 import * as _ from 'lodash';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { MatSnackBar } from '@angular/material';
 
 @Component({
   selector: 'gpt-form',
@@ -34,7 +35,7 @@ export class FormComponent implements OnInit, OnChanges {
   formFields: Object;
   sections: any = { items: {} };
 
-  constructor(private fb: FormBuilder) {}
+  constructor(private fb: FormBuilder, private _snackBar: MatSnackBar) {}
 
   ngOnChanges(changes: SimpleChanges): void {
     this.sections = this.extractItems();
@@ -200,8 +201,24 @@ export class FormComponent implements OnInit, OnChanges {
     return extractor(this.data);
   }
 
+  isFilePathDefined(path) {
+    return _.get(this.data, path, false);
+  }
+
   handleFile(event) {
     console.log(event);
+  }
+
+  downloadFile(event, url, section) {
+    event.preventDefault();
+    if (this.isFilePathDefined(section.dataPath)) window.open(url);
+    else this.openSnackBar('Aun no existe un documento', null);
+  }
+
+  openSnackBar(message: string, action: string) {
+    this._snackBar.open(message, action, {
+      duration: 2000
+    });
   }
 
   openFileChooser(event: ElementRef) {
