@@ -97,7 +97,7 @@ export class ProvidersComponent implements OnInit {
   pushChanges(data) {
     const projectId = this.getProjectId();
     data.providers.forEach(provider => {
-      if (provider.contract) {
+      if (provider.contract && provider.contract.notLoaded) {
         this.store.dispatch(
           new UploadProviderContract({
             projectId,

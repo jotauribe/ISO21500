@@ -5,7 +5,9 @@ import {
   Output,
   EventEmitter,
   OnChanges,
-  SimpleChanges
+  SimpleChanges,
+  ElementRef,
+  ViewChild
 } from '@angular/core';
 import * as _ from 'lodash';
 import { FormBuilder, FormGroup } from '@angular/forms';
@@ -16,6 +18,9 @@ import { FormBuilder, FormGroup } from '@angular/forms';
   styleUrls: ['./form.component.scss']
 })
 export class FormComponent implements OnInit, OnChanges {
+  @ViewChild('file')
+  fileInput;
+
   @Input()
   schema: any = {};
 
@@ -100,12 +105,12 @@ export class FormComponent implements OnInit, OnChanges {
   subscribeToFormChanges() {
     this.form.valueChanges.subscribe(values => {
       const newData = this.rebuildData(values);
-
+      newData._docId = this.data._id;
       this.onChanges.emit(newData);
     });
   }
 
-  rebuildData(newValues) {
+  rebuildData(newValues): any {
     const { sections } = this.schema;
     const fields = {};
 
@@ -128,6 +133,8 @@ export class FormComponent implements OnInit, OnChanges {
           fields[section.name] =
             newValues[section.name] || this.sections[section.name];
         }
+      } else if (section.isFile) {
+        fields[section.name] = _.get(newValues, section.dataPath);
       } else {
         const fieldGroup = {};
         _.forEach(section.fields, (fieldName, index) => {
@@ -187,5 +194,17 @@ export class FormComponent implements OnInit, OnChanges {
       },
       []
     );
+  }
+
+  getDataBasedURL(extractor) {
+    return extractor(this.data);
+  }
+
+  handleFile(event) {
+    console.log(event);
+  }
+
+  openFileChooser(event: ElementRef) {
+    this.fileInput.nativeElement.click();
   }
 }

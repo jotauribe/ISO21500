@@ -4,7 +4,7 @@
       <gpt-title icon="description" section-header title="{{ s.title }}">
       </gpt-title>
 
-      <ng-container *ngIf="!s.isList">
+      <ng-container *ngIf="!s.isList && !s.isFile">
         <div class="gpt-form__section">
           <gpt-editable
             *ngFor="let field of s.fields"
@@ -17,6 +17,30 @@
               'gpt-form__section__item--wide': isWideField(field)
             }"
           ></gpt-editable>
+        </div>
+      </ng-container>
+
+      <ng-container *ngIf="s.isFile">
+        <div class="gpt-form__section gpt-form__section--file">
+          <ng-container *ngFor="let field of s.fields">
+            <gpt-input
+              #file
+              (change)="handleFile($event)"
+              formControlName="{{ field }}"
+              type="file"
+              [ngClass]="{
+                'gpt-form__section__item': true,
+                'gpt-form__section__item--hidden': true,
+                'gpt-form__section__item--inline': !isWideField(field),
+                'gpt-form__section__item--wide': isWideField(field)
+              }"
+            >
+            </gpt-input>
+            <a [href]="getDataBasedURL(s.url)"> Descargar </a>
+            <button href="" (click)="file.openFileChooser()">
+              Cambiar
+            </button>
+          </ng-container>
         </div>
       </ng-container>
 
