@@ -32,6 +32,7 @@ const create = asyncHandler(async (req, res) => {
       originalName: originalname
     });
 
+    await File.find({ entityId }).remove();
     await file.save();
 
     res.send({ message: 'File uploaded', file });
