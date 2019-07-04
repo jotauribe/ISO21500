@@ -18,15 +18,16 @@ const uploadFile = multer({
 
 const create = asyncHandler(async (req, res) => {
   const { projectId } = req;
-  const { entityId, type } = req.body || {};
 
   const a = uploadFile(req, res, async function(err) {
     const { originalname, path, filename } = req.file;
+    const { entityId, type } = req.body || {};
 
     const file = new File({
       projectId,
       path,
       entityId,
+      type,
       name: filename,
       originalName: originalname
     });
@@ -37,4 +38,14 @@ const create = asyncHandler(async (req, res) => {
   });
 });
 
-module.exports = new Controller({ create });
+const get = asyncHandler(async (req, res) => {
+  const { id } = req.params;
+  const fileInfo = await File.findOne({ entityId: id });
+  const filePath = path.join(
+    __dirname,
+    `../../public/uploads/${fileInfo.name}`
+  );
+  res.download(filePath);
+});
+
+module.exports = new Controller({ create, get }, '/files');

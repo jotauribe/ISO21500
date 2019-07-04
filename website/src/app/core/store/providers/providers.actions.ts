@@ -11,7 +11,10 @@ export const Types: any = applyActionNamespace(
     LoadProvidersFail: 'Load Providers Failure',
     UpdateProviders: 'Update Providers',
     UpdateProvidersDone: 'Update Providers Done',
-    UpdateProvidersFail: 'Update Providers Failure'
+    UpdateProvidersFail: 'Update Providers Failure',
+    UploadProviderContract: 'Upload Provider Contract',
+    UploadProviderContractDone: 'Upload Provider Contract Done',
+    UploadProviderContractFail: 'Upload Provider Contract Failure'
   },
   NAMESPACE
 );
@@ -47,10 +50,28 @@ export class UpdateProvidersFail implements Action {
   constructor(public payload?: any) {}
 }
 
+export class UploadProviderContract implements Action {
+  readonly type = Types.UploadProviderContract;
+  constructor(public payload?: any) {}
+}
+
+export class UploadProviderContractDone implements Action {
+  readonly type = Types.UploadProviderContractDone;
+  constructor(public payload?: any) {}
+}
+
+export class UploadProviderContractFail implements Action {
+  readonly type = Types.UploadProviderContractFail;
+  constructor(public payload?: any) {}
+}
+
 export type ActionsUnion =
   | LoadProviders
   | LoadProvidersDone
   | LoadProvidersFail
   | UpdateProviders
   | UpdateProvidersDone
-  | UpdateProvidersFail;
+  | UpdateProvidersFail
+  | UploadProviderContract
+  | UploadProviderContractDone
+  | UploadProviderContractFail;

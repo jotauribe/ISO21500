@@ -3,8 +3,7 @@ const Schema = mongoose.Schema;
 
 const fileSchema = new Schema({
   projectId: {
-    type: String,
-    required: [true, 'ProjectId is a required field']
+    type: String
   },
   path: {
     type: String,
