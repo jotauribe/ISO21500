@@ -146,7 +146,6 @@ export class TeamManagementComponent implements OnInit {
 
   pushChanges(data) {
     const projectId = this.getProjectId();
-    const a = data.teamOrganization;
 
     if (data.teamOrganization && data.teamOrganization.notLoaded) {
       this.store.dispatch(
