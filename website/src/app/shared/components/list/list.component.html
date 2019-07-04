@@ -83,9 +83,12 @@
             {{ secondaryInfo.title }}
           </div>
           <mat-card-subtitle>
-            <p>
+            <p *ngIf="!secondaryInfo.renderAsURL">
               {{ i[secondaryInfo.info] }}
             </p>
+            <a *ngIf="secondaryInfo.renderAsURL" [href]="secondaryInfo.url(i)">
+              {{ i[secondaryInfo.info] }}
+            </a>
           </mat-card-subtitle>
         </div>
       </div>

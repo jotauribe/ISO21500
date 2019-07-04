@@ -6,7 +6,8 @@ import { CoreState } from '~/app/core/store';
 import { startWith } from 'rxjs/operators';
 import {
   UpdateProviders,
-  LoadProviders
+  LoadProviders,
+  UploadProviderContract
 } from '~/app/core/store/providers/providers.actions';
 
 @Component({
@@ -29,7 +30,15 @@ export class ProvidersComponent implements OnInit {
             { title: 'Tipo de Servicio', info: 'serviceType' },
             { title: 'Telefono', info: 'phone' },
             { title: 'Email', info: 'email' },
-            { title: 'Direccion', info: 'address' }
+            { title: 'Direccion', info: 'address' },
+            {
+              title: 'Contrato',
+              info: 'contract',
+              renderAsURL: true,
+              url: function(provider) {
+                return `http://localhost:5001/api/v1/files/${provider._id}`;
+              }
+            }
           ]
         },
         fields: [
@@ -54,6 +63,12 @@ export class ProvidersComponent implements OnInit {
             name: 'address',
             value: '',
             placeholder: 'Direccion'
+          },
+          {
+            name: 'contract',
+            value: '',
+            placeholder: 'Contrato',
+            type: 'file'
           }
         ]
       }
@@ -81,7 +96,19 @@ export class ProvidersComponent implements OnInit {
 
   pushChanges(data) {
     const projectId = this.getProjectId();
-
+    data.providers.forEach(provider => {
+      if (provider.contract) {
+        this.store.dispatch(
+          new UploadProviderContract({
+            projectId,
+            entityId: provider._id,
+            fileToUpload: provider.contract.file,
+            fileName: provider.contract.name
+          })
+        );
+        provider.contract = provider.contract.name;
+      }
+    });
     this.store.dispatch(new UpdateProviders({ providers: data, projectId }));
   }
 }

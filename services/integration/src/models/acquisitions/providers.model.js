@@ -16,7 +16,8 @@ const providerSchema = new Schema({
       serviceType: { type: String, default: '' },
       phone: { type: String, default: '' },
       email: { type: String, default: '' },
-      nitOrCc: { type: String, default: '' }
+      nitOrCc: { type: String, default: '' },
+      contract: String
     }
   ]
 });

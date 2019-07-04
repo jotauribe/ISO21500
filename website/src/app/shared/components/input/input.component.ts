@@ -11,14 +11,15 @@ let nextUniqueId = 0;
         [value]="val"
         (input)="pushChanges($event.target.value)"
         (blur)="onTouched($event)"
+        (change)="handleFile($event.target.files)"
         class="gpt-input-element"
         id="{{ id }}"
         placeholder="{{ placeholder }}"
         [type]="type"
       />
       <label *ngIf="!noPlaceholder" class="gpt-input__label" for="{{ id }}">
-        {{ placeholder }}</label
-      >
+        {{ placeholder }}
+      </label>
     </div>
   `,
   styleUrls: ['./input.component.scss'],
@@ -48,14 +49,21 @@ export class InputComponent implements OnInit, ControlValueAccessor {
 
   @Input('value')
   set value(val) {
-    this.val = val;
-    this.onChange(val);
+    if (this.type !== 'file') {
+      this.val = val;
+      this.onChange(val);
+    } else {
+      this.val = this.fileToUpload;
+      this.onChange(this.fileToUpload);
+    }
     this.onTouched();
   }
 
   get value() {
     return this.val;
   }
+
+  fileToUpload: Blob;
 
   onChange: any = () => {};
 
@@ -81,5 +89,18 @@ export class InputComponent implements OnInit, ControlValueAccessor {
 
   registerOnTouched(fn: any): void {
     this.onTouched = fn;
+  }
+
+  handleFile(files) {
+    if (this.type === 'file') {
+      const fileReader = new FileReader();
+
+      fileReader.onloadend = event => {
+        this.fileToUpload = new File([fileReader.result], 'profile.jpg');
+        this.onChange({ file: fileReader.result, name: files[0].name });
+      };
+
+      fileReader.readAsDataURL(files[0]);
+    }
   }
 }

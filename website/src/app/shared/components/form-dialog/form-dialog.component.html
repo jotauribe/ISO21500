@@ -7,6 +7,7 @@
       *ngFor="let field of data.fields"
       formControlName="{{ field.name }}"
       [placeholder]="field.placeholder"
+      [type]="field.type || 'text'"
     ></gpt-input>
 
     <div class="gpt-form-dialog__actions">

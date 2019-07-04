@@ -87,9 +87,7 @@ export class SignupComponent implements OnInit {
     });
   }
 
-  ngOnInit() {
-    console.log(this.signupForm.controls.username);
-  }
+  ngOnInit() {}
 
   signup() {
     if (this.signupForm.valid) {
