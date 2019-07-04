@@ -61,9 +61,7 @@ export class ResourcesListComponent implements OnInit {
     );
   }
 
-  ngOnInit() {
-    console.log('HOLA BEBE');
-  }
+  ngOnInit() {}
 
   getProjectId() {
     return this.route.snapshot.paramMap.get('projectId');
