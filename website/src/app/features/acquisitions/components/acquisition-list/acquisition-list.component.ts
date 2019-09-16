@@ -19,7 +19,7 @@ export class AcquisitionListComponent implements OnInit {
     sections: [
       {
         name: 'acquisitions',
-        title: 'Lista de Adquisiciones',
+        title: 'Planificación de Adquisiciones',
         dataPath: 'acquisitions',
         isList: true,
         schema: {
