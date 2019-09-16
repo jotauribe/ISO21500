@@ -27,6 +27,11 @@ export function teamManagementReducer(
         isLoading: false,
         data: [action.payload, ...state.data]
       };
+    case Types.UpdateTeamManagement:
+      state.data.teamOrganization =
+        action.payload.teamManagement.teamOrganization;
+      return state;
+
     default:
       return state;
   }

@@ -8,6 +8,12 @@
     display: flex;
     margin-bottom: 32px;
 
+    &--file {
+      > *:not(:last-child) {
+        margin-right: 8px;
+      }
+    }
+
     &__item {
       &--inline {
         flex-basis: 22%;
@@ -20,6 +26,10 @@
 
       &--wide {
         flex-basis: 100%;
+      }
+
+      &--hidden {
+        display: none;
       }
     }
   }
