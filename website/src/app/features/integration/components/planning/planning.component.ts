@@ -38,7 +38,13 @@ export class PlanningComponent implements OnInit {
           ]
         },
         fields: [
-          { name: 'phase', value: '', placeholder: 'Fase' },
+          {
+            name: 'phase',
+            optionsId: 'phases',
+            value: '',
+            placeholder: 'Fase',
+            type: 'select'
+          },
           {
             name: 'process',
             value: '',

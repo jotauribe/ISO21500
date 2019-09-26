@@ -3,13 +3,23 @@
 </header>
 <div mat-dialog-content>
   <form (ngSubmit)="submit($event)" [formGroup]="form" class="gpt-form-dialog">
-    <gpt-input
-      *ngFor="let field of data.fields"
-      formControlName="{{ field.name }}"
-      [placeholder]="field.placeholder"
-      [type]="field.type || 'text'"
-    ></gpt-input>
-
+    <ng-container *ngFor="let field of data.fields">
+      <gpt-input
+        *ngIf="field.type !== 'select'"
+        formControlName="{{ field.name }}"
+        [placeholder]="field.placeholder"
+        [type]="field.type || 'text'"
+      >
+      </gpt-input>
+      <mat-form-field *ngIf="field.type == 'select'">
+        <mat-label>{{ field.placeholder }}</mat-label>
+        <mat-select formControlName="{{ field.name }}">
+          <mat-option *ngFor="let o of fieldOptions[field.optionsId] | async">
+            {{ o.name }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </ng-container>
     <div class="gpt-form-dialog__actions">
       <button
         class="gpt-form-dialog__actions__cancel"
