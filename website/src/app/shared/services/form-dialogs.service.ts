@@ -41,7 +41,13 @@ export class FormDialogsService {
         fields: [
           { name: 'name', value: '', placeholder: 'Nombre' },
           { name: 'description', value: '', placeholder: 'Descripcion' },
-          { name: 'milestone', value: '', placeholder: 'Hito' },
+          {
+            name: 'milestone',
+            value: '',
+            placeholder: 'Hito',
+            type: 'select',
+            optionsId: 'milestones'
+          },
           { name: 'date', value: '', placeholder: 'Fecha' }
         ],
         title
