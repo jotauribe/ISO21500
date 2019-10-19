@@ -45,7 +45,7 @@ export class LessonsComponent implements OnInit {
           {
             name: 'description',
             value: '',
-            placeholder: 'Descripcion',
+            placeholder: 'Descripción',
             dataPath: 'description'
           },
           {

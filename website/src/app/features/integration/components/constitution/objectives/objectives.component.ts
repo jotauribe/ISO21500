@@ -27,13 +27,13 @@ export class ObjectivesComponent implements OnInit {
     const dialogRef = this.dialog.open(FormDialogComponent, {
       data: {
         fields: [
-          { name: 'id', value: '', placeholder: 'Codigo' },
+          { name: 'id', value: '', placeholder: 'Código' },
           { name: 'name', value: '', placeholder: 'Nombre' },
-          { name: 'description', value: '', placeholder: 'Descripcion' },
+          { name: 'description', value: '', placeholder: 'Descripción' },
           {
             name: 'acceptanceCriteria',
             value: '',
-            placeholder: 'Metrica / Criterio de aceptacion'
+            placeholder: 'Métrica / Criterio de aceptación'
           }
         ]
       }

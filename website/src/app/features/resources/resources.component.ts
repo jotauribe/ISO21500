@@ -9,7 +9,7 @@ export class ResourcesComponent implements OnInit {
   navLinks = [
     { path: ['teams'], label: 'Equipo' },
     { path: ['members'], label: 'Miembros' },
-    { path: ['team_management'], label: 'Administracion de Equipos' },
+    { path: ['team_management'], label: 'Administración de Equipos' },
     { path: ['activities'], label: 'Actividades' },
     { path: ['resources'], label: 'Recursos' }
   ];

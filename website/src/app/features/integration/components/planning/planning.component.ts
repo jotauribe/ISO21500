@@ -18,7 +18,7 @@ export class PlanningComponent implements OnInit {
     sections: [
       {
         name: 'methodology',
-        title: 'Metodologia',
+        title: 'Metodología',
         isList: false,
         fields: ['communication', 'adaptation', 'keyAspects', 'planRevision']
       },
@@ -69,32 +69,32 @@ export class PlanningComponent implements OnInit {
       },
       {
         name: 'baselines',
-        title: 'Lineas Base',
+        title: 'Líneas Base',
         isList: true,
         isFixedLength: true,
         isObject: true,
         dataPath: 'baselines',
         schema: {
           titles: {
-            schedule: 'Linea base de tiempo / cronograma',
-            costs: 'Linea base de coste',
-            scope: 'Linea base de alcance',
-            quality: 'Linea base de calidad'
+            schedule: 'Línea base de tiempo / cronograma',
+            costs: 'Línea base de coste',
+            scope: 'Línea base de alcance',
+            quality: 'Línea base de calidad'
           },
           title: 'title',
           prefix: undefined,
           mainInfo: 'description',
           secondaryInfo: [
-            { title: 'Umbral de variacion', info: 'variationTreshold' },
+            { title: 'Umbral de variación', info: 'variationTreshold' },
             { title: 'Seguimiento y Control', info: 'controlTracing' }
           ]
         },
         fields: [
-          { name: 'description', value: '', placeholder: 'Descripcion' },
+          { name: 'description', value: '', placeholder: 'Descripción' },
           {
             name: 'variationTreshold',
             value: '',
-            placeholder: 'Umbral de variacion'
+            placeholder: 'Umbral de variación'
           },
           {
             name: 'controlTracing',
@@ -108,13 +108,13 @@ export class PlanningComponent implements OnInit {
       {
         name: 'communication',
         value: '',
-        placeholder: 'Procesos de comunicacion entre Stakeholders',
+        placeholder: 'Procesos de comunicación entre Stakeholders',
         dataPath: 'methodology.communication'
       },
       {
         name: 'adaptation',
         value: '',
-        placeholder: 'Medidas de adaptacion necesarias en los procesos',
+        placeholder: 'Medidas de adaptación necesarias en los procesos',
         dataPath: 'methodology.adaptation'
       },
       {
@@ -126,7 +126,7 @@ export class PlanningComponent implements OnInit {
       {
         name: 'planRevision',
         value: '',
-        placeholder: 'Proceso de Revision del Plan Director del Proyecto',
+        placeholder: 'Proceso de Revisión del Plan Director del Proyecto',
         dataPath: 'methodology.planRevision'
       }
     ]

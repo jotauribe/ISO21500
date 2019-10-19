@@ -16,7 +16,7 @@ export class RisksComponent implements OnInit {
     sections: [
       {
         name: 'description',
-        title: 'Metodologia',
+        title: 'Metodología',
         dataPath: 'description',
         isList: false,
         fields: ['management', 'estimation']
@@ -30,7 +30,7 @@ export class RisksComponent implements OnInit {
       },
       {
         name: 'budget',
-        title: 'Presupuesto Para la Gestion del Riesgo',
+        title: 'Presupuesto Para la Gestión del Riesgo',
         dataPath: 'budget',
         isList: false,
         isSingleField: true,
@@ -50,7 +50,7 @@ export class RisksComponent implements OnInit {
       },
       {
         name: 'roles',
-        title: 'Distribucion de Roles y Responsabilidades',
+        title: 'Distribución de Roles y Responsabilidades',
         isList: true,
         dataPath: 'roles',
         schema: {
@@ -63,7 +63,7 @@ export class RisksComponent implements OnInit {
           {
             name: 'description',
             value: '',
-            placeholder: 'Descripcion'
+            placeholder: 'Descripción'
           },
           {
             name: 'assignedTo',
@@ -74,7 +74,7 @@ export class RisksComponent implements OnInit {
       },
       {
         name: 'riskAreas',
-        title: 'Categorias y Tipos de Riesgos',
+        title: 'Categorías y Tipos de Riesgos',
         isList: true,
         dataPath: 'riskAreas',
         schema: {
@@ -87,7 +87,7 @@ export class RisksComponent implements OnInit {
           ]
         },
         fields: [
-          { name: 'area', value: '', placeholder: 'Area' },
+          { name: 'area', value: '', placeholder: 'Área' },
           {
             name: 'time',
             value: '',
@@ -112,7 +112,7 @@ export class RisksComponent implements OnInit {
       },
       {
         name: 'riskCategories',
-        title: 'Areas de Tolerancia al Riesgo',
+        title: 'Áreas de Tolerancia al Riesgo',
         isList: true,
         dataPath: 'riskCategories',
         schema: {
@@ -133,13 +133,13 @@ export class RisksComponent implements OnInit {
       {
         name: 'management',
         value: '',
-        placeholder: 'Descripcion del Proceso de Gestion',
+        placeholder: 'Descripción del Proceso de Gestión',
         dataPath: 'description.management'
       },
       {
         name: 'estimation',
         value: '',
-        placeholder: 'Identificacion y Estimacion',
+        placeholder: 'Identificación y Estimación',
         dataPath: 'description.estimation'
       },
       {
@@ -199,13 +199,13 @@ export class RisksComponent implements OnInit {
       {
         name: 'riskComunication',
         value: '',
-        placeholder: 'Comunicacion de Riesgos',
+        placeholder: 'Comunicación de Riesgos',
         dataPath: 'protocols.riskComunication'
       },
       {
         name: 'riskPlanAuditory',
         value: '',
-        placeholder: 'Protocolo de Auditoria de Plan de Riesgos',
+        placeholder: 'Protocolo de Auditoría de Plan de Riesgos',
         dataPath: 'protocols.riskPlanAuditory'
       }
     ]

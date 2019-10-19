@@ -8,8 +8,8 @@
   <form (ngSubmit)="submit($event)" [formGroup]='form' class="new-project-form">
     <gpt-input formControlName="id" placeholder="NIT/CC"></gpt-input>
     <gpt-input formControlName="name" placeholder="Nombre"></gpt-input>
-    <gpt-input formControlName="address" placeholder="Direccion"></gpt-input>
-    <gpt-input formControlName="tel" placeholder="Telefono"></gpt-input>
+    <gpt-input formControlName="address" placeholder="Dirección"></gpt-input>
+    <gpt-input formControlName="tel" placeholder="Teléfono"></gpt-input>
     <div class="new-project-form__actions">
       <button class="new-project-form__actions__cancel" mat-button mat-dialog-close>Cancel</button>
       <button [mat-dialog-close]="form.value" class="new-project-form__actions__create" color="accent" mat-raised-button type="submit">

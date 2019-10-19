@@ -20,7 +20,7 @@ export class TeamManagementComponent implements OnInit {
     sections: [
       {
         name: 'teamOrganization',
-        title: 'Documento de Organizacion del Equipo',
+        title: 'Documento de Organización del Equipo',
         dataPath: 'teamOrganization',
         isList: false,
         isFile: true,
@@ -47,7 +47,7 @@ export class TeamManagementComponent implements OnInit {
           titles: {
             scopeGoals: 'Objetivos de Alcance',
             qualityGoals: 'Objetivos de Calidad',
-            planningGoals: 'Objetivos de Planificacion',
+            planningGoals: 'Objetivos de Planificación',
             budgetGoals: 'Objetivos de Presupuesto'
           },
           title: 'title',
@@ -56,7 +56,7 @@ export class TeamManagementComponent implements OnInit {
           secondaryInfo: [{ title: 'Comentarios', info: 'comments' }]
         },
         fields: [
-          { name: 'goals', value: '', placeholder: 'Descripcion' },
+          { name: 'goals', value: '', placeholder: 'Descripción' },
           {
             name: 'comments',
             value: '',
@@ -74,7 +74,7 @@ export class TeamManagementComponent implements OnInit {
         schema: {
           titles: {
             leadership: 'Liderazgo',
-            communication: 'Comunicacion',
+            communication: 'Comunicación',
             teamWork: 'Trabajo en Equipo',
             decisions: 'Toma de Desiciones',
             conflictManagement: 'Manejo de Conflictos',
@@ -86,7 +86,7 @@ export class TeamManagementComponent implements OnInit {
           secondaryInfo: [{ title: 'Comentarios', info: 'comments' }]
         },
         fields: [
-          { name: 'indicators', value: '', placeholder: 'Descripcion' },
+          { name: 'indicators', value: '', placeholder: 'Descripción' },
           {
             name: 'comments',
             value: '',
@@ -99,7 +99,7 @@ export class TeamManagementComponent implements OnInit {
       {
         name: 'justification',
         value: '',
-        placeholder: 'Vision/Justificacion del Proyecto',
+        placeholder: 'Visión/Justificación del Proyecto',
         dataPath: 'personalPlan.justification'
       },
       {
@@ -111,13 +111,13 @@ export class TeamManagementComponent implements OnInit {
       {
         name: 'improvementArea',
         value: '',
-        placeholder: 'Areas de Mejora',
+        placeholder: 'Áreas de Mejora',
         dataPath: 'personalPlan.improvementArea'
       },
       {
         name: 'teamOrganization',
         value: '',
-        placeholder: 'Documento de Organizacion del Equipo',
+        placeholder: 'Documento de Organización del Equipo',
         dataPath: 'teamOrganization',
         isFile: true,
         type: 'file'
