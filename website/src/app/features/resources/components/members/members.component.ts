@@ -37,17 +37,17 @@ export class MembersComponent implements OnInit {
           {
             name: 'rol',
             value: '',
-            placeholder: 'Funcion/Rol en el Proyecto'
+            placeholder: 'Función/Rol en el Proyecto'
           },
           {
             name: 'department',
             value: '',
-            placeholder: 'Departament'
+            placeholder: 'Departamento'
           },
           {
             name: 'email',
             value: '',
-            placeholder: 'email'
+            placeholder: 'Email'
           }
         ]
       }

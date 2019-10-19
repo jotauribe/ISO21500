@@ -30,7 +30,7 @@ export class ChangesComponent implements OnInit {
               info: 'status'
             },
             {
-              title: 'Documentacion Adjunta',
+              title: 'Documentación Adjunta',
               info: 'attachedDocumentation'
             },
             {
@@ -61,7 +61,7 @@ export class ChangesComponent implements OnInit {
               ]
             },
             {
-              label: 'Comunicacion del Estado del Cambio',
+              label: 'Comunicación del Estado del Cambio',
               data: [
                 {
                   title: 'Nombre de la Persona Notificada',
@@ -83,13 +83,13 @@ export class ChangesComponent implements OnInit {
           {
             name: 'name',
             value: '',
-            placeholder: 'Nombre de Identificacion del Cambio',
+            placeholder: 'Nombre de Identificación del Cambio',
             dataPath: 'name'
           },
           {
             name: 'description',
             value: '',
-            placeholder: 'Descripcion Corta del Cambio',
+            placeholder: 'Descripción Corta del Cambio',
             dataPath: 'description'
           },
           {
@@ -113,19 +113,19 @@ export class ChangesComponent implements OnInit {
           {
             name: 'time',
             value: '',
-            placeholder: 'Inpacto en Plazo',
+            placeholder: 'Impacto en Plazo',
             dataPath: 'impacts.time'
           },
           {
             name: 'time',
             value: '',
-            placeholder: 'Otros Inpactos',
+            placeholder: 'Otros Impactos',
             dataPath: 'impacts.other'
           },
           {
             name: 'attachedDocumentation',
             value: '',
-            placeholder: 'Documentacion Adjunta',
+            placeholder: 'Documentación Adjunta',
             dataPath: 'attachedDocumentation'
           },
           {
@@ -149,7 +149,7 @@ export class ChangesComponent implements OnInit {
           {
             name: 'date',
             value: '',
-            placeholder: 'Fecha de la Notificacion',
+            placeholder: 'Fecha de la Notificación',
             dataPath: 'communication.date'
           }
         ]

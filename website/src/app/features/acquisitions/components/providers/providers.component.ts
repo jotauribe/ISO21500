@@ -28,9 +28,9 @@ export class ProvidersComponent implements OnInit {
           prefix: 'nitOrCc',
           secondaryInfo: [
             { title: 'Tipo de Servicio', info: 'serviceType' },
-            { title: 'Telefono', info: 'phone' },
+            { title: 'Teléfono', info: 'phone' },
             { title: 'Email', info: 'email' },
-            { title: 'Direccion', info: 'address' },
+            { title: 'Dirección', info: 'address' },
             {
               title: 'Contrato',
               info: 'contract',
@@ -52,7 +52,7 @@ export class ProvidersComponent implements OnInit {
           {
             name: 'phone',
             value: '',
-            placeholder: 'Telefono'
+            placeholder: 'Teléfono'
           },
           {
             name: 'email',
@@ -62,7 +62,7 @@ export class ProvidersComponent implements OnInit {
           {
             name: 'address',
             value: '',
-            placeholder: 'Direccion'
+            placeholder: 'Dirección'
           },
           {
             name: 'contract',

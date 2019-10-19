@@ -11,7 +11,7 @@ export class SidebarComponent implements OnInit {
   links = [
     {
       href: 'integration',
-      title: 'Integracion',
+      title: 'Integración',
       icon: 'gpt_integration',
       isSvg: true
     },
