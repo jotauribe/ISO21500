@@ -19,7 +19,7 @@ export class ActivitiesComponent implements OnInit {
     sections: [
       {
         name: 'problemsForNextPeriod',
-        title: 'Problemas Para el Siguiente Periodo',
+        title: 'Problemas Para el Siguiente Período',
         dataPath: 'problemsForNextPeriod',
         isList: false,
         isSingleField: true,
@@ -45,7 +45,7 @@ export class ActivitiesComponent implements OnInit {
           {
             name: 'description',
             value: '',
-            placeholder: 'Descripcion'
+            placeholder: 'Descripción'
           },
           {
             name: 'status',
@@ -68,7 +68,7 @@ export class ActivitiesComponent implements OnInit {
           {
             name: 'description',
             value: '',
-            placeholder: 'Descripcion'
+            placeholder: 'Descripción'
           }
         ]
       }

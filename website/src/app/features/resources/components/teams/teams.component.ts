@@ -29,7 +29,7 @@ export class TeamsComponent implements OnInit {
           {
             name: 'rol',
             value: '',
-            placeholder: 'Funcion/Rol en el Proyecto'
+            placeholder: 'Función/Rol en el Proyecto'
           },
           {
             name: 'responsibilities',

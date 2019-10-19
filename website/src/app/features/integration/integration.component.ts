@@ -7,10 +7,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class IntegrationComponent implements OnInit {
   navLinks = [
-    { path: ['constitution'], label: 'Constitucion' },
-    { path: ['planning'], label: 'Planeacion' },
-    { path: ['configone'], label: 'Configuracion 1' },
-    { path: ['configtwo'], label: 'Configuracion 2' },
+    { path: ['constitution'], label: 'Constitución' },
+    { path: ['planning'], label: 'Planeación' },
+    { path: ['configone'], label: 'Configuración 1' },
+    { path: ['configtwo'], label: 'Configuración 2' },
     { path: ['risks'], label: 'Riesgos' },
     { path: ['changes'], label: 'Cambios' },
     { path: ['lessons'], label: 'Lecciones Aprendidas' }

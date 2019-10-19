@@ -98,7 +98,7 @@ export class ConfigOneComponent implements OnInit {
       },
       {
         name: 'items',
-        title: 'Items de Configuracion',
+        title: 'Items de Configuración',
         dataPath: 'items',
         isList: true,
         schema: {
@@ -106,13 +106,13 @@ export class ConfigOneComponent implements OnInit {
           prefix: 'code',
 
           secondaryInfo: [
-            { title: 'Categoria', info: 'category' },
+            { title: 'Categoría', info: 'category' },
             { title: 'Fuente', info: 'source' },
             { title: 'format', info: 'Formato' }
           ]
         },
         fields: [
-          { name: 'code', value: '', placeholder: 'Codigo' },
+          { name: 'code', value: '', placeholder: 'Código' },
           {
             name: 'name',
             value: '',
@@ -121,7 +121,7 @@ export class ConfigOneComponent implements OnInit {
           {
             name: 'category',
             value: '',
-            placeholder: 'Categoria'
+            placeholder: 'Categoría'
           },
           {
             name: 'source',

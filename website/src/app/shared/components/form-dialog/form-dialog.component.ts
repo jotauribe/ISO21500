@@ -2,6 +2,9 @@ import { Component, OnInit, Inject } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import * as _ from 'lodash';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+import { select, Store } from '@ngrx/store';
+import { CoreState } from '~/app/core/store';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'gpt-dialog-form',
@@ -13,19 +16,33 @@ export class FormDialogComponent implements OnInit {
 
   title: string = 'Formulario';
 
+  fieldOptions: {
+    phases: Observable<Array<Object>>;
+    milestones: Observable<Array<Object>>;
+  } = { phases: null, milestones: null };
+
   constructor(
     private fb: FormBuilder,
     private dialogRef: MatDialogRef<FormDialogComponent>,
     @Inject(MAT_DIALOG_DATA)
-    private data: { fields: any; title: string; actions?: any }
+    private data: { fields: any; title: string; actions?: any },
+    private store: Store<CoreState>
   ) {
     const { fields, title } = this.data;
     const formControls = this.createControlsSchema(fields);
     this.form = this.fb.group(formControls);
     this.title = title;
+    this.form.valueChanges.subscribe(value => console.log(value));
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.fieldOptions.milestones = this.store.pipe(
+      select(s => s.constitution.milestones.data)
+    );
+    this.fieldOptions.phases = this.store.pipe(
+      select(s => s.constitution.phases.data)
+    );
+  }
 
   submit() {
     const { fields } = this.data;

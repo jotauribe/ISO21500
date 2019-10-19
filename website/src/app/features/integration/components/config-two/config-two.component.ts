@@ -26,7 +26,7 @@ export class ConfigTwoComponent implements OnInit {
       },
       {
         name: 'deliverables',
-        title: 'Elementos / Entregables Sometidos al Control de Configuracion',
+        title: 'Elementos / Entregables Sometidos al Control de Configuración',
         dataPath: 'deliverables',
         isList: true,
         schema: {
@@ -34,7 +34,7 @@ export class ConfigTwoComponent implements OnInit {
           mainInfo: 'owner',
           secondaryInfo: [
             {
-              title: 'Normas de Identificacion y Versionado',
+              title: 'Normas de Identificación y Versionado',
               info: 'versioningRules'
             }
           ]
@@ -55,7 +55,7 @@ export class ConfigTwoComponent implements OnInit {
       },
       {
         name: 'responsibilities',
-        title: 'Responsabilidades de Gestion de la Configuracion',
+        title: 'Responsabilidades de Gestión de la Configuración',
         dataPath: 'responsibilities',
         isList: true,
         schema: {
@@ -73,7 +73,7 @@ export class ConfigTwoComponent implements OnInit {
       },
       {
         name: 'documents',
-        title: 'Documentos Sometidos al Control de la Configuracion',
+        title: 'Documentos Sometidos al Control de la Configuración',
         dataPath: 'documents',
         isList: true,
         schema: {

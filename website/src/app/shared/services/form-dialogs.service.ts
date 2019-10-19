@@ -19,13 +19,13 @@ export class FormDialogsService {
     const dialogRef = this.dialog.open(FormDialogComponent, {
       data: {
         fields: [
-          { name: 'id', value: '', placeholder: 'Codigo' },
+          { name: 'id', value: '', placeholder: 'Código' },
           { name: 'name', value: '', placeholder: 'Nombre' },
-          { name: 'description', value: '', placeholder: 'Descripcion' },
+          { name: 'description', value: '', placeholder: 'Descripción' },
           {
             name: 'acceptanceCriteria',
             value: '',
-            placeholder: 'Metrica / Criterio de aceptacion'
+            placeholder: 'Métrica / Criterio de aceptación'
           }
         ],
         title
@@ -40,8 +40,14 @@ export class FormDialogsService {
       data: {
         fields: [
           { name: 'name', value: '', placeholder: 'Nombre' },
-          { name: 'description', value: '', placeholder: 'Descripcion' },
-          { name: 'milestone', value: '', placeholder: 'Hito' },
+          { name: 'description', value: '', placeholder: 'Descripción' },
+          {
+            name: 'milestone',
+            value: '',
+            placeholder: 'Hito',
+            type: 'select',
+            optionsId: 'milestones'
+          },
           { name: 'date', value: '', placeholder: 'Fecha' }
         ],
         title
@@ -56,7 +62,7 @@ export class FormDialogsService {
       data: {
         fields: [
           { name: 'name', value: '', placeholder: 'Nombre' },
-          { name: 'description', value: '', placeholder: 'Descripcion' },
+          { name: 'description', value: '', placeholder: 'Descripción' },
           { name: 'deliverable', value: '', placeholder: 'Entregable' },
           { name: 'date', value: '', placeholder: 'Fecha' }
         ],
