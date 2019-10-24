@@ -19,7 +19,7 @@ export class MembersComponent implements OnInit {
     sections: [
       {
         name: 'teamMembers',
-        title: 'Miembros del Equipo del Proyecto',
+        title: 'Miembros del equipo del proyecto',
         dataPath: 'teamMembers',
         isList: true,
         schema: {
@@ -37,7 +37,7 @@ export class MembersComponent implements OnInit {
           {
             name: 'rol',
             value: '',
-            placeholder: 'Función/Rol en el Proyecto'
+            placeholder: 'Función/Rol en el proyecto'
           },
           {
             name: 'department',

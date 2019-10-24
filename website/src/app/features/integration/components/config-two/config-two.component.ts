@@ -18,7 +18,7 @@ export class ConfigTwoComponent implements OnInit {
     sections: [
       {
         name: 'scope',
-        title: 'Objetivo y Alcance del Plan',
+        title: 'Objetivo y alcance del plan',
         dataPath: 'scope',
         isList: false,
         isSingleField: true,
@@ -26,7 +26,7 @@ export class ConfigTwoComponent implements OnInit {
       },
       {
         name: 'deliverables',
-        title: 'Elementos / Entregables Sometidos al Control de Configuración',
+        title: 'Elementos / Entregables sometidos al control de configuración',
         dataPath: 'deliverables',
         isList: true,
         schema: {

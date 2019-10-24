@@ -20,7 +20,7 @@ export class TeamManagementComponent implements OnInit {
     sections: [
       {
         name: 'teamOrganization',
-        title: 'Documento de Organización del Equipo',
+        title: 'Documento de organización del equipo',
         dataPath: 'teamOrganization',
         isList: false,
         isFile: true,
@@ -31,7 +31,7 @@ export class TeamManagementComponent implements OnInit {
       },
       {
         name: 'personalPlan',
-        title: 'Plan de Desarrollo Personal',
+        title: 'Plan de desarrollo personal',
         dataPath: 'personalPlan',
         isList: false,
         fields: ['justification', 'strengths', 'improvementArea']
@@ -45,10 +45,10 @@ export class TeamManagementComponent implements OnInit {
         isObject: true,
         schema: {
           titles: {
-            scopeGoals: 'Objetivos de Alcance',
-            qualityGoals: 'Objetivos de Calidad',
-            planningGoals: 'Objetivos de Planificación',
-            budgetGoals: 'Objetivos de Presupuesto'
+            scopeGoals: 'Objetivos de alcance',
+            qualityGoals: 'Objetivos de calidad',
+            planningGoals: 'Objetivos de planificación',
+            budgetGoals: 'Objetivos de presupuesto'
           },
           title: 'title',
           prefix: undefined,
@@ -66,7 +66,7 @@ export class TeamManagementComponent implements OnInit {
       },
       {
         name: 'interpersonalSkills',
-        title: 'Competencias Interpersonales',
+        title: 'Competencias interpersonales',
         dataPath: 'interpersonalSkills',
         isList: true,
         isFixedLength: true,
@@ -75,9 +75,9 @@ export class TeamManagementComponent implements OnInit {
           titles: {
             leadership: 'Liderazgo',
             communication: 'Comunicación',
-            teamWork: 'Trabajo en Equipo',
-            decisions: 'Toma de Desiciones',
-            conflictManagement: 'Manejo de Conflictos',
+            teamWork: 'Trabajo en equipo',
+            decisions: 'Toma de desiciones',
+            conflictManagement: 'Manejo de conflictos',
             assertiveness: 'Asertividad'
           },
           title: 'title',
@@ -99,25 +99,25 @@ export class TeamManagementComponent implements OnInit {
       {
         name: 'justification',
         value: '',
-        placeholder: 'Visión/Justificación del Proyecto',
+        placeholder: 'Visión/Justificación del proyecto',
         dataPath: 'personalPlan.justification'
       },
       {
         name: 'strengths',
         value: '',
-        placeholder: 'Fortalezas Personales',
+        placeholder: 'Fortalezas personales',
         dataPath: 'personalPlan.strengths'
       },
       {
         name: 'improvementArea',
         value: '',
-        placeholder: 'Áreas de Mejora',
+        placeholder: 'Áreas de mejora',
         dataPath: 'personalPlan.improvementArea'
       },
       {
         name: 'teamOrganization',
         value: '',
-        placeholder: 'Documento de Organización del Equipo',
+        placeholder: 'Documento de organización del equipo',
         dataPath: 'teamOrganization',
         isFile: true,
         type: 'file'

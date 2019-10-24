@@ -108,7 +108,7 @@ export class PlanningComponent implements OnInit {
       {
         name: 'communication',
         value: '',
-        placeholder: 'Procesos de comunicación entre Stakeholders',
+        placeholder: 'Procesos de comunicación entre stakeholders',
         dataPath: 'methodology.communication'
       },
       {
@@ -120,13 +120,13 @@ export class PlanningComponent implements OnInit {
       {
         name: 'keyAspects',
         value: '',
-        placeholder: 'Aspectos claves y Decisiones pendientes',
+        placeholder: 'Aspectos claves y decisiones pendientes',
         dataPath: 'methodology.keyAspects'
       },
       {
         name: 'planRevision',
         value: '',
-        placeholder: 'Proceso de Revisión del Plan Director del Proyecto',
+        placeholder: 'Proceso de revisión del plan director del proyecto',
         dataPath: 'methodology.planRevision'
       }
     ]

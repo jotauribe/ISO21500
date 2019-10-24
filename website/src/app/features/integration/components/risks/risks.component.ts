@@ -23,14 +23,14 @@ export class RisksComponent implements OnInit {
       },
       {
         name: 'probabilityLevels',
-        title: 'Niveles de Probabilidad',
+        title: 'Niveles de probabilidad',
         dataPath: 'probabilityLevels',
         isList: false,
         fields: ['almostTrue', 'probable', 'posible', 'unlikely', 'rare']
       },
       {
         name: 'budget',
-        title: 'Presupuesto Para la Gestión del Riesgo',
+        title: 'Presupuesto para la gestión del riesgo',
         dataPath: 'budget',
         isList: false,
         isSingleField: true,
@@ -50,7 +50,7 @@ export class RisksComponent implements OnInit {
       },
       {
         name: 'roles',
-        title: 'Distribución de Roles y Responsabilidades',
+        title: 'Distribución de roles y responsabilidades',
         isList: true,
         dataPath: 'roles',
         schema: {
@@ -74,7 +74,7 @@ export class RisksComponent implements OnInit {
       },
       {
         name: 'riskAreas',
-        title: 'Categorías y Tipos de Riesgos',
+        title: 'Categorías y tipos de riesgos',
         isList: true,
         dataPath: 'riskAreas',
         schema: {
@@ -112,7 +112,7 @@ export class RisksComponent implements OnInit {
       },
       {
         name: 'riskCategories',
-        title: 'Áreas de Tolerancia al Riesgo',
+        title: 'Áreas de tolerancia al riesgo',
         isList: true,
         dataPath: 'riskCategories',
         schema: {
@@ -133,19 +133,19 @@ export class RisksComponent implements OnInit {
       {
         name: 'management',
         value: '',
-        placeholder: 'Descripción del Proceso de Gestión',
+        placeholder: 'Descripción del proceso de gestión',
         dataPath: 'description.management'
       },
       {
         name: 'estimation',
         value: '',
-        placeholder: 'Identificación y Estimación',
+        placeholder: 'Identificación y estimación',
         dataPath: 'description.estimation'
       },
       {
         name: 'almostTrue',
         value: '',
-        placeholder: 'Casi Cierto',
+        placeholder: 'Casi cierto',
         dataPath: 'probabilityLevels.almostTrue'
       },
       {
@@ -163,7 +163,7 @@ export class RisksComponent implements OnInit {
       {
         name: 'unlikely',
         value: '',
-        placeholder: 'Poco Probable',
+        placeholder: 'Poco probable',
         dataPath: 'probabilityLevels.unlikely'
       },
       {
@@ -187,25 +187,25 @@ export class RisksComponent implements OnInit {
       {
         name: 'contingency',
         value: '',
-        placeholder: 'Protocolo de Contingencia',
+        placeholder: 'Protocolo de contingencia',
         dataPath: 'protocols.contingency'
       },
       {
         name: 'riskControls',
         value: '',
-        placeholder: 'Protocolo de Control de Riesgos',
+        placeholder: 'Protocolo de control de riesgos',
         dataPath: 'protocols.riskControls'
       },
       {
         name: 'riskComunication',
         value: '',
-        placeholder: 'Comunicación de Riesgos',
+        placeholder: 'Comunicación de riesgos',
         dataPath: 'protocols.riskComunication'
       },
       {
         name: 'riskPlanAuditory',
         value: '',
-        placeholder: 'Protocolo de Auditoría de Plan de Riesgos',
+        placeholder: 'Protocolo de auditoría de plan de riesgos',
         dataPath: 'protocols.riskPlanAuditory'
       }
     ]

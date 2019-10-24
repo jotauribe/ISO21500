@@ -18,7 +18,7 @@ export class ChangesComponent implements OnInit {
     sections: [
       {
         name: 'changes',
-        title: 'Cambios Propuestos',
+        title: 'Cambios propuestos',
         dataPath: 'changes',
         isList: true,
         schema: {
@@ -83,13 +83,13 @@ export class ChangesComponent implements OnInit {
           {
             name: 'name',
             value: '',
-            placeholder: 'Nombre de Identificación del Cambio',
+            placeholder: 'Nombre de identificación del cambio',
             dataPath: 'name'
           },
           {
             name: 'description',
             value: '',
-            placeholder: 'Descripción Corta del Cambio',
+            placeholder: 'Descripción corta del cambio',
             dataPath: 'description'
           },
           {

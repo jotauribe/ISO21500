@@ -14,7 +14,7 @@ import { Observable } from 'rxjs';
         [formGroup]="loginForm"
         (ngSubmit)="login()"
       >
-        <h2 class="login-form__title">Inicia Sesion</h2>
+        <h2 class="login-form__title">Inicia Sesión</h2>
         <gpt-input
           formControlName="username"
           class="login-form__input"
@@ -46,8 +46,8 @@ import { Observable } from 'rxjs';
           </button>
         </div>
         <p class="login-form__footer">
-          Aun no estas registrado?
-          <a href="/signup" mat-button>Registrate</a>
+          ¿Aún no estas registrado?
+          <a href="/signup" mat-button>Regístrate</a>
         </p>
       </form>
     </div>

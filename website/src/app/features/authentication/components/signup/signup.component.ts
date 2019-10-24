@@ -17,7 +17,7 @@ import {
         [formGroup]="signupForm"
         (ngSubmit)="signup()"
       >
-        <h2 class="signup-form__title">Registrate</h2>
+        <h2 class="signup-form__title">Regístrate</h2>
         <div class="inline-input-group">
           <gpt-input
             formControlName="firstname"
@@ -39,7 +39,7 @@ import {
         <gpt-input
           formControlName="username"
           class="signup-form__input"
-          placeholder="nombre de usuario *"
+          placeholder="Nombre de usuario *"
           type="text"
         ></gpt-input>
 
@@ -52,7 +52,7 @@ import {
           ></gpt-input>
           <gpt-input
             class="signup-form__input"
-            placeholder="Confirmar Contraseña *"
+            placeholder="Confirmar contraseña *"
             type="password"
           ></gpt-input>
         </div>
@@ -63,8 +63,8 @@ import {
           </button>
         </div>
         <p class="signup-form__footer">
-          Ya tienes una cuenta?
-          <a href="/login" mat-button>Inicia sesion</a>
+          ¿Ya tienes una cuenta?
+          <a href="/login" mat-button>Inicia sesión</a>
         </p>
       </form>
     </div>
