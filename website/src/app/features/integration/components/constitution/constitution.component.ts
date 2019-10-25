@@ -101,7 +101,7 @@ export class ConstitutionComponent implements OnInit {
     const projectId = this.getProjectId();
 
     this.forms
-      .openMilestonesForm('Crear Nuevo Hito')
+      .openMilestonesForm('Crear hito')
       .afterClosed()
       .subscribe(result => {
         this.store.dispatch(
@@ -112,7 +112,7 @@ export class ConstitutionComponent implements OnInit {
 
   openObjectivesForm() {
     this.forms
-      .openObjectivesForm('Crear Nuevo Objetivo')
+      .openObjectivesForm('Crear objetivo')
       .afterClosed()
       .subscribe(result => {
         const projectId = this.getProjectId();
@@ -128,7 +128,7 @@ export class ConstitutionComponent implements OnInit {
     const projectId = this.getProjectId();
 
     this.forms
-      .openPhasesForm('Crear Nueva Fase')
+      .openPhasesForm('Crear fase')
       .afterClosed()
       .subscribe(result => {
         this.store.dispatch(new CreatePhases({ projectId, phase: result }));

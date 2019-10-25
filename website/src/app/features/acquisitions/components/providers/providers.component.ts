@@ -20,7 +20,7 @@ export class ProvidersComponent implements OnInit {
     sections: [
       {
         name: 'providers',
-        title: 'Lista de Proveedores',
+        title: 'Lista de proveedores',
         dataPath: 'providers',
         isList: true,
         schema: {
