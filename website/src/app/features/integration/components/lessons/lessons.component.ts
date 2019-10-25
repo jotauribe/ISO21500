@@ -18,7 +18,7 @@ export class LessonsComponent implements OnInit {
     sections: [
       {
         name: 'learnedLessons',
-        title: 'Lecciones Aprendidas',
+        title: 'Lecciones aprendidas',
         dataPath: 'learnedLessons',
         isList: true,
         schema: {
@@ -39,7 +39,7 @@ export class LessonsComponent implements OnInit {
           {
             name: 'name',
             value: '',
-            placeholder: 'Nombre de Identificacion de la Leccion',
+            placeholder: 'Nombre de identificacion de la leccion',
             dataPath: 'name'
           },
           {

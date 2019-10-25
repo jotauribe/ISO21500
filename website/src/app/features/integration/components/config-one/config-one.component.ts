@@ -98,7 +98,7 @@ export class ConfigOneComponent implements OnInit {
       },
       {
         name: 'items',
-        title: 'Items de Configuración',
+        title: 'Items de configuración',
         dataPath: 'items',
         isList: true,
         schema: {

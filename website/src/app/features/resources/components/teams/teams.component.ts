@@ -16,7 +16,7 @@ export class TeamsComponent implements OnInit {
     sections: [
       {
         name: 'teams',
-        title: 'Rol y Responsabilidades del Equipo del Proyecto',
+        title: 'Rol y responsabilidades del equipo del proyecto',
         dataPath: 'teams',
         isList: true,
         schema: {
@@ -29,7 +29,7 @@ export class TeamsComponent implements OnInit {
           {
             name: 'rol',
             value: '',
-            placeholder: 'Función/Rol en el Proyecto'
+            placeholder: 'Función/Rol en el proyecto'
           },
           {
             name: 'responsibilities',

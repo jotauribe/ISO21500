@@ -19,7 +19,7 @@ export class ActivitiesComponent implements OnInit {
     sections: [
       {
         name: 'problemsForNextPeriod',
-        title: 'Problemas Para el Siguiente Período',
+        title: 'Problemas para el siguiente período',
         dataPath: 'problemsForNextPeriod',
         isList: false,
         isSingleField: true,
@@ -56,7 +56,7 @@ export class ActivitiesComponent implements OnInit {
       },
       {
         name: 'identifiedRisk',
-        title: 'Riesgos Identificados',
+        title: 'Riesgos identificados',
         dataPath: 'identifiedRisk',
         isList: true,
         schema: {
